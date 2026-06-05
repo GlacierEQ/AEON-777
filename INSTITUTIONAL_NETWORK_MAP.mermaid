@@ -1,0 +1,30 @@
+graph TD
+    %% Key Actors
+    A[Casey Barton] -->|Petitioner| B(Case 1FDV-23-0001009)
+    C[Teresa Barton] -->|Defendant| B
+    
+    %% Legal Layer
+    D[Scot Brower] -->|Opposing Counsel| C
+    E[Micky Yamatani] -->|Former Counsel| C
+    F[Judge Natasha Shaw] -->|Presiding| B
+    G[Judge Courtney Naso] -->|Adjudicator| B
+
+    %% Political/Influence Layer
+    H[Schatz Political Family] --- E
+    I[Ryan Schatz] -->|Hawaii Legislator| H
+    J[Robert Schatz] -->|Ex-Husband| E
+    K[Daniel Smith] -->|Witness| I
+    
+    %% Connections
+    E --- D[Ex-Parte Collusion]
+    I -->|Legislative Oversight| L[DHS / Child Welfare]
+    L -->|Custody Influence| B
+    F --- I[Political Peer Network]
+    
+    %% Violations
+    D -->|Recidivism| M[ODC Reprimand 2022]
+    B -->|Statutory Delay| F
+    C -->|Medical Neglect| N[Atomic Bomb Admission]
+    
+    classDef target fill:#f96,stroke:#333,stroke-width:2px;
+    class D,E,F,G,I target;
