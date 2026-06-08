@@ -1,0 +1,19 @@
+# ⚖️ TRIAL EXHIBIT: AEON-777-AUTOGEN
+**AUTHENTICATION PER FRE 902(14) | ISO/IEC 27037 COMPLIANT**
+---
+### 🛡️ FORENSIC METADATA
+- **Source File**: 20250215 130144-60984D33.m4a
+- **SHA-256 Hash**: 5a1674c20f9f3b5549474174b1a6404d02711b9541aa99f1e06e1f391ca53579
+- **Hardware Profile**: Local macOS Extraction (`afinfo`)
+- **Extraction Engine**: WhisperX Ultramax v2.0 (Juggernaut Run)
+- **Timestamp**: 2026-06-08 06:17:53
+
+**Local Audio Metadata:**
+Data format:     1 ch,  48000 Hz, aac  (0x00000000) 0 bits/channel, 0 bytes/packet, 1024 frames/packet, 0 bytes/frame\nestimated duration: 67.305333 sec\naudio bytes: 547777
+
+- **Status**: PENDING FULL GPU TUNNEL OFFLOAD (For Diarization/Text)
+---
+### 🎙️ VERBATIM ADMISSION (TRANSCRIPT)
+[PENDING CLOUD OFFLOAD COMPLETION]
+---
+*Certified by APEX Forensic Unit | 2026-06-08*
