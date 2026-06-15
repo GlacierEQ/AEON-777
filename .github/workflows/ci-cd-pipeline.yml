@@ -10,7 +10,7 @@ on:
 jobs:
   code-quality:
     name: Code Quality & Linting
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
     steps:
       - uses: actions/checkout@v4
       - name: Run linters
@@ -19,7 +19,7 @@ jobs:
 
   security-scan:
     name: Security Scan
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
     steps:
       - uses: actions/checkout@v4
       - name: Dependency check
@@ -28,7 +28,7 @@ jobs:
 
   build:
     name: Build & Package
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
     needs: [code-quality, security-scan]
     steps:
       - uses: actions/checkout@v4
@@ -38,7 +38,7 @@ jobs:
 
   integration-tests:
     name: Integration Tests
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
     needs: build
     steps:
       - uses: actions/checkout@v4
@@ -48,7 +48,7 @@ jobs:
 
   deploy:
     name: Deploy to Production
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
     needs: integration-tests
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
