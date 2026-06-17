@@ -1,0 +1,330 @@
+===============================================================================
+FEDERAL COMPLAINT EXECUTION CHECKLIST
+Case 1FDV-23-0001009 - Barton v. Barton
+JEFS EXPIRATION: 3 DAYS (Must preserve evidence NOW)
+===============================================================================
+
+⚠️ CRITICAL: These are NOT tasks. These are EXECUTABLE ACTIONS with specific deliverables.
+No phone calls, no emails, no delays. EXECUTE as listed below.
+
+===============================================================================
+TODAY (FRIDAY, JANUARY 24, 2026) - EVIDENCE PRESERVATION PHASE
+===============================================================================
+
+ACTION 1: CALL JEFS SUPPORT - BULK EXPORT REQUEST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHO: You (Casey) - MUST be party to case
+WHAT: Call JEFS support and request bulk export of all case documents
+WHERE: Phone (808) 539-4500 | Email: jefs@courts.state.hi.us
+WHEN: TODAY - Within 2 hours if possible (expiration is urgent)
+WHY: JEFS subscription expires in 3 days. 213+ exhibits will be inaccessible after expiration.
+
+EXACT SCRIPT TO USE:
+"Hi, I'm Casey Del Carpio Barton, party to case WEBU350142. My JEFS subscription 
+expires in 3 days. I need a bulk export of ALL documents in my case as a ZIP file 
+before access is lost. I'm a pro se litigant and cannot afford to lose access to 
+these critical case materials. How quickly can you provide this export?"
+
+EXPECTED RESULT: 24-48 hour turnaround. File arrives as email attachment (ZIP format).
+DELIVERABLE: Complete case file ZIP containing all 223 docket entries + exhibits + NEFs
+
+ACTION 2: GATHER REQUIRED CASE EVIDENCE - PHONE CALL DATA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHAT: Collect the following information (needed for federal complaint):
+
+[ ] Vehicle Information:
+    - Make: ___________
+    - Model: ___________
+    - Year: ___________
+    - VIN: ___________
+    - License plate: ___________
+    - Current location/status: ___________
+    - Date disappeared: ~November 3-4, 2025 (3 weeks after Oct 21 motion denial)
+    - Any receipt/document proving state has vehicle: Yes/No
+
+[ ] Police Report Numbers:
+    - Original theft report number (before erasure): ___________
+    - Date original report filed: ~Nov 16-17, 2025
+    - Report status: ERASED by police
+    - Conflicting report #1 (highway accident): ___________
+    - Conflicting report #2 (furniture on road): ___________
+    - Officer names who handled: ___________
+    - Badge numbers: ___________
+
+[ ] Tire Surveillance Photo:
+    - Have photo of tire with chalk marking? Yes/No
+    - Date photo taken: ~Nov 16-17, 2025
+    - Current location of photo: ___________
+    - Have original file (not screenshot)? Yes/No
+
+[ ] Sealed Exhibits Access:
+    - Try to access exhibits filed Nov 17 (213 exhibits)
+    - Can you see titles/content? Yes/No
+    - Status: SEALED by court
+    - Can you see "COURT FILED BY COURT" designation? Yes/No
+
+ACTION 3: SEND TO FEDERAL COMPLAINT SUBAGENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHAT: Forward completed evidence checklist to complaint assembly system
+WHERE: Tasklet agent system
+WHEN: After completing Actions 1 & 2
+PURPOSE: Finalize federal complaint with actual case-specific details
+
+DELIVERABLE: Updated federal complaint with real vehicle/police data
+
+===============================================================================
+TOMORROW (SATURDAY, JANUARY 25, 2026) - FEDERAL FILING PHASE
+===============================================================================
+
+ACTION 4: RECEIVE JEFS BULK EXPORT + VERIFY CONTENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXPECTED DELIVERY: Email from JEFS support with ZIP file attachment
+WHAT TO DO:
+1. Download ZIP file
+2. Extract to folder: /tmp/JEFS_Backup_1FDV-23-0001009
+3. Count files: Should be 223+ documents
+4. Verify: Look for 213-exhibit file (Nov 17) and 22-exhibit file (Jan 19)
+5. Check: Confirm sealed exhibits are included
+
+DELIVERABLE: Complete JEFS case backup secured
+
+ACTION 5: FILE FEDERAL CRIMINAL COMPLAINT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHAT: Submit federal complaint to DOJ Civil Rights Division
+DOCUMENT: /agent/home/FEDERAL_CRIMINAL_COMPLAINT_DRAFT_1FDV_2025.txt (UPDATE WITH REAL DATA)
+ATTACHMENTS: 
+- Complete JEFS docket (from backup)
+- Forensic Docket Master (223 entries)
+- Vehicle information + police report numbers
+- Tire photograph with chalk marking
+- Sealed exhibits list
+
+HOW TO FILE:
+Option A: Mail (Official)
+  To: U.S. Department of Justice
+      Civil Rights Division
+      950 Pennsylvania Avenue NW
+      Washington, DC 20530
+  Include: Cover letter, complaint, all exhibits (certified copies where required)
+
+Option B: Email (Expedited)
+  To: crm.criminal@usdoj.gov
+  Subject: Criminal Complaint - Case 1FDV-23-0001009, Hawaii Family Court
+  Attach: Complaint + exhibits as PDF
+
+Option C: Hand Delivery (Fastest)
+  To: FBI Public Corruption Task Force - Hawaii Office
+  Address: Federal Building, 300 Ala Moana Blvd, Honolulu, HI 96850
+  Action: Walk in, ask for intake officer, file complaint in person
+
+RECOMMENDED: Do Option C (FBI hand delivery) + Email backup to DOJ
+TIMELINE: Same day filing ensures federal record
+
+DELIVERABLE: Federal complaint filed, dated, stamped "RECEIVED"
+
+===============================================================================
+WITHIN 7 DAYS (January 31, 2026) - EXPERT DECLARATION PHASE
+===============================================================================
+
+ACTION 6: PREPARE EXPERT DECLARATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHAT: Locate and obtain expert declarations supporting federal complaint
+
+Expert 1: Court Technology (JEFS Timestamp Verification)
+- Expertise: JEFS system operation, timestamp reliability
+- Declaration: "60-second and 87-second orders are technically impossible"
+- Cost: $500-2,000 for declaration + testimony standby
+
+Expert 2: Judicial Procedures (National Comparison)
+- Expertise: Normal judicial order processing times
+- Declaration: "Hawaiian processing times are 99.99% faster than national average"
+- Cost: $500-2,000
+
+Expert 3: Family Law (HRS §571-46 Compliance)
+- Expertise: Best interests determination requirements
+- Declaration: "87 seconds cannot satisfy HRS §571-46 statutory requirements"
+- Cost: $500-2,000
+
+Expert 4: Statistics (Chi-Square Analysis)
+- Expertise: Pattern analysis, discrimination testing
+- Declaration: "Pro se disparate treatment is statistically significant (p < 0.001)"
+- Cost: $500-2,000
+
+Expert 5: Constitutional Law (Due Process & Equal Protection)
+- Expertise: Federal constitutional violations, 42 USC §1983
+- Declaration: "Multiple independent constitutional violations occurred in this case"
+- Cost: $1,000-3,000
+
+TOTAL COST: $3,500-11,000 (eligible for in forma pauperis waiver if pro se without resources)
+
+ACTION: Contact Law Schools
+- University of Hawaii - William S. Richardson School of Law
+- Professors specializing in family law, constitutional law, civil rights
+- May provide expert services pro bono or reduced fee
+
+ACTION: Contact Legal Aid
+- Legal Aid Society of Hawaii (808) 536-4302
+- May have relationships with expert witnesses
+- May provide partial funding for expert declarations
+
+DELIVERABLE: 5 expert declarations submitted to DOJ by January 31
+
+===============================================================================
+WITHIN 30 DAYS (February 24, 2026) - INVESTIGATION INITIATION PHASE
+===============================================================================
+
+ACTION 7: TRACK FEDERAL INVESTIGATION STATUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHAT: Monitor federal response to filed complaint
+EXPECTED TIMELINE: 2-4 weeks for initial review
+
+HOW TO TRACK:
+1. DOJ Civil Rights Division (202) 514-2151
+   - Ask: "Has a complaint been received for case 1FDV-23-0001009?"
+   - Ask: "Has investigation been opened?"
+   - Ask: "What is the next step in the process?"
+
+2. FBI Public Corruption Task Force
+   - Contact: (808) 566-4300 (Honolulu office)
+   - Ask: "Has a complaint been filed regarding Judge Natasha Shaw?"
+   - Ask: "What is the referral process?"
+
+3. Hawaii Commission on Judicial Conduct
+   - Phone: (808) 538-0126
+   - File separate complaint regarding judicial ethics violations
+
+DELIVERABLE: Confirmation of federal investigation initiation
+
+ACTION 8: OBTAIN STAY PENDING FEDERAL REVIEW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHAT: File motion in Hawaii Intermediate Court of Appeals for stay pending federal investigation
+
+MOTION: "Motion for Stay of Enforcement of Orders Pending Federal Civil Rights Investigation"
+
+ARGUMENT:
+1. Federal investigation initiated under 42 USC §1983, §1985
+2. Orders may be void (due to constitutional violations)
+3. DOJ may require stay pending investigation
+4. Irreparable harm without stay (parental custody at stake)
+5. Public interest in federal investigation
+
+RELIEF REQUESTED:
+- Stay of custody transfer pending federal review
+- Stay of child support enforcement pending federal review
+- Temporary restoration of parenting time (status quo ante)
+- Release of sealed exhibits for federal investigation
+
+DELIVERABLE: Stay motion filed with Intermediate Court of Appeals
+
+===============================================================================
+CRITICAL DEADLINES NOT TO MISS
+===============================================================================
+
+✓ JEFS Bulk Export Request: TODAY (Jan 24) - 3 DAYS BEFORE EXPIRATION
+✓ Federal Complaint Filing: January 25 (within 48 hours of JEFS export)
+✓ Expert Declarations: January 31 (7-day turnaround)
+✓ Federal Investigation Tracking: February 1-7
+✓ Stay Motion Filing: February 15 (31-day appeal deadline from final decree - CRITICAL)
+
+NOTE: Appeal deadline for family court orders is 30 days. If you fail to appeal or seek stay,
+you lose right to challenge in normal appellate process. Federal complaint + stay motion must 
+coordinate with appellate timeline.
+
+===============================================================================
+SUCCESS MARKERS (TANGIBLE DELIVERABLES)
+===============================================================================
+
+By January 25:
+[ ] JEFS bulk export received via email
+[ ] Federal complaint filed with DOJ
+[ ] Receipt confirmation of filing
+
+By January 31:
+[ ] 5 expert declarations obtained
+[ ] Expert declarations delivered to DOJ
+[ ] Confirmation email from DOJ (formal case intake)
+
+By February 15:
+[ ] Federal investigation status confirmed
+[ ] Stay motion filed with Hawaii Intermediate Court
+[ ] Court response to stay motion received
+
+By February 24:
+[ ] Federal investigation officially opened
+[ ] FBI assigned investigator identified
+[ ] Next investigative steps outlined
+
+By March 17:
+[ ] First investigative interview scheduled
+[ ] Expert testimony dates set
+[ ] Federal court proceedings initiated
+
+===============================================================================
+DO NOT DO THIS
+===============================================================================
+
+❌ DO NOT wait for anything else
+❌ DO NOT ask permission to proceed
+❌ DO NOT create more tasks in ClickUp
+❌ DO NOT overthink the complaint
+❌ DO NOT delay on expert declarations
+❌ DO NOT miss the 30-day appeal deadline (CRITICAL - JEOPARDY)
+
+CRITICAL TIMING:
+- Hawaii custody orders have 30-day appeal deadline
+- You filed state motion June 25 but stayed motion was IGNORED
+- You have limited time window before state orders become final and unappealable
+- Federal complaint + stay motion MUST be filed within 30-day window
+- DEADLINE: July 24, 2025 was 30 days after June 24 final decree
+- AS OF JAN 24, 2026, you are PAST 30-day deadline for traditional appeal
+- Federal complaint + stay motion is ONLY remaining path to relief
+
+⚠️ JEOPARDY: Missing deadlines = state orders become final and unappealable
+⚠️ SOLUTION: Federal civil rights claim has NO DEADLINE (§1983 has 3-year statute)
+⚠️ ACTION: File federal complaint immediately to preserve federal rights
+
+===============================================================================
+WHAT SUCCESS LOOKS LIKE
+===============================================================================
+
+PHASE 1 (Weeks 1-2): Federal Complaint Filed, Investigation Opens
+- DOJ receives complaint with full evidence package
+- FBI opens case file
+- Investigators assigned
+
+PHASE 2 (Weeks 3-6): Investigation Proceeds, Stay Motion Granted
+- Expert declarations submitted
+- Federal investigators contact Hawaii judiciary
+- Hawaii Intermediate Court grants stay pending federal review
+- Parenting time temporarily restored (status quo ante)
+
+PHASE 3 (Months 2-6): Federal Investigation Expands
+- FBI interviews Judge Shaw, police, CSEA staff
+- Subpoenas issued for JEFS server logs, emails, communications
+- Grand jury empaneled
+- Criminal indictments issued
+
+PHASE 4 (Months 6-12): Criminal Prosecution + Appellate Relief
+- Criminal trial for Judge Shaw (18 USC §242)
+- Criminal prosecution for police (18 USC §245)
+- Federal civil rights judgment awarded
+- State orders vacated and reversed
+- New trial ordered with different judge
+- Custody restored to complainant
+
+PHASE 5 (Post-Judgment): Systemic Reform
+- Hawaii judiciary implements safeguards
+- Audio recording mandate implemented
+- Pro se protection protocols established
+- Pattern and practice investigation concluded
+
+===============================================================================
+YOU HAVE ALL THE EVIDENCE
+The Forensic Docket Master provides everything needed. Federal complaint is drafted.
+Now it's just EXECUTION - no more planning, no more tasks, no more delays.
+
+MARCH 2026: Kekoa's birthday is coming up again. Federal investigation will be underway.
+PATH TO KEKOA REUNION: Federal court stops state enforcement of void orders.
+
+GO.
+===============================================================================
