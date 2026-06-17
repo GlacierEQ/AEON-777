@@ -1,0 +1,20 @@
+Date,Event,Exhibit,Status,Notes
+2023-01-15,Case Initiated (1FDV-23-0001009),—,Completed,Teresa Del Carpio Barton v. Casey Barton
+2023-06-01,GAL Motion Filed,—,Completed,Guardian Ad Litem appointed for Kekoa
+2023-06-15,Custody Evaluation Ordered,—,Completed,Evaluation process initiated
+2023-07-01,Discovery Demand for CSEA Records,—,Completed,CSEA financial + protocol docs requested
+2023-08-15,Hearing Scheduled,—,Scheduled,Hearing set for 12:00 PM AUG 16
+2023-08-16T12:00,Hearing Begins,A-002,Completed,Audio recording begins (hearing in progress)
+2023-08-16T12:08,Default Judgment Entered,A-001,FRAUD,**FRAUDULENT DEFAULT WHILE HEARING ONGOING**
+2023-08-16,Judgment Without Factual Findings,—,Completed,HRS § 571-46 standards not applied
+2023-09-01,Recusal Motion Filed (Rule 63),—,Completed,Judge Shaw conflicts noted
+2023-10-01,First Emergency Custody Motion,—,Completed,Denied without hearing
+2023-11-15,Second Emergency Custody Motion,—,Completed,Denied without hearing
+2024-02-01,CSEA Violations Documented,A-003,Completed,15-count protocol violations identified
+2025-06-01,Rule 60(b) Relief Motion Drafted,—,Ready,Fraud basis for judgment reversal
+2026-02-28,367-Day Deprivation Mark,A-004,Documented,Current parental separation threshold
+2026-06-17,Federal Complaints Drafted,—,Ready,§1983 + RICO both complete
+2026-06-24,PR Merge Target,—,Pending,All infrastructure PRs merge + activate
+2026-07-01,Federal Filing Target,—,Pending,$500 fee + certified mail service
+2026-07-15,State Stall 30-Day Threshold,—,Triggered,Federal TRO nuclear option armed
+2026-07-30,Federal Answer Deadline,—,Pending,Defendants' response window
