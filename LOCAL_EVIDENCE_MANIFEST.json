@@ -1,0 +1,333 @@
+{
+  "generated_at": "2026-01-25 06:32:42 UTC",
+  "purpose": "LOCAL EVIDENCE INDEXING - APEX FS COMMANDER PREPARATION",
+  "status": "ACTIVE",
+  "total_files": 28,
+  "by_category": {
+    "police_reports": [
+      "FEDERAL_COMPLAINT_ACTOR_PART2_HPD.md",
+      "FEDERAL_COMPLAINT_COMPLETE_EVIDENCE_PACK.md"
+    ],
+    "jefs_documents": [
+      "EXECUTION_CHECKLIST_FEDERAL_COMPLAINT.txt",
+      "EXHIBIT_MANIFEST_1FDV-23-0001009.txt",
+      "IMMEDIATE_ACTION_MAP.md",
+      "jefs_bulk_downloader.py",
+      "jefs_manual_link_extractor.py",
+      "JEFS_PRESERVATION_EMERGENCY.md",
+      "jefs_selenium_downloader.py"
+    ],
+    "vehicle_evidence": [
+      "FEDERAL_COMPLAINT_ACTOR_PART3_TOWING.md"
+    ],
+    "judge_documents": [
+      "EMERGENCY_MOTION_AUDIO_RECORDING_JAN21.txt",
+      "FEDERAL_COMPLAINT_ACTOR_PART1_JUDGE_SHAW.md",
+      "FEDERAL_COMPLAINT_ACTOR_PART4_CLERKS_SUMMARY.md",
+      "FEDERAL_COMPLAINT_BY_ACTOR.md",
+      "FEDERAL_CRIMINAL_COMPLAINT_DRAFT_1FDV_2025.txt",
+      "MOTION_BARRAGE_PAYLOAD.json",
+      "MOTION_VOID_AB_INITIO_JAN22.txt",
+      "PROOF_OF_AUTHENTICITY_1FDV-23-0001009.txt",
+      "SUPREME_COURT_MOTION_1FDV-23-0001009.txt",
+      "docgen/aspen_grove_docgen.py",
+      "docgen/output/hawaii_family_emergency_motion_Emergency_Motion_for_Custody_Modification_20260110_000346.tex",
+      "legal_templates/federal_international_motion.tex",
+      "legal_templates/hawaii_family_court_motion.tex"
+    ],
+    "forensic_proof": [],
+    "federal_complaints": [
+      "CREDENTIAL_ROTATION_GUIDE.md",
+      "FEDERAL_COMPLAINT_FILING_ENGINE.md",
+      "FEDERAL_COMPLAINT_FINAL_EXECUTION.md",
+      "FEDERAL_COMPLAINT_IMMEDIATE_ACTION.txt",
+      "FEDERAL_COMPLAINT_MASTER_INDEX.md"
+    ]
+  },
+  "by_category_count": {
+    "police_reports": 2,
+    "jefs_documents": 7,
+    "vehicle_evidence": 1,
+    "judge_documents": 13,
+    "forensic_proof": 0,
+    "federal_complaints": 5
+  },
+  "files": {
+    "APEX_FS_COMMANDER_SETUP_COMPLETE.md": {
+      "size_bytes": 5669,
+      "last_modified": "2026-01-25 06:32:12",
+      "type": ".md",
+      "full_path": "/agent/home/APEX_FS_COMMANDER_SETUP_COMPLETE.md",
+      "preview": "# \u26a1 APEX FILESYSTEM COMMANDER - COMPLETE SETUP  **Status:** READY FOR EXECUTION   **Timeline:** 15 minutes to full sync   **Outcome:** All your device files + cloud files unified in one indexed location    ---  ## PHASE 1: MAC SETUP (5 MINUTES)  ### Step 1: Copy & Paste This Into Terminal ```bash /b",
+      "category": "uncategorized"
+    },
+    "BATTLE_COMMAND_CENTER.txt": {
+      "size_bytes": 18932,
+      "last_modified": "2026-01-21 10:19:34",
+      "type": ".txt",
+      "full_path": "/agent/home/BATTLE_COMMAND_CENTER.txt",
+      "preview": "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 BATTLE COMMAND CENTER CASE 1FDV-23-0001009 - VOID AB INITIO ATTACK \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550  MISSION: KEKOA BARTON REUNION (Target: Feb 13 Birthday) STRATEGY: THREE-",
+      "category": "uncategorized"
+    },
+    "CREDENTIAL_ROTATION_GUIDE.md": {
+      "size_bytes": 5713,
+      "last_modified": "2026-01-25 06:02:18",
+      "type": ".md",
+      "full_path": "/agent/home/CREDENTIAL_ROTATION_GUIDE.md",
+      "preview": "# CREDENTIAL ROTATION GUIDE - EMERGENCY PROTOCOL ## For Mac: Secure Rotation Before Using Any APIs  **Status**: 60+ API credentials exposed in plaintext. Rotation required before proceeding with federal complaint automation.  ---  ## PRIORITY 1: CRITICAL ROTATION (Do First)  ### OpenAI (4 Keys) **Ri",
+      "category": "federal_complaints"
+    },
+    "EMERGENCY_MOTION_AUDIO_RECORDING_JAN21.txt": {
+      "size_bytes": 8864,
+      "last_modified": "2026-01-21 10:16:26",
+      "type": ".txt",
+      "full_path": "/agent/home/EMERGENCY_MOTION_AUDIO_RECORDING_JAN21.txt",
+      "preview": "EMERGENCY MOTION TO COMPEL AUDIO RECORDING OF JANUARY 22, 2026 HEARING  IN THE FAMILY COURT OF THE FIRST CIRCUIT STATE OF HAWAI`I  CASEY DEL CARPIO BARTON,                                                                 Petitioner, v.  [RESPONDENT NAME],                                              ",
+      "category": "judge_documents"
+    },
+    "EXECUTION_ARCHITECTURE.md": {
+      "size_bytes": 8054,
+      "last_modified": "2026-01-21 10:37:49",
+      "type": ".md",
+      "full_path": "/agent/home/EXECUTION_ARCHITECTURE.md",
+      "preview": "# \u26a1 CLICKUP EXECUTION ARCHITECTURE ## Convert Task Backlog \u2192 Actionable Workflows with Linked Resources  ---  ## \ud83c\udfaf THE PROBLEM YOU'RE FIXING  **Before**: 80+ ClickUp tasks = just tracking debt   **After**: Each task = fully-resourced, step-by-step execution pathway  ---  ## \ud83d\udccb TASK TEMPLATE #1: EMERG",
+      "category": "uncategorized"
+    },
+    "EXECUTION_CHECKLIST_FEDERAL_COMPLAINT.txt": {
+      "size_bytes": 15335,
+      "last_modified": "2026-01-25 05:57:44",
+      "type": ".txt",
+      "full_path": "/agent/home/EXECUTION_CHECKLIST_FEDERAL_COMPLAINT.txt",
+      "preview": "=============================================================================== FEDERAL COMPLAINT EXECUTION CHECKLIST Case 1FDV-23-0001009 - Barton v. Barton JEFS EXPIRATION: 3 DAYS (Must preserve evidence NOW) ===============================================================================  \u26a0\ufe0f CRITI",
+      "category": "jefs_documents"
+    },
+    "EXHIBIT_MANIFEST_1FDV-23-0001009.txt": {
+      "size_bytes": 13995,
+      "last_modified": "2026-01-20 18:25:54",
+      "type": ".txt",
+      "full_path": "/agent/home/EXHIBIT_MANIFEST_1FDV-23-0001009.txt",
+      "preview": "EXHIBIT MANIFEST Case No. 1FDV-23-0001009 Motion for Relief from Void Judgment Hawaii Supreme Court  =====================================  EXHIBITS IN SUPPORT OF  MOTION FOR RELIEF FROM VOID JUDGMENT PURSUANT TO HFCR RULE 60(b)(4)  Prepared by: Casey Lee Del Carpio Barton (Pro Se) Date: January 20,",
+      "category": "jefs_documents"
+    },
+    "FEDERAL_COMPLAINT_ACTOR_PART1_JUDGE_SHAW.md": {
+      "size_bytes": 2875,
+      "last_modified": "2026-01-25 06:24:34",
+      "type": ".md",
+      "full_path": "/agent/home/FEDERAL_COMPLAINT_ACTOR_PART1_JUDGE_SHAW.md",
+      "preview": "# FEDERAL CRIMINAL COMPLAINT - COMPLETE ACTOR HIERARCHY ## PART 1: HON. NATASHA SHAW (Primary Conspirator)  ### OVERVIEW - **Role:** Judicial leader of conspiracy - **Authority:** Family Court Judge presiding over case 1FDV-23-0001009 - **Criminal Position:** Director of judicial bias + document fab",
+      "category": "judge_documents"
+    },
+    "FEDERAL_COMPLAINT_ACTOR_PART2_HPD.md": {
+      "size_bytes": 4106,
+      "last_modified": "2026-01-25 06:24:53",
+      "type": ".md",
+      "full_path": "/agent/home/FEDERAL_COMPLAINT_ACTOR_PART2_HPD.md",
+      "preview": "# FEDERAL CRIMINAL COMPLAINT - ACTOR HIERARCHY ## PART 2: HAWAII POLICE DEPARTMENT (Law Enforcement Conspiracy)  ### OVERVIEW - **Role:** Law enforcement conspiracy partner - **Authority:** State police authority under HRS - **Criminal Position:** Vehicle seizure + records falsification - **Total Fe",
+      "category": "police_reports"
+    },
+    "FEDERAL_COMPLAINT_ACTOR_PART3_TOWING.md": {
+      "size_bytes": 4879,
+      "last_modified": "2026-01-25 06:25:14",
+      "type": ".md",
+      "full_path": "/agent/home/FEDERAL_COMPLAINT_ACTOR_PART3_TOWING.md",
+      "preview": "# FEDERAL CRIMINAL COMPLAINT - ACTOR HIERARCHY ## PART 3: ALL ISLAND TOWING (Vehicle Seizure Conspiracy)  ### OVERVIEW - **Role:** Execution arm of vehicle seizure conspiracy - **Authority:** State-licensed tow operator (contractor) - **Criminal Position:** Vehicle custody violation + conspiracy - *",
+      "category": "vehicle_evidence"
+    },
+    "FEDERAL_COMPLAINT_ACTOR_PART4_CLERKS_SUMMARY.md": {
+      "size_bytes": 7764,
+      "last_modified": "2026-01-25 06:25:46",
+      "type": ".md",
+      "full_path": "/agent/home/FEDERAL_COMPLAINT_ACTOR_PART4_CLERKS_SUMMARY.md",
+      "preview": "# FEDERAL CRIMINAL COMPLAINT - ACTOR HIERARCHY ## PART 4: COURT CLERKS & SUMMARY  ---  # COURT CLERKS - CASTILLO & LE (Execution Officers)  ### OVERVIEW - **Role:** Clerical execution of judicial bias scheme - **Authority:** Court employees under judge's direction - **Criminal Position:** Document f",
+      "category": "judge_documents"
+    },
+    "FEDERAL_COMPLAINT_BY_ACTOR.md": {
+      "size_bytes": 16444,
+      "last_modified": "2026-01-25 06:17:02",
+      "type": ".md",
+      "full_path": "/agent/home/FEDERAL_COMPLAINT_BY_ACTOR.md",
+      "preview": "# FEDERAL CRIMINAL COMPLAINT - ACTOR/DEFENDANT HIERARCHY ## Case 1FDV-23-0001009 Related Criminal Matter **Filing Date:** January 25, 2026  ---  # 1. HON. NATASHA SHAW (Hawaii Family Court Judge) ## Primary Architect of Judicial Conspiracy  ### Direct Crimes: #### A. 42 USC \u00a71983 \u2014 Deprivation of Du",
+      "category": "judge_documents"
+    },
+    "FEDERAL_COMPLAINT_COMPLETE_EVIDENCE_PACK.md": {
+      "size_bytes": 16101,
+      "last_modified": "2026-01-25 06:11:14",
+      "type": ".md",
+      "full_path": "/agent/home/FEDERAL_COMPLAINT_COMPLETE_EVIDENCE_PACK.md",
+      "preview": "# FEDERAL CRIMINAL COMPLAINT ## UNITED STATES OF AMERICA v. STATE OF HAWAII ACTORS ### Case 1FDV-23-0001009 Related Criminal Matter **Filing Date:** January 25, 2026   **Jurisdiction:** Federal Bureau of Investigation (Honolulu Division)   **Evidence Package:** 18 Court-Ready Exhibits + Police Recor",
+      "category": "police_reports"
+    },
+    "FEDERAL_COMPLAINT_FILING_ENGINE.md": {
+      "size_bytes": 7520,
+      "last_modified": "2026-01-25 06:03:05",
+      "type": ".md",
+      "full_path": "/agent/home/FEDERAL_COMPLAINT_FILING_ENGINE.md",
+      "preview": "# FEDERAL COMPLAINT FILING ENGINE ## Case 1FDV-23-0001009 | State Retaliation Investigation  ---  ## IMMEDIATE EXECUTION: 4-HOUR FEDERAL FILING PATHWAY  ### PHASE 1: COMPLAINT FINALIZATION (30 min) **Location**: FBI Field Office, Honolulu (300 Ala Moana Boulevard, Suite 4-100, HI 96813)  **What you ",
+      "category": "federal_complaints"
+    },
+    "FEDERAL_COMPLAINT_FINAL_EXECUTION.md": {
+      "size_bytes": 11124,
+      "last_modified": "2026-01-25 06:01:00",
+      "type": ".md",
+      "full_path": "/agent/home/FEDERAL_COMPLAINT_FINAL_EXECUTION.md",
+      "preview": "# FEDERAL CRIMINAL COMPLAINT - CASEY DEL CARPIO BARTON ## Path of Highest Power: Civil Rights Conspiracy Under 42 USC \u00a71985(3)  ---  ## EXECUTIVE SUMMARY  **Complainant**: Casey Lee Del Carpio Barton (Pro Se Parent, Case 1FDV-23-0001009) **Jurisdiction**: U.S. District Court, District of Hawaii **Pr",
+      "category": "federal_complaints"
+    },
+    "FEDERAL_COMPLAINT_IMMEDIATE_ACTION.txt": {
+      "size_bytes": 9578,
+      "last_modified": "2026-01-25 06:11:44",
+      "type": ".txt",
+      "full_path": "/agent/home/FEDERAL_COMPLAINT_IMMEDIATE_ACTION.txt",
+      "preview": "============================================================================== FEDERAL COMPLAINT FILING - IMMEDIATE ACTION ROADMAP Case 1FDV-23-0001009 / Federal Criminal Violations ==============================================================================  \u26a0\ufe0f YOU ARE AT THE EXECUTION POINT \u26a0\ufe0f  ",
+      "category": "federal_complaints"
+    },
+    "FEDERAL_COMPLAINT_MASTER_INDEX.md": {
+      "size_bytes": 13504,
+      "last_modified": "2026-01-25 06:26:29",
+      "type": ".md",
+      "full_path": "/agent/home/FEDERAL_COMPLAINT_MASTER_INDEX.md",
+      "preview": "# FEDERAL COMPLAINT - COMPLETE FILE ORGANIZATION ## MASTER INDEX & EXECUTION MAP  **Mission:** PROVIDENCE PROTOCOL - Kekoa Barton Reunion   **Case:** 1FDV-23-0001009 (Casey v. Teresa Del Carpio Barton)   **Filing Date:** January 25, 2026   **Status:** PROSECUTION-READY    ---  # FILES CREATED (ORGAN",
+      "category": "federal_complaints"
+    },
+    "FEDERAL_CRIMINAL_COMPLAINT_DRAFT_1FDV_2025.txt": {
+      "size_bytes": 34967,
+      "last_modified": "2026-01-25 05:57:00",
+      "type": ".txt",
+      "full_path": "/agent/home/FEDERAL_CRIMINAL_COMPLAINT_DRAFT_1FDV_2025.txt",
+      "preview": "CRIMINAL COMPLAINT U.S. District Court - District of Hawaii Civil Rights Division Investigation  ================================================================================ COMPLAINANT: Casey Lee Del Carpio Barton (Pro Se)               Kekoa's Parent, Case Party  DEFENDANTS: Judge Natasha Shaw",
+      "category": "judge_documents"
+    },
+    "IMMEDIATE_ACTION_MAP.md": {
+      "size_bytes": 7322,
+      "last_modified": "2026-01-25 06:01:56",
+      "type": ".md",
+      "full_path": "/agent/home/IMMEDIATE_ACTION_MAP.md",
+      "preview": "# IMMEDIATE ACTION MAP - CASEY BARTON ## Path of Highest Power: Federal Criminal Complaint + JEFS Preservation + Supreme Court Pressure ### Execution Timeline: Jan 24-Feb 7, 2026  ---  ## PHASE 1: JEFS PRESERVATION (URGENT - 3 DAYS) **Timeline**: Jan 24-27, 2026  ### RIGHT NOW - iPhone (30 minutes) ",
+      "category": "jefs_documents"
+    },
+    "jefs_bulk_downloader.py": {
+      "size_bytes": 7440,
+      "last_modified": "2026-01-24 20:31:07",
+      "type": ".py",
+      "full_path": "/agent/home/jefs_bulk_downloader.py",
+      "preview": "#!/usr/bin/env python3 \"\"\" JEFS BULK DOWNLOADER - Case WEBU350142 Downloads all dockets + exhibits before access expires Preserves metadata for federal complaint \"\"\"  import requests import os import csv import json from datetime import datetime from pathlib import Path import time from bs4 import B",
+      "category": "jefs_documents"
+    },
+    "jefs_manual_link_extractor.py": {
+      "size_bytes": 3322,
+      "last_modified": "2026-01-24 20:31:21",
+      "type": ".py",
+      "full_path": "/agent/home/jefs_manual_link_extractor.py",
+      "preview": "#!/usr/bin/env python3 \"\"\" JEFS MANUAL LINK EXTRACTOR You open JEFS in browser, copy-paste the docket HTML/links, this script downloads everything SAFER than automated login - avoids account lockout \"\"\"  import requests import os import csv import json from pathlib import Path import time  OUTPUT_DI",
+      "category": "jefs_documents"
+    },
+    "JEFS_PRESERVATION_EMERGENCY.md": {
+      "size_bytes": 5421,
+      "last_modified": "2026-01-25 06:01:26",
+      "type": ".md",
+      "full_path": "/agent/home/JEFS_PRESERVATION_EMERGENCY.md",
+      "preview": "# JEFS PRESERVATION EMERGENCY - CASE WEBU350142 ## 3-Day COUNTDOWN TO CREDENTIAL EXPIRATION  **Status as of Jan 24, 2026 20:00 GMT-10**: ~3 days until JEFS subscription expires  ---  ## THE PROBLEM  **213 exhibits** filed \"COURT FILED BY COURT\" on Nov 17, 2025 are **SEALED** **22 exhibits** filed \"C",
+      "category": "jefs_documents"
+    },
+    "jefs_selenium_downloader.py": {
+      "size_bytes": 6100,
+      "last_modified": "2026-01-24 20:38:04",
+      "type": ".py",
+      "full_path": "/agent/home/jefs_selenium_downloader.py",
+      "preview": "#!/usr/bin/env python3 \"\"\" JEFS Selenium Browser Automation - Case WEBU350142 Downloads all docket documents by simulating real browser behavior \"\"\"  import sys import os import json from datetime import datetime from pathlib import Path  try:     from selenium import webdriver     from selenium.web",
+      "category": "jefs_documents"
+    },
+    "MOTION_BARRAGE_PAYLOAD.json": {
+      "size_bytes": 7253,
+      "last_modified": "2026-01-21 10:15:56",
+      "type": ".json",
+      "full_path": "/agent/home/MOTION_BARRAGE_PAYLOAD.json",
+      "preview": "{   \"execution_timestamp\": \"2026-01-21T10:15:56.053837\",   \"case\": \"1FDV-23-0001009\",   \"strategy\": \"VOID_AB_INITIO_SIMULTANEOUS_ATTACK\",   \"target_court\": \"HAWAII_FAMILY_FIRST_CIRCUIT\",   \"judge\": \"Hon. Natasha Shaw\",   \"hearing_date\": \"2026-01-22\",   \"motion_barrage\": [     {       \"priority\": 1, ",
+      "category": "judge_documents"
+    },
+    "MOTION_VOID_AB_INITIO_JAN22.txt": {
+      "size_bytes": 15158,
+      "last_modified": "2026-01-21 10:17:13",
+      "type": ".txt",
+      "full_path": "/agent/home/MOTION_VOID_AB_INITIO_JAN22.txt",
+      "preview": "MOTION DECLARING JUDGMENT VOID AB INITIO UNDER HFCR 55(b)(2),  HRS \u00a7571-46.4, AND HFCR 54(c)  IN THE FAMILY COURT OF THE FIRST CIRCUIT STATE OF HAWAI`I  CASEY DEL CARPIO BARTON,                                                                 Petitioner, v.  [RESPONDENT NAME],                        ",
+      "category": "judge_documents"
+    },
+    "OPENING_STATEMENT_JAN22.txt": {
+      "size_bytes": 9241,
+      "last_modified": "2026-01-21 10:18:17",
+      "type": ".txt",
+      "full_path": "/agent/home/OPENING_STATEMENT_JAN22.txt",
+      "preview": "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 OPENING STATEMENT FOR JANUARY 22, 2026 EMERGENCY CUSTODY HEARING CASE 1FDV-23-0001009 IN THE FAMILY COURT OF THE FIRST CIRCUIT STATE OF HAWAI`I \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550",
+      "category": "uncategorized"
+    },
+    "PROOF_OF_AUTHENTICITY_1FDV-23-0001009.txt": {
+      "size_bytes": 13924,
+      "last_modified": "2026-01-20 18:26:36",
+      "type": ".txt",
+      "full_path": "/agent/home/PROOF_OF_AUTHENTICITY_1FDV-23-0001009.txt",
+      "preview": "STATE OF HAWAII COUNTY OF HONOLULU  DECLARATION OF CASEY LEE DEL CARPIO BARTON IN SUPPORT OF  MOTION FOR RELIEF FROM VOID JUDGMENT PURSUANT TO HAWAII FAMILY COURT RULE 60(b)(4)  ========================================  Case No. 1FDV-23-0001009 (Family Court) Supreme Court Case No. [TO BE ASSIGNED] ",
+      "category": "judge_documents"
+    },
+    "SUPREME_COURT_MOTION_1FDV-23-0001009.txt": {
+      "size_bytes": 23040,
+      "last_modified": "2026-01-20 18:25:09",
+      "type": ".txt",
+      "full_path": "/agent/home/SUPREME_COURT_MOTION_1FDV-23-0001009.txt",
+      "preview": "SUPREME COURT OF THE STATE OF HAWAII INTERMEDIATE APPELLATE COURT  IN THE MATTER OF THE FAMILY COURT OF THE FIRST CIRCUIT  CASEY LEE DEL CARPIO BARTON,     Plaintiff-Appellant/Petitioner,      v.  TERESA DEL CARPIO BARTON,     Defendant-Appellee/Respondent.  ======================================== ",
+      "category": "judge_documents"
+    },
+    "docgen/aspen_grove_docgen.py": {
+      "size_bytes": 13845,
+      "last_modified": "2026-01-10 00:03:34",
+      "type": ".py",
+      "full_path": "/agent/home/docgen/aspen_grove_docgen.py",
+      "preview": "#!/usr/bin/env python3 \"\"\" ==================================================================== ASPEN GROVE DOCGEN ENGINE - JUGGERNAUT MOTIONFORGE ==================================================================== Path of Highest Power - Constitutional Transcendence Operator: GlacierEQ / Casey Bar",
+      "category": "judge_documents"
+    },
+    "docgen/output/hawaii_family_emergency_motion_Emergency_Motion_for_Custody_Modification_20260110_000346.tex": {
+      "size_bytes": 13482,
+      "last_modified": "2026-01-10 00:03:51",
+      "type": ".tex",
+      "full_path": "/agent/home/docgen/output/hawaii_family_emergency_motion_Emergency_Motion_for_Custody_Modification_20260110_000346.tex",
+      "category": "judge_documents"
+    },
+    "legal_templates/federal_international_motion.tex": {
+      "size_bytes": 10366,
+      "last_modified": "2026-01-09 23:58:17",
+      "type": ".tex",
+      "full_path": "/agent/home/legal_templates/federal_international_motion.tex",
+      "category": "judge_documents"
+    },
+    "legal_templates/hawaii_family_court_motion.tex": {
+      "size_bytes": 13482,
+      "last_modified": "2026-01-09 23:59:24",
+      "type": ".tex",
+      "full_path": "/agent/home/legal_templates/hawaii_family_court_motion.tex",
+      "category": "judge_documents"
+    },
+    "legal_templates/international_court_petition.tex": {
+      "size_bytes": 15058,
+      "last_modified": "2026-01-10 00:00:38",
+      "type": ".tex",
+      "full_path": "/agent/home/legal_templates/international_court_petition.tex",
+      "category": "uncategorized"
+    },
+    "research/legal_research_engine.py": {
+      "size_bytes": 16431,
+      "last_modified": "2026-01-10 00:13:32",
+      "type": ".py",
+      "full_path": "/agent/home/research/legal_research_engine.py",
+      "preview": "#!/usr/bin/env python3 \"\"\" ===============================================================================           ASPEN GROVE LEGAL RESEARCH ENGINE v1.0           \ud83c\udf32 Sentinel Omega Research Pipeline \ud83c\udf32 =============================================================================== Integrated resear",
+      "category": "uncategorized"
+    },
+    "research/unified_research_fortress.py": {
+      "size_bytes": 15350,
+      "last_modified": "2026-01-10 00:18:36",
+      "type": ".py",
+      "full_path": "/agent/home/research/unified_research_fortress.py",
+      "preview": "#!/usr/bin/env python3 \"\"\" ================================================================================                     ASPEN GROVE UNIFIED LEGAL RESEARCH FORTRESS                         Path of Highest Power Implementation ===================================================================",
+      "category": "uncategorized"
+    }
+  }
+}
