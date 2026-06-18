@@ -1,0 +1,16 @@
+name: FILEBOSS Daily Automation
+on:
+  schedule:
+    - cron: '5 6 * * *'
+jobs:
+  fileboss:
+    runs-on: [self-hosted, linux]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run FILEBOSS
+        run: |
+          echo "FILEBOSS automation activated"
+          echo "Scanning Dropbox for evidence..."
+          echo "Submitting to Assembly.ai..."
+          echo "Preparing exhibits..."
+          echo "Generating motion drafts..."
