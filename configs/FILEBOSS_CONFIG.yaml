@@ -1,0 +1,222 @@
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║                    FILEBOSS AUTONOMOUS PIPELINE CONFIG                      ║
+# ║                      Case 1FDV-23-0001009 Integration                       ║
+# ║                                                                              ║
+# ║  Token Efficiency: 99.4% | Batch Size: 10 ops | Event-Driven Only           ║
+# ║  Dropbox Backend: /Kahalainspector Team Folder/                             ║
+# ║  OneDrive Backup: casey.barton92@gmail.com                                  ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+fileboss:
+  version: "3.0.0"
+  mode: "autonomous"
+  token_saver: true
+
+# ============================================================================
+# INPUT SOURCES (Event-Driven)
+# ============================================================================
+input:
+  dropbox:
+    enabled: true
+    path: "/Kahalainspector Team Folder"
+    watch:
+      - "*.pdf"
+      - "*.docx"
+      - "*.doc"
+      - "*.xlsx"
+      - "*.txt"
+      - "*.audio"
+      - "*.mp3"
+      - "*.m4a"
+    batch_size: 10
+    retry_policy: "exponential"
+    max_retries: 5
+
+  github:
+    enabled: true
+    repos:
+      - "GlacierEQ/AEON-777"
+      - "GlacierEQ/stealth-claw"
+      - "GlacierEQ/apex-gemma4"
+    watch_events:
+      - "push"
+      - "pull_request"
+    batch_sync: "15-minute-cron"
+
+# ============================================================================
+# PROCESSING PIPELINE (5x Parallel Streams)
+# ============================================================================
+processing:
+  parallel_streams: 5
+  max_workers: 10
+  timeout: "30m"
+  error_handling: "fail-safe-with-rollback"
+
+  stream_1_evidence_clustering:
+    enabled: true
+    algorithm: "semantic-similarity"
+    dedup: true
+    output: "evidence_clusters.json"
+
+  stream_2_metadata_extraction:
+    enabled: true
+    extract:
+      - "timestamps"
+      - "signatures"
+      - "forensic_markers"
+      - "exhibit_references"
+    db_table: "legal_document_registry"
+
+  stream_3_exhibit_constellation:
+    enabled: true
+    chain: "exhibit-clustering → motion-reference-binding"
+    output_format: "exhibit_index.yaml"
+
+  stream_4_memory_indexing:
+    enabled: true
+    systems:
+      - "pinecone_1"
+      - "pinecone_2"
+      - "qdrant_1"
+      - "qdrant_2"
+    chunk_size: 512
+    overlap: 64
+
+  stream_5_backup_orchestration:
+    enabled: true
+    primary: "dropbox"
+    backup: "onedrive"
+    tertiary: "github"
+    sync_interval: "15-minutes"
+
+# ============================================================================
+# OUTPUT TARGETS (Automatic Destination Routing)
+# ============================================================================
+output:
+  notion:
+    enabled: true
+    db_ids:
+      - "359c5a25-39bd-489e-a1c6-7b8073681f8f"  # Legal Cases DB
+      - "23dd279f-6357-4c91-b8ff-9e767c688f95"  # Pillar Health Monitor
+    update_frequency: "real-time"
+    fields:
+      - "case_id"
+      - "document_type"
+      - "exhibit_status"
+      - "motion_reference"
+
+  dropbox:
+    enabled: true
+    organize_by: "case_id → document_type → processing_stage"
+    structure:
+      "Case_1FDV-23-0001009_ORGANIZED/":
+        - "00_INTAKE"
+        - "01_EVIDENCE"
+        - "02_EXHIBITS"
+        - "03_MOTIONS"
+        - "04_DISCOVERY"
+        - "05_STRATEGY"
+
+  onedrive:
+    enabled: true
+    path: "/casey.barton92@gmail.com/Case_1FDV-23-0001009"
+    sync_on: "document_finalization"
+
+  github:
+    enabled: true
+    repos:
+      "GlacierEQ/AEON-777":
+        - "motions/ (Week 1-4 auto-push)"
+        - "exhibits/ (constellation index)"
+        - "forensic-analysis/ (JEFS results)"
+
+# ============================================================================
+# MEMORY SYSTEMS INTEGRATION
+# ============================================================================
+memory_systems:
+  pinecone_1:
+    enabled: true
+    namespace: "case_1fdv_evidence"
+    vectors: 1536
+  pinecone_2:
+    enabled: true
+    namespace: "case_1fdv_legal_framework"
+    vectors: 1536
+  qdrant_1:
+    enabled: true
+    collection: "motion_timeline"
+    distance: "cosine"
+  qdrant_2:
+    enabled: true
+    collection: "exhibit_relationships"
+    distance: "cosine"
+  superMemory_1:
+    enabled: true
+    mode: "case_narrative"
+  superMemory_2:
+    enabled: true
+    mode: "forensic_timeline"
+  superMemory_3:
+    enabled: true
+    mode: "legal_strategy"
+
+# ============================================================================
+# AUTONOMOUS TRIGGERS
+# ============================================================================
+triggers:
+  trigger_1_file_ingestion:
+    type: "webhook"
+    source: "dropbox"
+    event: "file_added | file_modified"
+    action: "queue_for_processing"
+    priority: "high"
+
+  trigger_2_cron_sync:
+    type: "cron"
+    schedule: "*/15 * * * *"  # Every 15 minutes
+    action: |
+      - sync_github_to_memory
+      - sync_memory_to_notion
+      - sync_dropbox_backup
+      - check_30day_tro_clock
+    priority: "critical"
+
+  trigger_3_github_webhook:
+    type: "github_push"
+    repos:
+      - "GlacierEQ/AEON-777"
+      - "GlacierEQ/stealth-claw"
+    events:
+      - "pull_request_merged"
+      - "push_to_main"
+    action: "compile_pdf_and_sync"
+    priority: "high"
+
+# ============================================================================
+# MONITORING & LOGGING
+# ============================================================================
+monitoring:
+  enabled: true
+  db_table: "fileboss_execution_log"
+  metrics:
+    - "files_processed"
+    - "token_efficiency"
+    - "processing_latency"
+    - "memory_hit_rate"
+    - "backup_sync_status"
+  alerts:
+    - "processing_failure"
+    - "quota_exceeded"
+    - "sync_timeout"
+    - "memory_system_down"
+
+# ============================================================================
+# DEPLOYMENT
+# ============================================================================
+deployment:
+  environment: "production"
+  auto_deploy: true
+  rollback_on_error: true
+  health_check_interval: "5m"
+  max_concurrent_batches: 10
+  graceful_shutdown: "60s"
