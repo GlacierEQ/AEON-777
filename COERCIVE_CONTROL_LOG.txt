@@ -1,0 +1,30 @@
+# COERCIVE CONTROL INCIDENT LOG
+# AEON-777 — Filing-Critical Evidence
+# Last Updated: 2026-07-08
+# Status: ACTIVE — Populate with verified incidents
+# ─────────────────────────────────────────────────
+
+## PURPOSE
+Chronological log of coercive control incidents for case filing.
+Each entry must be independently verifiable and cross-referenced
+to source material (transcripts, exhibits, declarations).
+
+## FORMAT
+[DATE] | [INCIDENT TYPE] | [DESCRIPTION] | [WITNESS/SOURCE] | [EXHIBIT REF]
+
+## INCIDENT TYPES
+- FINANCIAL_CONTROL
+- ISOLATION
+- SURVEILLANCE
+- INTIMIDATION
+- DOCUMENT_DENIAL
+- OTHER (specify)
+
+## ENTRIES
+# TODO: Populate with verified incidents from case record
+# Cross-reference: DECLARATION_CLAIMS_FOR_CROSS_REF.txt
+
+## CHAIN OF CUSTODY
+Created:  2026-07-08 (scaffold via #powerup cycle 1 — Issue #34)
+Approved: Casey Barton (GlacierEQ)
+Next review: Upon first entry population
