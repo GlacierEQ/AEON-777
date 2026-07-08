@@ -1,0 +1,28 @@
+# DECLARATION CLAIMS CROSS-REFERENCE INDEX
+# AEON-777 — Filing-Critical Evidence
+# Last Updated: 2026-07-08
+# Status: ACTIVE — Populate with indexed claims
+# ─────────────────────────────────────────────────
+
+## PURPOSE
+Master index of claims appearing in all declarations, mapped to supporting
+evidence, counter-evidence, and filing targets.
+
+## FORMAT
+[CLAIM ID] | [DECL SOURCE] | [CLAIM SUMMARY] | [STATUS] | [SUPPORT REFS] | [COUNTER REFS]
+
+## CLAIM STATUS CODES
+- SUPPORTED    = Evidence on file confirms claim
+- UNSUPPORTED  = Claim made, evidence not yet filed
+- REBUTTED     = Counter-evidence identified
+- DISPUTED     = Active dispute — requires hearing
+- ADMITTED     = Opposing party admitted
+
+## ENTRIES
+# TODO: Index all claims from declarations in TRANSCRIBED_EVIDENCE/
+# Cross-reference: TERESA_DECL_HARVEST.txt, COERCIVE_CONTROL_LOG.txt
+
+## CHAIN OF CUSTODY
+Created:  2026-07-08 (scaffold via #powerup cycle 1 — Issue #34)
+Approved: Casey Barton (GlacierEQ)
+Next review: Upon initial claim indexing pass

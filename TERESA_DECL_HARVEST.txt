@@ -1,0 +1,27 @@
+# TERESA DECLARATION HARVEST
+# AEON-777 — Filing-Critical Evidence
+# Last Updated: 2026-07-08
+# Status: ACTIVE — Populate with harvested declaration content
+# ─────────────────────────────────────────────────
+
+## PURPOSE
+Harvested statements, admissions, and claims extracted from Teresa's
+declarations for cross-reference and filing use.
+
+## FORMAT
+[DECL DATE] | [PAGE/PARA] | [VERBATIM EXCERPT] | [CLASSIFICATION] | [CROSS-REF]
+
+## CLASSIFICATION CODES
+- ADM   = Admission against interest
+- INCON = Inconsistency with prior statement
+- CORRO = Corroborates filing claim
+- DISP  = Disputed — requires rebuttal
+
+## ENTRIES
+# TODO: Populate by running harvest pass over Teresa declaration PDFs
+# Source: TRANSCRIBED_EVIDENCE/ directory
+
+## CHAIN OF CUSTODY
+Created:  2026-07-08 (scaffold via #powerup cycle 1 — Issue #34)
+Approved: Casey Barton (GlacierEQ)
+Next review: Upon harvest pass completion
