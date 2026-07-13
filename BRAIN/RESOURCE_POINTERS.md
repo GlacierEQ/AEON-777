@@ -9,11 +9,13 @@ The case brain is a living system. Anything that can change must remain replacea
 
 The Brain stores meaning, relationships, routes, and pointers. It does not become the authoritative copy of changing evidence, dates, service status, connector state, or external records.
 
+For resources represented in several places, use the [Source-of-Truth Mesh](./SOURCE_OF_TRUTH_MESH.md): one stable resource identity, one declared canonical source, and many linked projections.
+
 ## Resource classes
 
 | Resource | What AKOS stores | What remains authoritative |
 |---|---|---|
-| Court record | docket/file pointer, date, relationship | court/J EFS record or original court document |
+| Court record | docket/file pointer, date, relationship | court/JEFS record or original court document |
 | Evidence | exhibit ID, path, hash, provenance | original evidence file and custody record |
 | Motion or draft | route, version, source list, status | approved saved artifact |
 | Deadline | event pointer and verification time | court notice, order, or confirmed calendar record |
@@ -30,6 +32,7 @@ The Brain stores meaning, relationships, routes, and pointers. It does not becom
 6. **A derivative may be created for work, but it must identify its source and never replace it.**
 7. **A symlink may be used only as a convenience view when the underlying platform preserves it reliably. The symlink is never the source of truth. If reliability is uncertain, use an explicit pointer.**
 8. **Never treat a status claim as a completed action without a source pointer or execution record.**
+9. **If the resource has multiple views, link them through the mesh rather than treating each view as an independent authority.**
 
 ## Minimum pointer record
 
@@ -51,5 +54,6 @@ notes: provenance, limits, or review gate
 - **Replaced:** point to the successor and preserve provenance.
 - **Unverified:** mark it pending; do not promote it to Brain truth.
 - **Unavailable:** keep the pointer, mark the blocker, and do not invent a substitute.
+- **Multi-location:** retain one canonical source and link every working view to it.
 
 This is the flexible layer between the living case record and the stable AKOS architecture.

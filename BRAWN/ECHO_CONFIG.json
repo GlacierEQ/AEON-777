@@ -6,7 +6,9 @@
   "case_id": "1FDV-23-0001009",
   "brain_root": "../BRAIN",
   "resource_pointer_policy": "../BRAIN/RESOURCE_POINTERS.md",
-  "source_of_truth_policy": "pointer-first; never replace the original",
+  "source_of_truth_mesh": "../BRAIN/SOURCE_OF_TRUTH_MESH.md",
+  "source_of_truth_policy": "one canonical source; many linked projections; never replace the original",
+  "projection_policy": "refresh linked views when the source changes; mark unverified views stale or blocked",
   "execution_roots": [
     "../EXECUTION",
     "../SYSTEM_INTEGRATION",
