@@ -5,6 +5,8 @@
   "specialization": "case-management",
   "case_id": "1FDV-23-0001009",
   "brain_root": "../BRAIN",
+  "resource_pointer_policy": "../BRAIN/RESOURCE_POINTERS.md",
+  "source_of_truth_policy": "pointer-first; never replace the original",
   "execution_roots": [
     "../EXECUTION",
     "../SYSTEM_INTEGRATION",
@@ -23,6 +25,7 @@
   ],
   "required_source_pointers": true,
   "preserve_source_evidence": true,
+  "refresh_derivatives_when_source_changes": true,
   "human_review_gates": {
     "jefs_filing": true,
     "service": true,

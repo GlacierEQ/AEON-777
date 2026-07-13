@@ -7,8 +7,9 @@ It does not replace the underlying evidence. It points to it.
 ## Start here
 
 1. [CASE_BRAIN_MASTER_INDEX.md](./CASE_BRAIN_MASTER_INDEX.md) — master case-brain map
-2. [HIGH_INTELLIGENCE_CASE_BRAIN_CORE.md](./HIGH_INTELLIGENCE_CASE_BRAIN_CORE.md) — current intelligence snapshot
-3. [UNIFIED_CASE_BRAIN_COMPLETE.md](./UNIFIED_CASE_BRAIN_COMPLETE.md) — timeline, threat, decision, and integration snapshot
+2. [RESOURCE_POINTERS.md](./RESOURCE_POINTERS.md) — flexible source-of-truth and change rules
+3. [HIGH_INTELLIGENCE_CASE_BRAIN_CORE.md](./HIGH_INTELLIGENCE_CASE_BRAIN_CORE.md) — current intelligence snapshot
+4. [UNIFIED_CASE_BRAIN_COMPLETE.md](./UNIFIED_CASE_BRAIN_COMPLETE.md) — timeline, threat, decision, and integration snapshot
 
 ## Brain inputs
 
@@ -29,4 +30,4 @@ It does not replace the underlying evidence. It points to it.
 
 ## Operating rule
 
-Every important conclusion needs a pointer to the file, exhibit, docket entry, recording, or other source that supports it. Draft strategy may live in the Brain; filing decisions require the human review gate.
+Every important conclusion needs a pointer to the file, exhibit, docket entry, recording, or other source that supports it. Draft strategy may live in the Brain; filing decisions require the human review gate. Changing resources stay behind the flexible pointer layer.

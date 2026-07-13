@@ -13,6 +13,10 @@ ECHO remains a universal excellence engine. This repository's `ECHO_CONFIG.json`
 - Track handoffs, outputs, and blockers
 - Return results to the Brain with pointers and a clear status
 
+## Flexible-resource rule
+
+Brawn works from the Brain's pointers. It may create a working view, derivative, or package, but it does not become the source of truth. If a resource changes, Brawn refreshes the pointer and rebuilds the derivative instead of overwriting the original.
+
 ## Existing execution paths
 
 - [EXECUTION](../EXECUTION/)
