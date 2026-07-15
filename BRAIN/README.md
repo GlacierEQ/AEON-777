@@ -12,12 +12,14 @@ It does not replace the underlying evidence or court record.
 4. `SOURCE_OF_TRUTH_MESH.md` — stable identity and projection rules
 5. `MEMORY_INGESTION_PROTOCOL.md` — validated memory-write pipeline
 6. `CONTAINER_REGISTRY.json` — canonical containers and legacy migration map
+7. `ACTORS/README.md` — source-linked actor registry, file matrix, conflicts, and quality report
 
 ## Machine-enforceable contracts
 
 - `CASE_EVENT_SCHEMA.json`
 - `THREAT_SIGNAL_SCHEMA.json`
 - `MEMORY_RECORD_SCHEMA.json`
+- `ACTORS/ACTOR_REGISTRY_SCHEMA.json`
 
 Canonical valid and invalid fixtures are under `examples/`. Validate them with:
 
