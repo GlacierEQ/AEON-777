@@ -9,7 +9,7 @@ court finding, evidentiary authentication report, or legal conclusion.
 ## Executive finding
 
 The actor layer is structurally usable but not yet evidentiary-grade. It now
-contains 31 stable actor entries, 19 with external file candidates, and five
+contains 32 stable actor entries, 19 with external file candidates, and five
 preserved identity/authority conflicts. The source Notion database contains
 allegation text in 26 of 29 rows, lacks a numeric evidence count in 25 rows, and
 lacks review status in nine rows. Those fields are therefore treated as
@@ -20,11 +20,11 @@ work-product signals, not facts or reliable completeness measures.
 | Measure | Count | Denominator | Interpretation |
 |---|---:|---:|---|
 | Source actor rows | 29 | 29 | All source rows were mapped |
-| Canonical actor entries | 31 | n/a | Includes two separate unresolved candidates |
+| Canonical actor entries | 32 | n/a | Includes one fact-sheet-only candidate and two separate unresolved candidates |
 | Rows containing allegation text | 26 | 29 | Allegations were not promoted |
 | Rows missing numeric evidence count | 25 | 29 | Legacy evidence counts are not trusted |
 | Rows missing review status | 9 | 29 | Review-state completion is 69.0% |
-| Actors with external file candidates | 19 | 31 | File-link coverage is 61.3% |
+| Actors with external file candidates | 19 | 32 | File-link coverage is 59.4% |
 | Open conflicts | 5 | n/a | Must be resolved through authoritative sources |
 | Verified live claims | 0 | n/a | Deliberate safety posture |
 
