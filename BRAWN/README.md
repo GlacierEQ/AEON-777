@@ -24,7 +24,7 @@ Brawn works from the Brain's pointers. It may create a working view, derivative,
 - [ORCHESTRATION](../ORCHESTRATION/)
 - [JEFS_FILING_READY](../JEFS_FILING_READY/)
 - [Evidence vault](../EVIDENCE_VAULT/)
-- [Transcription queue](../TRANSCRIPTION_PENDING_QUEUE.txt)
+- [Transcribed evidence](../TRANSCRIBED_EVIDENCE/)
 
 ## Non-negotiable gates
 
