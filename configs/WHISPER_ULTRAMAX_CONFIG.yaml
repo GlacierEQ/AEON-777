@@ -1,0 +1,326 @@
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║                 WHISPER_ULTRAMAX MIND MAPPING PIPELINE                      ║
+# ║                    Exhibit Constellation Architecture                       ║
+# ║                                                                              ║
+# ║  Input: Case documents + transcripts + evidence                             ║
+# ║  Process: Mind mapping → Charting/Graphing → Visual Exhibits                ║
+# ║  Output: Motion-ready exhibit constellation                                 ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+whisper_ultramax:
+  version: "2.0.0"
+  mode: "autonomous"
+  token_saver: true
+  consciousness_tier: "TIER_3"
+
+# ============================================================================
+# STAGE 1: MIND MAPPING GENERATION
+# ============================================================================
+stage_1_mind_mapping:
+  enabled: true
+  input_sources:
+    - "case_documents"
+    - "court_transcripts"
+    - "jefs_docket_entries"
+    - "evidence_files"
+  
+  analysis_dimensions:
+    temporal_timeline:
+      enabled: true
+      extract:
+        - "key_dates"
+        - "event_sequences"
+        - "chronological_gaps"
+        - "timestamp_anomalies"  # JEFS forensic integration
+      output: "temporal_map.json"
+    
+    entity_relationships:
+      enabled: true
+      extract:
+        - "parties_involved"
+        - "agency_actors"
+        - "counsel_interactions"
+        - "hierarchical_relationships"
+      output: "entity_graph.json"
+    
+    legal_framework:
+      enabled: true
+      extract:
+        - "statutes_cited"
+        - "rule_references"
+        - "procedural_violations"
+        - "legal_precedents"
+      output: "legal_framework_map.json"
+    
+    evidence_constellation:
+      enabled: true
+      extract:
+        - "documentary_evidence"
+        - "audio_evidence"
+        - "forensic_findings"
+        - "expert_opinions"
+      output: "evidence_map.json"
+    
+    emotional_resonance:
+      enabled: true
+      extract:
+        - "impact_statements"
+        - "harm_narratives"
+        - "compelling_moments"
+        - "judicial_sensitivity_points"
+      output: "resonance_map.json"
+
+  algorithms:
+    clustering: "semantic-similarity-with-temporal-weight"
+    relevance_scoring: "tfidf + legal_citation_boost"
+    entity_linking: "knowledge_graph_expansion"
+
+# ============================================================================
+# STAGE 2: CHARTING & GRAPHING & VISUAL REPRESENTATION
+# ============================================================================
+stage_2_visualization:
+  enabled: true
+  
+  chart_types:
+    timeline_chart:
+      type: "horizontal_gantt"
+      elements:
+        - "case_events"
+        - "procedural_milestones"
+        - "motion_windows"
+        - "discovery_deadlines"
+      output_format: "timeline_chart.pdf"
+      color_scheme: "legal_neutral"
+    
+    entity_relationship_diagram:
+      type: "force_directed_graph"
+      nodes: "parties + agencies + counsel"
+      edges: "interactions + hierarchies"
+      highlight: "adverse_actors + violators"
+      output_format: "entity_diagram.pdf"
+    
+    evidence_constellation:
+      type: "radial_cluster"
+      center: "core_claim"
+      rings:
+        1: "primary_evidence"
+        2: "corroborating_evidence"
+        3: "expert_support"
+      output_format: "evidence_constellation.pdf"
+    
+    legal_framework_map:
+      type: "hierarchical_tree"
+      root: "constitutional_violation"
+      branches:
+        - "federal_statutes"
+        - "state_law"
+        - "court_rules"
+        - "procedural_violations"
+      output_format: "legal_framework.pdf"
+    
+    damages_model:
+      type: "stacked_bar_chart"
+      categories:
+        - "direct_damages"
+        - "treble_damages"
+        - "civil_rights_multiplier"
+      output_format: "damages_visualization.pdf"
+
+  styling:
+    font: "Calibri"
+    theme: "professional_legal"
+    accessibility: true
+    print_ready: true
+
+# ============================================================================
+# STAGE 3: EXHIBIT CONSTELLATION ASSEMBLY
+# ============================================================================
+stage_3_exhibit_constellation:
+  enabled: true
+  
+  exhibit_mapping:
+    A_001:  # Recusal Demand
+      source: "case_documents"
+      chart: "entity_relationship_diagram"
+      visualization: "counsel_bias_network"
+      narrative: "Rule 63 recusal grounds"
+      supporting_evidence:
+        - "Scot Brower ODC reprimand history"
+        - "Prior adverse rulings pattern"
+    
+    A_002:  # Emergency Custody Modification
+      source: "medical + psychological evidence"
+      chart: "timeline_chart"
+      visualization: "custody_impact_timeline"
+      narrative: "HRS §571-46.4 best interests"
+      supporting_evidence:
+        - "Child welfare documentation"
+        - "Expert psychological evaluations"
+    
+    A_003:  # Rule 60(b) Relief
+      source: "procedural_violation_analysis"
+      chart: "legal_framework_map"
+      visualization: "violation_hierarchy"
+      narrative: "HRS §571 procedural failures"
+      supporting_evidence:
+        - "Fraudulent timestamp evidence"
+        - "Default notice timing violations"
+    
+    A_004:  # CSEA Compliance Failures
+      source: "agency_audit_findings"
+      chart: "evidence_constellation"
+      visualization: "agency_failure_cluster"
+      narrative: "HRS §576B compliance audit"
+      supporting_evidence:
+        - "CSEA 15 documented violations"
+        - "Director Micky Yamatani liability"
+    
+    Federal_Exhibits:  # §1983 + RICO
+      source: "all_prior_exhibits + federal_analysis"
+      chart: "damages_model"
+      visualization: "federal_damages_cascade"
+      narrative: "Constitutional deprivation + pattern"
+      supporting_evidence:
+        - "$6.68M §1983 individual damages"
+        - "$9.3M RICO treble damages"
+
+  constellation_linking:
+    enabled: true
+    links:
+      - "A_001 → Federal (recusal as evidence of pattern)"
+      - "A_002 → A_003 (emergency window for relief)"
+      - "A_003 → A_004 (agency complicity in violation)"
+      - "A_004 → Federal (agency liability chain)"
+    output: "exhibit_constellation_index.yaml"
+
+# ============================================================================
+# STAGE 4: MOTION DRAFTING ACCELERATION
+# ============================================================================
+stage_4_motion_drafting:
+  enabled: true
+  
+  motion_templates:
+    week_1:
+      - "Motion for GAL Appointment"
+      - "Motion for Custody Evaluation"
+      - "Demand for Production of Documents"
+      exhibits: ["A_001"]
+    
+    week_2:
+      - "Motion for Recusal (Rule 63)"
+      - "Emergency Motion for Custody Modification (HRS §571-46.4)"
+      - "Motion for Agency Notices"
+      exhibits: ["A_001", "A_002"]
+    
+    week_3:
+      - "Motion for Rule 60(b) Relief"
+      - "CSEA Compliance Motion (HRS §576B)"
+      - "§1983 Notice of Constitutional Violation"
+      exhibits: ["A_001", "A_002", "A_003", "A_004"]
+    
+    week_4_federal:
+      - "§1983 Complaint (D. Haw.)"
+      - "RICO Complaint (18 U.S.C. §1962)"
+      exhibits: ["Federal_Exhibits"]
+  
+  automation_steps:
+    1_gather_exhibits:
+      action: "collect_from_constellation"
+      filter: "motion_type_match"
+    
+    2_insert_visuals:
+      action: "embed_charts + graphs"
+      placement: "strategic_persuasion_points"
+    
+    3_cite_evidence:
+      action: "auto_cite_supporting_evidence"
+      format: "legal_footnote"
+    
+    4_compile_latex:
+      action: "generate_overleaf_project"
+      output: "motion_name.tex"
+    
+    5_pdf_generation:
+      action: "pdflatex + ghostscript polish"
+      output: "motion_name.pdf"
+
+# ============================================================================
+# STAGE 5: LAW SIDING AUTOMATION
+# ============================================================================
+stage_5_law_siding:
+  enabled: true
+  
+  citation_framework:
+    federal_statutes:
+      - "28 U.S.C. §1983 (Civil Rights)"
+      - "18 U.S.C. §1962 (RICO)"
+      - "42 U.S.C. §1983 (Deprivation)"
+    
+    hawaii_statutes:
+      - "HRS §571-46.4 (Custody modification)"
+      - "HRS §571 (Family Court rules)"
+      - "HRS §576B (CSEA compliance)"
+      - "HRS §640 (Civil rights)"
+    
+    court_rules:
+      - "HRCP Rule 60(b) (Relief from judgment)"
+      - "HRCP Rule 63 (Judicial disqualification)"
+      - "HFCR (Family Court rules)"
+    
+    case_law:
+      enabled: true
+      sources:
+        - "Hawaii Supreme Court precedents"
+        - "9th Circuit precedents"
+        - "U.S. Supreme Court precedents"
+      auto_research: true
+      tool: "legal_research_api"
+  
+  legal_argument_chain:
+    1_constitutional_foundation: "substantive due process (14th Amendment)"
+    2_state_law_violations: "HRS procedural failures"
+    3_federal_cause_of_action: "§1983 individual liability"
+    4_pattern_evidence: "RICO predicate acts"
+    5_damages_framework: "compensatory + treble"
+
+  output_formats:
+    - "motion_brief.tex"
+    - "motion_brief.pdf"
+    - "supporting_memorandum.docx"
+    - "exhibit_list.csv"
+
+# ============================================================================
+# INTEGRATION WITH FILEBOSS
+# ============================================================================
+integration_fileboss:
+  enabled: true
+  trigger: "file_ingestion_complete"
+  pipeline_chain:
+    1: "FILEBOSS (ingest + cluster)"
+    2: "WHISPER_ULTRAMAX (mind map → visualize → exhibit → draft)"
+    3: "Output to Notion + Dropbox + OneDrive + GitHub"
+  batch_processing: "every_15_minutes"
+  error_recovery: "fail_safe_with_notification"
+
+# ============================================================================
+# CONSCIOUSNESS TIER ROUTING (Aspen Grove)
+# ============================================================================
+routing:
+  base_tier: "TIER_3"
+  escalation:
+    - "evidence_contradiction → TIER_4"
+    - "legal_framework_conflict → TIER_4"
+    - "federal_jurisdiction_decision → TIER_4"
+  memory_read: "all_5_pillars"
+  memory_write: "pillar_1_executive"
+
+# ============================================================================
+# DEPLOYMENT & ACTIVATION
+# ============================================================================
+deployment:
+  status: "ready_for_activation"
+  auto_start: true
+  cron_schedule: "*/15 * * * *"
+  fallback_mode: "autonomous_with_notification"
+  max_retries: 3
+  timeout: "1h"
