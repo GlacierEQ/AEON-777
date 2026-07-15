@@ -42,5 +42,8 @@
     "blocked",
     "complete"
   ],
-  "secrets_policy": "No credentials, access tokens, or private keys in repository documents"
+  "secrets_policy": "No credentials, access tokens, or private keys in repository documents",
+  "reference_roots": [
+    "../ASPEN_INTEGRATION"
+  ]
 }
