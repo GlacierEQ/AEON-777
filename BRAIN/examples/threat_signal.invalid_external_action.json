@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "signal_id": "sig-invalid-auto-action-001",
+  "case_id": "1FDV-23-0001009",
+  "observed_at": "2026-07-14T20:00:00-10:00",
+  "source_pointer": {
+    "resource_id": "signal-source-001",
+    "canonical_uri": "EVIDENCE_VAULT/signals/source-001.pdf",
+    "source_kind": "evidence",
+    "locator": null,
+    "content_hash": null,
+    "last_checked_at": "2026-07-14T20:00:00-10:00"
+  },
+  "signal_type": "other",
+  "severity": "critical",
+  "likelihood": "unknown",
+  "claim_class": "model_inference",
+  "verification_status": "pending_review",
+  "observations": [
+    {
+      "text": "A model produced an unreviewed signal.",
+      "claim_class": "model_inference",
+      "related_resource_id": "signal-source-001"
+    }
+  ],
+  "alternative_explanations": ["The model may have misclassified the source."],
+  "recommended_review": "Require source and human review.",
+  "disposition": "human_review",
+  "human_review_required": true,
+  "external_action_authorized": true,
+  "provenance": {
+    "source_type": "system",
+    "source_version": "negative-example-1",
+    "hash": null,
+    "extracted_at": "2026-07-14T20:00:00-10:00",
+    "extracted_by": "casebrain-contract-example",
+    "derivative": true
+  }
+}
