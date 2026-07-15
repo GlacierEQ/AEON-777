@@ -28,6 +28,6 @@
 "actor-ui","UI (Unemployment Insurance)","P2","agency","government_agency","source_linked","unverified","private","other","1","0","1","true"
 "actor-usaa","USAA","P2","unknown","financial_institution","source_linked","unverified","private","other","2","1","2","true"
 "actor-yamamoto","Yamamoto","P2","third_party","person","source_linked","unverified","private","other","1","0","1","true"
+"actor-kyle-dowd","Kyle Dowd","P1","unknown","person","source_pending","unverified","private","other","1","0","2","false"
 "actor-kristin-yamatani-candidate","Kristin Yamatani (unresolved identity candidate)","P0","unknown","person","conflict_review","conflicted","private","yamatani","1","0","1","false"
 "actor-unknown-scheduling-clerk","Unknown scheduling clerk (EX-0005 voice)","P1","clerk","court_office","conflict_review","unverified","restricted","other","1","1","2","false"
-
