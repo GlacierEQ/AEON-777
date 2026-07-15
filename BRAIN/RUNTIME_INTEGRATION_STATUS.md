@@ -1,37 +1,76 @@
-# Runtime Integration Status
+# CASEBRAIN Runtime Integration Status
 
-## Unified case brain
-The repository now contains the operating contract for AKOS, the Supermemory adapter, and ECHO. This file separates design from runtime facts.
+Last checked: 2026-07-14 HST
 
-## Available runtime paths
-- **GitHub:** repository and PR source.
-- **Google Drive:** canonical document/evidence pointers where authorized.
-- **Mem0:** available memory-layer connection; endpoint and payloads must be checked against its current API schema before writes.
-- **Tasklet webhook:** `Case Brain Unified Listener` is active under trigger instance `wti_ct6btz0qz0692nssam92`.
-- **Supermemory:** no direct Supermemory connection is currently present in the workspace manifest. The supplied API key is not stored here and has not been treated as proof of a working integration.
+## Current verdict
 
-## Listener rule
-The listener is ready to receive events, but “live synchronization” is not declared until an actual event is received, processed, linked to a resource ID, and recorded in the audit trail.
+CASEBRAIN has an authenticated memory connector and a strong architecture branch, but it is not yet a verified live orchestration system. PR #51 is open and unmerged. The repository currently supplies navigation, policy, and contracts; it does not yet supply an end-to-end listener, normalizer, validator, migration runner, or audited execution engine.
 
-## Runtime secrets
-Keep API keys and webhook tokens in the connection vault or runtime secret store. Do not commit them, place them in JSON configuration, or paste them into evidence indexes.
+## Verified in this audit
 
-Expected runtime aliases:
-- `SUPERMEMORY_API_KEY`
-- `CASE_BRAIN_WEBHOOK_SECRET`
-- `MEM0_CONNECTION`
-- `GOOGLE_DRIVE_CONNECTION`
-- `GITHUB_CONNECTION`
+- GitHub repository `GlacierEQ/AEON-777` is reachable and PR #51 is open on `case-brain-structured-map`.
+- CASEBRAIN authentication succeeds.
+- Global enumeration returned 28 source documents and 99 extracted memories.
+- The project listing exposed only `sm_project_default`.
+- `case_1FDV_23_0001009_shared` contains stored material even though it is not returned by the project listing.
+- `casememory` also contains stored runtime metrics.
+- Canonical generic containers `shared`, `shaw`, `naso`, `yamatani`, `brower`, `hpd`, `csea`, and `other` are currently empty.
+- Both case-prefixed and generic actor containers are empty; actor isolation is documented but not populated.
+- Three Draft 2020-12 contracts and their acceptance/rejection examples validate locally.
 
-## Upload behavior
-1. Receive event or file pointer.
-2. Resolve canonical source.
-3. Hash/version and deduplicate.
-4. Tag and link into the mesh.
-5. Write memory only after provenance is captured.
-6. Route recommendations through AKOS.
-7. Let ECHO assemble and check outputs.
-8. Stop at human gates for filing, service, court contact, or irreversible action.
+## Documented but not runtime-proven
 
-## Boundary
-The supplied token-bearing webhook URL is not copied into the repository. If it belongs to an older listener, it must be verified in its owning workspace before being relied upon. The active listener’s URL is available in the Tasklet interface.
+- Tasklet listener event receipt and audit logging.
+- Google Drive canonical-source synchronization.
+- Mem0 write compatibility.
+- Real-time GitHub, Notion, email, or court-notice triggers.
+- Hash-before-transform behavior for every ingestion path.
+- Automated deduplication and cross-container retrieval.
+- Deadline calculation, alert delivery, filing-package generation, or ECHO execution.
+
+These remain `unverified` until one real event is received, normalized, schema-validated, written, recalled, linked to its canonical source, and recorded in an audit trail.
+
+## Security blocker
+
+A memory-service credential was committed in repository history and later replaced in the branch with an environment-variable reference. Removing the visible value from the current file does not revoke the exposed credential or remove it from Git history.
+
+Required before enabling writes:
+
+1. Revoke and rotate the exposed credential at the provider.
+2. Update the runtime secret store.
+3. Confirm the old credential fails.
+4. Scan repository history and adjacent artifacts for other secrets.
+5. Record only the rotation event and key identifier—not the secret value.
+
+## Container migration status
+
+The canonical design uses generic actor containers with `case_id` embedded in every record. Existing memories remain in mixed legacy locations. `CONTAINER_REGISTRY.json` defines the targets and a non-destructive migration rule.
+
+Migration is not complete until:
+
+- every source record has a source pointer, claim class, and verification status;
+- destination recall matches the structured source record;
+- counts reconcile;
+- conflicting versions remain linked;
+- legacy sources are retained through review.
+
+## Readiness gates
+
+| Gate | Status |
+|---|---|
+| Architecture and human-review policy | Present |
+| Valid event, threat, and memory contracts | Present on PR branch build |
+| Runtime normalizer and validator | Not implemented |
+| Generic actor containers populated | Not started |
+| Legacy migration | Planned, non-destructive |
+| End-to-end source-to-memory audit | Not demonstrated |
+| Secret rotation | Required |
+| Autonomous legal or external action | Prohibited |
+
+## Definition of live
+
+CASEBRAIN may be called live only after a real source event completes this path:
+
+`receive -> preserve -> identify -> hash -> classify -> schema validate -> deduplicate -> route -> write -> recall compare -> audit`
+
+Any failed stage leaves the record `blocked` or `pending_review`; it does not silently promote the record to current truth.
