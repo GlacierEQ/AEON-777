@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "memory_id": "mem-brower-order-process-001",
+  "case_id": "1FDV-23-0001009",
+  "container_tag": "brower",
+  "actor_keys": ["brower"],
+  "memory_type": "open_question",
+  "content": "The reporting party alleges that opposing counsel supplied terms for an order; the signed order, submission history, and applicable procedure must be compared before characterizing the conduct.",
+  "claim_class": "party_allegation",
+  "verification_status": "pending_review",
+  "source_pointers": [
+    {
+      "resource_id": "order-process-record-001",
+      "canonical_uri": "EVIDENCE_VAULT/orders/order-process-record-001.pdf",
+      "source_kind": "court_record",
+      "locator": "signed order and submission metadata",
+      "content_hash": null,
+      "last_checked_at": "2026-07-14T20:00:00-10:00"
+    }
+  ],
+  "supports_memory_ids": [],
+  "contradicts_memory_ids": [],
+  "supersedes_memory_id": null,
+  "created_at": "2026-07-14T20:00:00-10:00",
+  "updated_at": "2026-07-14T20:00:00-10:00",
+  "sensitivity": "restricted",
+  "human_review_required": true,
+  "retention": {
+    "policy": "until_superseded",
+    "review_at": null
+  }
+}
