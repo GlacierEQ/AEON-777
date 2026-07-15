@@ -1,33 +1,49 @@
-# 🧠 BRAIN — AKOS Case-Brain Spiral
+# BRAIN — AKOS CASEBRAIN
 
-The **BRAIN** is the thinking side of AKOS. It holds the case map, memory paths, source pointers, comparisons, timelines, and next-action logic.
+CASEBRAIN is the source-linked intelligence side of AKOS. It maps case materials, preserves provenance, separates facts from allegations and inferences, tracks contradictions, and routes review-ready work to ECHO.
 
-It does not replace the underlying evidence. It points to it.
+It does not replace the underlying evidence or court record.
 
 ## Start here
 
-1. [CASE_BRAIN_MASTER_INDEX.md](./CASE_BRAIN_MASTER_INDEX.md) — master case-brain map
-2. [RESOURCE_POINTERS.md](./RESOURCE_POINTERS.md) — flexible source-of-truth and change rules
-3. [HIGH_INTELLIGENCE_CASE_BRAIN_CORE.md](./HIGH_INTELLIGENCE_CASE_BRAIN_CORE.md) — current intelligence snapshot
-4. [UNIFIED_CASE_BRAIN_COMPLETE.md](./UNIFIED_CASE_BRAIN_COMPLETE.md) — timeline, threat, decision, and integration snapshot
+1. `CASE_BRAIN_MASTER_INDEX.md` — navigation and operating map
+2. `UNIFIED_CASE_BRAIN_COMPLETE.md` — truth-hardened operating contract
+3. `RUNTIME_INTEGRATION_STATUS.md` — verified runtime state and blockers
+4. `SOURCE_OF_TRUTH_MESH.md` — stable identity and projection rules
+5. `MEMORY_INGESTION_PROTOCOL.md` — validated memory-write pipeline
+6. `CONTAINER_REGISTRY.json` — canonical containers and legacy migration map
 
-## Brain inputs
+## Machine-enforceable contracts
 
-- [Local evidence manifest](../LOCAL_EVIDENCE_MANIFEST.json)
-- [Evidence vault](../EVIDENCE_VAULT/)
-- [Transcribed evidence](../TRANSCRIBED_EVIDENCE/)
-- [Exhibit manifest](../EXHIBIT_MANIFEST_1FDV-23-0001009.txt)
-- [Proof of authenticity](../PROOF_OF_AUTHENTICITY_1FDV-23-0001009.txt)
-- [Contradiction matrix](../CONTRADICTION_MATRIX_MASTER.md)
-- [Dockets analysis](../DOCKETS_ANALYSIS_BRIEFING.md)
+- `CASE_EVENT_SCHEMA.json`
+- `THREAT_SIGNAL_SCHEMA.json`
+- `MEMORY_RECORD_SCHEMA.json`
 
-## Brain outputs
+Canonical valid and invalid fixtures are under `examples/`. Validate them with:
 
-- State-court motion routing through [MOTIONS](../MOTIONS/), [motions](../motions/), and [JEFS_FILING_READY](../JEFS_FILING_READY/)
-- Federal track through [FEDERAL_COMPLAINT_MASTER_INDEX.md](../FEDERAL_COMPLAINT_MASTER_INDEX.md)
-- Cross-repository routing through [LEGAL_REPOS_MASTER_INDEX.md](../LEGAL_REPOS_MASTER_INDEX.md)
-- Execution handoff through [BRAWN](../BRAWN/)
+```bash
+python -m pip install -r BRAIN/requirements-dev.txt
+python BRAIN/validate_contracts.py
+```
+
+The rejection cases prove that CASEBRAIN blocks:
+
+- a deadline without a source-linked calculation;
+- an unreviewed threat signal authorizing external action;
+- a party allegation stored as verified fact.
+
+## Source order
+
+1. Original court record or evidence.
+2. Canonical source pointer.
+3. Hash, version, and provenance record.
+4. Working index or derivative.
+5. Narrative summary or model output.
 
 ## Operating rule
 
-Every important conclusion needs a pointer to the file, exhibit, docket entry, recording, or other source that supports it. Draft strategy may live in the Brain; filing decisions require the human review gate. Changing resources stay behind the flexible pointer layer.
+Every important conclusion needs a resolvable source pointer and an explicit claim class. Filing, service, evidence release, publication, court contact, and irreversible escalation remain human-review gates.
+
+## Execution handoff
+
+ECHO receives a source-linked recommendation, assembles the smallest useful package, runs checks, surfaces gaps, and stages the result. If a source is stale, conflicting, unavailable, or unverified, ECHO stops the affected package and returns the blocker to AKOS.
