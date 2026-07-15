@@ -33,7 +33,7 @@ HUMAN REVIEW
 |---|---|
 | Case | `1FDV-23-0001009` |
 | Primary repository | `GlacierEQ/AEON-777` |
-| State track | `JEFS_FILING_READY/`, `MOTIONS/`, `motions/`, `1FDV-23-0001009/` |
+| State track | `JEFS_FILING_READY/`, `MOTIONS/`, `1FDV-23-0001009/` |
 | Evidence track | `EVIDENCE_VAULT/`, `TRANSCRIBED_EVIDENCE/`, `EXHIBIT_MANIFEST_1FDV-23-0001009.txt` |
 | Federal track | `FEDERAL_COMPLAINT_MASTER_INDEX.md`, `FEDERAL_FILING_BRIEF/`, `FEDERAL_WARFARE_PHASE/` |
 | Cross-repo map | `LEGAL_REPOS_MASTER_INDEX.md` |
@@ -60,8 +60,7 @@ The case identity, party names, dates, docket numbers, and legal theories must b
 - `KALUA_PHASE_2.1_COMPLETE_STACK.md`
 - `MAXIMUM_MOTION_SEQUENCE.md`
 - `JEFS_FILING_READY/`
-- `MOTIONS/`
-- `motions/`
+- `MOTIONS/` — canonical motion path; do not create a case-variant lowercase path
 - `JEFS_PRESERVATION_EMERGENCY.md`
 
 ### C. Federal and oversight track
@@ -90,7 +89,7 @@ The case identity, party names, dates, docket numbers, and legal theories must b
 - `UNIFIED_MEMORY_REPORT.md`
 - `ORCHESTRATION/`
 - `SYSTEM_INTEGRATION/`
-- `ASPEN_INTEGRATION/`
+- `ASPEN_INTEGRATION/` — reference-only integration path (the Aspen Grove family); not an ECHO execution root
 
 Memory and connector status are operating references. They are not substitutes for checking the actual source file or service result.
 
@@ -132,7 +131,7 @@ These are the next structural gates for the case brain:
 
 - [ ] Merge or manually review AKOS architecture PRs #49 and #50.
 - [ ] Confirm that `BRAWN/` exists on the merged base branch.
-- [ ] Reconcile duplicate root-level, uppercase, and lowercase motion paths before retiring anything.
+- [ ] Treat `MOTIONS/` as canonical; inventory and migrate any legacy lowercase path through a reviewed, collision-safe change before deletion.
 - [ ] Revalidate service status and all calendar dates before relying on the timeline.
 - [ ] Confirm the actual source files behind every JEFS-ready index entry.
 - [ ] Build or recover mapped exhibit packages and transcription inputs.
