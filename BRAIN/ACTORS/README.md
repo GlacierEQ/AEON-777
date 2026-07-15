@@ -14,6 +14,8 @@ allegations.
   no allegation text.
 - `ACTOR_DATA_QUALITY_REPORT_2026-07-15.md` — measured baseline, conflicts,
   limitations, and recommended review order.
+- `ACTOR_REPORT_ARTIFACT.json` — validated bounded report snapshot used by the
+  private Sites reader.
 - `package.json` and `validate_actor_registry.py` — strict JSON Schema and
   semantic validation, including a negative control for verified allegations.
 
