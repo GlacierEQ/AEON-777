@@ -1,0 +1,1228 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-07-15T12:55:00-10:00",
+  "scope": "CASEBRAIN connector quality, organization, bounded workers, and durable automation control plane",
+  "policy": {
+    "github_canonical": true,
+    "notion_projection_only": true,
+    "original_bytes_remain_at_source": true,
+    "autonomous_uploads": false,
+    "autonomous_moves": false,
+    "autonomous_deletes": false,
+    "public_shares": false,
+    "verified_claims_from_connector_metadata": false,
+    "human_review_required": true,
+    "protected_minor_general_projection": false
+  },
+  "scoring": {
+    "connector_quality": {
+      "authentication": 15,
+      "scoped_access": 15,
+      "freshness": 15,
+      "provenance_support": 20,
+      "idempotency_retry_safety": 10,
+      "sensitivity_controls": 15,
+      "observable_receipts": 10
+    },
+    "data_quality_dimensions": [
+      "completeness",
+      "uniqueness",
+      "validity",
+      "consistency",
+      "lineage",
+      "timeliness",
+      "duplicate_risk"
+    ],
+    "rule": "Unknown fields score zero; connector and data quality are never conflated."
+  },
+  "lifecycle": [
+    "discovered",
+    "metadata_indexed",
+    "quarantined",
+    "reviewed",
+    "canonical_linked"
+  ],
+  "upload_manifest_required": [
+    "source_connector",
+    "source_id_or_uri",
+    "source_version",
+    "observed_at",
+    "modified_at",
+    "original_filename",
+    "mime_type",
+    "byte_count",
+    "sha256_exact_bytes",
+    "custodian",
+    "case_id",
+    "actor_ids",
+    "event_id",
+    "document_type",
+    "original_or_derivative",
+    "sensitivity",
+    "privilege_status",
+    "approved_destination_root",
+    "duplicate_check",
+    "human_approval",
+    "run_receipt"
+  ],
+  "requested_connector_ids": [
+    "github",
+    "data_analytics",
+    "notion",
+    "clickup",
+    "google_drive",
+    "dropbox",
+    "box",
+    "sharepoint_onedrive",
+    "desktop_commander",
+    "iphone_export",
+    "slack",
+    "teams",
+    "gmail",
+    "outlook_email",
+    "google_calendar",
+    "outlook_calendar",
+    "fireflies",
+    "chat_history",
+    "supabase_backend_ops",
+    "supabase_glaciereq",
+    "motherduck",
+    "vercel",
+    "netlify",
+    "amplitude",
+    "hex",
+    "hugging_face",
+    "linear",
+    "asana",
+    "atlassian_rovo",
+    "documents_router",
+    "pdf_router",
+    "spreadsheets_router",
+    "presentations_router",
+    "midpage",
+    "openai_developers",
+    "airtable",
+    "pipedrive",
+    "attio",
+    "clay",
+    "coupler_io",
+    "figma",
+    "canva",
+    "lovable",
+    "base44",
+    "jam",
+    "hebbia",
+    "fyxer",
+    "mem"
+  ],
+  "connectors": [
+    {
+      "connector_id": "github",
+      "display_name": "GitHub / AEON-777",
+      "category": "canonical",
+      "observed_state": "connected",
+      "auth_state": "authenticated",
+      "allocated_role": "canonical_control",
+      "access_mode": "bounded_control_write",
+      "approved_root": true,
+      "connector_quality_score": 85,
+      "data_quality_score": 75,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Adopt an explicit repository allowlist; merge reviewed schemas only.",
+      "evidence": [
+        "PR #52 is open and mergeable; 100+ user repositories make bulk activation unsafe."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "memory_architecture",
+        "daily_ops",
+        "evidence_intake",
+        "daily_priorities"
+      ]
+    },
+    {
+      "connector_id": "data_analytics",
+      "display_name": "Data Analytics",
+      "category": "analytics",
+      "observed_state": "connected",
+      "auth_state": "authenticated",
+      "allocated_role": "observability_only",
+      "access_mode": "bounded_control_write",
+      "approved_root": true,
+      "connector_quality_score": 90,
+      "data_quality_score": 85,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Continue validated artifact checks before every Sites export.",
+      "evidence": [
+        "Connector allocation artifact validated and exported to the owner-only site."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops",
+        "evidence_intake"
+      ]
+    },
+    {
+      "connector_id": "notion",
+      "display_name": "Notion",
+      "category": "control_plane",
+      "observed_state": "connected",
+      "auth_state": "authenticated",
+      "allocated_role": "control_projection",
+      "access_mode": "bounded_control_write",
+      "approved_root": true,
+      "connector_quality_score": 80,
+      "data_quality_score": 70,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Run workers in Dry Run; store pointers, decisions, queues, and receipts only.",
+      "evidence": [
+        "Federation parent, actor control, connector allocation, and worker control pages were created/fetched."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "memory_architecture",
+        "daily_ops",
+        "evidence_intake",
+        "daily_priorities",
+        "memory_hygiene"
+      ]
+    },
+    {
+      "connector_id": "clickup",
+      "display_name": "ClickUp",
+      "category": "work_management",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "task_projection",
+      "access_mode": "bounded_control_write",
+      "approved_root": true,
+      "connector_quality_score": 65,
+      "data_quality_score": 40,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Use only the clean operations lane for gates and receipts; do not clone legacy accusatory lists.",
+      "evidence": [
+        "Connected hierarchy contains substantial duplication; clean CASE OPS lane exists."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops",
+        "evidence_intake",
+        "daily_priorities"
+      ]
+    },
+    {
+      "connector_id": "google_drive",
+      "display_name": "Google Drive",
+      "category": "byte_store",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "source_byte_store",
+      "access_mode": "metadata_read_only",
+      "approved_root": false,
+      "connector_quality_score": 65,
+      "data_quality_score": 55,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Designate one CASEBRAIN intake root; preserve file ID/version/owner/modified time and hash exported bytes.",
+      "evidence": [
+        "Root metadata returned 54 items; recent-viewed surface returned 43; latest modified 2026-07-15."
+      ],
+      "notion_worker": "intake_triage",
+      "automation_lanes": [
+        "evidence_intake",
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "dropbox",
+      "display_name": "Dropbox",
+      "category": "byte_store",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "source_byte_store",
+      "access_mode": "metadata_read_only",
+      "approved_root": false,
+      "connector_quality_score": 45,
+      "data_quality_score": 25,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Choose one of the observed team mounts and one CASEBRAIN root.",
+      "evidence": [
+        "Two top-level team mounts were observed; no case root was approved."
+      ],
+      "notion_worker": "intake_triage",
+      "automation_lanes": [
+        "evidence_intake",
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "box",
+      "display_name": "Box",
+      "category": "byte_store",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "source_byte_store",
+      "access_mode": "metadata_read_only",
+      "approved_root": false,
+      "connector_quality_score": 50,
+      "data_quality_score": 30,
+      "sensitivity_ceiling": "sealed",
+      "next_gate": "Approve a folder allowlist, sensitivity map, retention/legal-hold rule, and access group; exclude medical folders by default.",
+      "evidence": [
+        "Root has four folders; at least one title signals health/medical sensitivity; no content opened."
+      ],
+      "notion_worker": "intake_triage",
+      "automation_lanes": [
+        "evidence_intake",
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "sharepoint_onedrive",
+      "display_name": "SharePoint / OneDrive",
+      "category": "byte_store",
+      "observed_state": "blocked",
+      "auth_state": "profile_only",
+      "allocated_role": "source_byte_store",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 15,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Connect a SharePoint Online-licensed identity, enumerate a drive, and approve site/library/folder.",
+      "evidence": [
+        "Profile resolves; drive/recent-document calls return HTTP 400 licensing errors."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "desktop_commander",
+      "display_name": "Glacier Desktop Commander",
+      "category": "filesystem",
+      "observed_state": "blocked",
+      "auth_state": "authenticated",
+      "allocated_role": "source_byte_store",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 15,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Pair one trusted device, confirm count > 0, inspect configuration, and allowlist one read-only folder.",
+      "evidence": [
+        "Connector is authenticated but device count is zero."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "iphone_export",
+      "display_name": "iPhone 16 Pro Max",
+      "category": "device_export",
+      "observed_state": "connected_restricted",
+      "auth_state": "user_export_only",
+      "allocated_role": "source_byte_store",
+      "access_mode": "export_only",
+      "approved_root": false,
+      "connector_quality_score": 20,
+      "data_quality_score": 10,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Choose an approved cloud export destination, file types, date range, and preserve originals.",
+      "evidence": [
+        "No direct Apple/iPhone/iCloud control connector is surfaced."
+      ],
+      "notion_worker": "intake_triage",
+      "automation_lanes": [
+        "evidence_intake"
+      ]
+    },
+    {
+      "connector_id": "slack",
+      "display_name": "Slack",
+      "category": "communications",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "communications_lead",
+      "access_mode": "metadata_read_only",
+      "approved_root": false,
+      "connector_quality_score": 45,
+      "data_quality_score": 25,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Approve workspace/channel/date/custodian scope; preserve message ID/permalink/timestamps; no posting.",
+      "evidence": [
+        "One workspace and three public non-archived channels are visible; no message bodies read."
+      ],
+      "notion_worker": "intake_triage",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "teams",
+      "display_name": "Microsoft Teams",
+      "category": "communications",
+      "observed_state": "blocked",
+      "auth_state": "profile_only",
+      "allocated_role": "communications_lead",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 15,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Repair subscription/license, verify joined teams, and approve team/channel.",
+      "evidence": [
+        "Profile resolves; team inventory returns HTTP 400 subscription error."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "gmail",
+      "display_name": "Gmail",
+      "category": "email",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "communications_lead",
+      "access_mode": "metadata_read_only",
+      "approved_root": false,
+      "connector_quality_score": 45,
+      "data_quality_score": 35,
+      "sensitivity_ceiling": "sealed",
+      "next_gate": "Approve CASEBRAIN label plus custodian/date scope; thread-dedupe; hash attachments; no sends or label changes.",
+      "evidence": [
+        "35 labels observed; at least ten non-spam/non-trash message IDs in the prior seven days; no bodies opened."
+      ],
+      "notion_worker": "intake_triage",
+      "automation_lanes": [
+        "evidence_intake"
+      ]
+    },
+    {
+      "connector_id": "outlook_email",
+      "display_name": "Outlook Email",
+      "category": "email",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "communications_lead",
+      "access_mode": "metadata_read_only",
+      "approved_root": false,
+      "connector_quality_score": 30,
+      "data_quality_score": 15,
+      "sensitivity_ceiling": "sealed",
+      "next_gate": "Confirm correct mailbox and retention window; approve folder/date scope.",
+      "evidence": [
+        "Nine folders and only two aggregate items surfaced; metadata appears sparse/stale."
+      ],
+      "notion_worker": "intake_triage",
+      "automation_lanes": [
+        "evidence_intake"
+      ]
+    },
+    {
+      "connector_id": "google_calendar",
+      "display_name": "Google Calendar",
+      "category": "calendar",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "timeline_lead",
+      "access_mode": "metadata_read_only",
+      "approved_root": false,
+      "connector_quality_score": 45,
+      "data_quality_score": 30,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Approve calendar IDs and case/date window; preserve stable event ID/status/timezone/update timestamp.",
+      "evidence": [
+        "Bounded primary-calendar query for 2026-07-15 through 2026-08-15 returned zero events."
+      ],
+      "notion_worker": "event_claim",
+      "automation_lanes": [
+        "evidence_intake"
+      ]
+    },
+    {
+      "connector_id": "outlook_calendar",
+      "display_name": "Outlook Calendar",
+      "category": "calendar",
+      "observed_state": "blocked",
+      "auth_state": "profile_only",
+      "allocated_role": "timeline_lead",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 15,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Repair mailbox/license, enumerate calendars, then run a metadata-only pilot.",
+      "evidence": [
+        "Profile resolves; calendar inventory returns mailbox HTTP 404."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "fireflies",
+      "display_name": "Fireflies",
+      "category": "meeting",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "communications_lead",
+      "access_mode": "metadata_read_only",
+      "approved_root": false,
+      "connector_quality_score": 35,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Approve meeting/channel and consent basis; preserve transcript/meeting ID and separate transcript from summary.",
+      "evidence": [
+        "Authentication succeeds; owned-transcript query returned zero usable records."
+      ],
+      "notion_worker": "intake_triage",
+      "automation_lanes": [
+        "evidence_intake"
+      ]
+    },
+    {
+      "connector_id": "chat_history",
+      "display_name": "General Chat History",
+      "category": "export",
+      "observed_state": "not_surfaced",
+      "auth_state": "unavailable",
+      "allocated_role": "source_byte_store",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 0,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Use a bounded user export with checksum, timestamp, account/case scope, and redaction.",
+      "evidence": [
+        "No general callable chat-history storage connector is surfaced in this session."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "evidence_intake"
+      ]
+    },
+    {
+      "connector_id": "supabase_backend_ops",
+      "display_name": "Supabase backend-ops",
+      "category": "database",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "staging_only",
+      "access_mode": "metadata_read_only",
+      "approved_root": false,
+      "connector_quality_score": 35,
+      "data_quality_score": 45,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Clear 20 security warnings and review 216 performance lints before any fixture or ingestion.",
+      "evidence": [
+        "Healthy with 70 empty public tables and RLS; advisor reports SECURITY DEFINER exposure, mutable search_path, OTP and Postgres-version risks."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops",
+        "memory_architecture"
+      ]
+    },
+    {
+      "connector_id": "supabase_glaciereq",
+      "display_name": "Supabase glaciereq",
+      "category": "database",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "legacy_read_only",
+      "access_mode": "metadata_read_only",
+      "approved_root": true,
+      "connector_quality_score": 45,
+      "data_quality_score": 30,
+      "sensitivity_ceiling": "sealed",
+      "next_gate": "Keep read-only; exclude credential-bearing tables; resolve five security advisories and provenance gaps.",
+      "evidence": [
+        "Healthy with 72 public tables and 25 populated; includes credential-bearing and legal-document tables."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "motherduck",
+      "display_name": "MotherDuck",
+      "category": "database",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "staging_only",
+      "access_mode": "metadata_read_only",
+      "approved_root": false,
+      "connector_quality_score": 50,
+      "data_quality_score": 35,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Audit schema, columns, provenance, row counts, orphans, and exclude credential/env-var tables.",
+      "evidence": [
+        "Six databases observed; legal marts and operating tables coexist with credential/env metadata."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops",
+        "memory_architecture"
+      ]
+    },
+    {
+      "connector_id": "vercel",
+      "display_name": "Vercel",
+      "category": "deployment",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "observability_only",
+      "access_mode": "metadata_read_only",
+      "approved_root": true,
+      "connector_quality_score": 35,
+      "data_quality_score": 20,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Resolve two failing production deployments; verify auth, data minimization, and owner-only access before activation.",
+      "evidence": [
+        "One team and 14 projects; unified-case-brain-web has two production deployments, both ERROR."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "netlify",
+      "display_name": "Netlify",
+      "category": "deployment",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "excluded_confidential",
+      "access_mode": "metadata_read_only",
+      "approved_root": true,
+      "connector_quality_score": 20,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "public",
+      "next_gate": "Use only for public-safe redacted demos after access-control review.",
+      "evidence": [
+        "Three projects observed; none report password or SSO protection."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "amplitude",
+      "display_name": "Amplitude",
+      "category": "analytics",
+      "observed_state": "blocked",
+      "auth_state": "reauth_required",
+      "allocated_role": "observability_only",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 0,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Reauthenticate OAuth; then use only de-identified operational events.",
+      "evidence": [
+        "Context call fails with invalid OAuth grant."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "hex",
+      "display_name": "Hex",
+      "category": "analytics",
+      "observed_state": "blocked",
+      "auth_state": "plan_blocked",
+      "allocated_role": "observability_only",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 0,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Upgrade to Team/Enterprise or keep excluded.",
+      "evidence": [
+        "MCP access is blocked by plan."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "hugging_face",
+      "display_name": "Hugging Face",
+      "category": "ml_registry",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "public_derived_only",
+      "access_mode": "metadata_read_only",
+      "approved_root": true,
+      "connector_quality_score": 35,
+      "data_quality_score": 20,
+      "sensitivity_ceiling": "public",
+      "next_gate": "Allow only redacted/public derived eval artifacts or model cards; never originals or PII.",
+      "evidence": [
+        "Authenticated account available."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "memory_architecture"
+      ]
+    },
+    {
+      "connector_id": "linear",
+      "display_name": "Linear",
+      "category": "work_management",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "task_projection",
+      "access_mode": "metadata_read_only",
+      "approved_root": false,
+      "connector_quality_score": 50,
+      "data_quality_score": 25,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Select a single work-management authority; source-link tasks and avoid narrative promotion.",
+      "evidence": [
+        "One team and nine active projects; several descriptions contain unverified/adversarial allegations."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_priorities"
+      ]
+    },
+    {
+      "connector_id": "asana",
+      "display_name": "Asana",
+      "category": "work_management",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "reference_only",
+      "access_mode": "metadata_read_only",
+      "approved_root": false,
+      "connector_quality_score": 40,
+      "data_quality_score": 20,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Keep legacy/read-only until a single task authority is selected; do not bidirectionally sync.",
+      "evidence": [
+        "One workspace, seven projects, 47 incomplete tasks, with duplicated themes."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_priorities"
+      ]
+    },
+    {
+      "connector_id": "atlassian_rovo",
+      "display_name": "Atlassian Rovo / Confluence",
+      "category": "knowledge",
+      "observed_state": "connected_restricted",
+      "auth_state": "authenticated",
+      "allocated_role": "reference_only",
+      "access_mode": "metadata_read_only",
+      "approved_root": true,
+      "connector_quality_score": 50,
+      "data_quality_score": 30,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Treat activation claims as legacy prose until live connector evidence exists.",
+      "evidence": [
+        "Ten related Confluence pages found, including connector registry and activation playbook."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "memory_architecture"
+      ]
+    },
+    {
+      "connector_id": "documents_router",
+      "display_name": "Documents Router",
+      "category": "transform",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "transform_only",
+      "access_mode": "on_demand_only",
+      "approved_root": false,
+      "connector_quality_score": 10,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Approve exact input/output and destination before conversion.",
+      "evidence": [
+        "Callable transform capability is advertised; storage/auth scope not assessed."
+      ],
+      "notion_worker": "document_organization",
+      "automation_lanes": [
+        "evidence_intake"
+      ]
+    },
+    {
+      "connector_id": "pdf_router",
+      "display_name": "PDF Router",
+      "category": "transform",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "transform_only",
+      "access_mode": "on_demand_only",
+      "approved_root": false,
+      "connector_quality_score": 10,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Convert only approved derivatives; preserve original and derivation receipt.",
+      "evidence": [
+        "Callable transform capability is advertised; storage/auth scope not assessed."
+      ],
+      "notion_worker": "document_organization",
+      "automation_lanes": [
+        "evidence_intake"
+      ]
+    },
+    {
+      "connector_id": "spreadsheets_router",
+      "display_name": "Spreadsheets Router",
+      "category": "transform",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "transform_only",
+      "access_mode": "on_demand_only",
+      "approved_root": false,
+      "connector_quality_score": 10,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Use only for approved structured derivatives with source pointer and schema.",
+      "evidence": [
+        "Callable transform capability is advertised; storage/auth scope not assessed."
+      ],
+      "notion_worker": "document_organization",
+      "automation_lanes": [
+        "evidence_intake"
+      ]
+    },
+    {
+      "connector_id": "presentations_router",
+      "display_name": "Presentations Router",
+      "category": "transform",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "transform_only",
+      "access_mode": "on_demand_only",
+      "approved_root": false,
+      "connector_quality_score": 10,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Use only for redacted review derivatives; never canonical evidence.",
+      "evidence": [
+        "Callable transform capability is advertised; storage/auth scope not assessed."
+      ],
+      "notion_worker": "document_organization",
+      "automation_lanes": [
+        "evidence_intake"
+      ]
+    },
+    {
+      "connector_id": "midpage",
+      "display_name": "Midpage",
+      "category": "legal_research",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "reference_only",
+      "access_mode": "on_demand_only",
+      "approved_root": false,
+      "connector_quality_score": 10,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Use for source-cited legal work only after matter scope and human review.",
+      "evidence": [
+        "Plugin advertised; authentication and source scope were not probed."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "evidence_intake"
+      ]
+    },
+    {
+      "connector_id": "openai_developers",
+      "display_name": "OpenAI Developers",
+      "category": "developer_tools",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "reference_only",
+      "access_mode": "on_demand_only",
+      "approved_root": false,
+      "connector_quality_score": 10,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "public",
+      "next_gate": "Use official documentation for implementation; keep secrets out of artifacts.",
+      "evidence": [
+        "Plugin advertised; no deployment action performed."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "memory_architecture"
+      ]
+    },
+    {
+      "connector_id": "airtable",
+      "display_name": "Airtable",
+      "category": "database",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "unallocated",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 0,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Assess workspace and duplication risk before allocating a role.",
+      "evidence": [
+        "Plugin advertised; not probed."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "memory_architecture"
+      ]
+    },
+    {
+      "connector_id": "pipedrive",
+      "display_name": "Pipedrive",
+      "category": "crm",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "unallocated",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 0,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Assess lawful case relevance and PII boundary; do not use as evidence store.",
+      "evidence": [
+        "Plugin advertised; not probed."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "memory_architecture"
+      ]
+    },
+    {
+      "connector_id": "attio",
+      "display_name": "Attio",
+      "category": "crm",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "unallocated",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 0,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Assess lawful case relevance and PII boundary; do not use as evidence store.",
+      "evidence": [
+        "Plugin advertised; not probed."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "memory_architecture"
+      ]
+    },
+    {
+      "connector_id": "clay",
+      "display_name": "Clay",
+      "category": "enrichment",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "excluded_confidential",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 0,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "public",
+      "next_gate": "Do not enrich case actors without a lawful, explicit scope and human approval.",
+      "evidence": [
+        "Plugin advertised; not probed."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "memory_architecture"
+      ]
+    },
+    {
+      "connector_id": "coupler_io",
+      "display_name": "Coupler.io",
+      "category": "integration",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "unallocated",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 0,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Assess idempotency, destination, secret handling, and one-way flow before use.",
+      "evidence": [
+        "Plugin advertised; not probed."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "memory_architecture"
+      ]
+    },
+    {
+      "connector_id": "figma",
+      "display_name": "Figma",
+      "category": "design",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "public_derived_only",
+      "access_mode": "on_demand_only",
+      "approved_root": false,
+      "connector_quality_score": 10,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "public",
+      "next_gate": "Use only for redacted diagrams/designs with no privileged source bytes.",
+      "evidence": [
+        "Plugin advertised; not probed."
+      ],
+      "notion_worker": "document_organization",
+      "automation_lanes": [
+        "daily_priorities"
+      ]
+    },
+    {
+      "connector_id": "canva",
+      "display_name": "Canva",
+      "category": "design",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "public_derived_only",
+      "access_mode": "on_demand_only",
+      "approved_root": false,
+      "connector_quality_score": 10,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "public",
+      "next_gate": "Use only for redacted/public derivatives.",
+      "evidence": [
+        "Plugin advertised; not probed."
+      ],
+      "notion_worker": "document_organization",
+      "automation_lanes": [
+        "daily_priorities"
+      ]
+    },
+    {
+      "connector_id": "lovable",
+      "display_name": "Lovable",
+      "category": "deployment",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "observability_only",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 0,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "public",
+      "next_gate": "Assess project/auth/access controls before any build or deployment.",
+      "evidence": [
+        "Plugin advertised; not probed."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "base44",
+      "display_name": "Base44",
+      "category": "deployment",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "observability_only",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 0,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "public",
+      "next_gate": "Assess project/auth/access controls before any build or deployment.",
+      "evidence": [
+        "Plugin advertised; not probed."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "jam",
+      "display_name": "Jam",
+      "category": "issue_capture",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "task_projection",
+      "access_mode": "on_demand_only",
+      "approved_root": false,
+      "connector_quality_score": 10,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Use only for redacted technical reproduction receipts.",
+      "evidence": [
+        "Plugin advertised; not probed."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "hebbia",
+      "display_name": "Hebbia",
+      "category": "research",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "unallocated",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 0,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "restricted",
+      "next_gate": "Assess storage, retention, and confidentiality before use.",
+      "evidence": [
+        "Plugin advertised; not probed."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "memory_architecture"
+      ]
+    },
+    {
+      "connector_id": "fyxer",
+      "display_name": "Fyxer",
+      "category": "email_assistant",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "communications_lead",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 0,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "sealed",
+      "next_gate": "No autonomous sending; assess mailbox scope and drafting controls.",
+      "evidence": [
+        "Plugin advertised; not probed."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "daily_ops"
+      ]
+    },
+    {
+      "connector_id": "mem",
+      "display_name": "Mem",
+      "category": "memory",
+      "observed_state": "tool_available_unassessed",
+      "auth_state": "unknown",
+      "allocated_role": "control_projection",
+      "access_mode": "blocked",
+      "approved_root": false,
+      "connector_quality_score": 0,
+      "data_quality_score": 0,
+      "sensitivity_ceiling": "private",
+      "next_gate": "Assess provenance, deletion, export, and case isolation before any sync.",
+      "evidence": [
+        "Plugin advertised; not probed."
+      ],
+      "notion_worker": "qa_exception",
+      "automation_lanes": [
+        "memory_hygiene"
+      ]
+    }
+  ],
+  "notion_workers": [
+    {
+      "worker_id": "intake_triage",
+      "name": "Intake Triage",
+      "mode": "dry_run",
+      "writes_policy": "proposal_only",
+      "output": "deduplicated metadata candidate, sensitivity proposal, destination candidate, missing-field checklist"
+    },
+    {
+      "worker_id": "provenance_hash",
+      "name": "Provenance & Hash Receipt",
+      "mode": "dry_run",
+      "writes_policy": "proposal_only",
+      "output": "exact-byte receipt validation, hash/variant signal, custody-gap flag"
+    },
+    {
+      "worker_id": "actor_entity",
+      "name": "Actor / Entity Link",
+      "mode": "dry_run",
+      "writes_policy": "proposal_only",
+      "output": "source-linked proposed stable IDs, alternatives, conflicts, pending_review"
+    },
+    {
+      "worker_id": "event_claim",
+      "name": "Event / Claim Classification",
+      "mode": "dry_run",
+      "writes_policy": "proposal_only",
+      "output": "qualified event envelope and claim class proposal"
+    },
+    {
+      "worker_id": "document_organization",
+      "name": "Document Organization",
+      "mode": "dry_run",
+      "writes_policy": "proposal_only",
+      "output": "canonical name/folder/retention/sensitivity manifest and reversible adapter plan"
+    },
+    {
+      "worker_id": "qa_exception",
+      "name": "QA / Exception Routing",
+      "mode": "control_active",
+      "writes_policy": "control_receipts_only",
+      "output": "schema, scope, duplicate, drift, severity, review lane, immutable receipt pointer"
+    }
+  ],
+  "automations": [
+    {
+      "title": "Memory Architecture",
+      "state": "active_enriched",
+      "cadence": "daily_flexible"
+    },
+    {
+      "title": "Daily Ops Lane",
+      "state": "active_enriched",
+      "cadence": "daily_04:00_HST"
+    },
+    {
+      "title": "Evidence Intake Lane",
+      "state": "active_enriched",
+      "cadence": "weekly_flexible"
+    },
+    {
+      "title": "Daily Master Priorities",
+      "state": "active_enriched",
+      "cadence": "daily_flexible"
+    },
+    {
+      "title": "Memory Canon Recursive Hygiene",
+      "state": "active_enriched",
+      "cadence": "daily_flexible"
+    }
+  ],
+  "automation_limit": {
+    "active_count": 5,
+    "limit": 5,
+    "new_dedicated_audit_created": false,
+    "reason": "Platform active-task limit reached; weekly connector quality rubric embedded into Evidence Intake Lane."
+  },
+  "links": {
+    "site": "https://casebrain-actor-quality.yin2yang.chatgpt.site",
+    "github_pr": "https://github.com/GlacierEQ/AEON-777/pull/52",
+    "notion_worker_control": "https://app.notion.com/p/39eb1e4f322381a8b360f75aa3a4e905",
+    "notion_connector_allocation": "https://app.notion.com/p/39eb1e4f32238108aba2cd0cf89aea4c",
+    "clickup_first_receipt": "https://app.clickup.com/t/86ajhvyj6"
+  }
+}
+

@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CASEBRAIN Connector Fabric",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at",
+    "scope",
+    "policy",
+    "scoring",
+    "lifecycle",
+    "upload_manifest_required",
+    "requested_connector_ids",
+    "connectors",
+    "notion_workers",
+    "automations",
+    "automation_limit",
+    "links"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "policy": {
+      "type": "object"
+    },
+    "scoring": {
+      "type": "object"
+    },
+    "lifecycle": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "upload_manifest_required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 15,
+      "uniqueItems": true
+    },
+    "requested_connector_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9_]+$"
+      },
+      "uniqueItems": true
+    },
+    "connectors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "connector_id",
+          "display_name",
+          "category",
+          "observed_state",
+          "auth_state",
+          "allocated_role",
+          "access_mode",
+          "approved_root",
+          "connector_quality_score",
+          "data_quality_score",
+          "sensitivity_ceiling",
+          "next_gate",
+          "evidence",
+          "notion_worker",
+          "automation_lanes"
+        ],
+        "properties": {
+          "connector_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9_]+$"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "observed_state": {
+            "enum": [
+              "connected",
+              "connected_restricted",
+              "blocked",
+              "tool_available_unassessed",
+              "not_surfaced"
+            ]
+          },
+          "auth_state": {
+            "type": "string"
+          },
+          "allocated_role": {
+            "enum": [
+              "canonical_control",
+              "source_byte_store",
+              "control_projection",
+              "task_projection",
+              "staging_only",
+              "legacy_read_only",
+              "observability_only",
+              "transform_only",
+              "public_derived_only",
+              "reference_only",
+              "excluded_confidential",
+              "communications_lead",
+              "timeline_lead",
+              "unallocated"
+            ]
+          },
+          "access_mode": {
+            "enum": [
+              "bounded_control_write",
+              "metadata_read_only",
+              "blocked",
+              "export_only",
+              "on_demand_only"
+            ]
+          },
+          "approved_root": {
+            "type": "boolean"
+          },
+          "connector_quality_score": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "data_quality_score": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "sensitivity_ceiling": {
+            "enum": [
+              "public",
+              "private",
+              "restricted",
+              "sealed"
+            ]
+          },
+          "next_gate": {
+            "type": "string",
+            "minLength": 8
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "notion_worker": {
+            "enum": [
+              "intake_triage",
+              "provenance_hash",
+              "actor_entity",
+              "event_claim",
+              "document_organization",
+              "qa_exception"
+            ]
+          },
+          "automation_lanes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "notion_workers": {
+      "type": "array",
+      "minItems": 6
+    },
+    "automations": {
+      "type": "array",
+      "minItems": 5
+    },
+    "automation_limit": {
+      "type": "object"
+    },
+    "links": {
+      "type": "object"
+    }
+  }
+}
+
