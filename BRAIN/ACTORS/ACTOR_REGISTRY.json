@@ -53,7 +53,7 @@
   },
   "quality_summary": {
     "source_actor_rows": 29,
-    "distinct_actor_keys": 31,
+    "distinct_actor_keys": 32,
     "rows_with_allegation_text": 26,
     "rows_missing_review_status": 9,
     "rows_missing_numeric_evidence_count": 25,
@@ -2059,6 +2059,50 @@
       "last_reviewed_at": "2026-07-15T12:00:00-10:00"
     },
     {
+      "actor_id": "actor-kyle-dowd",
+      "actor_key": "kyle_dowd",
+      "display_name": "Kyle Dowd",
+      "aliases": [],
+      "actor_type": "person",
+      "case_role": "unknown",
+      "priority": "P1",
+      "profile_status": "source_pending",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "Kyle Dowd is named in the CASEBRAIN Fact Sheets Lane 005 index but has no row in the reviewed 29-row actor database. The profile is preserved as source-pending until a direct fact sheet and primary role source are linked.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.fact-sheets-lane.005"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.fact-sheets-lane.005",
+          "title": "CASEBRAIN Fact Sheets Lane 005",
+          "uri": "https://app.notion.com/p/392b1e4f3223819cb937c12991f948f7",
+          "source_system": "notion",
+          "source_class": "working_index",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "The lane names a Kyle Dowd fact sheet, but a direct fact-sheet page and authoritative role source were not resolved in this pass."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "What is Kyle Dowd's exact case role?",
+        "Which direct fact sheet, filed record, or authenticated source confirms identity and relevance?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
       "actor_id": "actor-kristin-yamatani-candidate",
       "actor_key": "kristin_yamatani_candidate",
       "display_name": "Kristin Yamatani (unresolved identity candidate)",
@@ -2216,4 +2260,3 @@
     }
   ]
 }
-
