@@ -39,5 +39,6 @@ npm install
 npm test
 ```
 
-The negative control mutates a copy in memory and confirms that a
-`party_allegation` with `verification_status=verified` is rejected.
+The negative controls mutate copies in memory and confirm rejection of verified
+allegations, verified live claims, unresolved relationship sources, private
+protected-minor sources, and protected-minor PII in source metadata.
