@@ -124,6 +124,32 @@
             "CASEBRAIN exhibit manifest sheet"
           ]
         }
+      },
+      {
+        "id": "connector-capability-snapshot",
+        "label": "CASEBRAIN read-only connector capability audit",
+        "href": "https://github.com/GlacierEQ/AEON-777/pull/52",
+        "path": "BRAIN/ACTORS/ACTOR_REPORT_ARTIFACT.json",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM (VALUES\n  (1, 'GitHub / AEON-777', 'Ready now', 'Merged truth contract; actor registry PR #52 is open and mergeable.', 'Canonical schemas, registries, manifests, and reviewed control-plane changes', 'Reviewed pull requests; no raw privileged source bytes', 'Merge PR #52 after CI and human review', 'Private control plane'),\n  (2, 'Google Drive', 'Ready now', 'Casebuilder Map and Exhibit Manifest are accessible; one shared drive is listable/read-only.', 'Canonical custody for original cloud files and exact-byte exports', 'Read first; preserve originals; never overwrite with OCR/transcripts', 'Designate case roots, export P0 sources, hash exact bytes', 'Private / restricted'),\n  (3, 'Dropbox', 'Connected; scope needed', 'Authenticated team account with two top-level mounts; no case-specific root found.', 'Allowlisted ingress/archive source for originals', 'No root-wide crawl, moves, shares, or autonomous writes', 'Designate one CASEBRAIN folder and approve read-only inventory', 'Private business + case separation'),\n  (4, 'Box', 'Connected; highly sensitive', 'Four root folders found: Emails, My Box Notes, My Canvases, Queens Hospital.', 'Restricted correspondence, medical, and work-product source pointers', 'No root crawl or cross-system copying; PHI gets highest restriction', 'Approve relevant folders and sensitivity map before indexing', 'Restricted / PHI'),\n  (5, 'OneDrive / SharePoint', 'Blocked', 'Profile resolves, but drive discovery returns no SharePoint Online license.', 'Future Microsoft 365 source lane only', 'Zero reads/writes until a licensed tenant identity is connected', 'Connect a licensed tenant, then verify drives read-only', 'Unknown'),\n  (6, 'Notion', 'Ready now', 'Federation and 32-entry Actor Registry control pages are live.', 'Human-readable knowledge, actor dossiers, review notes, and source pointers', 'Projection only; no evidentiary originals, allegation promotion, or minor PII', 'Project clean actor fields and conflict status from GitHub', 'Private projection'),\n  (7, 'ClickUp', 'Ready now', 'Four spaces visible; CASEBRAIN federation and actor-review tasks exist.', 'Work packets, approvals, blocker queues, and run receipts', 'Tasks only; never evidence truth or privileged source bodies', 'Create connector-intake gate with owner approvals and receipts', 'Operational private'),\n  (8, 'Supabase backend-ops', 'Staging candidate', 'Healthy; 70 public tables, all empty, RLS enabled; main branch only.', 'Preferred structured staging for cases, documents, entities, chunks, and events', 'No production writes until schema, provenance, case scope, and hashes validate', 'Run schema/provenance audit and one reversible staging fixture', 'Private metadata'),\n  (9, 'Supabase glaciereq', 'Read-only legacy', 'Healthy; 72 public tables, 25 populated, RLS enabled; branch enumeration errors.', 'Operational telemetry and legacy projection only', 'Exclude credential-bearing tables from indexing, search, export, embeddings, and memory', 'Reconcile case isolation, provenance, hashes, and duplicate legal stores', 'Restricted mixed data'),\n  (10, 'Glacier Desktop Commander', 'Awaiting device', 'Authenticated, but device_count=0; config, ping, sessions, and history are dormant.', 'One allowlisted desktop intake folder and read-only local search', 'Pair one trusted host; deny broad filesystem and process control', 'Pair device → ping → inspect config → approve one read-only directory', 'Local private'),\n  (11, 'iPhone 16 Pro Max', 'Export-only', 'No callable Apple, iPhone, or iCloud MCP is installed.', 'User-selected intake through a dedicated cloud-sync/export folder', 'No direct device crawl or command/control', 'Choose Dropbox, Box, Drive, or licensed Microsoft intake folder', 'Device private / restricted'),\n  (12, 'Chat history', 'Export-only', 'No general ChatGPT/chat-history connector is callable.', 'Separate user-authorized export lane; CASEBRAIN stores source-linked summaries/pointers', 'No live-history scraping; redact secrets and unrelated personal threads', 'Choose an explicit export format and approved scope', 'Highly private'),\n  (13, 'CASEBRAIN memory', 'Ready with limits', 'Source-linked shared memories save and recall successfully.', 'Recall index for system state, source pointers, conflicts, and reviewed summaries', 'Never canonical evidence; no unsupported allegations or credential content', 'Keep writes schema-shaped and recall-check every promoted system state', 'Private memory projection')\n) AS t(allocation_order, system, current_state, evidence, allocated_role, access_policy, next_gate, sensitivity)\nORDER BY allocation_order;",
+          "description": "Reproduces the 2026-07-15 read-only capability inventory and least-privilege allocation recorded in the validated report artifact.",
+          "executed_at": "2026-07-15T12:55:00-10:00",
+          "filters": [
+            "read-only connector checks only",
+            "no file contents downloaded",
+            "no database rows queried",
+            "no device changes",
+            "no root-wide ingestion"
+          ],
+          "metric_definitions": [
+            "Allocation order is implementation sequence, not legal priority or evidence strength."
+          ],
+          "tables_used": [
+            "BRAIN/ACTORS/ACTOR_REPORT_ARTIFACT.json"
+          ]
+        }
       }
     ],
     "cards": [
@@ -289,6 +315,51 @@
             "type": "text"
           }
         ]
+      },
+      {
+        "id": "table-connector-allocation",
+        "title": "Commander and connector allocation",
+        "subtitle": "Current capability, proper source-of-truth role, least-privilege policy, and next gate.",
+        "dataset": "connector_allocation",
+        "sourceId": "connector-capability-snapshot",
+        "layout": "full",
+        "density": "spacious",
+        "defaultSort": {
+          "field": "order",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "order",
+            "label": "Order",
+            "format": "number"
+          },
+          {
+            "field": "system",
+            "label": "System",
+            "type": "text"
+          },
+          {
+            "field": "current_state",
+            "label": "Current state",
+            "type": "text"
+          },
+          {
+            "field": "allocated_role",
+            "label": "Allocated role",
+            "type": "text"
+          },
+          {
+            "field": "access_policy",
+            "label": "Default access",
+            "type": "text"
+          },
+          {
+            "field": "next_gate",
+            "label": "Next gate",
+            "type": "text"
+          }
+        ]
       }
     ],
     "blocks": [
@@ -365,6 +436,33 @@
         "type": "markdown",
         "layout": "full",
         "body": "## Recommended next steps\n\n1. Resolve or explicitly block all five conflict records.\n2. Hash at least one primary or official source for every P0 actor.\n3. Reach 100% review-status coverage.\n4. Replace free-form evidence counts with counts derived from the file-link matrix and exhibit manifest.\n5. Add event-level links only after authentication and claim classification.\n6. Require human legal review before any filing or external representation."
+      },
+      {
+        "id": "connector-heading",
+        "type": "markdown",
+        "sourceId": "connector-capability-snapshot",
+        "layout": "full",
+        "body": "## Solid start—next is the Commander and connector allocation\n\nThe next expansion is a governed intake fabric across local files, cloud drives, operational systems, and exported conversations. The capability audit found a real Desktop Commander connector but **zero paired devices**; Dropbox, Box, Google Drive, Notion, ClickUp, Supabase, and CASEBRAIN are callable now; Microsoft drive discovery is blocked by licensing; and no Apple/iPhone/iCloud or general chat-history MCP is installed. The table allocates each system so originals, metadata, work queues, and summaries do not collapse into one unsafe store."
+      },
+      {
+        "id": "connector-table",
+        "type": "table",
+        "tableId": "table-connector-allocation",
+        "layout": "full"
+      },
+      {
+        "id": "device-decision",
+        "type": "markdown",
+        "sourceId": "connector-capability-snapshot",
+        "layout": "full",
+        "body": "## Architecture decision: pair desktop first, route iPhone through a cloud intake folder\n\nStart with Glacier Desktop Commander on one trusted desktop host, approve a single read-only CASEBRAIN intake directory, and verify `device → ping → config → allowlist` before any local search. Do not enable broad filesystem or process control. Because no Apple/iPhone MCP is callable, the iPhone 16 Pro Max should contribute only user-selected originals synced or exported into a designated Dropbox, Box, Google Drive, or licensed Microsoft folder. This keeps device custody explicit and avoids live-device scraping."
+      },
+      {
+        "id": "intake-sequence",
+        "type": "markdown",
+        "sourceId": "connector-capability-snapshot",
+        "layout": "full",
+        "body": "## Four-stage intake sequence\n\n1. **Authorize:** choose exact roots, accounts, case scope, sensitivities, and owner for each connector.\n2. **Inventory read-only:** collect provider item ID/URI, filename, MIME type, size, modified time, version, and source folder—without copying bodies into Notion or ClickUp.\n3. **Preserve and classify:** export exact bytes when needed, calculate SHA-256, separate original/OCR/transcript/normalized/work-product derivatives, deduplicate, and attach case/actor/confidentiality tags.\n4. **Project deliberately:** GitHub holds schemas and registries; cloud providers retain originals; Supabase holds governed metadata; Notion shows dossiers and pointers; ClickUp holds human gates and receipts; CASEBRAIN stores source-linked recall summaries. Writes remain human-approved until one audited end-to-end fixture passes."
       },
       {
         "id": "questions",
@@ -515,6 +613,138 @@
           "status": "Open",
           "priority": "P1"
         }
+      ],
+      "connector_allocation": [
+        {
+          "order": 1,
+          "system": "GitHub / AEON-777",
+          "current_state": "Ready now",
+          "evidence": "Merged truth contract; actor registry PR #52 is open and mergeable.",
+          "allocated_role": "Canonical schemas, registries, manifests, and reviewed control-plane changes",
+          "access_policy": "Reviewed pull requests; no raw privileged source bytes",
+          "next_gate": "Merge PR #52 after CI and human review",
+          "sensitivity": "Private control plane"
+        },
+        {
+          "order": 2,
+          "system": "Google Drive",
+          "current_state": "Ready now",
+          "evidence": "Casebuilder Map and Exhibit Manifest are accessible; one shared drive is listable/read-only.",
+          "allocated_role": "Canonical custody for original cloud files and exact-byte exports",
+          "access_policy": "Read first; preserve originals; never overwrite with OCR/transcripts",
+          "next_gate": "Designate case roots, export P0 sources, hash exact bytes",
+          "sensitivity": "Private / restricted"
+        },
+        {
+          "order": 3,
+          "system": "Dropbox",
+          "current_state": "Connected; scope needed",
+          "evidence": "Authenticated team account with two top-level mounts; no case-specific root found.",
+          "allocated_role": "Allowlisted ingress/archive source for originals",
+          "access_policy": "No root-wide crawl, moves, shares, or autonomous writes",
+          "next_gate": "Designate one CASEBRAIN folder and approve read-only inventory",
+          "sensitivity": "Private business + case separation"
+        },
+        {
+          "order": 4,
+          "system": "Box",
+          "current_state": "Connected; highly sensitive",
+          "evidence": "Four root folders found: Emails, My Box Notes, My Canvases, Queens Hospital.",
+          "allocated_role": "Restricted correspondence, medical, and work-product source pointers",
+          "access_policy": "No root crawl or cross-system copying; PHI gets highest restriction",
+          "next_gate": "Approve relevant folders and sensitivity map before indexing",
+          "sensitivity": "Restricted / PHI"
+        },
+        {
+          "order": 5,
+          "system": "OneDrive / SharePoint",
+          "current_state": "Blocked",
+          "evidence": "Profile resolves, but drive discovery returns no SharePoint Online license.",
+          "allocated_role": "Future Microsoft 365 source lane only",
+          "access_policy": "Zero reads/writes until a licensed tenant identity is connected",
+          "next_gate": "Connect a licensed tenant, then verify drives read-only",
+          "sensitivity": "Unknown"
+        },
+        {
+          "order": 6,
+          "system": "Notion",
+          "current_state": "Ready now",
+          "evidence": "Federation and 32-entry Actor Registry control pages are live.",
+          "allocated_role": "Human-readable knowledge, actor dossiers, review notes, and source pointers",
+          "access_policy": "Projection only; no evidentiary originals, allegation promotion, or minor PII",
+          "next_gate": "Project clean actor fields and conflict status from GitHub",
+          "sensitivity": "Private projection"
+        },
+        {
+          "order": 7,
+          "system": "ClickUp",
+          "current_state": "Ready now",
+          "evidence": "Four spaces visible; CASEBRAIN federation and actor-review tasks exist.",
+          "allocated_role": "Work packets, approvals, blocker queues, and run receipts",
+          "access_policy": "Tasks only; never evidence truth or privileged source bodies",
+          "next_gate": "Create connector-intake gate with owner approvals and receipts",
+          "sensitivity": "Operational private"
+        },
+        {
+          "order": 8,
+          "system": "Supabase backend-ops",
+          "current_state": "Staging candidate",
+          "evidence": "Healthy; 70 public tables, all empty, RLS enabled; main branch only.",
+          "allocated_role": "Preferred structured staging for cases, documents, entities, chunks, and events",
+          "access_policy": "No production writes until schema, provenance, case scope, and hashes validate",
+          "next_gate": "Run schema/provenance audit and one reversible staging fixture",
+          "sensitivity": "Private metadata"
+        },
+        {
+          "order": 9,
+          "system": "Supabase glaciereq",
+          "current_state": "Read-only legacy",
+          "evidence": "Healthy; 72 public tables, 25 populated, RLS enabled; branch enumeration errors.",
+          "allocated_role": "Operational telemetry and legacy projection only",
+          "access_policy": "Exclude credential-bearing tables from indexing, search, export, embeddings, and memory",
+          "next_gate": "Reconcile case isolation, provenance, hashes, and duplicate legal stores",
+          "sensitivity": "Restricted mixed data"
+        },
+        {
+          "order": 10,
+          "system": "Glacier Desktop Commander",
+          "current_state": "Awaiting device",
+          "evidence": "Authenticated, but device_count=0; config, ping, sessions, and history are dormant.",
+          "allocated_role": "One allowlisted desktop intake folder and read-only local search",
+          "access_policy": "Pair one trusted host; deny broad filesystem and process control",
+          "next_gate": "Pair device → ping → inspect config → approve one read-only directory",
+          "sensitivity": "Local private"
+        },
+        {
+          "order": 11,
+          "system": "iPhone 16 Pro Max",
+          "current_state": "Export-only",
+          "evidence": "No callable Apple, iPhone, or iCloud MCP is installed.",
+          "allocated_role": "User-selected intake through a dedicated cloud-sync/export folder",
+          "access_policy": "No direct device crawl or command/control",
+          "next_gate": "Choose Dropbox, Box, Drive, or licensed Microsoft intake folder",
+          "sensitivity": "Device private / restricted"
+        },
+        {
+          "order": 12,
+          "system": "Chat history",
+          "current_state": "Export-only",
+          "evidence": "No general ChatGPT/chat-history connector is callable.",
+          "allocated_role": "Separate user-authorized export lane; CASEBRAIN stores source-linked summaries/pointers",
+          "access_policy": "No live-history scraping; redact secrets and unrelated personal threads",
+          "next_gate": "Choose an explicit export format and approved scope",
+          "sensitivity": "Highly private"
+        },
+        {
+          "order": 13,
+          "system": "CASEBRAIN memory",
+          "current_state": "Ready with limits",
+          "evidence": "Source-linked shared memories save and recall successfully.",
+          "allocated_role": "Recall index for system state, source pointers, conflicts, and reviewed summaries",
+          "access_policy": "Never canonical evidence; no unsupported allegations or credential content",
+          "next_gate": "Keep writes schema-shaped and recall-check every promoted system state",
+          "sensitivity": "Private memory projection"
+        }
       ]
     }
   },
@@ -634,6 +864,32 @@
         ],
         "tables_used": [
           "CASEBRAIN exhibit manifest sheet"
+        ]
+      }
+    },
+    {
+      "id": "connector-capability-snapshot",
+      "label": "CASEBRAIN read-only connector capability audit",
+      "href": "https://github.com/GlacierEQ/AEON-777/pull/52",
+      "path": "BRAIN/ACTORS/ACTOR_REPORT_ARTIFACT.json",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM (VALUES\n  (1, 'GitHub / AEON-777', 'Ready now', 'Merged truth contract; actor registry PR #52 is open and mergeable.', 'Canonical schemas, registries, manifests, and reviewed control-plane changes', 'Reviewed pull requests; no raw privileged source bytes', 'Merge PR #52 after CI and human review', 'Private control plane'),\n  (2, 'Google Drive', 'Ready now', 'Casebuilder Map and Exhibit Manifest are accessible; one shared drive is listable/read-only.', 'Canonical custody for original cloud files and exact-byte exports', 'Read first; preserve originals; never overwrite with OCR/transcripts', 'Designate case roots, export P0 sources, hash exact bytes', 'Private / restricted'),\n  (3, 'Dropbox', 'Connected; scope needed', 'Authenticated team account with two top-level mounts; no case-specific root found.', 'Allowlisted ingress/archive source for originals', 'No root-wide crawl, moves, shares, or autonomous writes', 'Designate one CASEBRAIN folder and approve read-only inventory', 'Private business + case separation'),\n  (4, 'Box', 'Connected; highly sensitive', 'Four root folders found: Emails, My Box Notes, My Canvases, Queens Hospital.', 'Restricted correspondence, medical, and work-product source pointers', 'No root crawl or cross-system copying; PHI gets highest restriction', 'Approve relevant folders and sensitivity map before indexing', 'Restricted / PHI'),\n  (5, 'OneDrive / SharePoint', 'Blocked', 'Profile resolves, but drive discovery returns no SharePoint Online license.', 'Future Microsoft 365 source lane only', 'Zero reads/writes until a licensed tenant identity is connected', 'Connect a licensed tenant, then verify drives read-only', 'Unknown'),\n  (6, 'Notion', 'Ready now', 'Federation and 32-entry Actor Registry control pages are live.', 'Human-readable knowledge, actor dossiers, review notes, and source pointers', 'Projection only; no evidentiary originals, allegation promotion, or minor PII', 'Project clean actor fields and conflict status from GitHub', 'Private projection'),\n  (7, 'ClickUp', 'Ready now', 'Four spaces visible; CASEBRAIN federation and actor-review tasks exist.', 'Work packets, approvals, blocker queues, and run receipts', 'Tasks only; never evidence truth or privileged source bodies', 'Create connector-intake gate with owner approvals and receipts', 'Operational private'),\n  (8, 'Supabase backend-ops', 'Staging candidate', 'Healthy; 70 public tables, all empty, RLS enabled; main branch only.', 'Preferred structured staging for cases, documents, entities, chunks, and events', 'No production writes until schema, provenance, case scope, and hashes validate', 'Run schema/provenance audit and one reversible staging fixture', 'Private metadata'),\n  (9, 'Supabase glaciereq', 'Read-only legacy', 'Healthy; 72 public tables, 25 populated, RLS enabled; branch enumeration errors.', 'Operational telemetry and legacy projection only', 'Exclude credential-bearing tables from indexing, search, export, embeddings, and memory', 'Reconcile case isolation, provenance, hashes, and duplicate legal stores', 'Restricted mixed data'),\n  (10, 'Glacier Desktop Commander', 'Awaiting device', 'Authenticated, but device_count=0; config, ping, sessions, and history are dormant.', 'One allowlisted desktop intake folder and read-only local search', 'Pair one trusted host; deny broad filesystem and process control', 'Pair device → ping → inspect config → approve one read-only directory', 'Local private'),\n  (11, 'iPhone 16 Pro Max', 'Export-only', 'No callable Apple, iPhone, or iCloud MCP is installed.', 'User-selected intake through a dedicated cloud-sync/export folder', 'No direct device crawl or command/control', 'Choose Dropbox, Box, Drive, or licensed Microsoft intake folder', 'Device private / restricted'),\n  (12, 'Chat history', 'Export-only', 'No general ChatGPT/chat-history connector is callable.', 'Separate user-authorized export lane; CASEBRAIN stores source-linked summaries/pointers', 'No live-history scraping; redact secrets and unrelated personal threads', 'Choose an explicit export format and approved scope', 'Highly private'),\n  (13, 'CASEBRAIN memory', 'Ready with limits', 'Source-linked shared memories save and recall successfully.', 'Recall index for system state, source pointers, conflicts, and reviewed summaries', 'Never canonical evidence; no unsupported allegations or credential content', 'Keep writes schema-shaped and recall-check every promoted system state', 'Private memory projection')\n) AS t(allocation_order, system, current_state, evidence, allocated_role, access_policy, next_gate, sensitivity)\nORDER BY allocation_order;",
+        "description": "Reproduces the 2026-07-15 read-only capability inventory and least-privilege allocation recorded in the validated report artifact.",
+        "executed_at": "2026-07-15T12:55:00-10:00",
+        "filters": [
+          "read-only connector checks only",
+          "no file contents downloaded",
+          "no database rows queried",
+          "no device changes",
+          "no root-wide ingestion"
+        ],
+        "metric_definitions": [
+          "Allocation order is implementation sequence, not legal priority or evidence strength."
+        ],
+        "tables_used": [
+          "BRAIN/ACTORS/ACTOR_REPORT_ARTIFACT.json"
         ]
       }
     }
