@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:memory-record:1.0.0",
+  "title": "CASEBRAIN Memory Record",
+  "description": "A provenance-preserving memory record suitable for actor-scoped retrieval without converting allegations or inferences into facts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "memory_id",
+    "case_id",
+    "container_tag",
+    "memory_type",
+    "content",
+    "claim_class",
+    "verification_status",
+    "source_pointers",
+    "created_at",
+    "updated_at",
+    "sensitivity",
+    "human_review_required"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "memory_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$" },
+    "case_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "container_tag": { "enum": ["shared", "shaw", "naso", "yamatani", "brower", "hpd", "csea", "other"] },
+    "actor_keys": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$" },
+      "uniqueItems": true,
+      "default": []
+    },
+    "memory_type": {
+      "enum": ["case_fact", "timeline", "evidence", "communication", "legal_authority", "legal_argument", "threat_signal", "decision", "system_state", "open_question"]
+    },
+    "content": { "type": "string", "minLength": 1, "maxLength": 16000 },
+    "claim_class": {
+      "enum": ["source_fact", "procedural_record", "court_finding", "party_allegation", "witness_statement", "model_inference", "legal_argument"]
+    },
+    "verification_status": {
+      "enum": ["unverified", "partially_verified", "verified", "contradicted", "superseded", "stale", "blocked", "pending_review"]
+    },
+    "source_pointers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["resource_id", "canonical_uri", "source_kind", "last_checked_at"],
+        "properties": {
+          "resource_id": { "type": "string", "minLength": 1, "maxLength": 256 },
+          "canonical_uri": { "type": "string", "format": "uri-reference", "minLength": 1 },
+          "source_kind": {
+            "enum": ["court_record", "evidence", "communication", "filing", "index", "connector", "system", "other"]
+          },
+          "locator": { "type": ["string", "null"], "maxLength": 1024 },
+          "content_hash": {
+            "oneOf": [
+              { "type": "string", "pattern": "^(sha256:)?[A-Fa-f0-9]{64}$" },
+              { "type": "null" }
+            ]
+          },
+          "last_checked_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "supports_memory_ids": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 128 },
+      "uniqueItems": true,
+      "default": []
+    },
+    "contradicts_memory_ids": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 128 },
+      "uniqueItems": true,
+      "default": []
+    },
+    "supersedes_memory_id": { "type": ["string", "null"], "maxLength": 128 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "sensitivity": { "enum": ["public", "private", "restricted", "sealed"] },
+    "human_review_required": { "type": "boolean" },
+    "retention": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "policy": { "enum": ["indefinite", "until_superseded", "review_on"] },
+        "review_at": {
+          "oneOf": [
+            { "type": "string", "format": "date-time" },
+            { "type": "null" }
+          ]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "claim_class": {
+            "enum": ["party_allegation", "witness_statement", "model_inference", "legal_argument"]
+          }
+        },
+        "required": ["claim_class"]
+      },
+      "then": {
+        "properties": {
+          "verification_status": { "not": { "const": "verified" } }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "container_tag": { "not": { "const": "shared" } } },
+        "required": ["container_tag"]
+      },
+      "then": {
+        "properties": { "actor_keys": { "type": "array", "minItems": 1 } },
+        "required": ["actor_keys"]
+      }
+    }
+  ]
+}

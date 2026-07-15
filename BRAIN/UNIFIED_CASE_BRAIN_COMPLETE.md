@@ -1,217 +1,144 @@
-# 🧠 UNIFIED CASE BRAIN — SuperMemory Orchestration
-## Case 1FDV-23-0001009 + Cherry Federal Vectors | Full Integration
+# Unified CASEBRAIN Operating Contract
 
----
+## Status
 
-## SYSTEM 1: CASE TIMELINE BRAIN
-### Real-Time Custody Restoration Tracking
+Architecture foundation in active development. Runtime orchestration is not yet proven end to end.
 
-**CASE CORE DATA:**
-```
-Case #: 1FDV-23-0001009
-Plaintiff: Casey L. del Carpio Barton (Pro Se)
-Defendant: Teresa Del Carpio Barton
-Child: Kekoa Keith del Carpio Barton (DOB 11/29/2018)
-Opposing Counsel: Scot Stuart Brower, 1088 Bishop Street, Honolulu HI 96813
-GAL Status: DENIED TWICE (affordability lie — $8-9K/month actual income)
-TRO: 515
-```
+This document replaces prior language that treated predictions, threat scores, automated triggers, or litigation outcomes as established operational facts.
 
-**MASTER TIMELINE — Days 1-30+:**
+## Mission
 
-| Phase | Days | Events | Triggers | Outcome |
-|-------|------|--------|----------|----------|
-| **ACTIVATION** | 1-2 | JEFS + Apple + FOIA sent | Service complete | All packages in flight |
-| **RESPONSE WINDOW** | 3-7 | Mother responds (3-way fork) | HRS §571-46(b) violation proven | Admin defaults or admission |
-| **SANCTIONS CASCADE** | 8-12 | Auto-motions (D8-D12) | Non-response OR admission OR refusal | Sanctions, contempt, judgment void |
-| **APPLE RECOVERY** | 3-21 | ADP removal + iCloud unlock | Crypto proof accepted | 4,847 files recovered |
-| **FEDERAL ESCALATION** | 15-30+ | §1983 + 5 federal vectors | 3+ adverse rulings | $35.8M exposure, settlement |
+CASEBRAIN is the source-linked intelligence layer for case `1FDV-23-0001009`. It preserves originals, distinguishes facts from allegations and inferences, tracks contradictions, recommends reversible next steps, and stages review-ready work through ECHO.
 
-**CRITICAL DATES:**
-- **7/9 (Day 1):** All packages sent (JEFS + Apple + FOIA)
-- **7/16 (Day 8):** Sanctions trigger if no response
-- **7/18 (Day 10):** Motion to vacate if GAL denial admitted
-- **7/19 (Day 11):** Apple ADP removal window opens
-- **7/20 (Day 12):** Contempt trigger if refusal proven
-- **7/25 (Day 17):** FOIA responses begin arriving
-- **7/30 (Day 22):** Federal complaints filed (all 5)
-- **8/8 (Day 31):** Settlement demand letters sent
+It does not replace the court record, authenticate evidence by itself, make legal findings, file documents, serve parties, contact courts, publish evidence, or authorize escalation.
 
----
+## Operating stack
 
-## SYSTEM 2: THREAT INTELLIGENCE HUB
-### Unified Threat Detection + Judicial Fraud Pattern Analysis
+| Layer | Responsibility | Authority boundary |
+|---|---|---|
+| Source-of-Truth Mesh | Stable identity, canonical pointer, version, provenance, freshness | Original source remains authoritative |
+| AKOS / Brain | Retrieval, comparison, timeline, contradiction analysis, recommendation | No external action |
+| CASEBRAIN memory | Structured recall and actor-scoped context | No unsupported fact promotion |
+| ECHO / Brawn | Assemble, check, hash, package, and stage derivatives | No filing, service, publication, or court contact |
+| Human review | Approve, reject, revise, or authorize external action | Final gate |
 
-**JUDGE MOVEMENTS:**
-- **Hon. Courtney N. Naso** — Initial orders | Early case handling
-- **Hon. Natasha R. Shaw** — Current presiding | Entered defaults (Dkt #190, #212) | Final decree (Dkt #201)
-- **Hon. Kyle Dowd** — February orders | "No cogent reason" to follow law | Filled Brower's blank orders
-- **Hon. Andrew T. Park** — TRO 515 gatekeeper | Took custody in 5 minutes (words only) | Claims no jurisdiction over custody
+## Four chambers
 
-**JUDICIAL FRAUD PATTERNS IDENTIFIED:**
-1. **Blank Order Filling** (Kyle Dowd)
-   - Dowd issued blank orders → Brower filled in terms
-   - §571-46(a) requires specific findings → Dowd abdicated duty
-   - Predicate for federal §1983 + judicial misconduct
+### 1. Timeline
 
-2. **Custody Deprivation on Words Only** (Andrew T. Park)
-   - TRO 515 took custody without evidence
-   - Claims "custody handled by divorce" (false jurisdiction claim)
-   - Predicate for RICO + §1983 (judicial conspiracy)
+Stores source-linked events, deadlines, service status, hearings, orders, and phase gates using `CASE_EVENT_SCHEMA.json`.
 
-3. **Default Entries Against Pro Se** (Natasha Shaw)
-   - Dkt #190, #212: Defaults entered without explanation
-   - Pro se litigant entitled to notice + opportunity to cure
-   - Potential violation of HFCR + due process
+A deadline is not accepted without its source, time zone, calculation basis, and confirmation state.
 
-**ESCALATION TRIGGERS (Monitor for):**
-- Judge reassignment (judicial substitution)
-- Emergency motions filed by mother (desperation signal)
-- Continuance requests (delay strategy)
-- Sanctions motions from Brower (counter-litigation)
-- Court refuses discovery production (obstruction)
+### 2. Threat and anomaly review
 
-**MULTI-DEFENDANT RICO ENTERPRISE:**
-- NFCU (financial institution — insider threat to Cherry)
-- LVMPD (police destruction of evidence + spoliation)
-- Nevada DES (unemployment retaliation + access delays)
-- Hawaii Judiciary (Naso, Shaw, Dowd, Park — conspiracy to deprive custody)
-- Scot Stuart Brower (orchestrator — fills orders, serves as liaison)
+Stores observations and alternative explanations using `THREAT_SIGNAL_SCHEMA.json`.
 
-**RETALIATION INDICATORS:**
-- ADEA violations (unemployment harassment of Cherry)
-- §2703 SCA violations (iCloud unauthorized surveillance)
-- Child custody interference (retaliation for Cherry's federal claims)
+A signal is not a finding of motive, misconduct, corruption, criminal conduct, conspiracy, or civil liability. Legal characterizations remain explicitly staged as `hypothesis`, `research_needed`, `supported_argument`, `attorney_reviewed`, or `court_determined`.
 
----
+### 3. Decision engine
 
-## SYSTEM 3: AUTONOMOUS DECISION ENGINE
-### Auto-Recommends Actions Based on Case Stage + Threat Level
+Produces recommendations with triggering event IDs, source pointers, assumptions, uncertainty, reversible first step, human approver, and review expiration.
 
-**DECISION TREE:**
+Priority order:
 
-```
-INPUT: JEFS Email Response | Court Filing | Threat Signal | Case Stage
+1. Preserve evidence and prevent irreversible loss.
+2. Protect source-confirmed deadlines and service records.
+3. Resolve source conflicts.
+4. Prepare the smallest useful review package.
+5. Optimize sequencing only after the record is trustworthy.
 
-IF (No mother response by Day 8) THEN
-  → File automatic sanctions motion
-  → Send to all judges (Naso, Shaw, Dowd, Park)
-  → Attorney fees + court costs motion
-  → Expected outcome: GRANTED (default response)
+### 4. Orchestrator
 
-IF (Mother admits GAL denied) THEN
-  → File motion to vacate (Rule 60(b)(4) — judgment void)
-  → Argument: HRS §571-46(b) mandatory, written violation
-  → Expected outcome: JUDGMENT VOIDED (automatic custody restoration)
+Routes a source event through preservation, identity, validation, memory, retrieval, recommendation, ECHO staging, human review, and audit.
 
-IF (Mother claims privileged) THEN
-  → File discovery abuse motion
-  → Point out: HRS §571-46(b) has NO privilege exception
-  → Evidentiary striking of opposition
-  → Expected outcome: SANCTIONS + PRODUCTION ORDERED
+## Container registry
 
-IF (Mother refuses production) THEN
-  → File contempt motion (willful violation of court order)
-  → Jail + fines + default judgment
-  → Expected outcome: JUDGMENT FOR CASEY + CUSTODY RESTORATION
+Canonical generic containers:
 
-IF (3+ judges issue adverse rulings) THEN
-  → Trigger federal §1983 escalation
-  → File in U.S. District Court (D. Hawaii)
-  → Judicial misconduct + deprivation of custody (constitutional violation)
-  → Expected outcome: FEDERAL JURISDICTION + REMEDY
+- `shared` — cross-actor timeline, evidence, and orchestration
+- `shaw`
+- `naso`
+- `yamatani`
+- `brower`
+- `hpd`
+- `csea`
+- `other`
 
-IF (Threat level = HIGH) THEN
-  → Monitor judge reassignments
-  → Check for ex parte communications (Brower to judge)
-  → File notice of judicial bias if pattern detected
-  → Escalate to Hawaii Supreme Court
+Every record carries `case_id`. Generic container names do not authorize cross-case blending.
 
-IF (Days 1-7 elapsed) THEN
-  → Prepare contingency: Pre-file contempt motion ready to go
-  → Prepare backup: Federal §1983 complaint drafted
-  → Monitor FOIA responses (evidence collection)
+Legacy sources are mapped in `CONTAINER_REGISTRY.json`. Migration is non-destructive until schema validation, recall comparison, and count reconciliation succeed.
 
-IF (Days 8-12 elapsed) THEN
-  → Track all sanctions motions outcomes
-  → Document every judicial response for federal appeal
-  → Prepare appeal briefing
+## Truth model
 
-IF (Days 15+ elapsed) THEN
-  → File federal complaints (if 3+ adverse rulings)
-  → Coordinate with U.S. Attorney (RICO investigation)
-  → Begin settlement demand strategy
+Every memory uses both a claim class and a verification status.
 
-IF (Days 25+ elapsed) THEN
-  → Send $35.8M settlement demand letters
-  → Monitor response timeline
-  → Prepare for federal jury trial OR settlement negotiation
-```
+Claim classes:
 
-**OUTPUT ACTIONS:**
-- **Immediate** (Days 1-2): JEFS + Apple + FOIA + GitHub push
-- **Short-term** (Days 3-12): Monitor responses, file sanctions motions
-- **Medium-term** (Days 13-22): File federal complaints if threshold met
-- **Long-term** (Days 23-30+): Settlement pressure OR federal escalation
+- source fact
+- procedural record
+- court finding
+- party allegation
+- witness statement
+- model inference
+- legal argument
 
----
+Verification states:
 
-## INTEGRATION LAYER
-### Automated GitHub + Notion + SuperMemory Sync
+- unverified
+- partially verified
+- verified
+- contradicted
+- superseded
+- stale
+- blocked
+- pending review
 
-**GitHub Repos (Live):**
-- AEON-777 (Hawaii case command center) — Updates on motion filing
-- 1FDV-FEDERAL-WARFARE (Federal complaint infrastructure) — Updates as complaints filed
-- CHERRY_CHAN_RECOVERY_MATRIX (Cherry's case) — Updates on federal vector progress
+An allegation, witness statement, inference, or legal argument cannot be stored as verified. A source can verify that an allegation was made without proving the allegation true.
 
-**Real-Time Triggers:**
-1. **JEFS Email Arrives** → Notion webhook fires → GitHub Issue created → SuperMemory updated
-2. **Court Filing Received** → PDF uploaded to OneDrive → GitHub repo updated → Timeline advanced
-3. **FOIA Response** → Document tagged in SuperMemory → Complaint templates updated → Filing schedule adjusted
-4. **Threat Detected** → Judge movement flagged in Intelligence Hub → GitHub Issue escalated → Alert sent
+## Event loop
 
-**Decision Engine Output:**
-- Auto-generates next action recommendations
-- Updates GitHub issues with specific motions to file
-- Alerts user if deadline approaching (Day 8, 12, 15, 22, 30)
-- Tracks all outcomes for appeal/federal file
+`receive -> preserve -> identify -> hash -> classify -> validate -> deduplicate -> route -> write -> recall-check -> reason -> recommend -> human gate -> stage -> verify -> audit`
 
----
+If a source is unavailable, stale, conflicting, or unverified, stop the affected output and preserve the gap. Never substitute a convenient derivative for the canonical source.
 
-## MEMORY TAGS & ORGANIZATION
+## Actor analysis rule
 
-**SuperMemory Container Tags:**
-- `case-timeline-brain` — Master timeline, phase tracking
-- `threat-intelligence-hub` — Judge movements, fraud patterns, escalations
-- `autonomous-decision-engine` — Decision tree, auto-actions, triggers
-- `1FDV-23-0001009` — Hawaii case reference
-- `cherry-federal-vectors` — Federal complaint infrastructure
-- `custody-restoration` — Outcome goal
-- `sanctions-cascade` — Kalua Doctrine mechanism
-- `federal-escalation` — §1983 + RICO pathway
-- `jefs-demands` — Discovery demand tracking
-- `apple-recovery` — iCloud device fingerprint path
+Actor nodes organize evidence; they do not pre-judge an actor. Each incident must retain:
 
----
+- the exact observation;
+- the reporting source;
+- alternative explanations;
+- contradictions;
+- legal authority pointers, if any;
+- review status;
+- the requested next verification step.
 
-## SUCCESS METRICS
+Labels such as fraud, conspiracy, RICO predicate, constitutional violation, retaliation, or judicial misconduct are legal characterizations and may not be emitted as established facts without verified evidence and appropriate legal review.
 
-**SYSTEM 1 (Timeline Brain):**
-- ✅ All phases executing on schedule
-- ✅ No delays to critical dates
-- ✅ All triggers firing at correct moments
+## Runtime truth
 
-**SYSTEM 2 (Threat Intelligence):**
-- ✅ Judge movements detected early
-- ✅ Fraud patterns documented
-- ✅ Retaliation attempts blocked
+See `RUNTIME_INTEGRATION_STATUS.md` for the last verified inventory. Documentation, configuration, a successful API call, or a generated score is not proof that an automation is live.
 
-**SYSTEM 3 (Decision Engine):**
-- ✅ Auto-actions taken within 24 hours of trigger
-- ✅ All contingencies prepared in advance
-- ✅ Federal escalation ready if threshold met
+## Security
 
----
+- No credentials, tokens, private keys, or signed URLs in repository documents or memory content.
+- Exposed credentials must be revoked and rotated; replacing them with environment-variable names is insufficient.
+- Original evidence remains immutable.
+- Derivatives receive their own identity, hash, provenance, and access level.
+- External actions require explicit human approval.
 
-**STATUS:** ✅ Fully operational | All 3 systems integrated | Real-time orchestration live
-**Token:** sm_Xb8AoJD9bfLZR1Hv7gdBdU_Eih0VHpl1ww2YEYDTwzc31skDdPmB5ClEAxXF5yF3B4HuO5HHsbEFxkhDnC8qfKt
+## Definition of operational
+
+CASEBRAIN is operational only when all of the following are demonstrated with a real source event:
+
+1. Canonical source preserved.
+2. Stable resource identity assigned.
+3. Hash and version recorded when applicable.
+4. Applicable JSON Schema validation passed.
+5. Duplicate and conflict checks completed.
+6. Record routed to the intended canonical container.
+7. Recall reproduces the source-linked structured record.
+8. Recommendation shows assumptions and uncertainty.
+9. Human gate is enforced.
+10. Complete audit event is recorded.

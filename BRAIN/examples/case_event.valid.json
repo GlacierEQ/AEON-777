@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "event_id": "evt-1fdv-2025-02-20-order",
+  "case_id": "1FDV-23-0001009",
+  "event_type": "order",
+  "observed_at": "2025-02-20T10:00:00-10:00",
+  "effective_at": null,
+  "source_pointer": {
+    "resource_id": "court-order-2025-02-20",
+    "canonical_uri": "EVIDENCE_VAULT/court/order-2025-02-20.pdf",
+    "source_kind": "court_record",
+    "locator": "docket entry pending source reconciliation",
+    "content_hash": null,
+    "last_checked_at": "2026-07-14T20:00:00-10:00"
+  },
+  "claim_class": "procedural_record",
+  "verification_status": "pending_review",
+  "confidence": "medium",
+  "legal_review_status": "not_reviewed",
+  "summary": "A court order is reported for this date; docket identity and operative terms require comparison to the canonical court copy.",
+  "actors": ["shaw"],
+  "related_resource_ids": [],
+  "phase": null,
+  "tags": ["state", "order", "review"],
+  "human_review_required": true,
+  "provenance": {
+    "source_type": "index",
+    "source_version": "example-1",
+    "hash": null,
+    "extracted_at": "2026-07-14T20:00:00-10:00",
+    "extracted_by": "casebrain-contract-example",
+    "derivative": true
+  }
+}

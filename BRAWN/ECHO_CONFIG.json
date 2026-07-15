@@ -1,0 +1,49 @@
+{
+  "engine": "ECHO",
+  "engine_scope": "universal",
+  "repository": "GlacierEQ/AEON-777",
+  "specialization": "case-management",
+  "case_id": "1FDV-23-0001009",
+  "brain_root": "../BRAIN",
+  "resource_pointer_policy": "../BRAIN/RESOURCE_POINTERS.md",
+  "source_of_truth_mesh": "../BRAIN/SOURCE_OF_TRUTH_MESH.md",
+  "source_of_truth_policy": "one canonical source; many linked projections; never replace the original",
+  "projection_policy": "refresh linked views when the source changes; mark unverified views stale or blocked",
+  "execution_roots": [
+    "../EXECUTION",
+    "../SYSTEM_INTEGRATION",
+    "../ORCHESTRATION",
+    "../JEFS_FILING_READY",
+    "../EVIDENCE_VAULT",
+    "../TRANSCRIBED_EVIDENCE"
+  ],
+  "workflow": [
+    "Draft",
+    "Check",
+    "Verify",
+    "Finalize",
+    "Save",
+    "Push"
+  ],
+  "required_source_pointers": true,
+  "preserve_source_evidence": true,
+  "refresh_derivatives_when_source_changes": true,
+  "human_review_gates": {
+    "jefs_filing": true,
+    "service": true,
+    "evidence_release": true,
+    "external_escalation": true
+  },
+  "output_statuses": [
+    "draft",
+    "checked",
+    "verified",
+    "ready_for_user_review",
+    "blocked",
+    "complete"
+  ],
+  "secrets_policy": "No credentials, access tokens, or private keys in repository documents",
+  "reference_roots": [
+    "../ASPEN_INTEGRATION"
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:threat-signal:1.0.0",
+  "title": "CASEBRAIN Threat Signal",
+  "description": "A review-first risk signal. A signal is not a finding of motive, misconduct, or criminal liability.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "signal_id",
+    "case_id",
+    "observed_at",
+    "source_pointer",
+    "signal_type",
+    "severity",
+    "likelihood",
+    "claim_class",
+    "verification_status",
+    "observations",
+    "alternative_explanations",
+    "recommended_review",
+    "disposition",
+    "human_review_required",
+    "external_action_authorized",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "signal_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$" },
+    "case_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "source_pointer": { "$ref": "#/$defs/source_pointer" },
+    "signal_type": {
+      "enum": [
+        "court_movement",
+        "deadline_risk",
+        "retaliation_indicator",
+        "communication_anomaly",
+        "evidence_integrity",
+        "safety_concern",
+        "other"
+      ]
+    },
+    "severity": { "enum": ["info", "watch", "elevated", "critical"] },
+    "likelihood": { "enum": ["unknown", "low", "medium", "high"] },
+    "claim_class": {
+      "enum": ["source_fact", "procedural_record", "party_allegation", "witness_statement", "model_inference"]
+    },
+    "verification_status": {
+      "enum": ["unverified", "partially_verified", "verified", "contradicted", "stale", "blocked", "pending_review"]
+    },
+    "actors": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$" },
+      "uniqueItems": true,
+      "default": []
+    },
+    "observations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["text", "claim_class"],
+        "properties": {
+          "text": { "type": "string", "minLength": 1, "maxLength": 4000 },
+          "claim_class": {
+            "enum": ["source_fact", "procedural_record", "party_allegation", "witness_statement", "model_inference"]
+          },
+          "related_resource_id": { "type": ["string", "null"], "maxLength": 256 }
+        }
+      }
+    },
+    "alternative_explanations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1, "maxLength": 2000 }
+    },
+    "recommended_review": { "type": "string", "minLength": 1, "maxLength": 2000 },
+    "disposition": {
+      "enum": ["monitor", "preserve_evidence", "human_review", "dismissed", "blocked"]
+    },
+    "legal_characterizations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "status", "authority_pointers"],
+        "properties": {
+          "label": { "type": "string", "minLength": 1, "maxLength": 256 },
+          "status": {
+            "enum": ["hypothesis", "research_needed", "supported_argument", "attorney_reviewed", "court_determined"]
+          },
+          "authority_pointers": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1, "maxLength": 1024 },
+            "uniqueItems": true
+          }
+        }
+      },
+      "default": []
+    },
+    "human_review_required": { "const": true },
+    "external_action_authorized": { "const": false },
+    "provenance": { "$ref": "#/$defs/provenance" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "claim_class": { "enum": ["party_allegation", "witness_statement", "model_inference"] }
+        },
+        "required": ["claim_class"]
+      },
+      "then": {
+        "properties": {
+          "verification_status": { "not": { "const": "verified" } }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "source_pointer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resource_id", "canonical_uri", "source_kind", "last_checked_at"],
+      "properties": {
+        "resource_id": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "canonical_uri": { "type": "string", "format": "uri-reference", "minLength": 1 },
+        "source_kind": {
+          "enum": ["court_record", "evidence", "communication", "filing", "index", "connector", "system", "other"]
+        },
+        "locator": { "type": ["string", "null"], "maxLength": 1024 },
+        "content_hash": {
+          "oneOf": [
+            { "type": "string", "pattern": "^(sha256:)?[A-Fa-f0-9]{64}$" },
+            { "type": "null" }
+          ]
+        },
+        "last_checked_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_type", "source_version", "extracted_at", "extracted_by", "derivative"],
+      "properties": {
+        "source_type": { "enum": ["court", "evidence", "communication", "index", "connector", "system", "other"] },
+        "source_version": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "hash": {
+          "oneOf": [
+            { "type": "string", "pattern": "^(sha256:)?[A-Fa-f0-9]{64}$" },
+            { "type": "null" }
+          ]
+        },
+        "extracted_at": { "type": "string", "format": "date-time" },
+        "extracted_by": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "derivative": { "type": "boolean" }
+      }
+    }
+  }
+}

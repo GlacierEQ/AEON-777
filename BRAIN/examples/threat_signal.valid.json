@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "signal_id": "sig-communication-delay-001",
+  "case_id": "1FDV-23-0001009",
+  "observed_at": "2026-07-14T20:00:00-10:00",
+  "source_pointer": {
+    "resource_id": "communication-thread-001",
+    "canonical_uri": "EVIDENCE_VAULT/communications/thread-001.pdf",
+    "source_kind": "communication",
+    "locator": "message sequence and delivery metadata",
+    "content_hash": null,
+    "last_checked_at": "2026-07-14T20:00:00-10:00"
+  },
+  "signal_type": "communication_anomaly",
+  "severity": "watch",
+  "likelihood": "unknown",
+  "claim_class": "party_allegation",
+  "verification_status": "pending_review",
+  "actors": ["other"],
+  "observations": [
+    {
+      "text": "The reporting party states that a response was not received within the expected period.",
+      "claim_class": "party_allegation",
+      "related_resource_id": "communication-thread-001"
+    }
+  ],
+  "alternative_explanations": [
+    "The message may not have been delivered, read, or routed to the expected recipient."
+  ],
+  "recommended_review": "Verify delivery metadata, the governing response requirement, and the complete message thread before assigning legal significance.",
+  "disposition": "human_review",
+  "legal_characterizations": [
+    {
+      "label": "possible noncompliance",
+      "status": "research_needed",
+      "authority_pointers": []
+    }
+  ],
+  "human_review_required": true,
+  "external_action_authorized": false,
+  "provenance": {
+    "source_type": "communication",
+    "source_version": "example-1",
+    "hash": null,
+    "extracted_at": "2026-07-14T20:00:00-10:00",
+    "extracted_by": "casebrain-contract-example",
+    "derivative": true
+  }
+}
