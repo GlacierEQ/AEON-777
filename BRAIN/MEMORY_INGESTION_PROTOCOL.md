@@ -1,44 +1,88 @@
-# Memory Ingestion Protocol
+# CASEBRAIN Memory Ingestion Protocol
 
 ## Goal
-Build larger, smarter, organized memory without flooding the brain with duplicates, unsupported claims, or stale copies.
 
-## Before upload
-1. Preserve the original in its canonical location.
-2. Assign or recover a stable `resource_id`.
-3. Capture source pointer, case, jurisdiction, date, version, and hash when available.
-4. Classify: `court`, `filing`, `evidence`, `communication`, `timeline`, `threat`, `strategy`, `connector`, or `system`.
-5. Mark access level and whether human review is required.
+Create durable, source-linked memory without converting allegations, strategy, or model output into established fact.
 
-## Chunking
-Chunk by meaning, not arbitrary length:
-- court document: caption, procedural history, facts, ruling, order, exhibits;
-- evidence: event, speaker/device, timestamp, chain-of-custody segment;
-- email/message: one thread or event cluster;
-- filing: issue, rule, factual support, requested relief, exhibit links.
+## Required contract
 
-Every chunk carries `resource_id`, `chunk_id`, `version`, `source_pointer`, `created_at`, `observed_at`, `tags`, and `confidence`.
+Every new memory must satisfy `MEMORY_RECORD_SCHEMA.json` before it is written. Case events and risk signals must also satisfy `CASE_EVENT_SCHEMA.json` or `THREAT_SIGNAL_SCHEMA.json`.
 
-## Tags
-Use compact tags from these groups:
-- case: `case:1FDV-23-0001009`
-- layer: `state`, `federal`, `international`
-- function: `timeline`, `threat`, `decision`, `filing`, `evidence`, `service`
-- phase: `phase-1` through `phase-4` when supported
-- status: `verified`, `reported`, `inferred`, `stale`, `blocked`, `review`
-- sensitivity: `sealed`, `private`, `restricted`, `public`
+A successful connector response does not prove that a memory is current, accurate, or admissible.
 
-## Deduplication
-Search by stable ID, source pointer, filename plus hash, and semantic similarity. If the same source is found, update its version links; do not create a second identity. If the source differs, preserve both and link them as `supersedes`, `supports`, `contradicts`, or `derivative_of`.
+## Ingestion pipeline
 
-## Memory lanes
-- **Canonical lane:** identity, provenance, source pointer, version, hash.
-- **Working lane:** summaries, extracted facts, tags, embeddings, open questions.
-- **Decision lane:** recommendations, assumptions, deadlines, approvals, outcomes.
-- **Execution lane:** ECHO packages, checks, staged outputs, and delivery records.
+`preserve -> identify -> hash -> classify -> validate -> deduplicate -> route -> write -> recall-check -> audit`
 
-## Upload rule
-A memory write is complete only when the source pointer and provenance record exist. A successful API response alone does not prove the case brain is current.
+1. Preserve the original at its canonical location.
+2. Assign or recover a stable `resource_id` and `memory_id`.
+3. Capture the case ID, source pointer, version, hash when available, and last-checked time.
+4. Assign one `claim_class`:
+   - `source_fact`
+   - `procedural_record`
+   - `court_finding`
+   - `party_allegation`
+   - `witness_statement`
+   - `model_inference`
+   - `legal_argument`
+5. Assign a separate `verification_status`.
+6. Validate the complete record against the applicable schema.
+7. Search by stable identity, source pointer, filename plus hash, and semantic similarity.
+8. Route to the canonical container.
+9. Write the structured record.
+10. Recall the new record and compare it to the submitted source-linked version.
+11. Append the write and validation result to the audit trail.
 
-## Safety
-Never upload credentials, webhook tokens, private keys, or unredacted secrets. Never treat an allegation, model output, or prior summary as a verified fact without its source.
+## Truth controls
+
+- A party allegation, witness statement, model inference, or legal argument cannot have `verification_status: verified`.
+- A court filing proves that a statement was filed; it does not automatically prove the statement's truth.
+- A court order can support a procedural record or court finding only after the canonical signed copy and docket identity are checked.
+- A hash proves content identity, not authenticity, legal validity, or truth.
+- Legal characterizations remain hypotheses or arguments unless attorney-reviewed or court-determined.
+- Conflicts are preserved and linked; they are never silently merged.
+
+## Container routing
+
+Canonical containers are generic actor keys: `shared`, `shaw`, `naso`, `yamatani`, `brower`, `hpd`, `csea`, and `other`.
+
+- Every record still carries `case_id`; generic containers must never erase case boundaries.
+- Use `shared` for cross-actor events, global timeline entries, orchestration decisions, and unscoped queries.
+- Use an actor container when the memory is materially about that actor.
+- Store cross-actor relationships by stable memory IDs rather than copying the same conclusion into several containers.
+- Promote an entity from `other` only after it has formal legal significance or at least three source-linked incidents.
+
+See `CONTAINER_REGISTRY.json` for legacy aliases and migration state.
+
+## Meaning-based chunking
+
+- Court document: caption, procedural history, assertions, ruling, operative order, exhibits.
+- Evidence: event, speaker or device, timestamp, and chain-of-custody segment.
+- Communication: one complete thread or event cluster with delivery metadata.
+- Filing: issue, authority, factual support, requested relief, and exhibit links.
+
+Each chunk keeps the parent resource ID, chunk ID, version, source pointer, observed time, claim class, verification state, and sensitivity.
+
+## Deduplication and versioning
+
+- Same stable source and same hash: reuse the existing identity.
+- Same source with changed content: create a new version and link `supersedes`.
+- Different sources describing the same event: preserve both and link `supports` or `contradicts`.
+- Derivative summary: keep a separate identity and link `derivative_of`; never replace the original.
+
+## Legacy migration
+
+Migration uses `copy -> validate -> recall-compare -> reconcile counts -> retire alias`.
+
+Do not forget or delete any legacy memory during the first migration pass. The currently observed legacy sources are `case_1FDV_23_0001009_shared`, `sm_project_default`, and `casememory`. Each record must be classified before it reaches a canonical container.
+
+## Human gates
+
+Memory writes may prepare work. They never authorize filing, service, court contact, evidence release, publication, or irreversible escalation.
+
+## Validation
+
+```bash
+python -m pip install -r BRAIN/requirements-dev.txt
+python BRAIN/validate_contracts.py
+```
