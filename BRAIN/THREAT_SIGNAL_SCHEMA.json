@@ -1,0 +1,19 @@
+{
+  "type": "threat_signal",
+  "required": ["signal_id", "observed_at", "source_pointer", "signal_type", "status"],
+  "fields": {
+    "signal_id": "stable signal identity",
+    "case_id": "1FDV-23-0001009",
+    "observed_at": "ISO-8601",
+    "source_pointer": "canonical mesh pointer",
+    "signal_type": "court_movement|deadline_risk|retaliation_indicator|communication_anomaly|evidence_integrity|other",
+    "severity": "info|watch|elevated|critical",
+    "status": "verified|reported|inferred|stale|blocked|pending_review",
+    "observations": [],
+    "alternative_explanations": [],
+    "related_event_ids": [],
+    "recommended_review": "human-readable review step",
+    "prohibited_output": "Do not label a person or institution corrupt or criminal without verified evidence and legal review.",
+    "provenance": {"source_type": "court|evidence|communication|index|other", "version": "string", "hash": "string or null"}
+  }
+}
