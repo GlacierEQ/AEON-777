@@ -15,7 +15,7 @@
         "query": {
           "engine": "duckdb",
           "language": "sql",
-          "sql": "SELECT\n  31 AS canonical_actors,\n  29 AS source_actor_rows,\n  19 AS actors_with_external_files,\n  19.0/31.0 AS external_file_coverage,\n  5 AS open_conflicts,\n  0 AS verified_identities,\n  26 AS rows_with_allegation_text,\n  25 AS rows_missing_evidence_count,\n  9 AS rows_missing_review_status;",
+          "sql": "SELECT\n  32 AS canonical_actors,\n  29 AS source_actor_rows,\n  19 AS actors_with_external_files,\n  19.0/32.0 AS external_file_coverage,\n  5 AS open_conflicts,\n  0 AS verified_identities,\n  26 AS rows_with_allegation_text,\n  25 AS rows_missing_evidence_count,\n  9 AS rows_missing_review_status;",
           "description": "Reproduces headline counts from the validated 2026-07-15 actor registry and its 29-row Notion source audit.",
           "executed_at": "2026-07-15T12:00:00-10:00",
           "filters": [
@@ -42,7 +42,7 @@
         "query": {
           "engine": "duckdb",
           "language": "sql",
-          "sql": "WITH reviewed_quality AS (\n  SELECT * FROM (VALUES\n    ('Source actor rows', 29, 29, 1.0, 'source rows', 'mapped', 1),\n    ('Canonical actor entries', 31, 31, 1.0, 'actor entries', 'structured', 2),\n    ('Rows with allegation text', 26, 29, 26.0/29.0, 'source rows', 'not promoted', 3),\n    ('Rows missing evidence count', 25, 29, 25.0/29.0, 'source rows', 'quality gap', 4),\n    ('Actors with file candidates', 19, 31, 19.0/31.0, 'actor entries', 'candidate linked', 5),\n    ('Rows missing review status', 9, 29, 9.0/29.0, 'source rows', 'quality gap', 6),\n    ('Open conflicts', 5, 31, 5.0/31.0, 'conflict records', 'open', 7),\n    ('Verified identities', 0, 31, 0.0, 'actor entries', 'deliberate control', 8)\n  ) AS t(measure, count, denominator, rate, grain, status, priority)\n)\nSELECT * FROM reviewed_quality ORDER BY priority;",
+          "sql": "WITH reviewed_quality AS (\n  SELECT * FROM (VALUES\n    ('Source actor rows', 29, 29, 1.0, 'source rows', 'mapped', 1),\n    ('Canonical actor entries', 32, 32, 1.0, 'actor entries', 'structured', 2),\n    ('Rows with allegation text', 26, 29, 26.0/29.0, 'source rows', 'not promoted', 3),\n    ('Rows missing evidence count', 25, 29, 25.0/29.0, 'source rows', 'quality gap', 4),\n    ('Actors with file candidates', 19, 32, 19.0/32.0, 'actor entries', 'candidate linked', 5),\n    ('Rows missing review status', 9, 29, 9.0/29.0, 'source rows', 'quality gap', 6),\n    ('Open conflicts', 5, 32, 5.0/32.0, 'conflict records', 'open', 7),\n    ('Verified identities', 0, 32, 0.0, 'actor entries', 'deliberate control', 8)\n  ) AS t(measure, count, denominator, rate, grain, status, priority)\n)\nSELECT * FROM reviewed_quality ORDER BY priority;",
           "description": "Reproduces the reviewed source-quality bar dataset with explicit grain and denominator.",
           "executed_at": "2026-07-15T12:00:00-10:00",
           "filters": [
@@ -51,7 +51,7 @@
           ],
           "metric_definitions": [
             "Rate = count / denominator within each labeled grain.",
-            "Counts from source rows use denominator 29; actor-entry counts use denominator 31."
+            "Counts from source rows use denominator 29; actor-entry counts use denominator 32."
           ],
           "tables_used": [
             "BRAIN/ACTORS/ACTOR_REGISTRY.json",
@@ -194,7 +194,7 @@
       {
         "id": "chart-quality-counts",
         "title": "Actor source-quality counts",
-        "subtitle": "Counts span two labeled grains—29 source rows and 31 actor entries; use the denominator and rate in the source detail.",
+        "subtitle": "Counts span two labeled grains—29 source rows and 32 actor entries; use the denominator and rate in the source detail.",
         "type": "bar",
         "dataset": "quality",
         "sourceId": "quality-snapshot",
@@ -303,7 +303,7 @@
         "type": "markdown",
         "sourceId": "metrics-snapshot",
         "layout": "full",
-        "body": "## Executive Summary\n\nThe actor layer is structurally usable but not evidentiary-grade. It now holds **31 stable actor entries**, **19 with external file candidates**, and **five preserved conflicts**. No identity or live claim is marked verified. The source database is allegation-heavy and incomplete: 26 of 29 rows contain allegation text, 25 lack a numeric evidence count, and nine lack review status. Those legacy fields are treated as work-product signals, not facts or reliable completeness measures."
+        "body": "## Executive Summary\n\nThe actor layer is structurally usable but not evidentiary-grade. It now holds **32 stable actor entries**, including one fact-sheet-only candidate and two separate unresolved candidates; **19 have external file candidates**, and **five conflicts are preserved**. No identity or live claim is marked verified. The source database is allegation-heavy and incomplete: 26 of 29 rows contain allegation text, 25 lack a numeric evidence count, and nine lack review status. Those legacy fields are treated as work-product signals, not facts or reliable completeness measures."
       },
       {
         "id": "metric-strip",
@@ -321,7 +321,7 @@
         "type": "markdown",
         "sourceId": "metrics-snapshot",
         "layout": "full",
-        "body": "## Every source row is mapped, but verification evidence is still thin\n\nAll 29 returned Notion rows are represented, while two unresolved candidates are deliberately kept separate. File-link coverage reaches 61.3%, but a link is only a retrieval pointer until the exact bytes are exported, hashed, authenticated, and tied to a dated event."
+        "body": "## Every source row is mapped, but verification evidence is still thin\n\nAll 29 returned Notion rows are represented, while one fact-sheet-only candidate and two unresolved candidates are deliberately kept separate. File-link coverage reaches 59.4%, but a link is only a retrieval pointer until the exact bytes are exported, hashed, authenticated, and tied to a dated event."
       },
       {
         "id": "quality-chart",
@@ -381,10 +381,10 @@
     "datasets": {
       "metrics": [
         {
-          "canonical_actors": 31,
+          "canonical_actors": 32,
           "source_actor_rows": 29,
           "actors_with_external_files": 19,
-          "external_file_coverage": 0.6129032258064516,
+          "external_file_coverage": 0.59375,
           "open_conflicts": 5,
           "verified_identities": 0,
           "rows_with_allegation_text": 26,
@@ -405,13 +405,13 @@
         },
         {
           "measure": "Canonical actor entries",
-          "count": 31,
-          "denominator": 31,
+          "count": 32,
+          "denominator": 32,
           "rate": 1,
           "grain": "actor entries",
           "status": "structured",
           "priority": 2,
-          "note": "Includes two separate unresolved candidates."
+          "note": "Includes one fact-sheet-only candidate and two separate unresolved candidates."
         },
         {
           "measure": "Rows with allegation text",
@@ -436,8 +436,8 @@
         {
           "measure": "Actors with file candidates",
           "count": 19,
-          "denominator": 31,
-          "rate": 0.6129032258064516,
+          "denominator": 32,
+          "rate": 0.59375,
           "grain": "actor entries",
           "status": "candidate linked",
           "priority": 5,
@@ -456,8 +456,8 @@
         {
           "measure": "Open conflicts",
           "count": 5,
-          "denominator": 31,
-          "rate": 0.16129032258064516,
+          "denominator": 32,
+          "rate": 0.15625,
           "grain": "conflict records",
           "status": "open",
           "priority": 7,
@@ -466,7 +466,7 @@
         {
           "measure": "Verified identities",
           "count": 0,
-          "denominator": 31,
+          "denominator": 32,
           "rate": 0,
           "grain": "actor entries",
           "status": "deliberate control",
@@ -527,7 +527,7 @@
       "query": {
         "engine": "duckdb",
         "language": "sql",
-        "sql": "SELECT\n  31 AS canonical_actors,\n  29 AS source_actor_rows,\n  19 AS actors_with_external_files,\n  19.0/31.0 AS external_file_coverage,\n  5 AS open_conflicts,\n  0 AS verified_identities,\n  26 AS rows_with_allegation_text,\n  25 AS rows_missing_evidence_count,\n  9 AS rows_missing_review_status;",
+        "sql": "SELECT\n  32 AS canonical_actors,\n  29 AS source_actor_rows,\n  19 AS actors_with_external_files,\n  19.0/32.0 AS external_file_coverage,\n  5 AS open_conflicts,\n  0 AS verified_identities,\n  26 AS rows_with_allegation_text,\n  25 AS rows_missing_evidence_count,\n  9 AS rows_missing_review_status;",
         "description": "Reproduces headline counts from the validated 2026-07-15 actor registry and its 29-row Notion source audit.",
         "executed_at": "2026-07-15T12:00:00-10:00",
         "filters": [
@@ -554,7 +554,7 @@
       "query": {
         "engine": "duckdb",
         "language": "sql",
-        "sql": "WITH reviewed_quality AS (\n  SELECT * FROM (VALUES\n    ('Source actor rows', 29, 29, 1.0, 'source rows', 'mapped', 1),\n    ('Canonical actor entries', 31, 31, 1.0, 'actor entries', 'structured', 2),\n    ('Rows with allegation text', 26, 29, 26.0/29.0, 'source rows', 'not promoted', 3),\n    ('Rows missing evidence count', 25, 29, 25.0/29.0, 'source rows', 'quality gap', 4),\n    ('Actors with file candidates', 19, 31, 19.0/31.0, 'actor entries', 'candidate linked', 5),\n    ('Rows missing review status', 9, 29, 9.0/29.0, 'source rows', 'quality gap', 6),\n    ('Open conflicts', 5, 31, 5.0/31.0, 'conflict records', 'open', 7),\n    ('Verified identities', 0, 31, 0.0, 'actor entries', 'deliberate control', 8)\n  ) AS t(measure, count, denominator, rate, grain, status, priority)\n)\nSELECT * FROM reviewed_quality ORDER BY priority;",
+        "sql": "WITH reviewed_quality AS (\n  SELECT * FROM (VALUES\n    ('Source actor rows', 29, 29, 1.0, 'source rows', 'mapped', 1),\n    ('Canonical actor entries', 32, 32, 1.0, 'actor entries', 'structured', 2),\n    ('Rows with allegation text', 26, 29, 26.0/29.0, 'source rows', 'not promoted', 3),\n    ('Rows missing evidence count', 25, 29, 25.0/29.0, 'source rows', 'quality gap', 4),\n    ('Actors with file candidates', 19, 32, 19.0/32.0, 'actor entries', 'candidate linked', 5),\n    ('Rows missing review status', 9, 29, 9.0/29.0, 'source rows', 'quality gap', 6),\n    ('Open conflicts', 5, 32, 5.0/32.0, 'conflict records', 'open', 7),\n    ('Verified identities', 0, 32, 0.0, 'actor entries', 'deliberate control', 8)\n  ) AS t(measure, count, denominator, rate, grain, status, priority)\n)\nSELECT * FROM reviewed_quality ORDER BY priority;",
         "description": "Reproduces the reviewed source-quality bar dataset with explicit grain and denominator.",
         "executed_at": "2026-07-15T12:00:00-10:00",
         "filters": [
@@ -563,7 +563,7 @@
         ],
         "metric_definitions": [
           "Rate = count / denominator within each labeled grain.",
-          "Counts from source rows use denominator 29; actor-entry counts use denominator 31."
+          "Counts from source rows use denominator 29; actor-entry counts use denominator 32."
         ],
         "tables_used": [
           "BRAIN/ACTORS/ACTOR_REGISTRY.json",
