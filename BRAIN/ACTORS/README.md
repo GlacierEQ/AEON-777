@@ -8,8 +8,8 @@ allegations.
 ## Files
 
 - `ACTOR_REGISTRY_SCHEMA.json` — strict JSON Schema contract.
-- `ACTOR_REGISTRY.json` — 31 actor entries derived from 29 Notion source rows,
-  plus two unresolved identity candidates.
+- `ACTOR_REGISTRY.json` — 32 actor entries derived from 29 Notion source rows,
+  one fact-sheet-only candidate, and two unresolved identity/source candidates.
 - `ACTOR_FILE_LINK_MATRIX.csv` — flat quality-control projection; it contains
   no allegation text.
 - `ACTOR_DATA_QUALITY_REPORT_2026-07-15.md` — measured baseline, conflicts,
