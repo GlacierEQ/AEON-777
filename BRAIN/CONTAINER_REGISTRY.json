@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "1FDV-23-0001009",
+  "canonical_model": "generic_actor_containers_with_case_scoped_records",
+  "record_schema": "BRAIN/MEMORY_RECORD_SCHEMA.json",
+  "containers": [
+    { "container_tag": "shared", "role": "cross_actor_orchestration", "actor_key": null },
+    { "container_tag": "shaw", "role": "actor", "actor_key": "shaw" },
+    { "container_tag": "naso", "role": "actor", "actor_key": "naso" },
+    { "container_tag": "yamatani", "role": "actor", "actor_key": "yamatani" },
+    { "container_tag": "brower", "role": "actor", "actor_key": "brower" },
+    { "container_tag": "hpd", "role": "actor", "actor_key": "hpd" },
+    { "container_tag": "csea", "role": "actor", "actor_key": "csea" },
+    { "container_tag": "other", "role": "unclassified_actor", "actor_key": "other" }
+  ],
+  "legacy_sources": [
+    {
+      "container_tag": "case_1FDV_23_0001009_shared",
+      "target": "shared",
+      "status": "inventory_complete_migration_pending"
+    },
+    {
+      "container_tag": "sm_project_default",
+      "target": "shared_or_actor_after_classification",
+      "status": "classification_required"
+    },
+    {
+      "container_tag": "casememory",
+      "target": "shared",
+      "status": "metrics_review_required"
+    }
+  ],
+  "rules": [
+    "Every stored record must include case_id even though container names are generic.",
+    "Shared is the default retrieval start only when no actor scope is supplied.",
+    "Actor containers hold source-linked records about that actor; cross-actor events are stored in shared and related by memory_id.",
+    "No allegation, witness statement, model inference, or legal argument may be stored as verified.",
+    "Migration is copy, schema-validate, recall-compare, then retire; source memories are not forgotten during the first pass."
+  ],
+  "migration": {
+    "status": "planned",
+    "destructive_actions_allowed": false,
+    "required_checks": [
+      "source_pointer_present",
+      "claim_class_assigned",
+      "verification_status_assigned",
+      "case_id_present",
+      "destination_recall_matches_source",
+      "memory_count_reconciled"
+    ]
+  }
+}
