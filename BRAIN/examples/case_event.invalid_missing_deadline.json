@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "event_id": "evt-deadline-without-source-calculation",
+  "case_id": "1FDV-23-0001009",
+  "event_type": "deadline",
+  "observed_at": "2026-07-14T20:00:00-10:00",
+  "source_pointer": {
+    "resource_id": "deadline-source-001",
+    "canonical_uri": "EVIDENCE_VAULT/deadlines/source-001.pdf",
+    "source_kind": "court_record",
+    "locator": null,
+    "content_hash": null,
+    "last_checked_at": "2026-07-14T20:00:00-10:00"
+  },
+  "claim_class": "procedural_record",
+  "verification_status": "pending_review",
+  "confidence": "unknown",
+  "legal_review_status": "not_reviewed",
+  "summary": "This must fail because a deadline event has no source-linked calculation object.",
+  "provenance": {
+    "source_type": "index",
+    "source_version": "negative-example-1",
+    "hash": null,
+    "extracted_at": "2026-07-14T20:00:00-10:00",
+    "extracted_by": "casebrain-contract-example",
+    "derivative": true
+  }
+}
