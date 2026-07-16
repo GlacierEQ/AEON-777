@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.0.0",
-  "generated_at": "2026-07-15T12:55:00-10:00",
+  "schema_version": "1.1.0",
+  "generated_at": "2026-07-15T18:06:57-10:00",
   "scope": "CASEBRAIN connector quality, organization, bounded workers, and durable automation control plane",
   "policy": {
     "github_canonical": true,
@@ -12,7 +12,11 @@
     "public_shares": false,
     "verified_claims_from_connector_metadata": false,
     "human_review_required": true,
-    "protected_minor_general_projection": false
+    "protected_minor_general_projection": false,
+    "unknown_quality_components_score_zero": true,
+    "authentication_not_inferred_from_tool_availability": true,
+    "protected_bytes_outside_control_planes": true,
+    "task_systems_store_receipts_only": true
   },
   "scoring": {
     "connector_quality": {
@@ -125,8 +129,8 @@
       "allocated_role": "canonical_control",
       "access_mode": "bounded_control_write",
       "approved_root": true,
-      "connector_quality_score": 85,
-      "data_quality_score": 75,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "restricted",
       "next_gate": "Adopt an explicit repository allowlist; merge reviewed schemas only.",
       "evidence": [
@@ -138,7 +142,99 @@
         "daily_ops",
         "evidence_intake",
         "daily_priorities"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "approved_pointer_missing",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Adopt an explicit repository allowlist; merge reviewed schemas only.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=restricted"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 85,
+        "data_quality_score": 75,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "data_analytics",
@@ -149,8 +245,8 @@
       "allocated_role": "observability_only",
       "access_mode": "bounded_control_write",
       "approved_root": true,
-      "connector_quality_score": 90,
-      "data_quality_score": 85,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Continue validated artifact checks before every Sites export.",
       "evidence": [
@@ -160,7 +256,99 @@
       "automation_lanes": [
         "daily_ops",
         "evidence_intake"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "approved_pointer_missing",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Continue validated artifact checks before every Sites export.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=private"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 90,
+        "data_quality_score": 85,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "notion",
@@ -171,8 +359,8 @@
       "allocated_role": "control_projection",
       "access_mode": "bounded_control_write",
       "approved_root": true,
-      "connector_quality_score": 80,
-      "data_quality_score": 70,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Run workers in Dry Run; store pointers, decisions, queues, and receipts only.",
       "evidence": [
@@ -185,7 +373,99 @@
         "evidence_intake",
         "daily_priorities",
         "memory_hygiene"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "approved_pointer_missing",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Run workers in Dry Run; store pointers, decisions, queues, and receipts only.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=private"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 80,
+        "data_quality_score": 70,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "clickup",
@@ -196,8 +476,8 @@
       "allocated_role": "task_projection",
       "access_mode": "bounded_control_write",
       "approved_root": true,
-      "connector_quality_score": 65,
-      "data_quality_score": 40,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Use only the clean operations lane for gates and receipts; do not clone legacy accusatory lists.",
       "evidence": [
@@ -208,7 +488,99 @@
         "daily_ops",
         "evidence_intake",
         "daily_priorities"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "approved_pointer_missing",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Use only the clean operations lane for gates and receipts; do not clone legacy accusatory lists.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=private"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 65,
+        "data_quality_score": 40,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "google_drive",
@@ -219,8 +591,8 @@
       "allocated_role": "source_byte_store",
       "access_mode": "metadata_read_only",
       "approved_root": false,
-      "connector_quality_score": 65,
-      "data_quality_score": 55,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "restricted",
       "next_gate": "Designate one CASEBRAIN intake root; preserve file ID/version/owner/modified time and hash exported bytes.",
       "evidence": [
@@ -230,7 +602,99 @@
       "automation_lanes": [
         "evidence_intake",
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Designate one CASEBRAIN intake root; preserve file ID/version/owner/modified time and hash exported bytes.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=restricted"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 65,
+        "data_quality_score": 55,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "dropbox",
@@ -241,8 +705,8 @@
       "allocated_role": "source_byte_store",
       "access_mode": "metadata_read_only",
       "approved_root": false,
-      "connector_quality_score": 45,
-      "data_quality_score": 25,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "restricted",
       "next_gate": "Choose one of the observed team mounts and one CASEBRAIN root.",
       "evidence": [
@@ -252,7 +716,99 @@
       "automation_lanes": [
         "evidence_intake",
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Choose one of the observed team mounts and one CASEBRAIN root.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=restricted"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 45,
+        "data_quality_score": 25,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "box",
@@ -263,8 +819,8 @@
       "allocated_role": "source_byte_store",
       "access_mode": "metadata_read_only",
       "approved_root": false,
-      "connector_quality_score": 50,
-      "data_quality_score": 30,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "sealed",
       "next_gate": "Approve a folder allowlist, sensitivity map, retention/legal-hold rule, and access group; exclude medical folders by default.",
       "evidence": [
@@ -274,7 +830,99 @@
       "automation_lanes": [
         "evidence_intake",
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Approve a folder allowlist, sensitivity map, retention/legal-hold rule, and access group; exclude medical folders by default.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=sealed"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 50,
+        "data_quality_score": 30,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "sharepoint_onedrive",
@@ -295,7 +943,97 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Connect a SharePoint Online-licensed identity, enumerate a drive, and approve site/library/folder.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=restricted"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 15,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "desktop_commander",
@@ -306,7 +1044,7 @@
       "allocated_role": "source_byte_store",
       "access_mode": "blocked",
       "approved_root": false,
-      "connector_quality_score": 15,
+      "connector_quality_score": 30,
       "data_quality_score": 0,
       "sensitivity_ceiling": "restricted",
       "next_gate": "Pair one trusted device, confirm count > 0, inspect configuration, and allowlist one read-only folder.",
@@ -316,7 +1054,99 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Pair one trusted device, confirm count > 0, inspect configuration, and allowlist one read-only folder.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=restricted"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 15,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "iphone_export",
@@ -327,8 +1157,8 @@
       "allocated_role": "source_byte_store",
       "access_mode": "export_only",
       "approved_root": false,
-      "connector_quality_score": 20,
-      "data_quality_score": 10,
+      "connector_quality_score": 15,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "restricted",
       "next_gate": "Choose an approved cloud export destination, file types, date range, and preserve originals.",
       "evidence": [
@@ -337,7 +1167,97 @@
       "notion_worker": "intake_triage",
       "automation_lanes": [
         "evidence_intake"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Choose an approved cloud export destination, file types, date range, and preserve originals.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=restricted"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 20,
+        "data_quality_score": 10,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "slack",
@@ -348,8 +1268,8 @@
       "allocated_role": "communications_lead",
       "access_mode": "metadata_read_only",
       "approved_root": false,
-      "connector_quality_score": 45,
-      "data_quality_score": 25,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "restricted",
       "next_gate": "Approve workspace/channel/date/custodian scope; preserve message ID/permalink/timestamps; no posting.",
       "evidence": [
@@ -358,7 +1278,99 @@
       "notion_worker": "intake_triage",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Approve workspace/channel/date/custodian scope; preserve message ID/permalink/timestamps; no posting.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=restricted"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 45,
+        "data_quality_score": 25,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "teams",
@@ -379,7 +1391,97 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Repair subscription/license, verify joined teams, and approve team/channel.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=restricted"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 15,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "gmail",
@@ -390,8 +1492,8 @@
       "allocated_role": "communications_lead",
       "access_mode": "metadata_read_only",
       "approved_root": false,
-      "connector_quality_score": 45,
-      "data_quality_score": 35,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "sealed",
       "next_gate": "Approve CASEBRAIN label plus custodian/date scope; thread-dedupe; hash attachments; no sends or label changes.",
       "evidence": [
@@ -400,7 +1502,99 @@
       "notion_worker": "intake_triage",
       "automation_lanes": [
         "evidence_intake"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Approve CASEBRAIN label plus custodian/date scope; thread-dedupe; hash attachments; no sends or label changes.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=sealed"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 45,
+        "data_quality_score": 35,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "outlook_email",
@@ -412,7 +1606,7 @@
       "access_mode": "metadata_read_only",
       "approved_root": false,
       "connector_quality_score": 30,
-      "data_quality_score": 15,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "sealed",
       "next_gate": "Confirm correct mailbox and retention window; approve folder/date scope.",
       "evidence": [
@@ -421,7 +1615,99 @@
       "notion_worker": "intake_triage",
       "automation_lanes": [
         "evidence_intake"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Confirm correct mailbox and retention window; approve folder/date scope.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=sealed"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 30,
+        "data_quality_score": 15,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "google_calendar",
@@ -432,8 +1718,8 @@
       "allocated_role": "timeline_lead",
       "access_mode": "metadata_read_only",
       "approved_root": false,
-      "connector_quality_score": 45,
-      "data_quality_score": 30,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "restricted",
       "next_gate": "Approve calendar IDs and case/date window; preserve stable event ID/status/timezone/update timestamp.",
       "evidence": [
@@ -442,7 +1728,99 @@
       "notion_worker": "event_claim",
       "automation_lanes": [
         "evidence_intake"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Approve calendar IDs and case/date window; preserve stable event ID/status/timezone/update timestamp.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=restricted"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 45,
+        "data_quality_score": 30,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "outlook_calendar",
@@ -463,7 +1841,97 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Repair mailbox/license, enumerate calendars, then run a metadata-only pilot.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=restricted"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 15,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "fireflies",
@@ -474,7 +1942,7 @@
       "allocated_role": "communications_lead",
       "access_mode": "metadata_read_only",
       "approved_root": false,
-      "connector_quality_score": 35,
+      "connector_quality_score": 30,
       "data_quality_score": 0,
       "sensitivity_ceiling": "restricted",
       "next_gate": "Approve meeting/channel and consent basis; preserve transcript/meeting ID and separate transcript from summary.",
@@ -484,7 +1952,99 @@
       "notion_worker": "intake_triage",
       "automation_lanes": [
         "evidence_intake"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Approve meeting/channel and consent basis; preserve transcript/meeting ID and separate transcript from summary.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=restricted"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 35,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "chat_history",
@@ -505,7 +2065,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "evidence_intake"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Use a bounded user export with checksum, timestamp, account/case scope, and redaction.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 0,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "supabase_backend_ops",
@@ -516,8 +2164,8 @@
       "allocated_role": "staging_only",
       "access_mode": "metadata_read_only",
       "approved_root": false,
-      "connector_quality_score": 35,
-      "data_quality_score": 45,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "restricted",
       "next_gate": "Clear 20 security warnings and review 216 performance lints before any fixture or ingestion.",
       "evidence": [
@@ -527,7 +2175,99 @@
       "automation_lanes": [
         "daily_ops",
         "memory_architecture"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Clear 20 security warnings and review 216 performance lints before any fixture or ingestion.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=restricted"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 35,
+        "data_quality_score": 45,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "supabase_glaciereq",
@@ -538,8 +2278,8 @@
       "allocated_role": "legacy_read_only",
       "access_mode": "metadata_read_only",
       "approved_root": true,
-      "connector_quality_score": 45,
-      "data_quality_score": 30,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "sealed",
       "next_gate": "Keep read-only; exclude credential-bearing tables; resolve five security advisories and provenance gaps.",
       "evidence": [
@@ -548,7 +2288,99 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "approved_pointer_missing",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Keep read-only; exclude credential-bearing tables; resolve five security advisories and provenance gaps.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=sealed"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 45,
+        "data_quality_score": 30,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "motherduck",
@@ -559,8 +2391,8 @@
       "allocated_role": "staging_only",
       "access_mode": "metadata_read_only",
       "approved_root": false,
-      "connector_quality_score": 50,
-      "data_quality_score": 35,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "restricted",
       "next_gate": "Audit schema, columns, provenance, row counts, orphans, and exclude credential/env-var tables.",
       "evidence": [
@@ -570,7 +2402,99 @@
       "automation_lanes": [
         "daily_ops",
         "memory_architecture"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Audit schema, columns, provenance, row counts, orphans, and exclude credential/env-var tables.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=restricted"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 50,
+        "data_quality_score": 35,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "vercel",
@@ -581,8 +2505,8 @@
       "allocated_role": "observability_only",
       "access_mode": "metadata_read_only",
       "approved_root": true,
-      "connector_quality_score": 35,
-      "data_quality_score": 20,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Resolve two failing production deployments; verify auth, data minimization, and owner-only access before activation.",
       "evidence": [
@@ -591,7 +2515,99 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "approved_pointer_missing",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Resolve two failing production deployments; verify auth, data minimization, and owner-only access before activation.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=private"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 35,
+        "data_quality_score": 20,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "netlify",
@@ -602,7 +2618,7 @@
       "allocated_role": "excluded_confidential",
       "access_mode": "metadata_read_only",
       "approved_root": true,
-      "connector_quality_score": 20,
+      "connector_quality_score": 30,
       "data_quality_score": 0,
       "sensitivity_ceiling": "public",
       "next_gate": "Use only for public-safe redacted demos after access-control review.",
@@ -612,7 +2628,99 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "approved_pointer_missing",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Use only for public-safe redacted demos after access-control review.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=public"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 20,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "amplitude",
@@ -623,7 +2731,7 @@
       "allocated_role": "observability_only",
       "access_mode": "blocked",
       "approved_root": false,
-      "connector_quality_score": 0,
+      "connector_quality_score": 15,
       "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Reauthenticate OAuth; then use only de-identified operational events.",
@@ -633,7 +2741,97 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Reauthenticate OAuth; then use only de-identified operational events.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=private"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 0,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "hex",
@@ -644,7 +2842,7 @@
       "allocated_role": "observability_only",
       "access_mode": "blocked",
       "approved_root": false,
-      "connector_quality_score": 0,
+      "connector_quality_score": 15,
       "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Upgrade to Team/Enterprise or keep excluded.",
@@ -654,7 +2852,97 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Upgrade to Team/Enterprise or keep excluded.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=private"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 0,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "hugging_face",
@@ -665,8 +2953,8 @@
       "allocated_role": "public_derived_only",
       "access_mode": "metadata_read_only",
       "approved_root": true,
-      "connector_quality_score": 35,
-      "data_quality_score": 20,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "public",
       "next_gate": "Allow only redacted/public derived eval artifacts or model cards; never originals or PII.",
       "evidence": [
@@ -675,7 +2963,99 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "memory_architecture"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "approved_pointer_missing",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Allow only redacted/public derived eval artifacts or model cards; never originals or PII.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=public"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 35,
+        "data_quality_score": 20,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "linear",
@@ -686,8 +3066,8 @@
       "allocated_role": "task_projection",
       "access_mode": "metadata_read_only",
       "approved_root": false,
-      "connector_quality_score": 50,
-      "data_quality_score": 25,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Select a single work-management authority; source-link tasks and avoid narrative promotion.",
       "evidence": [
@@ -696,7 +3076,99 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_priorities"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Select a single work-management authority; source-link tasks and avoid narrative promotion.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=private"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 50,
+        "data_quality_score": 25,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "asana",
@@ -707,8 +3179,8 @@
       "allocated_role": "reference_only",
       "access_mode": "metadata_read_only",
       "approved_root": false,
-      "connector_quality_score": 40,
-      "data_quality_score": 20,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Keep legacy/read-only until a single task authority is selected; do not bidirectionally sync.",
       "evidence": [
@@ -717,7 +3189,99 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_priorities"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Keep legacy/read-only until a single task authority is selected; do not bidirectionally sync.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=private"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 40,
+        "data_quality_score": 20,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "atlassian_rovo",
@@ -728,8 +3292,8 @@
       "allocated_role": "reference_only",
       "access_mode": "metadata_read_only",
       "approved_root": true,
-      "connector_quality_score": 50,
-      "data_quality_score": 30,
+      "connector_quality_score": 30,
+      "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Treat activation claims as legacy prose until live connector evidence exists.",
       "evidence": [
@@ -738,7 +3302,99 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "memory_architecture"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "approved_pointer_missing",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Treat activation claims as legacy prose until live connector evidence exists.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "auth_state=authenticated"
+          ]
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 15,
+          "possible": 15,
+          "evidence": [
+            "sensitivity_ceiling=private"
+          ]
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 50,
+        "data_quality_score": 30,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "documents_router",
@@ -749,7 +3405,7 @@
       "allocated_role": "transform_only",
       "access_mode": "on_demand_only",
       "approved_root": false,
-      "connector_quality_score": 10,
+      "connector_quality_score": 0,
       "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Approve exact input/output and destination before conversion.",
@@ -759,7 +3415,95 @@
       "notion_worker": "document_organization",
       "automation_lanes": [
         "evidence_intake"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Approve exact input/output and destination before conversion.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 10,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "pdf_router",
@@ -770,7 +3514,7 @@
       "allocated_role": "transform_only",
       "access_mode": "on_demand_only",
       "approved_root": false,
-      "connector_quality_score": 10,
+      "connector_quality_score": 0,
       "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Convert only approved derivatives; preserve original and derivation receipt.",
@@ -780,7 +3524,95 @@
       "notion_worker": "document_organization",
       "automation_lanes": [
         "evidence_intake"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Convert only approved derivatives; preserve original and derivation receipt.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 10,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "spreadsheets_router",
@@ -791,7 +3623,7 @@
       "allocated_role": "transform_only",
       "access_mode": "on_demand_only",
       "approved_root": false,
-      "connector_quality_score": 10,
+      "connector_quality_score": 0,
       "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Use only for approved structured derivatives with source pointer and schema.",
@@ -801,7 +3633,95 @@
       "notion_worker": "document_organization",
       "automation_lanes": [
         "evidence_intake"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Use only for approved structured derivatives with source pointer and schema.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 10,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "presentations_router",
@@ -812,7 +3732,7 @@
       "allocated_role": "transform_only",
       "access_mode": "on_demand_only",
       "approved_root": false,
-      "connector_quality_score": 10,
+      "connector_quality_score": 0,
       "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Use only for redacted review derivatives; never canonical evidence.",
@@ -822,7 +3742,95 @@
       "notion_worker": "document_organization",
       "automation_lanes": [
         "evidence_intake"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Use only for redacted review derivatives; never canonical evidence.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 10,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "midpage",
@@ -833,7 +3841,7 @@
       "allocated_role": "reference_only",
       "access_mode": "on_demand_only",
       "approved_root": false,
-      "connector_quality_score": 10,
+      "connector_quality_score": 0,
       "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Use for source-cited legal work only after matter scope and human review.",
@@ -843,7 +3851,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "evidence_intake"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Use for source-cited legal work only after matter scope and human review.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 10,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "openai_developers",
@@ -854,7 +3950,7 @@
       "allocated_role": "reference_only",
       "access_mode": "on_demand_only",
       "approved_root": false,
-      "connector_quality_score": 10,
+      "connector_quality_score": 0,
       "data_quality_score": 0,
       "sensitivity_ceiling": "public",
       "next_gate": "Use official documentation for implementation; keep secrets out of artifacts.",
@@ -864,7 +3960,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "memory_architecture"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Use official documentation for implementation; keep secrets out of artifacts.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 10,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "airtable",
@@ -885,7 +4069,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "memory_architecture"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Assess workspace and duplication risk before allocating a role.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 0,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "pipedrive",
@@ -906,7 +4178,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "memory_architecture"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Assess lawful case relevance and PII boundary; do not use as evidence store.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 0,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "attio",
@@ -927,7 +4287,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "memory_architecture"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Assess lawful case relevance and PII boundary; do not use as evidence store.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 0,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "clay",
@@ -948,7 +4396,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "memory_architecture"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Do not enrich case actors without a lawful, explicit scope and human approval.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 0,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "coupler_io",
@@ -969,7 +4505,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "memory_architecture"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Assess idempotency, destination, secret handling, and one-way flow before use.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 0,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "figma",
@@ -980,7 +4604,7 @@
       "allocated_role": "public_derived_only",
       "access_mode": "on_demand_only",
       "approved_root": false,
-      "connector_quality_score": 10,
+      "connector_quality_score": 0,
       "data_quality_score": 0,
       "sensitivity_ceiling": "public",
       "next_gate": "Use only for redacted diagrams/designs with no privileged source bytes.",
@@ -990,7 +4614,95 @@
       "notion_worker": "document_organization",
       "automation_lanes": [
         "daily_priorities"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Use only for redacted diagrams/designs with no privileged source bytes.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 10,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "canva",
@@ -1001,7 +4713,7 @@
       "allocated_role": "public_derived_only",
       "access_mode": "on_demand_only",
       "approved_root": false,
-      "connector_quality_score": 10,
+      "connector_quality_score": 0,
       "data_quality_score": 0,
       "sensitivity_ceiling": "public",
       "next_gate": "Use only for redacted/public derivatives.",
@@ -1011,7 +4723,95 @@
       "notion_worker": "document_organization",
       "automation_lanes": [
         "daily_priorities"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Use only for redacted/public derivatives.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 10,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "lovable",
@@ -1032,7 +4832,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Assess project/auth/access controls before any build or deployment.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 0,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "base44",
@@ -1053,7 +4941,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Assess project/auth/access controls before any build or deployment.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 0,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "jam",
@@ -1064,7 +5040,7 @@
       "allocated_role": "task_projection",
       "access_mode": "on_demand_only",
       "approved_root": false,
-      "connector_quality_score": 10,
+      "connector_quality_score": 0,
       "data_quality_score": 0,
       "sensitivity_ceiling": "private",
       "next_gate": "Use only for redacted technical reproduction receipts.",
@@ -1074,7 +5050,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Use only for redacted technical reproduction receipts.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 10,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "hebbia",
@@ -1095,7 +5159,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "memory_architecture"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Assess storage, retention, and confidentiality before use.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 0,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "fyxer",
@@ -1116,7 +5268,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "daily_ops"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "No autonomous sending; assess mailbox scope and drafting controls.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 0,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     },
     {
       "connector_id": "mem",
@@ -1137,7 +5377,95 @@
       "notion_worker": "qa_exception",
       "automation_lanes": [
         "memory_hygiene"
-      ]
+      ],
+      "approved_roots": [],
+      "root_scope_state": "not_approved",
+      "last_successful_probe": null,
+      "freshness": {
+        "status": "unknown",
+        "evaluated_at": "2026-07-15T18:06:57-10:00",
+        "max_age_hours": null,
+        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+      },
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "missing_fields": [
+          "source_uri",
+          "source_version",
+          "observed_at",
+          "custodian",
+          "sha256_exact_bytes",
+          "run_receipt"
+        ],
+        "evidence_refs": []
+      },
+      "idempotency_key_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "collision_scope": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
+        "observed_at": null,
+        "receipt_uri": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "Assess provenance, deletion, export, and case isolation before any sync.",
+      "connector_quality_components": {
+        "authentication": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "scoped_access": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "freshness": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "provenance_support": {
+          "awarded": 0,
+          "possible": 20,
+          "evidence": []
+        },
+        "idempotency_retry_safety": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        },
+        "sensitivity_controls": {
+          "awarded": 0,
+          "possible": 15,
+          "evidence": []
+        },
+        "observable_receipts": {
+          "awarded": 0,
+          "possible": 10,
+          "evidence": []
+        }
+      },
+      "data_quality_dimensions": {
+        "completeness": null,
+        "uniqueness": null,
+        "validity": null,
+        "consistency": null,
+        "lineage": null,
+        "timeliness": null,
+        "duplicate_risk": null
+      },
+      "legacy_quality_snapshot": {
+        "connector_quality_score": 0,
+        "data_quality_score": 0,
+        "status": "superseded_unreproducible",
+        "reason": "v1.0 did not preserve component awards and source-linked evidence for each score."
+      }
     }
   ],
   "notion_workers": [
@@ -1223,6 +5551,6 @@
     "notion_worker_control": "https://app.notion.com/p/39eb1e4f322381a8b360f75aa3a4e905",
     "notion_connector_allocation": "https://app.notion.com/p/39eb1e4f32238108aba2cd0cf89aea4c",
     "clickup_first_receipt": "https://app.clickup.com/t/86ajhvyj6"
-  }
+  },
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51"
 }
-
