@@ -56,7 +56,7 @@ The case identity, party names, dates, docket numbers, and legal theories must b
 
 ### A2. Source-linked actor layer
 
-- `ACTORS/ACTOR_REGISTRY.json` — 31 stable actor entries, including separate unresolved identity candidates
+- `ACTORS/ACTOR_REGISTRY.json` — 32 stable actor entries, including separate unresolved identity candidates
 - `ACTORS/ACTOR_FILE_LINK_MATRIX.csv` — allegation-free actor/file coverage projection
 - `ACTORS/ACTOR_DATA_QUALITY_REPORT_2026-07-15.md` — measured completeness and conflict baseline
 - `ACTORS/ACTOR_REGISTRY_SCHEMA.json` — strict actor/source/conflict contract
