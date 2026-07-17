@@ -2,7 +2,7 @@
 
 Thread anchor: `MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51`
 
-Status: active control decision pending direct CASEBRAIN memory-adapter execution.
+Status: active control decision; correction overlays applied and recall-verified; legacy document-chunk mutation remains pending.
 
 ## Purpose
 
@@ -77,4 +77,4 @@ When the CASEBRAIN memory adapter is available, execute the following bounded se
 5. confirm the stable profile no longer presents the legacy conclusions as facts;
 6. preserve a dated correction receipt.
 
-The memory adapter was not available during this correction run, so this GitHub decision and the matching Notion projection are canonical until direct memory mutation is successfully read back.
+On 2026-07-16, five correction overlays were written and recall-verified through topic-specific containers. A first pass using one shared container tag failed isolation by returning unrelated correction topics; the design now forbids shared correction tags. Exact forget attempts could not remove the first-pass copies because the backend exposed them as document chunks rather than exactly forgettable memory records. GitHub remains canonical for this decision and `MEMORY_QUARANTINE_REGISTRY.json` records the runtime receipts and remaining cleanup gate.
