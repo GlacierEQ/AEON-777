@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:memory-quarantine-registry:1.0.0",
+  "title": "CASEBRAIN Memory Quarantine Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "thread_anchor",
+    "generated_at",
+    "backend",
+    "policy",
+    "shared_container_isolation_test",
+    "corrections",
+    "runtime_gates"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "backend": { "const": "supermemory" },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["append_only_corrections", "legacy_claims_deleted", "protected_content_allowed", "shared_container_tags_allowed"],
+      "properties": {
+        "append_only_corrections": { "const": true },
+        "legacy_claims_deleted": { "const": false },
+        "protected_content_allowed": { "const": false },
+        "shared_container_tags_allowed": { "const": false }
+      }
+    },
+    "shared_container_isolation_test": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["container_tag", "status", "observed_behavior", "cleanup_status"],
+      "properties": {
+        "container_tag": { "const": "casebrain_quarantine_correction" },
+        "status": { "const": "failed_cross_topic_retrieval" },
+        "observed_behavior": { "type": "string", "minLength": 1 },
+        "cleanup_status": { "const": "blocked_document_chunks_not_exactly_forgettable" }
+      }
+    },
+    "corrections": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/correction" }
+    },
+    "runtime_gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["github_actions", "legacy_memory_mutation", "production_ingestion"],
+      "properties": {
+        "github_actions": { "const": "blocked_before_steps_no_log_receipt" },
+        "legacy_memory_mutation": { "const": "correction_overlay_only" },
+        "production_ingestion": { "const": "not_authorized" }
+      }
+    }
+  },
+  "$defs": {
+    "correction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "correction_id",
+        "scope",
+        "project",
+        "container_tag",
+        "memory_id",
+        "supported_role",
+        "quarantined_claim_classes",
+        "replacement_rule",
+        "status",
+        "recall_verified_at",
+        "isolation_status"
+      ],
+      "properties": {
+        "correction_id": { "type": "string", "pattern": "^mqc_[a-z0-9_]{3,64}$" },
+        "scope": { "enum": ["yamatani", "csea", "brower", "shaw", "hpd_cyber"] },
+        "project": { "type": "string", "pattern": "^sm_project_[a-z0-9_-]+$" },
+        "container_tag": { "type": "string", "pattern": "^casebrain_correction_[a-z0-9_]+$" },
+        "memory_id": { "type": "string", "pattern": "^[A-Za-z0-9_-]{16,64}$" },
+        "supported_role": { "type": ["string", "null"], "maxLength": 128 },
+        "quarantined_claim_classes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "party_allegation",
+              "source_summary",
+              "model_inference",
+              "legal_hypothesis",
+              "quarantined_hypothesis",
+              "identity_conflict"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "replacement_rule": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "status": { "const": "applied_recall_verified" },
+        "recall_verified_at": { "type": "string", "format": "date-time" },
+        "isolation_status": { "const": "topic_container_passed" }
+      }
+    }
+  }
+}
