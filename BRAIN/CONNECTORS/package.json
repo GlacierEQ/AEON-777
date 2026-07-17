@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node validate_connector_fabric.mjs && python3 validate_connector_fabric.py"
+    "test": "node validate_connector_fabric.mjs && python3 validate_connector_fabric.py && node validate_provenance_schema.mjs"
   },
   "dependencies": {
     "ajv": "^8.17.1",
