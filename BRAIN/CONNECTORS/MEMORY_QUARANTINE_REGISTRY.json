@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "generated_at": "2026-07-16T17:53:46-10:00",
+  "backend": "supermemory",
+  "policy": {
+    "append_only_corrections": true,
+    "legacy_claims_deleted": false,
+    "protected_content_allowed": false,
+    "shared_container_tags_allowed": false
+  },
+  "shared_container_isolation_test": {
+    "container_tag": "casebrain_quarantine_correction",
+    "status": "failed_cross_topic_retrieval",
+    "observed_behavior": "Topic-specific recalls returned correction overlays from unrelated actor and agency scopes when one container tag was reused.",
+    "cleanup_status": "blocked_document_chunks_not_exactly_forgettable"
+  },
+  "corrections": [
+    {
+      "correction_id": "mqc_yamatani_role",
+      "scope": "yamatani",
+      "project": "sm_project_malpractice_micky_yamatani",
+      "container_tag": "casebrain_correction_yamatani",
+      "memory_id": "DiN9JtKFcfBMNxvQuwicZy",
+      "supported_role": "attorney/former counsel",
+      "quarantined_claim_classes": ["party_allegation", "source_summary", "legal_hypothesis", "identity_conflict"],
+      "replacement_rule": "Do not treat judicial, agency, guardian-ad-litem, corruption, theft, fraud, conspiracy, or dual-role claims as established facts without independent authentication.",
+      "status": "applied_recall_verified",
+      "recall_verified_at": "2026-07-16T18:20:00-10:00",
+      "isolation_status": "topic_container_passed"
+    },
+    {
+      "correction_id": "mqc_csea_legal_conclusions",
+      "scope": "csea",
+      "project": "sm_project_csea",
+      "container_tag": "casebrain_correction_csea",
+      "memory_id": "F6b1oPXVJC6pdqf5gDuZtP",
+      "supported_role": "government agency",
+      "quarantined_claim_classes": ["party_allegation", "legal_hypothesis"],
+      "replacement_rule": "Record only source-linked agency events as procedural records; legal conclusions remain allegations or hypotheses pending authority and source review.",
+      "status": "applied_recall_verified",
+      "recall_verified_at": "2026-07-16T18:20:00-10:00",
+      "isolation_status": "topic_container_passed"
+    },
+    {
+      "correction_id": "mqc_brower_allegations",
+      "scope": "brower",
+      "project": "sm_project_scot_stuart_brower",
+      "container_tag": "casebrain_correction_brower",
+      "memory_id": "yMjyBUNZekWStwYSZ5wx2r",
+      "supported_role": "opposing counsel",
+      "quarantined_claim_classes": ["party_allegation", "source_summary", "model_inference", "legal_hypothesis"],
+      "replacement_rule": "Fraud, ex parte conduct, conspiracy, suppression, retaliation, collusion, obstruction, RICO, and criminal conclusions are not established without independent corroboration and review.",
+      "status": "applied_recall_verified",
+      "recall_verified_at": "2026-07-16T18:20:00-10:00",
+      "isolation_status": "topic_container_passed"
+    },
+    {
+      "correction_id": "mqc_shaw_disputed_claims",
+      "scope": "shaw",
+      "project": "sm_project_judge_shaw",
+      "container_tag": "casebrain_correction_shaw",
+      "memory_id": "oLbWnFdaDcTRKpTfhdSKs1",
+      "supported_role": "judicial officer",
+      "quarantined_claim_classes": ["party_allegation", "model_inference", "legal_hypothesis"],
+      "replacement_rule": "Bias, fabrication, obstruction, misconduct, misrepresentation, motive, and pattern claims remain disputed until each event has exact operative-record locators and legal review.",
+      "status": "applied_recall_verified",
+      "recall_verified_at": "2026-07-16T18:20:00-10:00",
+      "isolation_status": "topic_container_passed"
+    },
+    {
+      "correction_id": "mqc_hpd_cyber_attribution",
+      "scope": "hpd_cyber",
+      "project": "sm_project_apex-legal",
+      "container_tag": "casebrain_correction_hpd_cyber",
+      "memory_id": "ZeftUWgytSMmUXrKKZ2YGy",
+      "supported_role": null,
+      "quarantined_claim_classes": ["party_allegation", "model_inference", "quarantined_hypothesis"],
+      "replacement_rule": "No HPD misconduct or named-person cyber attribution is established without authenticated technical artifacts, chain of custody, independent expert analysis, and a non-speculative method.",
+      "status": "applied_recall_verified",
+      "recall_verified_at": "2026-07-16T18:20:00-10:00",
+      "isolation_status": "topic_container_passed"
+    }
+  ],
+  "runtime_gates": {
+    "github_actions": "blocked_before_steps_no_log_receipt",
+    "legacy_memory_mutation": "correction_overlay_only",
+    "production_ingestion": "not_authorized"
+  }
+}
