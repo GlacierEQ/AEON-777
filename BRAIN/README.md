@@ -13,6 +13,7 @@ It does not replace the underlying evidence or court record.
 5. `MEMORY_INGESTION_PROTOCOL.md` — validated memory-write pipeline
 6. `CONTAINER_REGISTRY.json` — canonical containers and legacy migration map
 7. `ACTORS/README.md` — source-linked actor registry, file matrix, conflicts, and quality report
+8. `CONNECTORS/README.md` — connector fabric, memory architecture, provenance, quarantine, validation, and ordered release gates
 
 ## Machine-enforceable contracts
 
@@ -20,6 +21,10 @@ It does not replace the underlying evidence or court record.
 - `THREAT_SIGNAL_SCHEMA.json`
 - `MEMORY_RECORD_SCHEMA.json`
 - `ACTORS/ACTOR_REGISTRY_SCHEMA.json`
+- `CONNECTORS/CONNECTOR_FABRIC_SCHEMA.json`
+- `CONNECTORS/PROVENANCE_RECEIPT_SCHEMA.json`
+- `CONNECTORS/MEMORY_QUARANTINE_REGISTRY_SCHEMA.json`
+- `CONNECTORS/MEMORY_RECALL_REGRESSION_SCHEMA.json`
 
 Canonical valid and invalid fixtures are under `examples/`. Validate them with:
 
