@@ -6,7 +6,7 @@ This directory is the canonical control layer for CaseBuilder 4000 / Apex Memory
 
 ## Start here
 
-1. `MEMORY_ARCHITECTURE_STATUS.json` — current machine-readable state, blockers, and ordered next actions.
+1. `MEMORY_ARCHITECTURE_STATUS.md` — current state, blockers, and ordered next actions.
 2. `CONNECTOR_FABRIC.json` — one registry for advertised, connected, blocked, staging-only, projection-only, and excluded systems.
 3. `CONNECTOR_FABRIC_SCHEMA.json` — strict connector-fabric contract.
 4. `MEMORY_TAXONOMY_AND_GOVERNANCE.md` — authority order, claim classes, bucket separation, state transitions, and promotion gates.
