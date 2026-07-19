@@ -1,0 +1,17 @@
+{
+  "name": "supermemory-github-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fail-closed, auditable Supermemory-to-GitHub bridge for remote agents.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "lint": "node scripts/check-syntax.mjs",
+    "build": "node scripts/check-syntax.mjs",
+    "verify": "npm run lint && npm test"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/v1/bridge",
+      "destination": "/api/bridge"
+    }
+  ],
+  "functions": {
+    "api/bridge.mjs": {
+      "maxDuration": 30
+    }
+  }
+}
