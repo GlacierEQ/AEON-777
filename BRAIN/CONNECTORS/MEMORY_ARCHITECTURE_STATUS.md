@@ -16,7 +16,7 @@ Thread anchor: `MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51`
 - Unknown connector and data-quality values remain explicit and score zero.
 - Connector quality and data quality are independent.
 - Raw broad recall is not an authorized factual-output path.
-- Last measured correction precedence is 3/5; release requires 5/5 with no unqualified promoted output.
+- Last measured raw-backend correction precedence is 3/5. The application-layer guard fixture passes 5/5 with zero unqualified promotions; live consumer integration remains gated.
 - Hosted execution remains unverified.
 - Public runner capacity is verified, but its governed workload bridge is not configured.
 
@@ -24,7 +24,7 @@ Thread anchor: `MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51`
 
 | Priority | Gap | State | Next gate |
 |---:|---|---|---|
-| 1 | Recall correction precedence | Blocked | Implement status filtering and correction precedence, then rerun the five-scope regression. |
+| 1 | Live retrieval-guard integration | Open | Normalize one bounded consumer's connector output into guard envelopes and preserve the rejection receipt. |
 | 2 | Default-container test records | Open | Clean or quarantine the records with auditable receipts. |
 | 3 | Connector ownership and namespaces | Open | Assign one owner and one exact approved non-privileged namespace. |
 | 4 | Provenance and replay pilot | Blocked | Run one metadata-only synthetic receipt chain and prove deterministic replay. |
