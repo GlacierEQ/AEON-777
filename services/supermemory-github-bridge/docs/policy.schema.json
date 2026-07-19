@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Supermemory GitHub Bridge policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "repositories"],
+  "properties": {
+    "version": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "fullName", "installationId", "branches"],
+        "properties": {
+          "id": { "type": ["string", "integer"], "pattern": "^[0-9]+$" },
+          "fullName": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,38}/[A-Za-z0-9_.-]{1,100}$" },
+          "installationId": { "type": ["string", "integer"], "pattern": "^[0-9]+$" },
+          "branches": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["read", "write"],
+              "properties": {
+                "read": { "type": "boolean" },
+                "write": { "type": "boolean" },
+                "writeActions": { "type": "array", "items": { "type": "string" } },
+                "workflowIds": { "type": "array", "items": { "type": "string" } },
+                "writePathPrefixes": { "type": "array", "items": { "type": "string" } },
+                "protectedPaths": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

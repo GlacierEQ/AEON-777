@@ -1,0 +1,74 @@
+{
+  "version": "aeon-777-write-enabled-2026-07-19",
+  "repositories": [
+    {
+      "id": "1260408632",
+      "fullName": "GlacierEQ/AEON-777",
+      "installationId": "REPLACE_WITH_GITHUB_APP_INSTALLATION_ID",
+      "branches": {
+        "main": {
+          "read": true,
+          "write": true,
+          "writeActions": [
+            "commit.create",
+            "push",
+            "pull_request.create",
+            "pull_request.merge",
+            "workflow.dispatch",
+            "delete",
+            "external.message"
+          ],
+          "workflowIds": [
+            "supermemory-github-bridge-ci.yml"
+          ],
+          "writePathPrefixes": [
+            ""
+          ],
+          "protectedPaths": [
+            ".env",
+            ".npmrc",
+            ".pypirc",
+            ".netrc",
+            "id_rsa",
+            "id_ed25519",
+            "credentials",
+            "secret",
+            ".pem",
+            ".key"
+          ]
+        },
+        "supermemory-github-bridge-control-plane": {
+          "read": true,
+          "write": true,
+          "writeActions": [
+            "commit.create",
+            "push",
+            "pull_request.create",
+            "pull_request.merge",
+            "workflow.dispatch",
+            "delete",
+            "external.message"
+          ],
+          "workflowIds": [
+            "supermemory-github-bridge-ci.yml"
+          ],
+          "writePathPrefixes": [
+            ""
+          ],
+          "protectedPaths": [
+            ".env",
+            ".npmrc",
+            ".pypirc",
+            ".netrc",
+            "id_rsa",
+            "id_ed25519",
+            "credentials",
+            "secret",
+            ".pem",
+            ".key"
+          ]
+        }
+      }
+    }
+  ]
+}
