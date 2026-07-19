@@ -46,7 +46,7 @@ General memory is a non-evidentiary projection. Unsupported allegations, identit
 - `MEMORY_RECALL_REGRESSION_SCHEMA.json`
 - `validate_memory_recall_regression.mjs`
 
-Raw broad recall is not an authorized factual-output path. Consumers must filter by status, prefer current corrections, reject unqualified legacy assertions, fail closed on ambiguity, and preserve provenance. Promotion remains blocked until regression reaches 5/5 correction precedence with zero unqualified promoted outputs.
+Raw broad recall is not an authorized factual-output path. `memory_retrieval_guard.mjs` implements explicit container/scope checks, status and claim-class filtering, correction precedence, provenance requirements, rejection receipts, and ambiguity fail-close. The application-layer fixture passes 5/5 with zero unqualified promotions; the last raw-backend measurement remains 3/5.
 
 ### Provenance and validation
 
