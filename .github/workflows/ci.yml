@@ -1,82 +1,14 @@
-name: AEON-777 CI Gate
+name: CI
 
 on:
-  pull_request:
-    branches: [main]
   push:
+    branches: [main, develop]
+  pull_request:
     branches: [main]
 
 jobs:
-  verify:
-    name: Verify — pytest + exhibit_hasher
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pytest pytest-cov
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-      - name: Run pytest
-        run: |
-          pytest --tb=short -q || echo "No tests found — scaffolding CI baseline"
-
-      - name: Run exhibit_hasher verify
-        run: |
-          if [ -f exhibit_hasher.py ]; then
-            python exhibit_hasher.py --verify || echo "Hasher verify — baseline run"
-          else
-            echo "exhibit_hasher.py not found in root — skipping verify step"
-          fi
-
-      - name: Check for zero-byte critical artifacts
-        run: |
-          CRITICAL_FILES=(
-            "BONE_FRACTURE_ADMISSIONS.txt"
-            "COERCIVE_CONTROL_LOG.txt"
-            "TERESA_DECL_HARVEST.txt"
-            "DECLARATION_CLAIMS_FOR_CROSS_REF.txt"
-            "SUPERMEMORY_RECON.json"
-          )
-          FAIL=0
-          for f in "${CRITICAL_FILES[@]}"; do
-            if [ -f "$f" ] && [ ! -s "$f" ]; then
-              echo "ERROR: $f is zero-byte — filing blocker detected"
-              FAIL=1
-            fi
-          done
-          if [ $FAIL -eq 1 ]; then exit 1; fi
-          echo "All critical artifacts non-empty ✔"
-
-  supermemory-recon-lint:
-    name: Lint SUPERMEMORY_RECON.json
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Validate JSON schema
-        run: |
-          python -c "
-import json, sys
-try:
-    with open('SUPERMEMORY_RECON.json') as f:
-        data = json.load(f)
-    assert 'schema_version' in data, 'Missing schema_version'
-    assert 'kpis' in data, 'Missing kpis block'
-    print('SUPERMEMORY_RECON.json ✔ valid')
-except Exception as e:
-    print(f'ERROR: {e}')
-    sys.exit(1)
-"
+  ci:
+    uses: GlacierEQ/public-actions-runner-host/.github/workflows/reusable-quick-ci.yml@main
+    with:
+      repo_name: ${{ github.event.repository.name }}
+      language: python
