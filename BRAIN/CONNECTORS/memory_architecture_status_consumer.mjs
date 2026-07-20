@@ -33,7 +33,6 @@ export function consumeMemoryArchitectureStatus(probe, generatedAt = new Date().
       review_state: "verified",
       container_tag: request.container_tag,
       effective_at: generatedAt,
-      assertion_digest: "sha256:status-pointer-only",
       source_locator: "github://GlacierEQ/AEON-777@10e7cf6f6511885c1d772eb9e3627ba284dc1fe5/BRAIN/CONNECTORS/MEMORY_ARCHITECTURE_STATUS.md",
       provenance_ref: "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_ARCHITECTURE_LIVE_CONSUMER_RECEIPT_2026-07-19.json",
       sensitivity: "restricted"
