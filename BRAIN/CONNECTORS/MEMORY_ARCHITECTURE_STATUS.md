@@ -17,14 +17,14 @@ Thread anchor: `MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51`
 - Connector quality and data quality are independent.
 - Raw broad recall is not an authorized factual-output path.
 - Last measured raw-backend correction precedence is 3/5. The application-layer guard fixture passes 5/5 with zero unqualified promotions; live consumer integration remains gated.
-- Hosted execution remains unverified.
+- First bounded live consumer is integrated: one Supermemory text block was hashed and rejected as unstructured; only the pinned GitHub status pointer was promoted.\n- Hosted execution remains unverified.
 - Public runner capacity is verified, but its governed workload bridge is not configured.
 
 ## Ordered gap queue
 
 | Priority | Gap | State | Next gate |
 |---:|---|---|---|
-| 1 | Live retrieval-guard integration | Open | Normalize one bounded consumer's connector output into guard envelopes and preserve the rejection receipt. |
+| 1 | Typed live consumer normalization | Open | Generalize the hashed status consumer into typed source/version envelopes and integrate one actor-profile projection. |
 | 2 | Default-container test records | Open | Clean or quarantine the records with auditable receipts. |
 | 3 | Connector ownership and namespaces | Open | Assign one owner and one exact approved non-privileged namespace. |
 | 4 | Provenance and replay pilot | Blocked | Run one metadata-only synthetic receipt chain and prove deterministic replay. |
