@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.0.0",
+  "aspen_grove_architecture": "L7-Pointer-Reference",
+  "connectors": [
+    {
+      "id": "conn_pm0st691a0bch4bms6b1",
+      "service": "GitHub",
+      "type": "vcs",
+      "priority": 1,
+      "capabilities": [
+        "create_pull_request",
+        "push_commits",
+        "list_repositories",
+        "manage_branches",
+        "create_issues",
+        "manage_releases"
+      ],
+      "repositories": {
+        "primary": "glaciereq/AEON-777",
+        "secondary": "glaciereq/THE-CATACLYSM",
+        "public_gateway": "aspen-grove-public-gateway"
+      },
+      "status": "active",
+      "last_verified": "2026-06-24T00:15:00Z"
+    },
+    {
+      "id": "conn_kecdqn5wpjbcem5hxyn6",
+      "service": "Dropbox",
+      "type": "cloud_storage",
+      "priority": 2,
+      "capabilities": [
+        "upload_file",
+        "download_file",
+        "list_files",
+        "create_folder",
+        "share_link",
+        "move_file",
+        "delete_file"
+      ],
+      "storage_paths": {
+        "primary": "/GDrive/GLACIER_EQUILIBRIUM/JEFS_FILING_READY/",
+        "backup": "/BACKUP_GLACIER_EQUILIBRIUM/"
+      },
+      "status": "active_with_tool_errors",
+      "last_verified": "2026-06-24T00:15:00Z"
+    },
+    {
+      "id": "conn_fty7kq9s9211ad4pyk46",
+      "service": "Google Drive",
+      "type": "cloud_storage",
+      "priority": 3,
+      "account": "glacier.equilibrium@gmail.com",
+      "capabilities": [
+        "list_files",
+        "download_file",
+        "export_document",
+        "search_files"
+      ],
+      "storage_paths": {
+        "forensic_evidence": "/casey.barton92@gmail.com/ (READ-ONLY)"
+      },
+      "status": "read_only_forensic",
+      "last_verified": "2026-06-24T00:15:00Z"
+    },
+    {
+      "id": "conn_jvcvday0pkewfey4magc",
+      "service": "Microsoft OneDrive",
+      "type": "cloud_storage",
+      "priority": 4,
+      "capabilities": [
+        "upload_file",
+        "download_file",
+        "list_files",
+        "create_folder",
+        "share_file",
+        "move_file"
+      ],
+      "storage_paths": {
+        "filing_packages": "/filing-packages/",
+        "backup": "/AEON-777-backup/"
+      },
+      "status": "active",
+      "last_verified": "2026-06-24T00:15:00Z"
+    },
+    {
+      "id": "conn_aa3t0kestx2rgeb2vzcs",
+      "service": "Box",
+      "type": "cloud_storage",
+      "priority": 5,
+      "capabilities": [
+        "upload_file",
+        "download_file",
+        "list_files",
+        "create_folder",
+        "share_file"
+      ],
+      "status": "available_secondary",
+      "last_verified": "2026-06-24T00:15:00Z"
+    },
+    {
+      "id": "conn_032dk308hj9jjw7tcfc7",
+      "service": "Egnyte",
+      "type": "cloud_storage",
+      "priority": 6,
+      "capabilities": [
+        "upload_file",
+        "download_file",
+        "list_files",
+        "manage_sharing"
+      ],
+      "status": "reauth_pending",
+      "note": "Requires reauthentication verification",
+      "last_verified": "2026-06-23T00:00:00Z"
+    },
+    {
+      "id": "conn_06wa1j9fgg8czt6cy06v",
+      "service": "Gmail",
+      "type": "communication",
+      "priority": 7,
+      "account": "glacier.equilibrium@gmail.com",
+      "capabilities": [
+        "send_email",
+        "read_emails",
+        "manage_labels",
+        "create_draft"
+      ],
+      "status": "active",
+      "last_verified": "2026-06-24T00:15:00Z"
+    },
+    {
+      "id": "conn_yg7zn660apy1m5rhg1p4",
+      "service": "Notion",
+      "type": "documentation",
+      "priority": 8,
+      "capabilities": [
+        "query_database",
+        "create_page",
+        "update_page",
+        "manage_blocks"
+      ],
+      "status": "active",
+      "last_verified": "2026-06-24T00:15:00Z"
+    },
+    {
+      "id": "conn_7h57jdgsn2z8ams5rm48",
+      "service": "AssemblyAI",
+      "type": "transcription",
+      "priority": 9,
+      "capabilities": [
+        "transcribe_audio",
+        "get_transcript",
+        "list_transcripts"
+      ],
+      "status": "active_3_failed_jobs",
+      "note": "3 jobs failed due to expired Dropbox URLs; recoverable",
+      "last_verified": "2026-06-23T00:00:00Z"
+    },
+    {
+      "id": "conn_769ks7tnhmcvvd6nj6ed",
+      "service": "Smithery whisperX",
+      "type": "transcription",
+      "priority": 10,
+      "endpoint": "https://api.smithery.ai",
+      "capabilities": [
+        "transcribe_audio",
+        "batch_process"
+      ],
+      "status": "active",
+      "last_verified": "2026-06-24T00:15:00Z"
+    },
+    {
+      "id": "conn_7n7zt8weqfjkkknaa7px",
+      "service": "CourtListener",
+      "type": "legal_data",
+      "priority": 11,
+      "endpoint": "https://www.courtlistener.com",
+      "capabilities": [
+        "search_cases",
+        "get_opinion",
+        "get_docket",
+        "search_judges"
+      ],
+      "status": "active",
+      "last_verified": "2026-06-24T00:15:00Z"
+    },
+    {
+      "id": "conn_ab6t0yjk97ve79gc71jy",
+      "service": "Mem0",
+      "type": "memory",
+      "priority": 12,
+      "endpoint": "https://api.mem0.ai",
+      "capabilities": [
+        "create_memory",
+        "search_memory",
+        "update_memory",
+        "delete_memory"
+      ],
+      "status": "auth_error_401",
+      "note": "Requires key regeneration at app.mem0.ai",
+      "last_verified": "2026-06-23T00:00:00Z"
+    },
+    {
+      "id": "conn_68hp5sbn9de15fnrwmm0",
+      "service": "Composio API",
+      "type": "integration_platform",
+      "priority": 13,
+      "endpoint": "https://backend.composio.dev",
+      "http_methods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH"
+      ],
+      "capabilities": [
+        "action_execution",
+        "workflow_automation",
+        "tool_discovery"
+      ],
+      "status": "active",
+      "last_verified": "2026-06-24T00:15:00Z"
+    },
+    {
+      "id": "conn_96gsy0z95wwr1qfcfjjr",
+      "service": "Docusign",
+      "type": "e_signature",
+      "priority": 14,
+      "capabilities": [
+        "create_envelope",
+        "send_document",
+        "get_signature_status",
+        "download_signed"
+      ],
+      "status": "active",
+      "last_verified": "2026-06-24T00:15:00Z"
+    }
+  ],
+  "deployment_priorities": {
+    "tier_1_critical": [
+      "GitHub",
+      "Dropbox",
+      "OneDrive"
+    ],
+    "tier_2_operational": [
+      "Google Drive",
+      "Box",
+      "Gmail"
+    ],
+    "tier_3_specialized": [
+      "AssemblyAI",
+      "CourtListener",
+      "Mem0"
+    ],
+    "tier_4_integration": [
+      "Composio API",
+      "Docusign"
+    ]
+  },
+  "aspen_grove_pointers": {
+    "primary_vault": "glaciereq/AEON-777",
+    "public_gateway": "aspen-grove-public-gateway (pending creation)",
+    "backup_vault": "glaciereq/THE-CATACLYSM",
+    "forensic_evidence": "casey.barton92@gmail.com/Google Drive (READ-ONLY)"
+  }
+}
