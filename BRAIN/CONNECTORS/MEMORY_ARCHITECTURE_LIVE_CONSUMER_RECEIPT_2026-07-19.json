@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "generated_at": "2026-07-20T03:52:41Z",
+  "connector": "supermemory",
+  "consumer": "memory_architecture_status",
+  "live_probe": {
+    "container_tag": "sm_project_memory_master",
+    "query_sha256": "1c82bb4f66a7bafb5d2529a8a6a831640ea8545b7bc2609a0e3c6e08bbc64d35",
+    "response_sha256": "c223525bbf3e2ae6e0db0ab42c7597c168c288f7c4d83523656a77a77c73404e",
+    "content_block_count": 1,
+    "status": "success"
+  },
+  "normalization": {
+    "raw_payload_candidates": 1,
+    "raw_payload_promoted": 0,
+    "canonical_pointer_candidates": 1,
+    "raw_content_persisted": false
+  },
+  "guard_receipt": {
+    "schema_version": "1.0.0",
+    "generated_at": "2026-07-20T03:52:41Z",
+    "request": { "scope": "memory_architecture", "container_tag": "sm_project_memory_master" },
+    "decision": "qualified_output",
+    "promoted": [
+      {
+        "candidate_id": "mrg_memory_architecture_canonical_status",
+        "scope": "memory_architecture",
+        "semantic_key": "memory_architecture_current_status",
+        "output_class": "source_linked_fact",
+        "source_locator": "github://GlacierEQ/AEON-777@10e7cf6f6511885c1d772eb9e3627ba284dc1fe5/BRAIN/CONNECTORS/MEMORY_ARCHITECTURE_STATUS.md",
+        "provenance_ref": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_ARCHITECTURE_LIVE_CONSUMER_RECEIPT_2026-07-19.json"
+      }
+    ],
+    "rejected": [
+      { "candidate_id": "mrg_live_payload_c223525bbf3e", "reason": "review_state_unknown" }
+    ],
+    "raw_content_persisted": false
+  }
+}
