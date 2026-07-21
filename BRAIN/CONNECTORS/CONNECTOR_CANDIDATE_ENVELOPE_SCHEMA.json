@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:connector-candidate-envelope:1.0.0",
+  "title": "CASEBRAIN Typed Connector Candidate Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "envelope_id", "connector_id", "consumer_id", "scope", "container_tag", "subject_ref", "source", "classification", "governance", "provenance_ref"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "envelope_id": { "type": "string", "pattern": "^env_[a-z0-9_]+$" },
+    "connector_id": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+    "consumer_id": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+    "scope": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "container_tag": { "type": "string", "pattern": "^sm_project_[a-z0-9_-]+$" },
+    "subject_ref": { "type": ["string", "null"], "pattern": "^[a-z0-9_-]+$" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "locator", "version", "query_sha256", "response_sha256", "content_block_count", "observed_at"],
+      "properties": {
+        "kind": { "enum": ["connector_payload", "canonical_pointer"] },
+        "locator": { "type": ["string", "null"], "minLength": 8 },
+        "version": { "type": ["string", "null"], "minLength": 7 },
+        "query_sha256": { "$ref": "#/$defs/nullable_sha256" },
+        "response_sha256": { "$ref": "#/$defs/nullable_sha256" },
+        "content_block_count": { "type": ["integer", "null"], "minimum": 1 },
+        "observed_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_class", "claim_class", "review_state"],
+      "properties": {
+        "record_class": { "enum": ["connector_payload", "source_fact", "correction_overlay"] },
+        "claim_class": { "enum": ["unknown", "documented_source_statement", "correction_rule", "party_allegation", "model_inference", "legal_hypothesis"] },
+        "review_state": { "enum": ["unknown", "pending", "disputed", "quarantined", "superseded", "verified", "applied_correction"] }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sensitivity", "projection_mode", "raw_content_persisted"],
+      "properties": {
+        "sensitivity": { "enum": ["public", "internal", "restricted", "sealed"] },
+        "projection_mode": { "enum": ["reject", "pointer_only"] },
+        "raw_content_persisted": { "const": false }
+      }
+    },
+    "provenance_ref": { "type": ["string", "null"], "minLength": 8 }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "source": { "type": "object", "properties": { "kind": { "const": "connector_payload" } } } } },
+      "then": {
+        "properties": {
+          "source": { "type": "object", "properties": { "locator": { "type": "null" }, "version": { "type": "null" }, "query_sha256": { "$ref": "#/$defs/sha256" }, "response_sha256": { "$ref": "#/$defs/sha256" }, "content_block_count": { "type": "integer", "minimum": 1 } } },
+          "classification": { "type": "object", "properties": { "review_state": { "const": "unknown" } } },
+          "governance": { "type": "object", "properties": { "projection_mode": { "const": "reject" } } },
+          "provenance_ref": { "type": "null" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "source": { "type": "object", "properties": { "kind": { "const": "canonical_pointer" } } } } },
+      "then": {
+        "properties": {
+          "source": { "type": "object", "properties": { "locator": { "type": "string", "minLength": 8 }, "version": { "type": "string", "minLength": 7 }, "query_sha256": { "type": "null" }, "response_sha256": { "type": "null" }, "content_block_count": { "type": "null" } } },
+          "governance": { "type": "object", "properties": { "projection_mode": { "const": "pointer_only" } } },
+          "provenance_ref": { "type": "string", "minLength": 8 }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "nullable_sha256": { "anyOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }] }
+  }
+}
