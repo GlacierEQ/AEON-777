@@ -1,0 +1,202 @@
+schema_version: 1.0.0
+case_id: 1FDV-23-0001009
+generated_at: 2026-07-21T22:00:00Z
+canonical_container: shared
+mission: >-
+  Protect Kekoa, restore the parent-child relationship, preserve the evidence,
+  and obtain lawful review of every restriction affecting him.
+
+governance:
+  git_write_mode: pr_first
+  direct_main_writes: false
+  destructive_actions: explicit_confirmation_only
+  evidence_mutation_default: prohibited
+  fileboss_mode: dry_run_first
+  protected_minor_material_in_github: prohibited
+  raw_secrets_in_repositories_or_notion: prohibited
+  source_before_claim: required
+  source_fields:
+    - case_id
+    - source_pointer
+    - verification_status
+    - claim_class
+    - access_class
+    - content_hash
+    - idempotency_key
+
+connectors:
+  github:
+    role: source_control_and_contract_truth
+    status: live_verified
+    canonical_repo: GlacierEQ/AEON-777
+    default_branch: main
+    control_root: shared/casebrain/1FDV-23-0001009
+    case_execution_repo: GlacierEQ/AspenGrove-KEKOA-1FDV-23-0001009
+    secondary_artifact_repo: GlacierEQ/SUPERLUMINAL_CASE_MATRIX
+    allowed:
+      - schemas
+      - manifests
+      - runbooks
+      - source_pointers
+      - public_work_product
+      - generated_indexes
+      - connector_contracts
+      - validation_code
+    blocked:
+      - raw_protected_minor_records
+      - private_credentials
+      - unredacted_medical_records
+      - uncontrolled_evidence_duplicates
+
+  notion:
+    role: control_plane
+    status: live_verified
+    canonical_dashboard_id: 335b1e4f-3223-808a-ab91-f9b855614249
+    legal_war_room_id: 338b1e4f-3223-81ea-a0b9-d4e66fdd6069
+    evidence_inventory_id: 2eeb1e4f-3223-8198-9b88-d91bf2b02046
+    connector_status_matrix_id: 11564bf7-3e90-4016-a2a9-0e37eee1cbb8
+    role_boundary:
+      - status
+      - commands
+      - decisions
+      - task_routing
+      - source_links
+      - non-sensitive summaries
+    not_authoritative_for:
+      - original_evidence_bytes
+      - court_filing_authenticity
+      - protected_minor_details
+      - secrets
+
+  google_drive:
+    role: structured_legal_document_store
+    status: live_verified
+    discovered_case_assets:
+      - title: 1FDV-23-0001009 Casebuilder Map
+        id: 1x_z1ReHZ6_f8w6NkgV5RqFVvX9S5pFMDgDphNMooDLM
+      - title: 1FDV-23-0001009 Response Packet Workflow
+        id: 1kx6RAQI2nt9Rj4M01BH3Qc3TxbJkI4pagaMvEYViT7M
+      - title: 1FDV-23-0001009 Cite Bank
+        id: 1yoDGAnNToR87NTXLueFs1hS8dAao0DkqfPemtnereu4
+      - title: 1FDV-23-0001009 Response Packet Draft
+        id: 1EZ6AjhkK13_g9Nk1uc7djkWkXZlH7gpWz-JPUb7HzTc
+      - title: CASE_CONTINUITY_CAPSULE_1FDV-23-0001009.md
+        id: 1kHeh7xzGTcRGISiscq0FDCWZzazRMD-6
+    allowed:
+      - filed_copies
+      - court_ready_packets
+      - readable_working_documents
+      - evidence_indexes
+      - curated_exhibit_sets
+    required_controls:
+      - preserve_original_name
+      - preserve_created_modified_metadata
+      - hash_when_materialized
+      - link_to_source_log
+
+  dropbox:
+    role: raw_forensic_mirror_and_recovery
+    status: live_verified_read
+    roots:
+      - path: /ANTIGRAVITY_MEMORY_01/ANTIGRAVITY_MEMORY_01.dbx-external-drive/Case_1FDV-23-0001009_ORGANIZED
+        classification: primary_case_evidence_mirror_candidate
+      - path: /Kahala Home Inspectors/00_Organized_Files/Code_and_Data/Projects/03_PROJECTS/1FDV-23-0001009
+        classification: legacy_project_control_root
+    allowed:
+      - original_files
+      - large_evidence_sets
+      - forensic_recovery_copies
+      - immutable_export_bundles
+    mutation_policy:
+      move: blocked_without_manifest_and_confirmation
+      rename: blocked_without_manifest_and_confirmation
+      delete: blocked_without_explicit_confirmation
+      overwrite: blocked
+
+  supabase:
+    role: operational_ledger_and_registry
+    status: reserved_not_modified
+    environment_policy:
+      glaciereq: read_only
+      backend_ops: audited_reversible_staging
+    required:
+      - case_scoped_rls
+      - connector_registry_v2
+      - hash_ledger
+      - audit_events
+      - rollback_records
+
+  clickup:
+    role: execution_queue
+    status: connected_not_modified
+    receives:
+      - human_review_tasks
+      - source_acquisition_tasks
+      - blocked_connector_retries
+      - filing_qa_tasks
+    prohibited:
+      - raw_protected_evidence
+      - credentials
+
+  gmail:
+    role: discovery_and_source_native_communications
+    status: connected
+    rule: preserve_raw_message_and_attachment_identity_before_derivation
+
+  box:
+    role: approved_root_pending
+    status: connected_root_not_selected
+
+  onedrive_sharepoint:
+    role: shadow_archive_or_enterprise_mirror
+    status: licensing_or_access_blocked
+
+  supermemory_memoryplugin_mem0:
+    role: retrieval_and_context_mesh
+    status: connected_or_represented
+    storage_rule: summaries_and_pointers_only
+    verification_rule: never_the_sole_source_for_a_case_claim
+
+artifact_registry:
+  actor_investigation_workbench:
+    filename: 1FDV-23-0001009_OSINT_ACTOR_INVESTIGATION_WORKBENCH_BATCH01.xlsx
+    sha256: 508c6666f148ab97977467171474fc232e0a11e6671056c7ea947947b40cac7d
+    size_bytes: 482808
+    status: active_pass_1
+    canonical_metadata_home: shared/casebrain/1FDV-23-0001009
+    contents:
+      actors_systems: 32
+      osint_findings_batch_01: 28
+      actor_event_edges: 108
+      relationship_edges: 25
+      open_theory_rows: 25
+      indexed_sources_after_batch_01: 34
+
+sync_flows:
+  - from: dropbox
+    to: fileboss_manifest
+    mode: inventory_and_hash_only
+  - from: google_drive
+    to: github
+    mode: pointers_indexes_and_generated_public_work_product_only
+  - from: github
+    to: notion
+    mode: pr_status_manifest_links_and_decisions
+  - from: notion
+    to: clickup
+    mode: approved_execution_tasks_only
+  - from: all_sources
+    to: supabase
+    mode: provenance_hash_status_and_audit_events_only
+  - from: all_sources
+    to: memory_mesh
+    mode: redacted_summary_and_pointer_only
+
+conflict_resolution:
+  original_bytes: cloud_source_with_hash_and_chain_of_custody
+  court_record: certified_or_official_court_copy
+  schema_and_workflow: github_main_after_pr_merge
+  current_control_status: notion_canonical_dashboard
+  execution_state: supabase_audit_ledger_when_live
+  task_state: clickup
+  memory_summary: non_authoritative
