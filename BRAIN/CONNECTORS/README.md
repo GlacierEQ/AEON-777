@@ -46,7 +46,7 @@ General memory is a non-evidentiary projection. Unsupported allegations, identit
 - `MEMORY_RECALL_REGRESSION_SCHEMA.json`
 - `validate_memory_recall_regression.mjs`
 
-Raw broad recall is not an authorized factual-output path. `memory_retrieval_guard.mjs` implements explicit container/scope checks, status and claim-class filtering, correction precedence, provenance requirements, rejection receipts, and ambiguity fail-close. The application-layer fixture passes 5/5 with zero unqualified promotions; the last raw-backend measurement remains 3/5. The first bounded live consumer hashes the Supermemory request/response, rejects the unstructured connector payload, and promotes only a pinned canonical GitHub pointer.
+Raw broad recall is not an authorized factual-output path. `memory_retrieval_guard.mjs` implements explicit container/scope checks, status and claim-class filtering, correction precedence, provenance requirements, rejection receipts, and ambiguity fail-close. The application-layer fixture passes 5/5 with zero unqualified promotions; the last raw-backend measurement remains 3/5. The status consumer and first actor-profile consumer hash Supermemory request/response data, reject unstructured connector payloads, and promote only version-pinned canonical GitHub control pointers. Actor identity remains `conflicted` and the profile remains `conflict_review`.
 
 ### Provenance and validation
 
