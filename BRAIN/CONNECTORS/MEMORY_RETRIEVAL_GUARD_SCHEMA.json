@@ -23,7 +23,7 @@
     "raw_content_persisted": { "const": false }
   },
   "$defs": {
-    "scope": { "enum": ["yamatani", "csea", "brower", "shaw", "hpd_cyber", "memory_architecture"] },
+    "scope": { "enum": ["yamatani", "csea", "brower", "shaw", "hpd_cyber", "memory_architecture", "actor_profile"] },
     "promoted": {
       "type": "object",
       "additionalProperties": false,
