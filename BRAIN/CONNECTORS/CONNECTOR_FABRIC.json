@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-19T17:52:41-10:00",
+  "generated_at": "2026-07-20T17:58:08-10:00",
   "scope": "CASEBRAIN connector quality, organization, bounded workers, and durable automation control plane",
   "policy": {
     "github_canonical": true,
@@ -5480,13 +5480,14 @@
       "connector_quality_score": 50,
       "data_quality_score": 0,
       "sensitivity_ceiling": "restricted",
-      "next_gate": "Generalize typed candidate normalization, integrate one actor-profile consumer, assign an owner and approved namespaces, and define deterministic write/deletion receipts.",
+      "next_gate": "Apply typed envelopes to a timeline/event consumer, approve namespaces and owner, and define deterministic write/retry/deletion receipts.",
       "evidence": [
         "Five topic-specific correction writes returned stable memory IDs and passed targeted recall read-back on 2026-07-16.",
         "Broad project recall on 2026-07-17 returned correction precedence first in 3 of 5 scopes; CSEA and Brower scopes still ranked unqualified legacy assertions first.",
         "Writes using project without containerTag reported sm_project_default; explicit containerTag equal to the target project routed writes to the requested project.",
         "A reused correction container returned unrelated topics; exact forget could not remove first-pass document chunks.",
-        "A bounded live recall from explicit sm_project_memory_master succeeded on 2026-07-19; the unstructured payload was rejected by the guard and only the pinned GitHub status pointer was promoted."
+        "A bounded live recall from explicit sm_project_memory_master succeeded on 2026-07-19; the unstructured payload was rejected by the guard and only the pinned GitHub status pointer was promoted.",
+        "A bounded live actor-container recall succeeded on 2026-07-20; typed normalization rejected the raw payload and projected only a conflicted, pointer-only GitHub actor control."
       ],
       "notion_worker": "qa_exception",
       "automation_lanes": [
@@ -5496,12 +5497,12 @@
       ],
       "approved_roots": [],
       "root_scope_state": "not_approved",
-      "last_successful_probe": "2026-07-19T17:52:41-10:00",
+      "last_successful_probe": "2026-07-20T17:58:08-10:00",
       "freshness": {
         "status": "fresh",
-        "evaluated_at": "2026-07-19T17:52:41-10:00",
+        "evaluated_at": "2026-07-20T17:58:08-10:00",
         "max_age_hours": 24,
-        "reason": "Bounded recall from explicit sm_project_memory_master returned one text block; request and response digests are preserved in the consumer receipt."
+        "reason": "Bounded recall from explicit actor container returned one text block; request and response digests are preserved without raw text."
       },
       "provenance_coverage": {
         "status": "partial",
@@ -5523,7 +5524,8 @@
         "evidence_refs": [
           "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_QUARANTINE_REGISTRY.json",
           "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_RECALL_REGRESSION_2026-07-17.json",
-          "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_ARCHITECTURE_LIVE_CONSUMER_RECEIPT_2026-07-19.json"
+          "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_ARCHITECTURE_LIVE_CONSUMER_RECEIPT_2026-07-19.json",
+          "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/ACTOR_PROFILE_LIVE_CONSUMER_RECEIPT_2026-07-20.json"
         ]
       },
       "idempotency_key_strategy": {
@@ -5534,12 +5536,12 @@
       "error_state": {
         "status": "degraded",
         "code": "MEMORY_BACKEND_UNSTRUCTURED_AND_LEGACY_GAPS",
-        "detail": "Connector output is unstructured at the consumer boundary; shared-tag leakage, default routing, exact-forget limits, and raw 3/5 correction precedence remain. The application guard prevents raw payload promotion but does not repair backend data.",
-        "observed_at": "2026-07-19T17:52:41-10:00",
-        "receipt_uri": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_ARCHITECTURE_LIVE_CONSUMER_RECEIPT_2026-07-19.json"
+        "detail": "Actor-container output is unstructured at the connector boundary. Typed envelopes and the application guard prevent raw promotion, but backend source/version/review fields and raw 3/5 correction precedence remain unresolved.",
+        "observed_at": "2026-07-20T17:58:08-10:00",
+        "receipt_uri": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/ACTOR_PROFILE_LIVE_CONSUMER_RECEIPT_2026-07-20.json"
       },
       "owner": "unassigned",
-      "next_human_gate": "Generalize typed candidate normalization, integrate one actor-profile consumer, assign an owner and approved namespaces, and define deterministic write/deletion receipts.",
+      "next_human_gate": "Apply typed envelopes to a timeline/event consumer, approve namespaces and owner, and define deterministic write/retry/deletion receipts.",
       "connector_quality_components": {
         "authentication": {
           "awarded": 15,
@@ -5557,7 +5559,7 @@
           "awarded": 15,
           "possible": 15,
           "evidence": [
-            "2026-07-19 bounded live consumer probe receipt"
+            "2026-07-20 bounded actor-profile consumer probe receipt"
           ]
         },
         "provenance_support": {
