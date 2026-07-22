@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "1FDV-23-0001009",
+  "generated_at": "2026-07-21T22:00:00Z",
+  "canonical": {
+    "github_repo": "GlacierEQ/AEON-777",
+    "github_root": "shared/casebrain/1FDV-23-0001009",
+    "notion_dashboard_id": "335b1e4f-3223-808a-ab91-f9b855614249",
+    "notion_war_room_id": "338b1e4f-3223-81ea-a0b9-d4e66fdd6069",
+    "case_execution_repo": "GlacierEQ/AspenGrove-KEKOA-1FDV-23-0001009"
+  },
+  "artifacts": [
+    {
+      "artifact_id": "actor-investigation-workbench-batch01",
+      "filename": "1FDV-23-0001009_OSINT_ACTOR_INVESTIGATION_WORKBENCH_BATCH01.xlsx",
+      "sha256": "508c6666f148ab97977467171474fc232e0a11e6671056c7ea947947b40cac7d",
+      "size_bytes": 482808,
+      "status": "active_pass_1",
+      "access_class": "restricted_casework",
+      "authoritative_content": [
+        "actor_registry",
+        "raw_lead_intake",
+        "public_record_query_plan",
+        "event_registry",
+        "actor_event_edges",
+        "relationship_edges",
+        "theory_matrix",
+        "source_log",
+        "search_run_log",
+        "osint_findings_batch01"
+      ]
+    }
+  ],
+  "notion": {
+    "pages": [
+      {
+        "role": "canonical_control_plane",
+        "id": "335b1e4f-3223-808a-ab91-f9b855614249",
+        "title": "APEX MASTER DASHBOARD — Case 1FDV-23-0001009 — KEKOA REUNIFICATION"
+      },
+      {
+        "role": "legal_war_room",
+        "id": "338b1e4f-3223-81ea-a0b9-d4e66fdd6069",
+        "title": "APEX LEGAL WAR ROOM — Case 1FDV-23-0001009"
+      },
+      {
+        "role": "case_evidence_inventory",
+        "id": "2eeb1e4f-3223-8198-9b88-d91bf2b02046",
+        "title": "CASE EVIDENCE INVENTORY - 1FDV-23-0001009"
+      },
+      {
+        "role": "connector_status",
+        "id": "11564bf7-3e90-4016-a2a9-0e37eee1cbb8",
+        "title": "Connector Status Matrix"
+      }
+    ]
+  },
+  "google_drive": {
+    "assets": [
+      {
+        "id": "1x_z1ReHZ6_f8w6NkgV5RqFVvX9S5pFMDgDphNMooDLM",
+        "title": "1FDV-23-0001009 Casebuilder Map",
+        "role": "case_map"
+      },
+      {
+        "id": "1kx6RAQI2nt9Rj4M01BH3Qc3TxbJkI4pagaMvEYViT7M",
+        "title": "1FDV-23-0001009 Response Packet Workflow",
+        "role": "packet_workflow"
+      },
+      {
+        "id": "1yoDGAnNToR87NTXLueFs1hS8dAao0DkqfPemtnereu4",
+        "title": "1FDV-23-0001009 Cite Bank",
+        "role": "authority_and_citation_bank"
+      },
+      {
+        "id": "1EZ6AjhkK13_g9Nk1uc7djkWkXZlH7gpWz-JPUb7HzTc",
+        "title": "1FDV-23-0001009 Response Packet Draft",
+        "role": "working_draft"
+      },
+      {
+        "id": "1kHeh7xzGTcRGISiscq0FDCWZzazRMD-6",
+        "title": "CASE_CONTINUITY_CAPSULE_1FDV-23-0001009.md",
+        "role": "continuity_capsule"
+      }
+    ]
+  },
+  "dropbox": {
+    "roots": [
+      {
+        "path": "/ANTIGRAVITY_MEMORY_01/ANTIGRAVITY_MEMORY_01.dbx-external-drive/Case_1FDV-23-0001009_ORGANIZED",
+        "role": "raw_forensic_mirror_candidate"
+      },
+      {
+        "path": "/Kahala Home Inspectors/00_Organized_Files/Code_and_Data/Projects/03_PROJECTS/1FDV-23-0001009",
+        "role": "legacy_project_control_root"
+      }
+    ]
+  },
+  "repositories": [
+    {
+      "repo": "GlacierEQ/AEON-777",
+      "role": "canonical_casebrain_contract_and_shared_control",
+      "default_branch": "main"
+    },
+    {
+      "repo": "GlacierEQ/AspenGrove-KEKOA-1FDV-23-0001009",
+      "role": "case_execution_and_legacy_case_material",
+      "default_branch": "main"
+    },
+    {
+      "repo": "GlacierEQ/SUPERLUMINAL_CASE_MATRIX",
+      "role": "canonical_legal_artifact_and_case_packet_spine",
+      "default_branch": "main"
+    }
+  ],
+  "control_rules": {
+    "pr_first": true,
+    "direct_main_writes": false,
+    "destructive_cloud_sync": false,
+    "protected_minor_data_in_github": false,
+    "raw_secrets_in_notion_or_github": false,
+    "source_pointer_required": true,
+    "verification_status_required": true,
+    "hash_required_for_materialized_evidence": true
+  }
+}
