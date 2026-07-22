@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "generated_at": "2026-07-22T03:55:45Z",
+  "consumer": "timeline_event_pointer",
+  "event": {
+    "event_id": "memory-architecture-control-event-2026-07-21",
+    "event_class": "control_event",
+    "evidentiary_status": "non_evidentiary",
+    "timeline_status": "pointer_only",
+    "deadline_authorized": false,
+    "legal_conclusion_authorized": false
+  },
+  "candidate_envelopes": [
+    {
+      "schema_version": "1.0.0",
+      "envelope_id": "env_timeline_live_4190a2a8fc80",
+      "connector_id": "supermemory",
+      "consumer_id": "timeline_event_pointer",
+      "scope": "timeline_event",
+      "container_tag": "sm_project_memory_master",
+      "subject_ref": "memory-architecture-control-event-2026-07-21",
+      "source": {
+        "kind": "connector_payload",
+        "locator": null,
+        "version": null,
+        "query_sha256": "8d6efae2ff79aca00c40f54f2858b15ae2d1b15bd01dccf9cdc06e4302395d57",
+        "response_sha256": "4190a2a8fc808477c03871975d849a8edb25defb36c53d137c4dcc1007e67dab",
+        "content_block_count": 1,
+        "observed_at": "2026-07-22T03:55:45Z"
+      },
+      "classification": { "record_class": "connector_payload", "claim_class": "unknown", "review_state": "unknown" },
+      "governance": { "sensitivity": "restricted", "projection_mode": "reject", "raw_content_persisted": false },
+      "provenance_ref": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "envelope_id": "env_timeline_canonical_control",
+      "connector_id": "github",
+      "consumer_id": "timeline_event_pointer",
+      "scope": "timeline_event",
+      "container_tag": "sm_project_memory_master",
+      "subject_ref": "memory-architecture-control-event-2026-07-21",
+      "source": {
+        "kind": "canonical_pointer",
+        "locator": "github://GlacierEQ/AEON-777@8e59a4f1c6854ecb50a41c79dc776268132d2aae/BRAIN/CONNECTORS/MEMORY_ARCHITECTURE_DELTA_2026-07-20.md",
+        "version": "8e59a4f1c6854ecb50a41c79dc776268132d2aae",
+        "query_sha256": null,
+        "response_sha256": null,
+        "content_block_count": null,
+        "observed_at": "2026-07-22T03:55:45Z"
+      },
+      "classification": { "record_class": "correction_overlay", "claim_class": "correction_rule", "review_state": "applied_correction" },
+      "governance": { "sensitivity": "internal", "projection_mode": "pointer_only", "raw_content_persisted": false },
+      "provenance_ref": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/TIMELINE_EVENT_LIVE_CONSUMER_RECEIPT_2026-07-21.json"
+    }
+  ],
+  "guard_receipt": {
+    "schema_version": "1.0.0",
+    "generated_at": "2026-07-22T03:55:45Z",
+    "request": { "scope": "timeline_event", "container_tag": "sm_project_memory_master" },
+    "decision": "qualified_output",
+    "promoted": [
+      {
+        "candidate_id": "mrg_timeline_canonical_control",
+        "scope": "timeline_event",
+        "semantic_key": "memory-architecture-control-event-2026-07-21_event_control",
+        "output_class": "qualified_correction_rule",
+        "source_locator": "github://GlacierEQ/AEON-777@8e59a4f1c6854ecb50a41c79dc776268132d2aae/BRAIN/CONNECTORS/MEMORY_ARCHITECTURE_DELTA_2026-07-20.md",
+        "provenance_ref": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/TIMELINE_EVENT_LIVE_CONSUMER_RECEIPT_2026-07-21.json"
+      }
+    ],
+    "rejected": [
+      { "candidate_id": "mrg_timeline_live_4190a2a8fc80", "reason": "review_state_unknown" }
+    ],
+    "raw_content_persisted": false
+  },
+  "raw_content_persisted": false
+}
