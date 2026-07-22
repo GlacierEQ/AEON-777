@@ -25,18 +25,36 @@ Protect Kekoa, restore the parent-child relationship, preserve the evidence, and
 - Every record must retain `case_id`, source pointer, verification status, claim class, hash when available, access class, and idempotency key.
 - Cloud evidence is never flattened, renamed, moved, or deleted by default. FILEBOSS operates dry-run first and produces a manifest before any mutation.
 - A failed theory closes only that theory. It does not erase the actor, source, event, or other open theories.
+- No artifact is called complete until verification, packaging, durable storage, and registry logging are all proven.
 
 ## Active work product
 
-- Artifact: `1FDV-23-0001009_OSINT_ACTOR_INVESTIGATION_WORKBENCH_BATCH01.xlsx`
-- SHA-256: `508c6666f148ab97977467171474fc232e0a11e6671056c7ea947947b40cac7d`
-- Size: `482808` bytes
-- Contents: actor registry, raw-lead intake, query plan, event registry, actor-event edges, relationship edges, theory matrix, source log, search-run log, and OSINT Batch 01 findings.
+- Artifact: `1FDV-23-0001009_OSINT_ACTOR_INVESTIGATION_WORKBENCH_BATCH01_CONTROLLED.xlsx`
+- Version: `V-004`
+- SHA-256: `bdabe5237c5ac6c80cc75b02c871888f6ac67349d3b3a6ff32816c631e4e8ee1`
+- Size: `494567` bytes
+- Closure stage: `10 / 13`
+- State: `controlled_local_canonical`
+- Cloud byte state: `blocked — Google Drive storageQuotaExceeded`
+- Actual cloud file ID: `none`
+- Contents: closure controller, artifact lineage, Drive operation ledger, actor registry, raw-lead intake, query plan, event registry, actor-event edges, relationship edges, theory matrix, source log, search-run log, and OSINT Batch 01 findings.
 
-The binary workbook remains in the controlled artifact/evidence layer. This repository stores its identity, schema, provenance, routing, and synchronization contract.
+The authoritative file hash is stored in the detached control receipt and companion `.sha256` file. It is not embedded into the workbook because embedding a final hash would change the workbook bytes and invalidate that hash.
+
+## Completion gate
+
+The artifact is locally verified and packaged, but it is not yet durably stored or cloud-verified. The remaining sequence is:
+
+1. Free Google Drive storage or select another approved writable connector.
+2. Upload the exact V-004 workbook bytes.
+3. Fetch and record cloud metadata.
+4. Download the exact cloud file.
+5. Calculate and compare SHA-256.
+6. Update GitHub, Notion, and the workbook lineage with the cloud-native ID and verified hash.
+7. Mark closure stages 11 through 13 complete.
 
 ## Files in this control root
 
 - `CONNECTOR_ALIGNMENT.yaml` — canonical role, path, status, and write-policy map.
-- `RESOURCE_REGISTRY.json` — machine-readable repository, Notion, Drive, Dropbox, and artifact pointers.
+- `RESOURCE_REGISTRY.json` — machine-readable repository, Notion, Drive, Dropbox, artifact, closure, and blocker state.
 - `SYNC_POLICY.md` — allowed flows, blocked flows, review gates, and conflict rules.
