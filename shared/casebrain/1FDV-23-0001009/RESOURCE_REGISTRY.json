@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "case_id": "1FDV-23-0001009",
-  "generated_at": "2026-07-21T22:00:00Z",
+  "generated_at": "2026-07-22T19:04:00Z",
   "canonical": {
     "github_repo": "GlacierEQ/AEON-777",
     "github_root": "shared/casebrain/1FDV-23-0001009",
@@ -11,13 +11,25 @@
   },
   "artifacts": [
     {
-      "artifact_id": "actor-investigation-workbench-batch01",
-      "filename": "1FDV-23-0001009_OSINT_ACTOR_INVESTIGATION_WORKBENCH_BATCH01.xlsx",
-      "sha256": "508c6666f148ab97977467171474fc232e0a11e6671056c7ea947947b40cac7d",
-      "size_bytes": 482808,
-      "status": "active_pass_1",
+      "artifact_id": "actor-investigation-workbench-v004",
+      "version_id": "V-004",
+      "filename": "1FDV-23-0001009_OSINT_ACTOR_INVESTIGATION_WORKBENCH_BATCH01_CONTROLLED.xlsx",
+      "sha256": "bdabe5237c5ac6c80cc75b02c871888f6ac67349d3b3a6ff32816c631e4e8ee1",
+      "size_bytes": 494567,
+      "status": "controlled_local_canonical",
+      "closure_stage": 10,
+      "required_final_stage": 13,
       "access_class": "restricted_casework",
+      "hash_storage": {
+        "embedded_in_workbook": false,
+        "receipt": "1FDV-23-0001009_WORKBOOK_CONTROL_RECEIPT.json",
+        "sha256_file": "1FDV-23-0001009_WORKBOOK_CONTROL_SHA256.txt",
+        "reason": "Embedding a final file hash changes the workbook bytes and invalidates the hash."
+      },
       "authoritative_content": [
+        "closure_control",
+        "artifact_lineage",
+        "drive_control",
         "actor_registry",
         "raw_lead_intake",
         "public_record_query_plan",
@@ -28,7 +40,22 @@
         "source_log",
         "search_run_log",
         "osint_findings_batch01"
-      ]
+      ],
+      "completion_state": {
+        "located": true,
+        "acquired": true,
+        "hashed": true,
+        "preserved": true,
+        "parsed": true,
+        "classified": true,
+        "correlated": true,
+        "drafted": true,
+        "verified": true,
+        "packaged": true,
+        "stored": false,
+        "logged": "partial",
+        "ready_for_use": false
+      }
     }
   ],
   "notion": {
@@ -56,6 +83,22 @@
     ]
   },
   "google_drive": {
+    "working_root": {
+      "id": "1Ux2wckCWsJBljUpCmac73gBN7yiIZfSx",
+      "title": "CASEBRAIN — 1FDV-23-0001009 — Working Documents"
+    },
+    "investigation_folder": {
+      "id": "1MhTWrue9G9RoJ0Y4fQvT7xZZ-5fg1V9h",
+      "title": "Investigation Workbooks"
+    },
+    "registry_pointer": {
+      "id": "17TzZx6rNflgWt06M1j-UyW4n7sX5aRUF",
+      "status": "metadata_pointer_only"
+    },
+    "actual_workbook_file_id": null,
+    "byte_upload_status": "blocked",
+    "blocker": "storageQuotaExceeded",
+    "fresh_retrieval_test": "not_possible",
     "assets": [
       {
         "id": "1x_z1ReHZ6_f8w6NkgV5RqFVvX9S5pFMDgDphNMooDLM",
@@ -113,6 +156,18 @@
       "default_branch": "main"
     }
   ],
+  "next_executable_action": {
+    "action": "upload_exact_controlled_workbook_bytes",
+    "precondition": "free Google Drive storage or select another approved writable connector",
+    "then": [
+      "fetch cloud metadata",
+      "download exact cloud file",
+      "calculate SHA-256",
+      "compare with detached local SHA-256",
+      "update GitHub and Notion registries",
+      "mark closure stages 11 through 13 complete"
+    ]
+  },
   "control_rules": {
     "pr_first": true,
     "direct_main_writes": false,
@@ -121,6 +176,7 @@
     "raw_secrets_in_notion_or_github": false,
     "source_pointer_required": true,
     "verification_status_required": true,
-    "hash_required_for_materialized_evidence": true
+    "hash_required_for_materialized_evidence": true,
+    "artifact_complete_requires_stages_9_through_12": true
   }
 }
