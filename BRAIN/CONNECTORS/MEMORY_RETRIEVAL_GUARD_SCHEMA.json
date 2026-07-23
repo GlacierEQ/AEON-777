@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:memory-retrieval-guard-receipt:1.0.0",
+  "title": "CASEBRAIN Memory Retrieval Guard Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generated_at", "request", "decision", "promoted", "rejected", "raw_content_persisted"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope", "container_tag"],
+      "properties": {
+        "scope": { "$ref": "#/$defs/scope" },
+        "container_tag": { "type": "string", "pattern": "^sm_project_[a-z0-9_-]+$" }
+      }
+    },
+    "decision": { "enum": ["qualified_output", "fail_closed"] },
+    "promoted": { "type": "array", "items": { "$ref": "#/$defs/promoted" } },
+    "rejected": { "type": "array", "items": { "$ref": "#/$defs/rejected" } },
+    "raw_content_persisted": { "const": false }
+  },
+  "$defs": {
+    "scope": { "enum": ["yamatani", "csea", "brower", "shaw", "hpd_cyber", "memory_architecture", "actor_profile", "timeline_event"] },
+    "promoted": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_id", "scope", "semantic_key", "output_class", "source_locator", "provenance_ref"],
+      "properties": {
+        "candidate_id": { "type": "string", "pattern": "^mrg_[a-z0-9_]+$" },
+        "scope": { "$ref": "#/$defs/scope" },
+        "semantic_key": { "type": "string", "minLength": 3 },
+        "output_class": { "enum": ["qualified_correction_rule", "source_linked_fact"] },
+        "source_locator": { "type": "string", "minLength": 8 },
+        "provenance_ref": { "type": "string", "minLength": 8 }
+      }
+    },
+    "rejected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_id", "reason"],
+      "properties": {
+        "candidate_id": { "type": "string", "minLength": 3 },
+        "reason": {
+          "enum": [
+            "missing_required_status_or_routing_field", "scope_mismatch", "cross_container_leakage",
+            "sealed_content_not_retrievable", "review_state_pending", "review_state_disputed",
+            "review_state_quarantined", "review_state_superseded", "review_state_unknown",
+            "missing_source_or_provenance", "invalid_correction_state", "unqualified_source_fact",
+            "record_class_not_promotable", "conflicting_verified_candidates_fail_closed",
+            "lower_precedence_qualified_candidate"
+          ]
+        }
+      }
+    }
+  }
+}

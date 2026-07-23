@@ -1,0 +1,16 @@
+{
+  "name": "casebrain-actor-registry",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Schema and semantic validation for the CASEBRAIN actor layer",
+  "scripts": {
+    "validate:schema": "ajv validate --spec=draft2020 --strict=true -c ajv-formats -s ACTOR_REGISTRY_SCHEMA.json -d ACTOR_REGISTRY.json",
+    "validate:semantic": "python3 validate_actor_registry.py",
+    "test": "npm run validate:schema && python3 validate_actor_registry.py --self-test"
+  },
+  "devDependencies": {
+    "ajv": "8.17.1",
+    "ajv-cli": "5.0.0",
+    "ajv-formats": "3.0.1"
+  }
+}

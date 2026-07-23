@@ -1,0 +1,2262 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "1FDV-23-0001009",
+  "generated_at": "2026-07-15T12:00:00-10:00",
+  "source_snapshot": {
+    "notion_actor_database": {
+      "resource_id": "notion.actor-database.012b819e",
+      "title": "CASEBRAIN actor database",
+      "uri": "https://app.notion.com/p/1f317bb4fd9e45e0a3dd5c9a64cc0e56",
+      "source_system": "notion",
+      "source_class": "working_index",
+      "authority_level": "work_product",
+      "link_status": "linked",
+      "content_hash": null,
+      "last_checked_at": "2026-07-15T12:00:00-10:00",
+      "sensitivity": "private",
+      "notes": "29-row source snapshot reviewed 2026-07-15; row-level allegations are not promoted."
+    },
+    "drive_exhibit_manifest": {
+      "resource_id": "drive.exhibit-manifest.1uC8lh2W",
+      "title": "CASEBRAIN exhibit manifest",
+      "uri": "https://docs.google.com/spreadsheets/d/1uC8lh2WtPOvogUYYq07bccS8znEfpQso6MNoTKLotiE/edit",
+      "source_system": "google_drive",
+      "source_class": "working_index",
+      "authority_level": "work_product",
+      "link_status": "linked",
+      "content_hash": null,
+      "last_checked_at": "2026-07-15T12:00:00-10:00",
+      "sensitivity": "restricted",
+      "notes": "Five populated exhibit rows observed; only some rows carried hashes."
+    },
+    "aeon_truth_contract": {
+      "resource_id": "github.aeon777.pr51",
+      "title": "AEON-777 CASEBRAIN truth contract",
+      "uri": "https://github.com/GlacierEQ/AEON-777/pull/51",
+      "source_system": "github",
+      "source_class": "system_contract",
+      "authority_level": "work_product",
+      "link_status": "linked",
+      "content_hash": null,
+      "last_checked_at": "2026-07-15T12:00:00-10:00",
+      "sensitivity": "private",
+      "notes": "Open pull request; canonical only after review and merge."
+    }
+  },
+  "policy": {
+    "github_canonical": true,
+    "notion_projection_only": true,
+    "allegations_promoted": false,
+    "verified_live_claims": false,
+    "minor_pii_allowed": false,
+    "human_review_required": true
+  },
+  "quality_summary": {
+    "source_actor_rows": 29,
+    "distinct_actor_keys": 32,
+    "rows_with_allegation_text": 26,
+    "rows_missing_review_status": 9,
+    "rows_missing_numeric_evidence_count": 25,
+    "actors_with_external_file_candidates": 19,
+    "identity_conflicts_open": 5,
+    "evidence_count_trusted": false
+  },
+  "actors": [
+    {
+      "actor_id": "actor-all-island-towing",
+      "actor_key": "all_island_towing",
+      "display_name": "All Island Towing",
+      "aliases": [],
+      "actor_type": "service_provider",
+      "case_role": "service_provider",
+      "priority": "P2",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for All Island Towing; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.towing.briefing.1orf"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.all-island-towing",
+          "title": "Notion actor row — All Island Towing",
+          "uri": "https://app.notion.com/a9df802661ab44bb890c43477f389211",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.towing.briefing.1orf",
+          "title": "Master briefing work product referencing towing",
+          "uri": "https://drive.google.com/file/d/1orf9MOcZYjqBZxGNTr5dJpsbcTlHfjo5",
+          "source_system": "google_drive",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-casey-lee-del-carpio-barton",
+      "actor_key": "casey_lee_del_carpio_barton",
+      "display_name": "Casey Lee Del Carpio Barton",
+      "aliases": [],
+      "actor_type": "person",
+      "case_role": "party_self",
+      "priority": "P0",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "shared",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Casey Lee Del Carpio Barton; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.casey.declaration.1pg2",
+            "drive.casey.service-cert.1eor"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.casey-lee-del-carpio-barton",
+          "title": "Notion actor row — Casey Lee Del Carpio Barton",
+          "uri": "https://app.notion.com/2941a906b29940a2a8167979934910c2",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.casey.declaration.1pg2",
+          "title": "Casey declaration candidate",
+          "uri": "https://docs.google.com/document/d/1pg2HqFyqIeN68UBai-dSYzvQ_c9BwOeA2De13TpBypo",
+          "source_system": "google_drive",
+          "source_class": "filing_candidate",
+          "authority_level": "primary_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        },
+        {
+          "resource_id": "drive.casey.service-cert.1eor",
+          "title": "Casey service certificate candidate",
+          "uri": "https://docs.google.com/document/d/1eorOu717rIVGINpiZWluOYjioy4HoSQUtBoslezK0eg",
+          "source_system": "google_drive",
+          "source_class": "service_record_candidate",
+          "authority_level": "primary_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-charles-brower",
+      "actor_key": "charles_brower",
+      "display_name": "Charles Brower",
+      "aliases": [],
+      "actor_type": "person",
+      "case_role": "third_party",
+      "priority": "P2",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "brower",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Charles Brower; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.charles-brower",
+          "title": "Notion actor row — Charles Brower",
+          "uri": "https://app.notion.com/498d0027d162467c9b446c64b9db2692",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-clerk-castillo",
+      "actor_key": "clerk_castillo",
+      "display_name": "Clerk Castillo",
+      "aliases": [],
+      "actor_type": "court_office",
+      "case_role": "clerk",
+      "priority": "P1",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Clerk Castillo; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.castillo.workproduct.1Hdd"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.clerk-castillo",
+          "title": "Notion actor row — Clerk Castillo",
+          "uri": "https://app.notion.com/6b8a54959dc140beae7b386657673a8b",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.castillo.workproduct.1Hdd",
+          "title": "Clerk Castillo research work product",
+          "uri": "https://drive.google.com/file/d/1Hdd7O4TLGYCo2hu4a3Ne2AaVOaHkWSY9",
+          "source_system": "google_drive",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-clerk-le",
+      "actor_key": "clerk_le",
+      "display_name": "Clerk Le",
+      "aliases": [],
+      "actor_type": "court_office",
+      "case_role": "clerk",
+      "priority": "P1",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Clerk Le; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.le.workproduct.1SjX"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.clerk-le",
+          "title": "Notion actor row — Clerk Le",
+          "uri": "https://app.notion.com/a34e92beebe44626a18058d7698afe91",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.le.workproduct.1SjX",
+          "title": "Clerk Le research work product",
+          "uri": "https://drive.google.com/file/d/1SjXlOUSSClj0q3zDUDeVGfxARGWtI-5d",
+          "source_system": "google_drive",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-csea",
+      "actor_key": "csea",
+      "display_name": "CSEA (Child Support Enforcement Agency)",
+      "aliases": [],
+      "actor_type": "government_agency",
+      "case_role": "agency",
+      "priority": "P1",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "csea",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for CSEA (Child Support Enforcement Agency); identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.csea.folder.1sHn"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.csea",
+          "title": "Notion actor row — CSEA (Child Support Enforcement Agency)",
+          "uri": "https://app.notion.com/df837977b8744ede8c572d81f3754ead",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.csea.folder.1sHn",
+          "title": "CSEA records folder index",
+          "uri": "https://drive.google.com/drive/folders/1sHnU083vocmvaTP-d750C0yqLPLpPBWM",
+          "source_system": "google_drive",
+          "source_class": "folder_index",
+          "authority_level": "unknown",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-cws",
+      "actor_key": "cws",
+      "display_name": "CWS (Child Welfare Services)",
+      "aliases": [],
+      "actor_type": "government_agency",
+      "case_role": "agency",
+      "priority": "P1",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for CWS (Child Welfare Services); identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.cws",
+          "title": "Notion actor row — CWS (Child Welfare Services)",
+          "uri": "https://app.notion.com/e26ee99e18b74ea8894b69a7cd912ca6",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-daniel-smith",
+      "actor_key": "daniel_smith",
+      "display_name": "Daniel Smith",
+      "aliases": [],
+      "actor_type": "person",
+      "case_role": "witness",
+      "priority": "P2",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Daniel Smith; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.daniel-smith",
+          "title": "Notion actor row — Daniel Smith",
+          "uri": "https://app.notion.com/120ed83cbaa64442a45a1ee333d3fb91",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-dhs",
+      "actor_key": "dhs",
+      "display_name": "DHS (Dept of Human Services)",
+      "aliases": [],
+      "actor_type": "government_agency",
+      "case_role": "agency",
+      "priority": "P1",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for DHS (Dept of Human Services); identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.dhs",
+          "title": "Notion actor row — DHS (Dept of Human Services)",
+          "uri": "https://app.notion.com/365b9e74b54541458828d4efbe8b60c4",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-doe",
+      "actor_key": "doe",
+      "display_name": "DOE (Dept of Education)",
+      "aliases": [],
+      "actor_type": "government_agency",
+      "case_role": "agency",
+      "priority": "P1",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for DOE (Dept of Education); identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.doe.related-filing.1vy0"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.doe",
+          "title": "Notion actor row — DOE (Dept of Education)",
+          "uri": "https://app.notion.com/86efc1bd09bf47c2b5d1f25f86de4d41",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.doe.related-filing.1vy0",
+          "title": "DOE-related filed statement candidate",
+          "uri": "https://drive.google.com/file/d/1vy0zc2_Ypb1D07ttrthN2E461T2rJhQa",
+          "source_system": "google_drive",
+          "source_class": "filing_candidate",
+          "authority_level": "primary_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-erik-breisacher",
+      "actor_key": "erik_breisacher",
+      "display_name": "Erik Breisacher",
+      "aliases": [],
+      "actor_type": "person",
+      "case_role": "witness",
+      "priority": "P2",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Erik Breisacher; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.erik-breisacher",
+          "title": "Notion actor row — Erik Breisacher",
+          "uri": "https://app.notion.com/477719fe3f4247378c29aa4cc83083bf",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-honolulu-police-department",
+      "actor_key": "honolulu_police_department",
+      "display_name": "Honolulu Police Department",
+      "aliases": [],
+      "actor_type": "government_agency",
+      "case_role": "witness",
+      "priority": "P1",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "hpd",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Honolulu Police Department; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.hpd.docket.1urY"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.honolulu-police-department",
+          "title": "Notion actor row — Honolulu Police Department",
+          "uri": "https://app.notion.com/86260b10fd5d44ebb15636441c428637",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.hpd.docket.1urY",
+          "title": "HPD-related docket candidate",
+          "uri": "https://drive.google.com/file/d/1urYlWZU0GXb9Xuyv5HJirOzQctWc98Cf",
+          "source_system": "google_drive",
+          "source_class": "court_record_candidate",
+          "authority_level": "official_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-judge-naso",
+      "actor_key": "judge_naso",
+      "display_name": "Judge Naso",
+      "aliases": [
+        {
+          "value": "Courtney Naso",
+          "status": "reported"
+        }
+      ],
+      "actor_type": "person",
+      "case_role": "judicial_officer",
+      "priority": "P0",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "naso",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Judge Naso; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.naso.appeal.1Vy1"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.judge-naso",
+          "title": "Notion actor row — Judge Naso",
+          "uri": "https://app.notion.com/da3e80db57064f95a11885c99031d30a",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.naso.appeal.1Vy1",
+          "title": "Appeal record candidate referencing Naso",
+          "uri": "https://drive.google.com/file/d/1Vy10fYKfvXy1TdU8--mTAUUUloFWOzLC",
+          "source_system": "google_drive",
+          "source_class": "court_record_candidate",
+          "authority_level": "official_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-judge-natasha-shaw",
+      "actor_key": "judge_natasha_shaw",
+      "display_name": "Judge Natasha Shaw",
+      "aliases": [
+        {
+          "value": "Natasha Shaw",
+          "status": "reported"
+        }
+      ],
+      "actor_type": "person",
+      "case_role": "judicial_officer",
+      "priority": "P0",
+      "profile_status": "conflict_review",
+      "identity_status": "conflicted",
+      "sensitivity": "private",
+      "container_tag": "shaw",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Judge Natasha Shaw; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.shaw.recusal.1m6D",
+            "drive.shaw.actor-workproduct.10Qo"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.judge-natasha-shaw",
+          "title": "Notion actor row — Judge Natasha Shaw",
+          "uri": "https://app.notion.com/7c75e2b65f034c7bab5db521cf2c1653",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.shaw.recusal.1m6D",
+          "title": "Recusal motion candidate",
+          "uri": "https://docs.google.com/document/d/1m6DGTtw2fZidmzacVV4KTv-m-Q2HYJfXNCmbcAfIwGE",
+          "source_system": "google_drive",
+          "source_class": "filing_candidate",
+          "authority_level": "primary_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        },
+        {
+          "resource_id": "drive.shaw.actor-workproduct.10Qo",
+          "title": "Shaw actor research work product",
+          "uri": "https://drive.google.com/file/d/10QoSYdYbiz633WChT581PQlD2lLYV6bN",
+          "source_system": "google_drive",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-judge-paul-t-murakami",
+      "actor_key": "judge_paul_t_murakami",
+      "display_name": "Judge Paul T. Murakami",
+      "aliases": [],
+      "actor_type": "person",
+      "case_role": "judicial_officer",
+      "priority": "P1",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Judge Paul T. Murakami; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.murakami.order.1uLm",
+            "drive.murakami.docket.1v-0"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.judge-paul-t-murakami",
+          "title": "Notion actor row — Judge Paul T. Murakami",
+          "uri": "https://app.notion.com/7d11ce10c5874a6fafcac5ecb0e1f79e",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.murakami.order.1uLm",
+          "title": "Murakami order candidate",
+          "uri": "https://drive.google.com/file/d/1uLmFNMrgq5w7BXIWSdSm-b_ixy1ECGgS",
+          "source_system": "google_drive",
+          "source_class": "court_record_candidate",
+          "authority_level": "official_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        },
+        {
+          "resource_id": "drive.murakami.docket.1v-0",
+          "title": "Docket record candidate referencing Murakami",
+          "uri": "https://drive.google.com/file/d/1v-0LwpPgJtiUsIVnbemz9yMV5-veETGC",
+          "source_system": "google_drive",
+          "source_class": "court_record_candidate",
+          "authority_level": "official_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-kekoa",
+      "actor_key": "kekoa",
+      "display_name": "Kekoa",
+      "aliases": [
+        {
+          "value": "Keko",
+          "status": "conflicted_not_alias"
+        }
+      ],
+      "actor_type": "protected_minor",
+      "case_role": "protected_party",
+      "priority": "P0",
+      "profile_status": "restricted_review",
+      "identity_status": "conflicted",
+      "sensitivity": "sealed",
+      "container_tag": "shared",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Kekoa; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.kekoa.school.1vpy",
+            "drive.kekoa.medical.1Apy",
+            "drive.kekoa.folder.1LEZ"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.kekoa",
+          "title": "Notion actor row — Kekoa",
+          "uri": "https://app.notion.com/4d779e23a8f940dda363bab661486775",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "sealed",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.kekoa.school.1vpy",
+          "title": "School report candidate",
+          "uri": "https://drive.google.com/file/d/1vpyYtdLI9BiHy95UmLBkLktpp_C2hkKt",
+          "source_system": "google_drive",
+          "source_class": "restricted_record_candidate",
+          "authority_level": "primary_candidate",
+          "link_status": "restricted",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "sealed",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        },
+        {
+          "resource_id": "drive.kekoa.medical.1Apy",
+          "title": "Medical record candidate",
+          "uri": "https://drive.google.com/file/d/1ApyWPG6RQiNty67rfvn8GUaRqF6igqIJ",
+          "source_system": "google_drive",
+          "source_class": "restricted_record_candidate",
+          "authority_level": "primary_candidate",
+          "link_status": "restricted",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "sealed",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        },
+        {
+          "resource_id": "drive.kekoa.folder.1LEZ",
+          "title": "Protected-minor folder index",
+          "uri": "https://drive.google.com/drive/folders/1LEZav_muVWtU970zS85jOe60ylwcH1nZ",
+          "source_system": "google_drive",
+          "source_class": "folder_index",
+          "authority_level": "unknown",
+          "link_status": "restricted",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "sealed",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-kids-first-hawaii",
+      "actor_key": "kids_first_hawaii",
+      "display_name": "Kids First Hawaii",
+      "aliases": [],
+      "actor_type": "service_provider",
+      "case_role": "service_provider",
+      "priority": "P1",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Kids First Hawaii; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.kidsfirst.exhibit.1-qW"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.kids-first-hawaii",
+          "title": "Notion actor row — Kids First Hawaii",
+          "uri": "https://app.notion.com/ed6d05090bf9497890b9c99185628679",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.kidsfirst.exhibit.1-qW",
+          "title": "Kids First exhibit-list candidate",
+          "uri": "https://drive.google.com/file/d/1-qWcB4KK2r096fTRrTOob8CBnDqPaYNf",
+          "source_system": "google_drive",
+          "source_class": "court_record_candidate",
+          "authority_level": "official_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-micky-yamatani-esq",
+      "actor_key": "micky_yamatani_esq",
+      "display_name": "Micky Yamatani, Esq. (aka Michelle Schatz)",
+      "aliases": [
+        {
+          "value": "Micky Yamatani",
+          "status": "reported"
+        },
+        {
+          "value": "Miki Yamatani",
+          "status": "spelling_variant"
+        },
+        {
+          "value": "Michelle Schatz",
+          "status": "reported"
+        }
+      ],
+      "actor_type": "person",
+      "case_role": "counsel",
+      "priority": "P0",
+      "profile_status": "conflict_review",
+      "identity_status": "conflicted",
+      "sensitivity": "private",
+      "container_tag": "yamatani",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Micky Yamatani, Esq. (aka Michelle Schatz); identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.yamatani.2024.1qlZ",
+            "drive.yamatani.2023.1s4N"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.micky-yamatani-esq",
+          "title": "Notion actor row — Micky Yamatani, Esq. (aka Michelle Schatz)",
+          "uri": "https://app.notion.com/b04c894b90b24c1f88fb8bfa26d5c162",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.yamatani.2024.1qlZ",
+          "title": "2024 Yamatani record candidate",
+          "uri": "https://drive.google.com/file/d/1qlZ0TVzpYbVtBtOnAwaTyTbs1omktoFL",
+          "source_system": "google_drive",
+          "source_class": "court_record_candidate",
+          "authority_level": "official_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        },
+        {
+          "resource_id": "drive.yamatani.2023.1s4N",
+          "title": "2023 Yamatani record candidate",
+          "uri": "https://drive.google.com/file/d/1s4NyxyWjC2lg4Kf_Iv24gCHDC6MuO0dg",
+          "source_system": "google_drive",
+          "source_class": "court_record_candidate",
+          "authority_level": "official_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-nainoa-martin",
+      "actor_key": "nainoa_martin",
+      "display_name": "Nainoa Martin",
+      "aliases": [],
+      "actor_type": "person",
+      "case_role": "adverse_party",
+      "priority": "P2",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Nainoa Martin; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.nainoa-martin",
+          "title": "Notion actor row — Nainoa Martin",
+          "uri": "https://app.notion.com/2879c4f30ec245dfad5211719bcbaf0b",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-our-family-wizard",
+      "actor_key": "our_family_wizard",
+      "display_name": "Our Family Wizard",
+      "aliases": [],
+      "actor_type": "service_provider",
+      "case_role": "service_provider",
+      "priority": "P1",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Our Family Wizard; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.ofw.docket.1v-0"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.our-family-wizard",
+          "title": "Notion actor row — Our Family Wizard",
+          "uri": "https://app.notion.com/34a39799613c471a8c5c5838187b8055",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.ofw.docket.1v-0",
+          "title": "OFW-related docket candidate",
+          "uri": "https://drive.google.com/file/d/1v-0LwpPgJtiUsIVnbemz9yMV5-veETGC",
+          "source_system": "google_drive",
+          "source_class": "court_record_candidate",
+          "authority_level": "official_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-pact",
+      "actor_key": "pact",
+      "display_name": "PACT (Parents And Children Together)",
+      "aliases": [],
+      "actor_type": "service_provider",
+      "case_role": "service_provider",
+      "priority": "P1",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for PACT (Parents And Children Together); identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.pact.subpoena.1B2x",
+            "drive.pact.visitation.1yyE"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.pact",
+          "title": "Notion actor row — PACT (Parents And Children Together)",
+          "uri": "https://app.notion.com/a6295e2fe89f49b5859882e5fdf26e12",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.pact.subpoena.1B2x",
+          "title": "PACT subpoena response candidate",
+          "uri": "https://drive.google.com/file/d/1B2xGvSM-lliUTm7hhmzjhACsOZcAhXFt",
+          "source_system": "google_drive",
+          "source_class": "official_record_candidate",
+          "authority_level": "official_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        },
+        {
+          "resource_id": "drive.pact.visitation.1yyE",
+          "title": "PACT visitation records candidate",
+          "uri": "https://drive.google.com/file/d/1yyE8Leaox98xXCDmegGM9nVH5OCYrCjW",
+          "source_system": "google_drive",
+          "source_class": "service_record_candidate",
+          "authority_level": "primary_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-robert-schatz",
+      "actor_key": "robert_schatz",
+      "display_name": "Robert Schatz",
+      "aliases": [],
+      "actor_type": "person",
+      "case_role": "third_party",
+      "priority": "P2",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "yamatani",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Robert Schatz; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.robert-schatz",
+          "title": "Notion actor row — Robert Schatz",
+          "uri": "https://app.notion.com/8140704d89274c1aa38fb2907d3414c0",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-ryan-schatz",
+      "actor_key": "ryan_schatz",
+      "display_name": "Ryan Schatz",
+      "aliases": [],
+      "actor_type": "person",
+      "case_role": "third_party",
+      "priority": "P2",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "yamatani",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Ryan Schatz; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.ryan-schatz",
+          "title": "Notion actor row — Ryan Schatz",
+          "uri": "https://app.notion.com/6762f3352f3d4a3290e2426b2de8ca20",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-scot-brower-esq",
+      "actor_key": "scot_brower_esq",
+      "display_name": "Scot Brower, Esq.",
+      "aliases": [
+        {
+          "value": "Scot Brower",
+          "status": "reported"
+        }
+      ],
+      "actor_type": "person",
+      "case_role": "counsel",
+      "priority": "P0",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "brower",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Scot Brower, Esq.; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.brower.background.1Ja9"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.scot-brower-esq",
+          "title": "Notion actor row — Scot Brower, Esq.",
+          "uri": "https://app.notion.com/85ad9d37c524493d82f25f2b8046e858",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.brower.background.1Ja9",
+          "title": "Counsel background report candidate",
+          "uri": "https://drive.google.com/file/d/1Ja9UGNt2_NOWvjPO-UNohvhR0JTodpQY",
+          "source_system": "google_drive",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-snap",
+      "actor_key": "snap",
+      "display_name": "SNAP (Food Assistance Program)",
+      "aliases": [],
+      "actor_type": "government_agency",
+      "case_role": "agency",
+      "priority": "P2",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for SNAP (Food Assistance Program); identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.snap",
+          "title": "Notion actor row — SNAP (Food Assistance Program)",
+          "uri": "https://app.notion.com/3f2861b6df8f4c58aec3b9373f4cb267",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-teresa-del-carpio-barton",
+      "actor_key": "teresa_del_carpio_barton",
+      "display_name": "Teresa Del Carpio Barton",
+      "aliases": [],
+      "actor_type": "person",
+      "case_role": "adverse_party",
+      "priority": "P0",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "shared",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Teresa Del Carpio Barton; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.teresa.ie.1vy0",
+            "drive.teresa.docket129.1_31"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.teresa-del-carpio-barton",
+          "title": "Notion actor row — Teresa Del Carpio Barton",
+          "uri": "https://app.notion.com/f6e34869861f4b16ae6943f38c261360",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.teresa.ie.1vy0",
+          "title": "Filed income and expense statement candidate",
+          "uri": "https://drive.google.com/file/d/1vy0zc2_Ypb1D07ttrthN2E461T2rJhQa",
+          "source_system": "google_drive",
+          "source_class": "filing_candidate",
+          "authority_level": "primary_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        },
+        {
+          "resource_id": "drive.teresa.docket129.1_31",
+          "title": "Docket 129 candidate",
+          "uri": "https://drive.google.com/file/d/1_31zKzoPIFxHv8-wmYEuePszr7Wt-m5S",
+          "source_system": "google_drive",
+          "source_class": "court_record_candidate",
+          "authority_level": "official_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-ui",
+      "actor_key": "ui",
+      "display_name": "UI (Unemployment Insurance)",
+      "aliases": [],
+      "actor_type": "government_agency",
+      "case_role": "agency",
+      "priority": "P2",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for UI (Unemployment Insurance); identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.ui",
+          "title": "Notion actor row — UI (Unemployment Insurance)",
+          "uri": "https://app.notion.com/fa36c3cc6e074ab2a6381d9dd51e4188",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-usaa",
+      "actor_key": "usaa",
+      "display_name": "USAA",
+      "aliases": [],
+      "actor_type": "financial_institution",
+      "case_role": "unknown",
+      "priority": "P2",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for USAA; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "One or more external file candidates are linked. Their contents have not been authenticated, normalized, hashed, or accepted as verified claims in this actor layer.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.usaa.asset-statement.1lnv"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.usaa",
+          "title": "Notion actor row — USAA",
+          "uri": "https://app.notion.com/0a620d89b47a4565b78ffad09cf8b1ab",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        },
+        {
+          "resource_id": "drive.usaa.asset-statement.1lnv",
+          "title": "Asset statement candidate referencing USAA",
+          "uri": "https://drive.google.com/file/d/1lnvqqLFZcqR3KSUeNcR3-sSDFIMzSkTp",
+          "source_system": "google_drive",
+          "source_class": "evidence_candidate",
+          "authority_level": "primary_candidate",
+          "link_status": "candidate",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Candidate pointer only; authenticate, hash, and review before evidentiary use."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?",
+        "Which linked candidate files can be exported, hashed, authenticated, and tied to a dated event?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-yamamoto",
+      "actor_key": "yamamoto",
+      "display_name": "Yamamoto",
+      "aliases": [],
+      "actor_type": "person",
+      "case_role": "third_party",
+      "priority": "P2",
+      "profile_status": "source_linked",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "A work-product actor row exists for Yamamoto; identity, role, and substantive assertions require source-level review.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        },
+        {
+          "text": "The source row contains allegation text. This registry deliberately records only its presence and does not promote the allegation into a fact.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.actor-database.012b819e"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.actor-row.yamamoto",
+          "title": "Notion actor row — Yamamoto",
+          "uri": "https://app.notion.com/65a0346b47f042bc9426d1a9cbfefffa",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Index row is work product and may contain allegations; it is not an authenticated evidentiary record."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Which primary or official record confirms this actor's exact identity and case role?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-kyle-dowd",
+      "actor_key": "kyle_dowd",
+      "display_name": "Kyle Dowd",
+      "aliases": [],
+      "actor_type": "person",
+      "case_role": "unknown",
+      "priority": "P1",
+      "profile_status": "source_pending",
+      "identity_status": "unverified",
+      "sensitivity": "private",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "Kyle Dowd is named in the CASEBRAIN Fact Sheets Lane 005 index but has no row in the reviewed 29-row actor database. The profile is preserved as source-pending until a direct fact sheet and primary role source are linked.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.fact-sheets-lane.005"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.fact-sheets-lane.005",
+          "title": "CASEBRAIN Fact Sheets Lane 005",
+          "uri": "https://app.notion.com/p/392b1e4f3223819cb937c12991f948f7",
+          "source_system": "notion",
+          "source_class": "working_index",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "The lane names a Kyle Dowd fact sheet, but a direct fact-sheet page and authoritative role source were not resolved in this pass."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "What is Kyle Dowd's exact case role?",
+        "Which direct fact sheet, filed record, or authenticated source confirms identity and relevance?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-kristin-yamatani-candidate",
+      "actor_key": "kristin_yamatani_candidate",
+      "display_name": "Kristin Yamatani (unresolved identity candidate)",
+      "aliases": [],
+      "actor_type": "person",
+      "case_role": "unknown",
+      "priority": "P0",
+      "profile_status": "conflict_review",
+      "identity_status": "conflicted",
+      "sensitivity": "private",
+      "container_tag": "yamatani",
+      "known_context": [
+        {
+          "text": "A legacy CASEBRAIN/actor-registry reference used the name Kristin Yamatani. It is preserved as a separate candidate and must not be merged with Micky/Miki Yamatani or Michelle Schatz without primary identification evidence.",
+          "claim_class": "system_state",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "notion.legacy-actor-registry"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "notion.legacy-actor-registry",
+          "title": "Legacy CASEBRAIN actor registry",
+          "uri": "https://app.notion.com/p/b3ae8e8f41f941f58355eb95e058d4da",
+          "source_system": "notion",
+          "source_class": "work_product",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": null,
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "private",
+          "notes": "Legacy work-product label preserved only to prevent a silent identity merge."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Does any filed appearance, bar record, or court document identify Kristin Yamatani in case 1FDV-23-0001009?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    },
+    {
+      "actor_id": "actor-unknown-scheduling-clerk",
+      "actor_key": "unknown_scheduling_clerk",
+      "display_name": "Unknown scheduling clerk (EX-0005 voice)",
+      "aliases": [],
+      "actor_type": "court_office",
+      "case_role": "clerk",
+      "priority": "P1",
+      "profile_status": "conflict_review",
+      "identity_status": "unverified",
+      "sensitivity": "restricted",
+      "container_tag": "other",
+      "known_context": [
+        {
+          "text": "EX-0005 is described as a phone-call transcript involving a scheduling clerk. The speaker's identity and the original audio remain unverified.",
+          "claim_class": "procedural_record",
+          "verification_status": "pending_review",
+          "source_ids": [
+            "drive.exhibit-manifest.ex0005"
+          ]
+        }
+      ],
+      "source_links": [
+        {
+          "resource_id": "drive.exhibit-manifest.ex0005",
+          "title": "Exhibit manifest row EX-0005",
+          "uri": "https://docs.google.com/spreadsheets/d/1uC8lh2WtPOvogUYYq07bccS8znEfpQso6MNoTKLotiE/edit",
+          "source_system": "google_drive",
+          "source_class": "working_index",
+          "authority_level": "work_product",
+          "link_status": "linked",
+          "content_hash": "cc1ddc7a6d8f7e0e8811c398e27454369933522edf6ab7b1222785bec92893d3",
+          "last_checked_at": "2026-07-15T12:00:00-10:00",
+          "sensitivity": "restricted",
+          "notes": "Hash is labeled as stored transcript text. Original audio, call log, speaker identity, and a byte-stream explanation for the second observed hash remain outstanding."
+        }
+      ],
+      "relationships": [],
+      "open_questions": [
+        "Can the original audio, call log, and speaker identity be authenticated?",
+        "Why does the normalized-transcript index show a different hash from the stored-text manifest row?"
+      ],
+      "last_reviewed_at": "2026-07-15T12:00:00-10:00"
+    }
+  ],
+  "identity_conflicts": [
+    {
+      "conflict_id": "conflict-shaw-role",
+      "actor_ids": [
+        "actor-judge-natasha-shaw"
+      ],
+      "conflict_type": "role",
+      "description": "Source labels differ between Judge and Magistrate. Preserve both labels as an unresolved role conflict until an official assignment record is linked.",
+      "resolution_status": "open",
+      "source_ids": [
+        "notion.actor-row.judge-natasha-shaw",
+        "drive.shaw.recusal.1m6D"
+      ]
+    },
+    {
+      "conflict_id": "conflict-yamatani-identity",
+      "actor_ids": [
+        "actor-micky-yamatani-esq",
+        "actor-kristin-yamatani-candidate"
+      ],
+      "conflict_type": "identity_merge",
+      "description": "Micky/Miki Yamatani, Michelle Schatz, and Kristin Yamatani appear in work-product sources. The registry forbids automatic merging until filed appearances or authoritative identity records resolve the names.",
+      "resolution_status": "open",
+      "source_ids": [
+        "notion.actor-row.micky-yamatani-esq",
+        "notion.legacy-actor-registry"
+      ]
+    },
+    {
+      "conflict_id": "conflict-child-name-spelling",
+      "actor_ids": [
+        "actor-kekoa"
+      ],
+      "conflict_type": "spelling",
+      "description": "Work-product sources contain Kekoa and Keko. No alias is accepted as verified; the protected-minor profile remains sealed and conflict-marked.",
+      "resolution_status": "open",
+      "source_ids": [
+        "notion.actor-row.kekoa",
+        "drive.kekoa.folder.1LEZ"
+      ]
+    },
+    {
+      "conflict_id": "conflict-judicial-assignment",
+      "actor_ids": [
+        "actor-judge-natasha-shaw",
+        "actor-judge-naso"
+      ],
+      "conflict_type": "role",
+      "description": "Preparation materials use inconsistent judicial-assignment labels. A dated official docket or assignment order is required before assigning event authority.",
+      "resolution_status": "open",
+      "source_ids": [
+        "drive.shaw.recusal.1m6D",
+        "drive.naso.appeal.1Vy1"
+      ]
+    },
+    {
+      "conflict_id": "conflict-ex0005-hash-meaning",
+      "actor_ids": [
+        "actor-unknown-scheduling-clerk"
+      ],
+      "conflict_type": "source_authority",
+      "description": "The exhibit index and manifest expose different SHA-256 values apparently tied to normalized-transcript and stored-text byte streams. The byte-stream distinction must be documented; neither hash authenticates the original call.",
+      "resolution_status": "open",
+      "source_ids": [
+        "drive.exhibit-manifest.ex0005",
+        "drive.exhibit-manifest.1uC8lh2W"
+      ]
+    }
+  ]
+}

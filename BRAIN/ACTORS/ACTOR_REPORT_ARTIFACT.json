@@ -1,0 +1,1795 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "CASEBRAIN Actor + Connector Quality Report",
+    "description": "Source-linked actor quality, connector health, bounded Notion workers, document organization gates, and durable automation controls.",
+    "generatedAt": "2026-07-15T13:05:00-10:00",
+    "sources": [
+      {
+        "id": "metrics-snapshot",
+        "label": "CASEBRAIN actor registry metrics snapshot",
+        "href": "https://github.com/GlacierEQ/AEON-777/pull/52",
+        "path": "BRAIN/ACTORS/ACTOR_REGISTRY.json",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT\n  32 AS canonical_actors,\n  29 AS source_actor_rows,\n  19 AS actors_with_external_files,\n  19.0/32.0 AS external_file_coverage,\n  5 AS open_conflicts,\n  0 AS verified_identities,\n  26 AS rows_with_allegation_text,\n  25 AS rows_missing_evidence_count,\n  9 AS rows_missing_review_status;",
+          "description": "Reproduces headline counts from the validated 2026-07-15 actor registry and its 29-row Notion source audit.",
+          "executed_at": "2026-07-15T12:00:00-10:00",
+          "filters": [
+            "case_id = 1FDV-23-0001009",
+            "frozen snapshot = 2026-07-15"
+          ],
+          "metric_definitions": [
+            "Canonical actors = distinct actor_key count in the registry.",
+            "External file coverage = actors with at least one Google Drive source pointer / canonical actors.",
+            "Open conflicts = conflict records with resolution_status = open.",
+            "Rows with allegation text exclude Key Allegations values beginning with N/A."
+          ],
+          "tables_used": [
+            "BRAIN/ACTORS/ACTOR_REGISTRY.json",
+            "Notion actor database snapshot"
+          ]
+        }
+      },
+      {
+        "id": "quality-snapshot",
+        "label": "CASEBRAIN actor source-quality snapshot",
+        "href": "https://github.com/GlacierEQ/AEON-777/pull/52",
+        "path": "BRAIN/ACTORS/ACTOR_DATA_QUALITY_REPORT_2026-07-15.md",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "WITH reviewed_quality AS (\n  SELECT * FROM (VALUES\n    ('Source actor rows', 29, 29, 1.0, 'source rows', 'mapped', 1),\n    ('Canonical actor entries', 32, 32, 1.0, 'actor entries', 'structured', 2),\n    ('Rows with allegation text', 26, 29, 26.0/29.0, 'source rows', 'not promoted', 3),\n    ('Rows missing evidence count', 25, 29, 25.0/29.0, 'source rows', 'quality gap', 4),\n    ('Actors with file candidates', 19, 32, 19.0/32.0, 'actor entries', 'candidate linked', 5),\n    ('Rows missing review status', 9, 29, 9.0/29.0, 'source rows', 'quality gap', 6),\n    ('Open conflicts', 5, 32, 5.0/32.0, 'conflict records', 'open', 7),\n    ('Verified identities', 0, 32, 0.0, 'actor entries', 'deliberate control', 8)\n  ) AS t(measure, count, denominator, rate, grain, status, priority)\n)\nSELECT * FROM reviewed_quality ORDER BY priority;",
+          "description": "Reproduces the reviewed source-quality bar dataset with explicit grain and denominator.",
+          "executed_at": "2026-07-15T12:00:00-10:00",
+          "filters": [
+            "case_id = 1FDV-23-0001009",
+            "frozen snapshot = 2026-07-15"
+          ],
+          "metric_definitions": [
+            "Rate = count / denominator within each labeled grain.",
+            "Counts from source rows use denominator 29; actor-entry counts use denominator 32."
+          ],
+          "tables_used": [
+            "BRAIN/ACTORS/ACTOR_REGISTRY.json",
+            "BRAIN/ACTORS/ACTOR_DATA_QUALITY_REPORT_2026-07-15.md"
+          ]
+        }
+      },
+      {
+        "id": "conflict-snapshot",
+        "label": "CASEBRAIN open conflict queue",
+        "href": "https://github.com/GlacierEQ/AEON-777/pull/52",
+        "path": "BRAIN/ACTORS/ACTOR_REGISTRY.json",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT * FROM (VALUES\n  (1, 'P0', 'Yamatani identity', 'Micky/Miki Yamatani; Michelle Schatz; Kristin Yamatani candidate', 'Compare filed appearances and authoritative identity records', 'Open'),\n  (2, 'P0', 'Shaw role label', 'Judge Natasha Shaw', 'Obtain dated official assignment record', 'Open'),\n  (3, 'P0', 'Judicial assignment', 'Shaw; Naso', 'Reconcile against dated docket or assignment order', 'Open'),\n  (4, 'P0', 'Protected-minor spelling', 'Kekoa / Keko', 'Keep sealed; resolve from authoritative case record', 'Open'),\n  (5, 'P1', 'EX-0005 hash meaning', 'Unknown scheduling clerk / transcript', 'Document byte streams; obtain original audio and call log', 'Open')\n) AS t(rank, priority, conflict, actors, control, status)\nORDER BY rank;",
+          "description": "Reproduces the five open conflict records and their required resolution controls.",
+          "executed_at": "2026-07-15T12:00:00-10:00",
+          "filters": [
+            "resolution_status = open",
+            "frozen snapshot = 2026-07-15"
+          ],
+          "metric_definitions": [
+            "Rank is a review order, not a legal severity score."
+          ],
+          "tables_used": [
+            "BRAIN/ACTORS/ACTOR_REGISTRY.json"
+          ]
+        }
+      },
+      {
+        "id": "notion-actor-source",
+        "label": "Notion CASEBRAIN actor database",
+        "href": "https://app.notion.com/p/1f317bb4fd9e45e0a3dd5c9a64cc0e56",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT 29 AS source_actor_rows, 26 AS rows_with_allegation_text, 25 AS rows_missing_numeric_evidence_count, 9 AS rows_missing_review_status;",
+          "description": "Aggregate-only projection of the 29-row Notion work-product snapshot; allegation prose is excluded.",
+          "executed_at": "2026-07-15T12:00:00-10:00",
+          "filters": [
+            "all returned rows",
+            "no allegation text exposed"
+          ],
+          "metric_definitions": [
+            "Rows containing allegation text exclude Key Allegations values beginning with N/A."
+          ],
+          "tables_used": [
+            "collection://012b819e-90d5-4814-9878-3d19d8000369"
+          ]
+        }
+      },
+      {
+        "id": "drive-exhibit-manifest",
+        "label": "Google Drive CASEBRAIN exhibit manifest",
+        "href": "https://docs.google.com/spreadsheets/d/1uC8lh2WtPOvogUYYq07bccS8znEfpQso6MNoTKLotiE/edit",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT 5 AS populated_manifest_rows, 3 AS rows_with_sha256, 2 AS rows_without_sha256;",
+          "description": "Aggregate-only projection of the five populated exhibit-manifest rows.",
+          "executed_at": "2026-07-15T12:00:00-10:00",
+          "filters": [
+            "populated rows only"
+          ],
+          "metric_definitions": [
+            "A stored-text hash does not authenticate original audio or other source bytes."
+          ],
+          "tables_used": [
+            "CASEBRAIN exhibit manifest sheet"
+          ]
+        }
+      },
+      {
+        "id": "connector-fabric-registry",
+        "label": "CASEBRAIN connector fabric registry and quality controls",
+        "href": "https://github.com/GlacierEQ/AEON-777/pull/52",
+        "path": "BRAIN/CONNECTORS/CONNECTOR_FABRIC.json",
+        "query": {
+          "engine": "duckdb",
+          "language": "sql",
+          "sql": "SELECT c.connector_id, c.display_name, c.category, c.observed_state, c.auth_state, c.allocated_role, c.access_mode, c.approved_root, c.connector_quality_score, c.data_quality_score, c.sensitivity_ceiling, c.next_gate, c.notion_worker FROM read_json_auto('BRAIN/CONNECTORS/CONNECTOR_FABRIC.json') AS r, UNNEST(r.connectors) AS t(c) ORDER BY c.connector_id;",
+          "description": "Reads the canonical connector registry, roles, separate quality scores, and next human gates.",
+          "executed_at": "2026-07-15T13:05:00-10:00",
+          "filters": [
+            "metadata and health probes only",
+            "no source bodies bulk-read",
+            "no autonomous uploads, moves, deletes, messages, shares, schema changes, or deployments"
+          ],
+          "metric_definitions": [
+            "Connector quality score: authentication 15, scoped access 15, freshness 15, provenance 20, idempotency/retry safety 10, sensitivity controls 15, observable receipts 10.",
+            "Data quality is a separate 0–100 control score across completeness, uniqueness, validity, consistency, lineage, timeliness, and duplicate risk.",
+            "Unknown fields score zero."
+          ],
+          "tables_used": [
+            "BRAIN/CONNECTORS/CONNECTOR_FABRIC.json",
+            "BRAIN/CONNECTORS/CONNECTOR_FABRIC_REPORT_2026-07-15.md"
+          ]
+        }
+      }
+    ],
+    "cards": [
+      {
+        "id": "card-actors",
+        "dataset": "metrics",
+        "sourceId": "metrics-snapshot",
+        "description": "Stable actor entries, including unresolved candidates kept separate.",
+        "metrics": [
+          {
+            "label": "Actor entries",
+            "field": "canonical_actors",
+            "format": "number"
+          },
+          {
+            "label": "Source rows",
+            "field": "source_actor_rows",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "card-files",
+        "dataset": "metrics",
+        "sourceId": "metrics-snapshot",
+        "description": "Share of actor entries with at least one external Google Drive candidate pointer.",
+        "metrics": [
+          {
+            "label": "File coverage",
+            "field": "external_file_coverage",
+            "format": "percent"
+          },
+          {
+            "label": "Actors linked",
+            "field": "actors_with_external_files",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "card-conflicts",
+        "dataset": "metrics",
+        "sourceId": "metrics-snapshot",
+        "description": "Identity, role, assignment, spelling, or source-authority conflicts still open.",
+        "metrics": [
+          {
+            "label": "Open conflicts",
+            "field": "open_conflicts",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "card-verified",
+        "dataset": "metrics",
+        "sourceId": "metrics-snapshot",
+        "description": "Deliberate control: identity remains unverified until a hashed primary or official source is attached.",
+        "metrics": [
+          {
+            "label": "Verified identities",
+            "field": "verified_identities",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "chart-quality-counts",
+        "title": "Actor source-quality counts",
+        "subtitle": "Counts span two labeled grains—29 source rows and 32 actor entries; use the denominator and rate in the source detail.",
+        "type": "bar",
+        "dataset": "quality",
+        "sourceId": "quality-snapshot",
+        "encodings": {
+          "x": {
+            "field": "measure",
+            "type": "nominal",
+            "label": "Quality measure"
+          },
+          "y": {
+            "field": "count",
+            "type": "quantitative",
+            "label": "Count",
+            "format": "number"
+          },
+          "tooltip": [
+            {
+              "field": "denominator",
+              "type": "quantitative",
+              "label": "Denominator"
+            },
+            {
+              "field": "rate",
+              "type": "quantitative",
+              "label": "Rate",
+              "format": "percent"
+            },
+            {
+              "field": "grain",
+              "type": "text",
+              "label": "Grain"
+            },
+            {
+              "field": "status",
+              "type": "text",
+              "label": "Status"
+            },
+            {
+              "field": "note",
+              "type": "text",
+              "label": "Interpretation"
+            }
+          ]
+        },
+        "valueFormat": "number",
+        "layout": "full",
+        "maxRows": 20
+      },
+      {
+        "id": "chart-connector-state-counts",
+        "title": "Connector classes by observed state",
+        "subtitle": "Most requested connectors are intentionally unassessed or restricted until authentication, approved roots, and quality gates are evidenced.",
+        "type": "bar",
+        "dataset": "connector_state_summary",
+        "sourceId": "connector-fabric-registry",
+        "encodings": {
+          "x": {
+            "field": "state",
+            "type": "nominal",
+            "label": "Observed state"
+          },
+          "y": {
+            "field": "count",
+            "type": "quantitative",
+            "label": "Connector classes",
+            "format": "number"
+          },
+          "tooltip": [
+            {
+              "field": "state",
+              "type": "text",
+              "label": "State"
+            },
+            {
+              "field": "count",
+              "type": "quantitative",
+              "label": "Count"
+            }
+          ]
+        },
+        "valueFormat": "number",
+        "layout": "full",
+        "maxRows": 10
+      }
+    ],
+    "tables": [
+      {
+        "id": "table-conflicts",
+        "title": "Open actor and source conflicts",
+        "subtitle": "No conflict is resolved by name normalization alone.",
+        "dataset": "conflicts",
+        "sourceId": "conflict-snapshot",
+        "layout": "full",
+        "density": "spacious",
+        "defaultSort": {
+          "field": "rank",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "rank",
+            "label": "Order",
+            "format": "number"
+          },
+          {
+            "field": "priority",
+            "label": "Priority",
+            "type": "text"
+          },
+          {
+            "field": "conflict",
+            "label": "Conflict",
+            "type": "text"
+          },
+          {
+            "field": "actors",
+            "label": "Affected actor(s)",
+            "type": "text"
+          },
+          {
+            "field": "control",
+            "label": "Required control",
+            "type": "text"
+          },
+          {
+            "field": "status",
+            "label": "Status",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "table-connector-allocation",
+        "title": "Connector fabric quality and allocation",
+        "subtitle": "Forty-eight requested connector classes with observed state, bounded role, separate quality scores, and the next human gate.",
+        "dataset": "connector_allocation",
+        "sourceId": "connector-fabric-registry",
+        "layout": "full",
+        "density": "compact",
+        "defaultSort": {
+          "field": "connector_quality_score",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "system",
+            "label": "Connector",
+            "type": "text"
+          },
+          {
+            "field": "current_state",
+            "label": "Observed state",
+            "type": "text"
+          },
+          {
+            "field": "allocated_role",
+            "label": "Role",
+            "type": "text"
+          },
+          {
+            "field": "access_policy",
+            "label": "Access",
+            "type": "text"
+          },
+          {
+            "field": "approved_root",
+            "label": "Approved root",
+            "type": "text"
+          },
+          {
+            "field": "connector_quality_score",
+            "label": "Connector quality",
+            "format": "number"
+          },
+          {
+            "field": "data_quality_score",
+            "label": "Data quality",
+            "format": "number"
+          },
+          {
+            "field": "next_gate",
+            "label": "Next gate",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "table-notion-workers",
+        "title": "Bounded Notion workers",
+        "subtitle": "Control-layer responsibilities remain proposal-only or control-receipt-only.",
+        "dataset": "notion_workers",
+        "sourceId": "connector-fabric-registry",
+        "layout": "full",
+        "density": "spacious",
+        "defaultSort": {
+          "field": "order",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "order",
+            "label": "Order",
+            "format": "number"
+          },
+          {
+            "field": "worker",
+            "label": "Worker",
+            "type": "text"
+          },
+          {
+            "field": "mode",
+            "label": "Mode",
+            "type": "text"
+          },
+          {
+            "field": "writes_policy",
+            "label": "Write policy",
+            "type": "text"
+          },
+          {
+            "field": "output",
+            "label": "Bounded output",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "table-automation-lanes",
+        "title": "Enriched durable automation lanes",
+        "subtitle": "All five active task slots were strengthened in place to avoid duplicate automation sprawl.",
+        "dataset": "automation_lanes",
+        "sourceId": "connector-fabric-registry",
+        "layout": "full",
+        "density": "compact",
+        "defaultSort": {
+          "field": "order",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "order",
+            "label": "Order",
+            "format": "number"
+          },
+          {
+            "field": "title",
+            "label": "Automation",
+            "type": "text"
+          },
+          {
+            "field": "state",
+            "label": "State",
+            "type": "text"
+          },
+          {
+            "field": "cadence",
+            "label": "Cadence",
+            "type": "text"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# CASEBRAIN Actor + Connector Quality Report",
+        "layout": "full"
+      },
+      {
+        "id": "executive-summary",
+        "type": "markdown",
+        "sourceId": "metrics-snapshot",
+        "layout": "full",
+        "body": "## Executive Summary\n\nThe actor layer remains structurally usable but not evidentiary-grade: **32 actor entries**, **19 with external file candidates**, **five preserved conflicts**, and **zero verified identities or live claims**. The connector layer now registers **48 requested connector classes**, defines **six bounded Notion workers**, and strengthens all **five active automation lanes**. Connected does not mean ingestion-ready: exact scopes, approved roots, provenance, security, duplicate controls, and human review remain mandatory."
+      },
+      {
+        "id": "metric-strip",
+        "type": "metric-strip",
+        "cardIds": [
+          "card-actors",
+          "card-files",
+          "card-conflicts",
+          "card-verified"
+        ],
+        "layout": "full"
+      },
+      {
+        "id": "coverage-heading",
+        "type": "markdown",
+        "sourceId": "metrics-snapshot",
+        "layout": "full",
+        "body": "## Every source row is mapped, but verification evidence is still thin\n\nAll 29 returned Notion rows are represented, while one fact-sheet-only candidate and two unresolved candidates are deliberately kept separate. File-link coverage reaches 59.4%, but a link is only a retrieval pointer until the exact bytes are exported, hashed, authenticated, and tied to a dated event."
+      },
+      {
+        "id": "quality-chart",
+        "type": "chart",
+        "chartId": "chart-quality-counts",
+        "layout": "full"
+      },
+      {
+        "id": "conflicts-heading",
+        "type": "markdown",
+        "sourceId": "conflict-snapshot",
+        "layout": "full",
+        "body": "## Five conflicts block silent identity and authority merges\n\nThe registry preserves disagreement about names, roles, judicial assignment, protected-minor spelling, and hash meaning. Each conflict carries a source-linked resolution control."
+      },
+      {
+        "id": "conflict-table",
+        "type": "table",
+        "tableId": "table-conflicts",
+        "layout": "full"
+      },
+      {
+        "id": "scope",
+        "type": "markdown",
+        "layout": "full",
+        "body": "## Scope, data, and definitions\n\n**Scope:** actor-index work product, linked Google Drive candidates, the exhibit-manifest index, and the merged CASEBRAIN truth contract for case `1FDV-23-0001009`.\n\n**Actor entry:** one stable registry key. Separate unresolved candidates count separately.\n\n**External file coverage:** actors with at least one Google Drive source pointer divided by all actor entries.\n\n**Verified identity:** allowed only when a primary or official source is attached with a content hash and passes human review.\n\nThis report is a control-plane snapshot, not a court finding, evidence-authentication report, or legal conclusion."
+      },
+      {
+        "id": "methodology",
+        "type": "markdown",
+        "layout": "full",
+        "body": "## Methodology\n\nThe build normalized names only to create stable keys, mapped source roles to controlled enums, attached candidate file pointers by exact actor name, and split ambiguous identities instead of merging them. It recorded only whether allegation text exists—not the allegation itself. Schema validation checks structure; semantic validation checks uniqueness, relationship targets, source resolution, verified-identity prerequisites, protected-minor controls, and summary reconciliation. A negative control confirms that a verified party allegation is rejected."
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "layout": "full",
+        "body": "## Limitations, uncertainty, and robustness checks\n\nMost linked bytes were not exported or authenticated during this pass. Source titles alone do not establish contents. Legacy evidence-count fields use unknown counting rules. The EX-0005 stored-text hash does not authenticate original audio, and a second observed transcript hash needs a documented byte-stream distinction. No actor identity is marked verified. The protected-minor entry remains sealed/restricted and excludes DOB, contact information, and addresses."
+      },
+      {
+        "id": "next-steps",
+        "type": "markdown",
+        "layout": "full",
+        "body": "## Recommended next steps\n\n1. Resolve or explicitly block all five conflict records.\n2. Hash at least one primary or official source for every P0 actor.\n3. Reach 100% review-status coverage.\n4. Replace free-form evidence counts with counts derived from the file-link matrix and exhibit manifest.\n5. Add event-level links only after authentication and claim classification.\n6. Require human legal review before any filing or external representation."
+      },
+      {
+        "id": "connector-heading",
+        "type": "markdown",
+        "sourceId": "connector-fabric-registry",
+        "layout": "full",
+        "body": "## Connector fabric: active control layer, fail-closed adapters\n\nThe new registry distinguishes advertised tools, authenticated access, authorized roots, and successful probes. Forty-eight requested connector classes are allocated without pretending every advertised plugin is active. GitHub remains canonical; source systems retain original bytes; Notion projects human review state; task systems carry gates and receipts; database/deployment connectors stay staging-, legacy-, reference-, observability-, or exclusion-only as evidence requires."
+      },
+      {
+        "id": "connector-state-chart",
+        "type": "chart",
+        "chartId": "chart-connector-state-counts",
+        "layout": "full"
+      },
+      {
+        "id": "connector-table",
+        "type": "table",
+        "tableId": "table-connector-allocation",
+        "layout": "full"
+      },
+      {
+        "id": "connector-security-gates",
+        "type": "markdown",
+        "sourceId": "connector-fabric-registry",
+        "layout": "full",
+        "body": "## Critical connector-quality gates\n\n- **Supabase backend-ops is not ingestion-ready:** 20 security warnings and 216 performance lints were observed; it stays metadata-read-only staging until remediation.\n- **Vercel is observability-only:** both observed production deployments for the CASEBRAIN web project are in error.\n- **Netlify is excluded from confidential CASEBRAIN data:** three observed projects report no password or SSO protection.\n- **Amplitude is blocked pending OAuth reauthentication.**\n- **SharePoint/OneDrive and Teams content access is blocked by license/subscription errors.**\n- **Drive, Dropbox, and Box remain metadata-only until a human approves exact intake roots and sensitivity boundaries.**"
+      },
+      {
+        "id": "worker-heading",
+        "type": "markdown",
+        "sourceId": "connector-fabric-registry",
+        "layout": "full",
+        "body": "## Six bounded Notion workers\n\nThe worker control layer is active for routing and control receipts. Intake, provenance/hash, actor/entity, event/claim, and document-organization workers remain Dry Run and proposal-only. QA/Exception Routing may write control receipts, never source truth. Any missing entitlement, root, sensitivity, source pointer, exact-byte receipt, duplicate result, or human gate fails closed."
+      },
+      {
+        "id": "worker-table",
+        "type": "table",
+        "tableId": "table-notion-workers",
+        "layout": "full"
+      },
+      {
+        "id": "automation-heading",
+        "type": "markdown",
+        "sourceId": "connector-fabric-registry",
+        "layout": "full",
+        "body": "## Durable automation without task sprawl\n\nThe platform limit is five active tasks. All five existing lanes were enriched in place with connector health, provenance, organization, upload-queue, exception, and memory-hygiene controls. The weekly connector score and drift review is embedded in Evidence Intake rather than creating a duplicate sixth automation."
+      },
+      {
+        "id": "automation-table",
+        "type": "table",
+        "tableId": "table-automation-lanes",
+        "layout": "full"
+      },
+      {
+        "id": "upload-gates",
+        "type": "markdown",
+        "sourceId": "connector-fabric-registry",
+        "layout": "full",
+        "body": "## Intelligent document organization and upload gate\n\nA document cannot move beyond discovery until it has a stable source ID/URI and version, observed and modified timestamps, exact original filename and MIME type, byte count, full SHA-256 of exact bytes, custodian, case and actor/event links, document type, original/derivative status, sensitivity and privilege state, approved destination root, duplicate result, human approval, and run receipt. Originals are never overwritten by OCR, transcripts, normalized copies, summaries, or presentations. No autonomous upload, move, rename, delete, public share, filing, or external message is enabled."
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "layout": "full",
+        "body": "## Further questions\n\n- Which filed appearances or authoritative identity records resolve the Yamatani names?\n- Which dated official record resolves the Shaw/Naso assignment labels?\n- Which P0 source files can be exported and hashed first?\n- What exact byte streams produced the two EX-0005 hashes?\n- Which review-status vocabulary should become canonical across Notion and GitHub?"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-07-15T13:05:00-10:00",
+    "status": "ready",
+    "datasets": {
+      "metrics": [
+        {
+          "canonical_actors": 32,
+          "source_actor_rows": 29,
+          "actors_with_external_files": 19,
+          "external_file_coverage": 0.59375,
+          "open_conflicts": 5,
+          "verified_identities": 0,
+          "rows_with_allegation_text": 26,
+          "rows_missing_evidence_count": 25,
+          "rows_missing_review_status": 9
+        }
+      ],
+      "quality": [
+        {
+          "measure": "Source actor rows",
+          "count": 29,
+          "denominator": 29,
+          "rate": 1,
+          "grain": "source rows",
+          "status": "mapped",
+          "priority": 1,
+          "note": "All returned source rows mapped."
+        },
+        {
+          "measure": "Canonical actor entries",
+          "count": 32,
+          "denominator": 32,
+          "rate": 1,
+          "grain": "actor entries",
+          "status": "structured",
+          "priority": 2,
+          "note": "Includes one fact-sheet-only candidate and two separate unresolved candidates."
+        },
+        {
+          "measure": "Rows with allegation text",
+          "count": 26,
+          "denominator": 29,
+          "rate": 0.896551724137931,
+          "grain": "source rows",
+          "status": "not promoted",
+          "priority": 3,
+          "note": "Presence recorded; allegation prose excluded from canonical actor facts."
+        },
+        {
+          "measure": "Rows missing evidence count",
+          "count": 25,
+          "denominator": 29,
+          "rate": 0.8620689655172413,
+          "grain": "source rows",
+          "status": "quality gap",
+          "priority": 4,
+          "note": "Legacy evidence counts are not trusted."
+        },
+        {
+          "measure": "Actors with file candidates",
+          "count": 19,
+          "denominator": 32,
+          "rate": 0.59375,
+          "grain": "actor entries",
+          "status": "candidate linked",
+          "priority": 5,
+          "note": "Pointers require export, hash, authentication, and event review."
+        },
+        {
+          "measure": "Rows missing review status",
+          "count": 9,
+          "denominator": 29,
+          "rate": 0.3103448275862069,
+          "grain": "source rows",
+          "status": "quality gap",
+          "priority": 6,
+          "note": "Review-state completion is 69.0%."
+        },
+        {
+          "measure": "Open conflicts",
+          "count": 5,
+          "denominator": 32,
+          "rate": 0.15625,
+          "grain": "conflict records",
+          "status": "open",
+          "priority": 7,
+          "note": "Conflicts are preserved rather than silently merged."
+        },
+        {
+          "measure": "Verified identities",
+          "count": 0,
+          "denominator": 32,
+          "rate": 0,
+          "grain": "actor entries",
+          "status": "deliberate control",
+          "priority": 8,
+          "note": "No identity is upgraded without a hashed primary or official source."
+        }
+      ],
+      "conflicts": [
+        {
+          "rank": 1,
+          "conflict": "Yamatani identity",
+          "actors": "Micky/Miki Yamatani; Michelle Schatz; Kristin Yamatani candidate",
+          "control": "Compare filed appearances and authoritative identity records",
+          "status": "Open",
+          "priority": "P0"
+        },
+        {
+          "rank": 2,
+          "conflict": "Shaw role label",
+          "actors": "Judge Natasha Shaw",
+          "control": "Obtain dated official assignment record",
+          "status": "Open",
+          "priority": "P0"
+        },
+        {
+          "rank": 3,
+          "conflict": "Judicial assignment",
+          "actors": "Shaw; Naso",
+          "control": "Reconcile against dated docket or assignment order",
+          "status": "Open",
+          "priority": "P0"
+        },
+        {
+          "rank": 4,
+          "conflict": "Protected-minor spelling",
+          "actors": "Kekoa / Keko",
+          "control": "Keep sealed; resolve from authoritative case record",
+          "status": "Open",
+          "priority": "P0"
+        },
+        {
+          "rank": 5,
+          "conflict": "EX-0005 hash meaning",
+          "actors": "Unknown scheduling clerk / transcript",
+          "control": "Document byte streams; obtain original audio and call log",
+          "status": "Open",
+          "priority": "P1"
+        }
+      ],
+      "connector_allocation": [
+        {
+          "order": 1,
+          "connector_id": "github",
+          "system": "GitHub / AEON-777",
+          "category": "canonical",
+          "current_state": "connected",
+          "auth_state": "authenticated",
+          "allocated_role": "canonical_control",
+          "access_policy": "bounded_control_write",
+          "approved_root": "yes",
+          "connector_quality_score": 85,
+          "data_quality_score": 75,
+          "sensitivity": "restricted",
+          "next_gate": "Adopt an explicit repository allowlist; merge reviewed schemas only.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 2,
+          "connector_id": "data_analytics",
+          "system": "Data Analytics",
+          "category": "analytics",
+          "current_state": "connected",
+          "auth_state": "authenticated",
+          "allocated_role": "observability_only",
+          "access_policy": "bounded_control_write",
+          "approved_root": "yes",
+          "connector_quality_score": 90,
+          "data_quality_score": 85,
+          "sensitivity": "private",
+          "next_gate": "Continue validated artifact checks before every Sites export.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 3,
+          "connector_id": "notion",
+          "system": "Notion",
+          "category": "control_plane",
+          "current_state": "connected",
+          "auth_state": "authenticated",
+          "allocated_role": "control_projection",
+          "access_policy": "bounded_control_write",
+          "approved_root": "yes",
+          "connector_quality_score": 80,
+          "data_quality_score": 70,
+          "sensitivity": "private",
+          "next_gate": "Run workers in Dry Run; store pointers, decisions, queues, and receipts only.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 4,
+          "connector_id": "clickup",
+          "system": "ClickUp",
+          "category": "work_management",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "task_projection",
+          "access_policy": "bounded_control_write",
+          "approved_root": "yes",
+          "connector_quality_score": 65,
+          "data_quality_score": 40,
+          "sensitivity": "private",
+          "next_gate": "Use only the clean operations lane for gates and receipts; do not clone legacy accusatory lists.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 5,
+          "connector_id": "google_drive",
+          "system": "Google Drive",
+          "category": "byte_store",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "source_byte_store",
+          "access_policy": "metadata_read_only",
+          "approved_root": "no",
+          "connector_quality_score": 65,
+          "data_quality_score": 55,
+          "sensitivity": "restricted",
+          "next_gate": "Designate one CASEBRAIN intake root; preserve file ID/version/owner/modified time and hash exported bytes.",
+          "worker": "intake_triage"
+        },
+        {
+          "order": 6,
+          "connector_id": "dropbox",
+          "system": "Dropbox",
+          "category": "byte_store",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "source_byte_store",
+          "access_policy": "metadata_read_only",
+          "approved_root": "no",
+          "connector_quality_score": 45,
+          "data_quality_score": 25,
+          "sensitivity": "restricted",
+          "next_gate": "Choose one of the observed team mounts and one CASEBRAIN root.",
+          "worker": "intake_triage"
+        },
+        {
+          "order": 7,
+          "connector_id": "box",
+          "system": "Box",
+          "category": "byte_store",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "source_byte_store",
+          "access_policy": "metadata_read_only",
+          "approved_root": "no",
+          "connector_quality_score": 50,
+          "data_quality_score": 30,
+          "sensitivity": "sealed",
+          "next_gate": "Approve a folder allowlist, sensitivity map, retention/legal-hold rule, and access group; exclude medical folders by default.",
+          "worker": "intake_triage"
+        },
+        {
+          "order": 8,
+          "connector_id": "sharepoint_onedrive",
+          "system": "SharePoint / OneDrive",
+          "category": "byte_store",
+          "current_state": "blocked",
+          "auth_state": "profile_only",
+          "allocated_role": "source_byte_store",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 15,
+          "data_quality_score": 0,
+          "sensitivity": "restricted",
+          "next_gate": "Connect a SharePoint Online-licensed identity, enumerate a drive, and approve site/library/folder.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 9,
+          "connector_id": "desktop_commander",
+          "system": "Glacier Desktop Commander",
+          "category": "filesystem",
+          "current_state": "blocked",
+          "auth_state": "authenticated",
+          "allocated_role": "source_byte_store",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 15,
+          "data_quality_score": 0,
+          "sensitivity": "restricted",
+          "next_gate": "Pair one trusted device, confirm count > 0, inspect configuration, and allowlist one read-only folder.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 10,
+          "connector_id": "iphone_export",
+          "system": "iPhone 16 Pro Max",
+          "category": "device_export",
+          "current_state": "connected_restricted",
+          "auth_state": "user_export_only",
+          "allocated_role": "source_byte_store",
+          "access_policy": "export_only",
+          "approved_root": "no",
+          "connector_quality_score": 20,
+          "data_quality_score": 10,
+          "sensitivity": "restricted",
+          "next_gate": "Choose an approved cloud export destination, file types, date range, and preserve originals.",
+          "worker": "intake_triage"
+        },
+        {
+          "order": 11,
+          "connector_id": "slack",
+          "system": "Slack",
+          "category": "communications",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "communications_lead",
+          "access_policy": "metadata_read_only",
+          "approved_root": "no",
+          "connector_quality_score": 45,
+          "data_quality_score": 25,
+          "sensitivity": "restricted",
+          "next_gate": "Approve workspace/channel/date/custodian scope; preserve message ID/permalink/timestamps; no posting.",
+          "worker": "intake_triage"
+        },
+        {
+          "order": 12,
+          "connector_id": "teams",
+          "system": "Microsoft Teams",
+          "category": "communications",
+          "current_state": "blocked",
+          "auth_state": "profile_only",
+          "allocated_role": "communications_lead",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 15,
+          "data_quality_score": 0,
+          "sensitivity": "restricted",
+          "next_gate": "Repair subscription/license, verify joined teams, and approve team/channel.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 13,
+          "connector_id": "gmail",
+          "system": "Gmail",
+          "category": "email",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "communications_lead",
+          "access_policy": "metadata_read_only",
+          "approved_root": "no",
+          "connector_quality_score": 45,
+          "data_quality_score": 35,
+          "sensitivity": "sealed",
+          "next_gate": "Approve CASEBRAIN label plus custodian/date scope; thread-dedupe; hash attachments; no sends or label changes.",
+          "worker": "intake_triage"
+        },
+        {
+          "order": 14,
+          "connector_id": "outlook_email",
+          "system": "Outlook Email",
+          "category": "email",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "communications_lead",
+          "access_policy": "metadata_read_only",
+          "approved_root": "no",
+          "connector_quality_score": 30,
+          "data_quality_score": 15,
+          "sensitivity": "sealed",
+          "next_gate": "Confirm correct mailbox and retention window; approve folder/date scope.",
+          "worker": "intake_triage"
+        },
+        {
+          "order": 15,
+          "connector_id": "google_calendar",
+          "system": "Google Calendar",
+          "category": "calendar",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "timeline_lead",
+          "access_policy": "metadata_read_only",
+          "approved_root": "no",
+          "connector_quality_score": 45,
+          "data_quality_score": 30,
+          "sensitivity": "restricted",
+          "next_gate": "Approve calendar IDs and case/date window; preserve stable event ID/status/timezone/update timestamp.",
+          "worker": "event_claim"
+        },
+        {
+          "order": 16,
+          "connector_id": "outlook_calendar",
+          "system": "Outlook Calendar",
+          "category": "calendar",
+          "current_state": "blocked",
+          "auth_state": "profile_only",
+          "allocated_role": "timeline_lead",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 15,
+          "data_quality_score": 0,
+          "sensitivity": "restricted",
+          "next_gate": "Repair mailbox/license, enumerate calendars, then run a metadata-only pilot.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 17,
+          "connector_id": "fireflies",
+          "system": "Fireflies",
+          "category": "meeting",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "communications_lead",
+          "access_policy": "metadata_read_only",
+          "approved_root": "no",
+          "connector_quality_score": 35,
+          "data_quality_score": 0,
+          "sensitivity": "restricted",
+          "next_gate": "Approve meeting/channel and consent basis; preserve transcript/meeting ID and separate transcript from summary.",
+          "worker": "intake_triage"
+        },
+        {
+          "order": 18,
+          "connector_id": "chat_history",
+          "system": "General Chat History",
+          "category": "export",
+          "current_state": "not_surfaced",
+          "auth_state": "unavailable",
+          "allocated_role": "source_byte_store",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 0,
+          "data_quality_score": 0,
+          "sensitivity": "restricted",
+          "next_gate": "Use a bounded user export with checksum, timestamp, account/case scope, and redaction.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 19,
+          "connector_id": "supabase_backend_ops",
+          "system": "Supabase backend-ops",
+          "category": "database",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "staging_only",
+          "access_policy": "metadata_read_only",
+          "approved_root": "no",
+          "connector_quality_score": 35,
+          "data_quality_score": 45,
+          "sensitivity": "restricted",
+          "next_gate": "Clear 20 security warnings and review 216 performance lints before any fixture or ingestion.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 20,
+          "connector_id": "supabase_glaciereq",
+          "system": "Supabase glaciereq",
+          "category": "database",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "legacy_read_only",
+          "access_policy": "metadata_read_only",
+          "approved_root": "yes",
+          "connector_quality_score": 45,
+          "data_quality_score": 30,
+          "sensitivity": "sealed",
+          "next_gate": "Keep read-only; exclude credential-bearing tables; resolve five security advisories and provenance gaps.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 21,
+          "connector_id": "motherduck",
+          "system": "MotherDuck",
+          "category": "database",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "staging_only",
+          "access_policy": "metadata_read_only",
+          "approved_root": "no",
+          "connector_quality_score": 50,
+          "data_quality_score": 35,
+          "sensitivity": "restricted",
+          "next_gate": "Audit schema, columns, provenance, row counts, orphans, and exclude credential/env-var tables.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 22,
+          "connector_id": "vercel",
+          "system": "Vercel",
+          "category": "deployment",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "observability_only",
+          "access_policy": "metadata_read_only",
+          "approved_root": "yes",
+          "connector_quality_score": 35,
+          "data_quality_score": 20,
+          "sensitivity": "private",
+          "next_gate": "Resolve two failing production deployments; verify auth, data minimization, and owner-only access before activation.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 23,
+          "connector_id": "netlify",
+          "system": "Netlify",
+          "category": "deployment",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "excluded_confidential",
+          "access_policy": "metadata_read_only",
+          "approved_root": "yes",
+          "connector_quality_score": 20,
+          "data_quality_score": 0,
+          "sensitivity": "public",
+          "next_gate": "Use only for public-safe redacted demos after access-control review.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 24,
+          "connector_id": "amplitude",
+          "system": "Amplitude",
+          "category": "analytics",
+          "current_state": "blocked",
+          "auth_state": "reauth_required",
+          "allocated_role": "observability_only",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 0,
+          "data_quality_score": 0,
+          "sensitivity": "private",
+          "next_gate": "Reauthenticate OAuth; then use only de-identified operational events.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 25,
+          "connector_id": "hex",
+          "system": "Hex",
+          "category": "analytics",
+          "current_state": "blocked",
+          "auth_state": "plan_blocked",
+          "allocated_role": "observability_only",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 0,
+          "data_quality_score": 0,
+          "sensitivity": "private",
+          "next_gate": "Upgrade to Team/Enterprise or keep excluded.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 26,
+          "connector_id": "hugging_face",
+          "system": "Hugging Face",
+          "category": "ml_registry",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "public_derived_only",
+          "access_policy": "metadata_read_only",
+          "approved_root": "yes",
+          "connector_quality_score": 35,
+          "data_quality_score": 20,
+          "sensitivity": "public",
+          "next_gate": "Allow only redacted/public derived eval artifacts or model cards; never originals or PII.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 27,
+          "connector_id": "linear",
+          "system": "Linear",
+          "category": "work_management",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "task_projection",
+          "access_policy": "metadata_read_only",
+          "approved_root": "no",
+          "connector_quality_score": 50,
+          "data_quality_score": 25,
+          "sensitivity": "private",
+          "next_gate": "Select a single work-management authority; source-link tasks and avoid narrative promotion.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 28,
+          "connector_id": "asana",
+          "system": "Asana",
+          "category": "work_management",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "reference_only",
+          "access_policy": "metadata_read_only",
+          "approved_root": "no",
+          "connector_quality_score": 40,
+          "data_quality_score": 20,
+          "sensitivity": "private",
+          "next_gate": "Keep legacy/read-only until a single task authority is selected; do not bidirectionally sync.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 29,
+          "connector_id": "atlassian_rovo",
+          "system": "Atlassian Rovo / Confluence",
+          "category": "knowledge",
+          "current_state": "connected_restricted",
+          "auth_state": "authenticated",
+          "allocated_role": "reference_only",
+          "access_policy": "metadata_read_only",
+          "approved_root": "yes",
+          "connector_quality_score": 50,
+          "data_quality_score": 30,
+          "sensitivity": "private",
+          "next_gate": "Treat activation claims as legacy prose until live connector evidence exists.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 30,
+          "connector_id": "documents_router",
+          "system": "Documents Router",
+          "category": "transform",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "transform_only",
+          "access_policy": "on_demand_only",
+          "approved_root": "no",
+          "connector_quality_score": 10,
+          "data_quality_score": 0,
+          "sensitivity": "private",
+          "next_gate": "Approve exact input/output and destination before conversion.",
+          "worker": "document_organization"
+        },
+        {
+          "order": 31,
+          "connector_id": "pdf_router",
+          "system": "PDF Router",
+          "category": "transform",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "transform_only",
+          "access_policy": "on_demand_only",
+          "approved_root": "no",
+          "connector_quality_score": 10,
+          "data_quality_score": 0,
+          "sensitivity": "private",
+          "next_gate": "Convert only approved derivatives; preserve original and derivation receipt.",
+          "worker": "document_organization"
+        },
+        {
+          "order": 32,
+          "connector_id": "spreadsheets_router",
+          "system": "Spreadsheets Router",
+          "category": "transform",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "transform_only",
+          "access_policy": "on_demand_only",
+          "approved_root": "no",
+          "connector_quality_score": 10,
+          "data_quality_score": 0,
+          "sensitivity": "private",
+          "next_gate": "Use only for approved structured derivatives with source pointer and schema.",
+          "worker": "document_organization"
+        },
+        {
+          "order": 33,
+          "connector_id": "presentations_router",
+          "system": "Presentations Router",
+          "category": "transform",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "transform_only",
+          "access_policy": "on_demand_only",
+          "approved_root": "no",
+          "connector_quality_score": 10,
+          "data_quality_score": 0,
+          "sensitivity": "private",
+          "next_gate": "Use only for redacted review derivatives; never canonical evidence.",
+          "worker": "document_organization"
+        },
+        {
+          "order": 34,
+          "connector_id": "midpage",
+          "system": "Midpage",
+          "category": "legal_research",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "reference_only",
+          "access_policy": "on_demand_only",
+          "approved_root": "no",
+          "connector_quality_score": 10,
+          "data_quality_score": 0,
+          "sensitivity": "private",
+          "next_gate": "Use for source-cited legal work only after matter scope and human review.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 35,
+          "connector_id": "openai_developers",
+          "system": "OpenAI Developers",
+          "category": "developer_tools",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "reference_only",
+          "access_policy": "on_demand_only",
+          "approved_root": "no",
+          "connector_quality_score": 10,
+          "data_quality_score": 0,
+          "sensitivity": "public",
+          "next_gate": "Use official documentation for implementation; keep secrets out of artifacts.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 36,
+          "connector_id": "airtable",
+          "system": "Airtable",
+          "category": "database",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "unallocated",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 0,
+          "data_quality_score": 0,
+          "sensitivity": "private",
+          "next_gate": "Assess workspace and duplication risk before allocating a role.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 37,
+          "connector_id": "pipedrive",
+          "system": "Pipedrive",
+          "category": "crm",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "unallocated",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 0,
+          "data_quality_score": 0,
+          "sensitivity": "private",
+          "next_gate": "Assess lawful case relevance and PII boundary; do not use as evidence store.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 38,
+          "connector_id": "attio",
+          "system": "Attio",
+          "category": "crm",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "unallocated",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 0,
+          "data_quality_score": 0,
+          "sensitivity": "private",
+          "next_gate": "Assess lawful case relevance and PII boundary; do not use as evidence store.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 39,
+          "connector_id": "clay",
+          "system": "Clay",
+          "category": "enrichment",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "excluded_confidential",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 0,
+          "data_quality_score": 0,
+          "sensitivity": "public",
+          "next_gate": "Do not enrich case actors without a lawful, explicit scope and human approval.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 40,
+          "connector_id": "coupler_io",
+          "system": "Coupler.io",
+          "category": "integration",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "unallocated",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 0,
+          "data_quality_score": 0,
+          "sensitivity": "private",
+          "next_gate": "Assess idempotency, destination, secret handling, and one-way flow before use.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 41,
+          "connector_id": "figma",
+          "system": "Figma",
+          "category": "design",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "public_derived_only",
+          "access_policy": "on_demand_only",
+          "approved_root": "no",
+          "connector_quality_score": 10,
+          "data_quality_score": 0,
+          "sensitivity": "public",
+          "next_gate": "Use only for redacted diagrams/designs with no privileged source bytes.",
+          "worker": "document_organization"
+        },
+        {
+          "order": 42,
+          "connector_id": "canva",
+          "system": "Canva",
+          "category": "design",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "public_derived_only",
+          "access_policy": "on_demand_only",
+          "approved_root": "no",
+          "connector_quality_score": 10,
+          "data_quality_score": 0,
+          "sensitivity": "public",
+          "next_gate": "Use only for redacted/public derivatives.",
+          "worker": "document_organization"
+        },
+        {
+          "order": 43,
+          "connector_id": "lovable",
+          "system": "Lovable",
+          "category": "deployment",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "observability_only",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 0,
+          "data_quality_score": 0,
+          "sensitivity": "public",
+          "next_gate": "Assess project/auth/access controls before any build or deployment.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 44,
+          "connector_id": "base44",
+          "system": "Base44",
+          "category": "deployment",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "observability_only",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 0,
+          "data_quality_score": 0,
+          "sensitivity": "public",
+          "next_gate": "Assess project/auth/access controls before any build or deployment.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 45,
+          "connector_id": "jam",
+          "system": "Jam",
+          "category": "issue_capture",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "task_projection",
+          "access_policy": "on_demand_only",
+          "approved_root": "no",
+          "connector_quality_score": 10,
+          "data_quality_score": 0,
+          "sensitivity": "private",
+          "next_gate": "Use only for redacted technical reproduction receipts.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 46,
+          "connector_id": "hebbia",
+          "system": "Hebbia",
+          "category": "research",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "unallocated",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 0,
+          "data_quality_score": 0,
+          "sensitivity": "restricted",
+          "next_gate": "Assess storage, retention, and confidentiality before use.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 47,
+          "connector_id": "fyxer",
+          "system": "Fyxer",
+          "category": "email_assistant",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "communications_lead",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 0,
+          "data_quality_score": 0,
+          "sensitivity": "sealed",
+          "next_gate": "No autonomous sending; assess mailbox scope and drafting controls.",
+          "worker": "qa_exception"
+        },
+        {
+          "order": 48,
+          "connector_id": "mem",
+          "system": "Mem",
+          "category": "memory",
+          "current_state": "tool_available_unassessed",
+          "auth_state": "unknown",
+          "allocated_role": "control_projection",
+          "access_policy": "blocked",
+          "approved_root": "no",
+          "connector_quality_score": 0,
+          "data_quality_score": 0,
+          "sensitivity": "private",
+          "next_gate": "Assess provenance, deletion, export, and case isolation before any sync.",
+          "worker": "qa_exception"
+        }
+      ],
+      "connector_state_summary": [
+        {
+          "state": "connected_restricted",
+          "count": 19
+        },
+        {
+          "state": "tool_available_unassessed",
+          "count": 19
+        },
+        {
+          "state": "blocked",
+          "count": 6
+        },
+        {
+          "state": "connected",
+          "count": 3
+        },
+        {
+          "state": "not_surfaced",
+          "count": 1
+        }
+      ],
+      "notion_workers": [
+        {
+          "order": 1,
+          "worker_id": "intake_triage",
+          "worker": "Intake Triage",
+          "mode": "dry_run",
+          "writes_policy": "proposal_only",
+          "output": "deduplicated metadata candidate, sensitivity proposal, destination candidate, missing-field checklist"
+        },
+        {
+          "order": 2,
+          "worker_id": "provenance_hash",
+          "worker": "Provenance & Hash Receipt",
+          "mode": "dry_run",
+          "writes_policy": "proposal_only",
+          "output": "exact-byte receipt validation, hash/variant signal, custody-gap flag"
+        },
+        {
+          "order": 3,
+          "worker_id": "actor_entity",
+          "worker": "Actor / Entity Link",
+          "mode": "dry_run",
+          "writes_policy": "proposal_only",
+          "output": "source-linked proposed stable IDs, alternatives, conflicts, pending_review"
+        },
+        {
+          "order": 4,
+          "worker_id": "event_claim",
+          "worker": "Event / Claim Classification",
+          "mode": "dry_run",
+          "writes_policy": "proposal_only",
+          "output": "qualified event envelope and claim class proposal"
+        },
+        {
+          "order": 5,
+          "worker_id": "document_organization",
+          "worker": "Document Organization",
+          "mode": "dry_run",
+          "writes_policy": "proposal_only",
+          "output": "canonical name/folder/retention/sensitivity manifest and reversible adapter plan"
+        },
+        {
+          "order": 6,
+          "worker_id": "qa_exception",
+          "worker": "QA / Exception Routing",
+          "mode": "control_active",
+          "writes_policy": "control_receipts_only",
+          "output": "schema, scope, duplicate, drift, severity, review lane, immutable receipt pointer"
+        }
+      ],
+      "automation_lanes": [
+        {
+          "order": 1,
+          "title": "Memory Architecture",
+          "state": "active_enriched",
+          "cadence": "daily_flexible"
+        },
+        {
+          "order": 2,
+          "title": "Daily Ops Lane",
+          "state": "active_enriched",
+          "cadence": "daily_04:00_HST"
+        },
+        {
+          "order": 3,
+          "title": "Evidence Intake Lane",
+          "state": "active_enriched",
+          "cadence": "weekly_flexible"
+        },
+        {
+          "order": 4,
+          "title": "Daily Master Priorities",
+          "state": "active_enriched",
+          "cadence": "daily_flexible"
+        },
+        {
+          "order": 5,
+          "title": "Memory Canon Recursive Hygiene",
+          "state": "active_enriched",
+          "cadence": "daily_flexible"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "metrics-snapshot",
+      "label": "CASEBRAIN actor registry metrics snapshot",
+      "href": "https://github.com/GlacierEQ/AEON-777/pull/52",
+      "path": "BRAIN/ACTORS/ACTOR_REGISTRY.json",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT\n  32 AS canonical_actors,\n  29 AS source_actor_rows,\n  19 AS actors_with_external_files,\n  19.0/32.0 AS external_file_coverage,\n  5 AS open_conflicts,\n  0 AS verified_identities,\n  26 AS rows_with_allegation_text,\n  25 AS rows_missing_evidence_count,\n  9 AS rows_missing_review_status;",
+        "description": "Reproduces headline counts from the validated 2026-07-15 actor registry and its 29-row Notion source audit.",
+        "executed_at": "2026-07-15T12:00:00-10:00",
+        "filters": [
+          "case_id = 1FDV-23-0001009",
+          "frozen snapshot = 2026-07-15"
+        ],
+        "metric_definitions": [
+          "Canonical actors = distinct actor_key count in the registry.",
+          "External file coverage = actors with at least one Google Drive source pointer / canonical actors.",
+          "Open conflicts = conflict records with resolution_status = open.",
+          "Rows with allegation text exclude Key Allegations values beginning with N/A."
+        ],
+        "tables_used": [
+          "BRAIN/ACTORS/ACTOR_REGISTRY.json",
+          "Notion actor database snapshot"
+        ]
+      }
+    },
+    {
+      "id": "quality-snapshot",
+      "label": "CASEBRAIN actor source-quality snapshot",
+      "href": "https://github.com/GlacierEQ/AEON-777/pull/52",
+      "path": "BRAIN/ACTORS/ACTOR_DATA_QUALITY_REPORT_2026-07-15.md",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "WITH reviewed_quality AS (\n  SELECT * FROM (VALUES\n    ('Source actor rows', 29, 29, 1.0, 'source rows', 'mapped', 1),\n    ('Canonical actor entries', 32, 32, 1.0, 'actor entries', 'structured', 2),\n    ('Rows with allegation text', 26, 29, 26.0/29.0, 'source rows', 'not promoted', 3),\n    ('Rows missing evidence count', 25, 29, 25.0/29.0, 'source rows', 'quality gap', 4),\n    ('Actors with file candidates', 19, 32, 19.0/32.0, 'actor entries', 'candidate linked', 5),\n    ('Rows missing review status', 9, 29, 9.0/29.0, 'source rows', 'quality gap', 6),\n    ('Open conflicts', 5, 32, 5.0/32.0, 'conflict records', 'open', 7),\n    ('Verified identities', 0, 32, 0.0, 'actor entries', 'deliberate control', 8)\n  ) AS t(measure, count, denominator, rate, grain, status, priority)\n)\nSELECT * FROM reviewed_quality ORDER BY priority;",
+        "description": "Reproduces the reviewed source-quality bar dataset with explicit grain and denominator.",
+        "executed_at": "2026-07-15T12:00:00-10:00",
+        "filters": [
+          "case_id = 1FDV-23-0001009",
+          "frozen snapshot = 2026-07-15"
+        ],
+        "metric_definitions": [
+          "Rate = count / denominator within each labeled grain.",
+          "Counts from source rows use denominator 29; actor-entry counts use denominator 32."
+        ],
+        "tables_used": [
+          "BRAIN/ACTORS/ACTOR_REGISTRY.json",
+          "BRAIN/ACTORS/ACTOR_DATA_QUALITY_REPORT_2026-07-15.md"
+        ]
+      }
+    },
+    {
+      "id": "conflict-snapshot",
+      "label": "CASEBRAIN open conflict queue",
+      "href": "https://github.com/GlacierEQ/AEON-777/pull/52",
+      "path": "BRAIN/ACTORS/ACTOR_REGISTRY.json",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT * FROM (VALUES\n  (1, 'P0', 'Yamatani identity', 'Micky/Miki Yamatani; Michelle Schatz; Kristin Yamatani candidate', 'Compare filed appearances and authoritative identity records', 'Open'),\n  (2, 'P0', 'Shaw role label', 'Judge Natasha Shaw', 'Obtain dated official assignment record', 'Open'),\n  (3, 'P0', 'Judicial assignment', 'Shaw; Naso', 'Reconcile against dated docket or assignment order', 'Open'),\n  (4, 'P0', 'Protected-minor spelling', 'Kekoa / Keko', 'Keep sealed; resolve from authoritative case record', 'Open'),\n  (5, 'P1', 'EX-0005 hash meaning', 'Unknown scheduling clerk / transcript', 'Document byte streams; obtain original audio and call log', 'Open')\n) AS t(rank, priority, conflict, actors, control, status)\nORDER BY rank;",
+        "description": "Reproduces the five open conflict records and their required resolution controls.",
+        "executed_at": "2026-07-15T12:00:00-10:00",
+        "filters": [
+          "resolution_status = open",
+          "frozen snapshot = 2026-07-15"
+        ],
+        "metric_definitions": [
+          "Rank is a review order, not a legal severity score."
+        ],
+        "tables_used": [
+          "BRAIN/ACTORS/ACTOR_REGISTRY.json"
+        ]
+      }
+    },
+    {
+      "id": "notion-actor-source",
+      "label": "Notion CASEBRAIN actor database",
+      "href": "https://app.notion.com/p/1f317bb4fd9e45e0a3dd5c9a64cc0e56",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT 29 AS source_actor_rows, 26 AS rows_with_allegation_text, 25 AS rows_missing_numeric_evidence_count, 9 AS rows_missing_review_status;",
+        "description": "Aggregate-only projection of the 29-row Notion work-product snapshot; allegation prose is excluded.",
+        "executed_at": "2026-07-15T12:00:00-10:00",
+        "filters": [
+          "all returned rows",
+          "no allegation text exposed"
+        ],
+        "metric_definitions": [
+          "Rows containing allegation text exclude Key Allegations values beginning with N/A."
+        ],
+        "tables_used": [
+          "collection://012b819e-90d5-4814-9878-3d19d8000369"
+        ]
+      }
+    },
+    {
+      "id": "drive-exhibit-manifest",
+      "label": "Google Drive CASEBRAIN exhibit manifest",
+      "href": "https://docs.google.com/spreadsheets/d/1uC8lh2WtPOvogUYYq07bccS8znEfpQso6MNoTKLotiE/edit",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT 5 AS populated_manifest_rows, 3 AS rows_with_sha256, 2 AS rows_without_sha256;",
+        "description": "Aggregate-only projection of the five populated exhibit-manifest rows.",
+        "executed_at": "2026-07-15T12:00:00-10:00",
+        "filters": [
+          "populated rows only"
+        ],
+        "metric_definitions": [
+          "A stored-text hash does not authenticate original audio or other source bytes."
+        ],
+        "tables_used": [
+          "CASEBRAIN exhibit manifest sheet"
+        ]
+      }
+    },
+    {
+      "id": "connector-fabric-registry",
+      "label": "CASEBRAIN connector fabric registry and quality controls",
+      "href": "https://github.com/GlacierEQ/AEON-777/pull/52",
+      "path": "BRAIN/CONNECTORS/CONNECTOR_FABRIC.json",
+      "query": {
+        "engine": "duckdb",
+        "language": "sql",
+        "sql": "SELECT c.connector_id, c.display_name, c.category, c.observed_state, c.auth_state, c.allocated_role, c.access_mode, c.approved_root, c.connector_quality_score, c.data_quality_score, c.sensitivity_ceiling, c.next_gate, c.notion_worker FROM read_json_auto('BRAIN/CONNECTORS/CONNECTOR_FABRIC.json') AS r, UNNEST(r.connectors) AS t(c) ORDER BY c.connector_id;",
+        "description": "Reads the canonical connector registry, roles, separate quality scores, and next human gates.",
+        "executed_at": "2026-07-15T13:05:00-10:00",
+        "filters": [
+          "metadata and health probes only",
+          "no source bodies bulk-read",
+          "no autonomous uploads, moves, deletes, messages, shares, schema changes, or deployments"
+        ],
+        "metric_definitions": [
+          "Connector quality score: authentication 15, scoped access 15, freshness 15, provenance 20, idempotency/retry safety 10, sensitivity controls 15, observable receipts 10.",
+          "Data quality is a separate 0–100 control score across completeness, uniqueness, validity, consistency, lineage, timeliness, and duplicate risk.",
+          "Unknown fields score zero."
+        ],
+        "tables_used": [
+          "BRAIN/CONNECTORS/CONNECTOR_FABRIC.json",
+          "BRAIN/CONNECTORS/CONNECTOR_FABRIC_REPORT_2026-07-15.md"
+        ]
+      }
+    }
+  ]
+}
+

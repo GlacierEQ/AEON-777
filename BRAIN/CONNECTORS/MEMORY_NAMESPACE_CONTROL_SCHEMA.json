@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:memory-namespace-control:1.0.0",
+  "title": "CASEBRAIN Memory Namespace Control",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "thread_anchor", "control_id", "connector_id", "namespace", "namespace_scope", "approval_state", "owner", "access_mode", "allowed_record_classes", "forbidden_record_classes", "retention_state", "idempotency", "activation_allowed"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
+    "control_id": { "const": "memory-namespace-control-v1" },
+    "connector_id": { "const": "supermemory" },
+    "namespace": { "const": "sm_project_memory_master" },
+    "namespace_scope": { "const": "memory_architecture_governance" },
+    "approval_state": { "const": "pending_human_approval" },
+    "owner": { "const": "unassigned" },
+    "access_mode": { "const": "bounded_control_write" },
+    "allowed_record_classes": {
+      "type": "array",
+      "items": { "enum": ["correction_overlay", "control_canary", "governance_delta"] },
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true
+    },
+    "forbidden_record_classes": {
+      "type": "array",
+      "items": { "enum": ["case_evidence", "credential", "protected_identity", "raw_connector_response"] },
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true
+    },
+    "retention_state": { "const": "pending_human_policy" },
+    "idempotency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "expression", "collision_scope", "retry_behavior", "backend_evidence_state"],
+      "properties": {
+        "algorithm": { "const": "sha256" },
+        "expression": { "const": "sha256(connector_id|namespace|record_class|source_version|payload_sha256)" },
+        "collision_scope": { "const": "connector_id+namespace+record_class+source_version+payload_sha256" },
+        "retry_behavior": { "const": "return_existing_memory_id" },
+        "backend_evidence_state": { "const": "observed_once_not_contractual" }
+      }
+    },
+    "activation_allowed": { "const": false }
+  }
+}

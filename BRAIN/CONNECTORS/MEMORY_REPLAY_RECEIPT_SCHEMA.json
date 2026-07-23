@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:memory-replay-receipt:1.0.0",
+  "title": "CASEBRAIN Synthetic Memory Replay Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "thread_anchor", "generated_at", "connector_id", "namespace", "control_ref", "fixture", "write_attempts", "deduplication", "read_after_write", "result", "boundaries"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "connector_id": { "const": "supermemory" },
+    "namespace": { "const": "sm_project_memory_master" },
+    "control_ref": { "const": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_NAMESPACE_CONTROL.json" },
+    "fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_class", "source_version", "payload_sha256", "idempotency_key", "sensitivity", "contains_case_content"],
+      "properties": {
+        "record_class": { "const": "control_canary" },
+        "source_version": { "const": "1.0.0" },
+        "payload_sha256": { "$ref": "#/$defs/sha256" },
+        "idempotency_key": { "$ref": "#/$defs/sha256" },
+        "sensitivity": { "const": "internal" },
+        "contains_case_content": { "const": false }
+      }
+    },
+    "write_attempts": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["attempt", "status", "memory_id", "namespace"],
+        "properties": {
+          "attempt": { "type": "integer", "minimum": 1, "maximum": 2 },
+          "status": { "const": "success" },
+          "memory_id": { "type": "string", "pattern": "^[A-Za-z0-9_-]{8,64}$" },
+          "namespace": { "const": "sm_project_memory_master" }
+        }
+      }
+    },
+    "deduplication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["same_memory_id", "duplicate_canonical_records", "backend_evidence_state"],
+      "properties": {
+        "same_memory_id": { "const": true },
+        "duplicate_canonical_records": { "const": 0 },
+        "backend_evidence_state": { "const": "observed_once_not_contractual" }
+      }
+    },
+    "read_after_write": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "content_block_count", "idempotency_key_found", "thread_anchor_found", "raw_response_persisted"],
+      "properties": {
+        "status": { "const": "success" },
+        "content_block_count": { "type": "integer", "minimum": 1 },
+        "idempotency_key_found": { "const": true },
+        "thread_anchor_found": { "const": true },
+        "raw_response_persisted": { "const": false }
+      }
+    },
+    "result": { "const": "pass_observed_idempotent_replay" },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["namespace_approved", "owner_assigned", "production_activation_authorized", "backend_contract_proven"],
+      "properties": {
+        "namespace_approved": { "const": false },
+        "owner_assigned": { "const": false },
+        "production_activation_authorized": { "const": false },
+        "backend_contract_proven": { "const": false }
+      }
+    }
+  },
+  "$defs": { "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" } }
+}

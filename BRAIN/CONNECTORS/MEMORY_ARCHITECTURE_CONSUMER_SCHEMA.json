@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:memory-architecture-consumer-receipt:1.0.0",
+  "title": "CASEBRAIN Memory Architecture Live Consumer Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "thread_anchor", "generated_at", "connector", "consumer", "live_probe", "normalization", "guard_receipt"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "connector": { "const": "supermemory" },
+    "consumer": { "const": "memory_architecture_status" },
+    "live_probe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["container_tag", "query_sha256", "response_sha256", "content_block_count", "status"],
+      "properties": {
+        "container_tag": { "const": "sm_project_memory_master" },
+        "query_sha256": { "$ref": "#/$defs/sha256" },
+        "response_sha256": { "$ref": "#/$defs/sha256" },
+        "content_block_count": { "type": "integer", "minimum": 1 },
+        "status": { "const": "success" }
+      }
+    },
+    "normalization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw_payload_candidates", "raw_payload_promoted", "canonical_pointer_candidates", "raw_content_persisted"],
+      "properties": {
+        "raw_payload_candidates": { "const": 1 },
+        "raw_payload_promoted": { "const": 0 },
+        "canonical_pointer_candidates": { "const": 1 },
+        "raw_content_persisted": { "const": false }
+      }
+    },
+    "guard_receipt": { "$ref": "urn:casebrain:schema:memory-retrieval-guard-receipt:1.0.0" }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "generated_at": "2026-07-18T04:21:39Z",
+  "backend": "supermemory",
+  "method": {
+    "query_mode": "broad_project_recall_without_container_tag",
+    "scopes": ["yamatani", "csea", "brower", "shaw", "hpd_cyber"],
+    "raw_content_persisted": false
+  },
+  "routing_test": {
+    "project_only_write_destination": "sm_project_default",
+    "explicit_container_write_destination": "requested_project_container",
+    "result": "explicit_container_tag_required"
+  },
+  "baseline": {
+    "passed_scopes": 0,
+    "total_scopes": 5,
+    "results": [
+      { "scope": "yamatani", "correction_ranked_first": false, "legacy_unqualified_result_observed": true },
+      { "scope": "csea", "correction_ranked_first": false, "legacy_unqualified_result_observed": true },
+      { "scope": "brower", "correction_ranked_first": false, "legacy_unqualified_result_observed": true },
+      { "scope": "shaw", "correction_ranked_first": false, "legacy_unqualified_result_observed": true },
+      { "scope": "hpd_cyber", "correction_ranked_first": false, "legacy_unqualified_result_observed": true }
+    ]
+  },
+  "guarded": {
+    "passed_scopes": 3,
+    "total_scopes": 5,
+    "results": [
+      { "scope": "yamatani", "correction_ranked_first": true, "legacy_unqualified_result_observed": true },
+      { "scope": "csea", "correction_ranked_first": false, "legacy_unqualified_result_observed": true },
+      { "scope": "brower", "correction_ranked_first": false, "legacy_unqualified_result_observed": true },
+      { "scope": "shaw", "correction_ranked_first": true, "legacy_unqualified_result_observed": true },
+      { "scope": "hpd_cyber", "correction_ranked_first": true, "legacy_unqualified_result_observed": true }
+    ]
+  },
+  "runtime_decision": {
+    "raw_broad_recall_safe": false,
+    "required_control": "application_layer_status_filter_and_correction_precedence_reranker",
+    "promotion_enabled": false
+  },
+  "cleanup": {
+    "default_container_records": 5,
+    "status": "blocked_exact_match"
+  }
+}

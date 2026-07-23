@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "file_type": "operator_assertions",
+  "case_id": "1FDV-23-0001009",
+  "recorded_at": "2026-07-15T12:16:00-10:00",
+  "authority": "operator_confirmed",
+  "description": "Operator-confirmed facts that override or augment ACTOR_REGISTRY.json pending full registry update.",
+  "assertions": [
+    {
+      "actor_id": "actor-natasha-shaw",
+      "field": "display_name",
+      "value": "Natasha R. Shaw",
+      "note": "Middle initial R. confirmed by operator.",
+      "confirmed_at": "2026-07-15"
+    },
+    {
+      "actor_id": "actor-natasha-shaw",
+      "field": "judicial_sequence_position",
+      "value": 4,
+      "note": "Shaw is the 4th judge in the judicial sequence.",
+      "confirmed_at": "2026-07-15"
+    },
+    {
+      "actor_id": "actor-kekoa-del-carpio-barton",
+      "field": "display_name",
+      "value": "Kekoa Keith Del Carpio Barton",
+      "note": "Full legal name including middle name Keith confirmed by operator.",
+      "confirmed_at": "2026-07-15"
+    },
+    {
+      "actor_id": "actor-micky-schatz",
+      "field": "alias_confirmed",
+      "value": "Michelle Schatz",
+      "note": "Micky is confirmed alias for Michelle Schatz.",
+      "confirmed_at": "2026-07-15"
+    },
+    {
+      "actor_id": "actor-naso",
+      "field": "judicial_sequence_position",
+      "value": 2,
+      "note": "Naso is the 2nd judge in the judicial sequence.",
+      "confirmed_at": "2026-07-15"
+    },
+    {
+      "actor_id": "actor-ex-0005",
+      "field": "status",
+      "value": "parked",
+      "note": "EX-0005 parked in zone folder. Provenance unresolved. Pending source file match.",
+      "confirmed_at": "2026-07-15"
+    }
+  ]
+}

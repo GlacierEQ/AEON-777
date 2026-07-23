@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "generated_at": "2026-07-21T03:58:08Z",
+  "consumer": "actor_profile_pointer",
+  "subject": { "actor_id": "actor-judge-natasha-shaw", "profile_status": "conflict_review", "identity_status": "conflicted", "projection_mode": "pointer_only" },
+  "candidate_envelopes": [
+    {
+      "schema_version": "1.0.0",
+      "envelope_id": "env_actor_live_635a204b8626",
+      "connector_id": "supermemory",
+      "consumer_id": "actor_profile_pointer",
+      "scope": "actor_profile",
+      "container_tag": "sm_project_judge_shaw",
+      "subject_ref": "actor-judge-natasha-shaw",
+      "source": { "kind": "connector_payload", "locator": null, "version": null, "query_sha256": "9c60fddbfe6d769b62ea88c75e5cb7b0ce1ee0dc9269126f08a7aed2841dbb7e", "response_sha256": "635a204b862628b4a99ab2ecc3dcea2700b963d4774432058836b224a97ada8f", "content_block_count": 1, "observed_at": "2026-07-21T03:58:08Z" },
+      "classification": { "record_class": "connector_payload", "claim_class": "unknown", "review_state": "unknown" },
+      "governance": { "sensitivity": "restricted", "projection_mode": "reject", "raw_content_persisted": false },
+      "provenance_ref": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "envelope_id": "env_actor_canonical_control",
+      "connector_id": "github",
+      "consumer_id": "actor_profile_pointer",
+      "scope": "actor_profile",
+      "container_tag": "sm_project_judge_shaw",
+      "subject_ref": "actor-judge-natasha-shaw",
+      "source": { "kind": "canonical_pointer", "locator": "github://GlacierEQ/AEON-777@ed7d9548e9207a1356ed7a780de741529a180192/BRAIN/ACTORS/ACTOR_REGISTRY.json#actor-judge-natasha-shaw", "version": "ed7d9548e9207a1356ed7a780de741529a180192", "query_sha256": null, "response_sha256": null, "content_block_count": null, "observed_at": "2026-07-21T03:58:08Z" },
+      "classification": { "record_class": "correction_overlay", "claim_class": "correction_rule", "review_state": "applied_correction" },
+      "governance": { "sensitivity": "restricted", "projection_mode": "pointer_only", "raw_content_persisted": false },
+      "provenance_ref": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/ACTOR_PROFILE_LIVE_CONSUMER_RECEIPT_2026-07-20.json"
+    }
+  ],
+  "guard_receipt": {
+    "schema_version": "1.0.0",
+    "generated_at": "2026-07-21T03:58:08Z",
+    "request": { "scope": "actor_profile", "container_tag": "sm_project_judge_shaw" },
+    "decision": "qualified_output",
+    "promoted": [
+      { "candidate_id": "mrg_actor_canonical_control", "scope": "actor_profile", "semantic_key": "actor-judge-natasha-shaw_profile_control", "output_class": "qualified_correction_rule", "source_locator": "github://GlacierEQ/AEON-777@ed7d9548e9207a1356ed7a780de741529a180192/BRAIN/ACTORS/ACTOR_REGISTRY.json#actor-judge-natasha-shaw", "provenance_ref": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/ACTOR_PROFILE_LIVE_CONSUMER_RECEIPT_2026-07-20.json" }
+    ],
+    "rejected": [
+      { "candidate_id": "mrg_actor_live_635a204b8626", "reason": "review_state_unknown" }
+    ],
+    "raw_content_persisted": false
+  },
+  "raw_content_persisted": false
+}

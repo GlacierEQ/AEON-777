@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:memory-recall-regression:1.0.0",
+  "title": "CASEBRAIN Memory Recall Regression Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "thread_anchor", "generated_at", "backend", "method", "routing_test", "baseline", "guarded", "runtime_decision", "cleanup"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "backend": { "const": "supermemory" },
+    "method": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["query_mode", "scopes", "raw_content_persisted"],
+      "properties": {
+        "query_mode": { "const": "broad_project_recall_without_container_tag" },
+        "scopes": { "type": "array", "minItems": 5, "maxItems": 5, "uniqueItems": true, "items": { "$ref": "#/$defs/scope" } },
+        "raw_content_persisted": { "const": false }
+      }
+    },
+    "routing_test": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project_only_write_destination", "explicit_container_write_destination", "result"],
+      "properties": {
+        "project_only_write_destination": { "const": "sm_project_default" },
+        "explicit_container_write_destination": { "const": "requested_project_container" },
+        "result": { "const": "explicit_container_tag_required" }
+      }
+    },
+    "baseline": { "$ref": "#/$defs/run" },
+    "guarded": { "$ref": "#/$defs/run" },
+    "runtime_decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw_broad_recall_safe", "required_control", "promotion_enabled"],
+      "properties": {
+        "raw_broad_recall_safe": { "const": false },
+        "required_control": { "const": "application_layer_status_filter_and_correction_precedence_reranker" },
+        "promotion_enabled": { "const": false }
+      }
+    },
+    "cleanup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["default_container_records", "status"],
+      "properties": {
+        "default_container_records": { "type": "integer", "const": 5 },
+        "status": { "enum": ["pending", "removed", "blocked_exact_match"] }
+      }
+    }
+  },
+  "$defs": {
+    "scope": { "enum": ["yamatani", "csea", "brower", "shaw", "hpd_cyber"] },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope", "correction_ranked_first", "legacy_unqualified_result_observed"],
+      "properties": {
+        "scope": { "$ref": "#/$defs/scope" },
+        "correction_ranked_first": { "type": "boolean" },
+        "legacy_unqualified_result_observed": { "type": "boolean" }
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["passed_scopes", "total_scopes", "results"],
+      "properties": {
+        "passed_scopes": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "total_scopes": { "const": 5 },
+        "results": { "type": "array", "minItems": 5, "maxItems": 5, "items": { "$ref": "#/$defs/result" } }
+      }
+    }
+  }
+}

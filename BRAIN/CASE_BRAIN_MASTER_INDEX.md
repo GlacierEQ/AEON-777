@@ -54,6 +54,16 @@ The case identity, party names, dates, docket numbers, and legal theories must b
 - `PROOF_OF_AUTHENTICITY_1FDV-23-0001009.txt` — authenticity material
 - `hashes/` and `manifests/` — integrity paths
 
+### A2. Source-linked actor layer
+
+- `ACTORS/ACTOR_REGISTRY.json` — 32 stable actor entries, including separate unresolved identity candidates
+- `ACTORS/ACTOR_FILE_LINK_MATRIX.csv` — allegation-free actor/file coverage projection
+- `ACTORS/ACTOR_DATA_QUALITY_REPORT_2026-07-15.md` — measured completeness and conflict baseline
+- `ACTORS/ACTOR_REGISTRY_SCHEMA.json` — strict actor/source/conflict contract
+- `ACTORS/validate_actor_registry.py` — relationship, identity, claim-class, protected-minor, and summary checks
+
+The actor layer stores source pointers and review state. A linked file remains a candidate until its bytes are exported, hashed, authenticated, and tied to a dated event. No actor allegation is promoted into a fact.
+
 ### B. State-court track
 
 - `PHASE_1_MAXIMUM_MOTION_PACKAGE.md`

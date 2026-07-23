@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "control_id": "memory-namespace-control-v1",
+  "connector_id": "supermemory",
+  "namespace": "sm_project_memory_master",
+  "namespace_scope": "memory_architecture_governance",
+  "approval_state": "pending_human_approval",
+  "owner": "unassigned",
+  "access_mode": "bounded_control_write",
+  "allowed_record_classes": ["correction_overlay", "control_canary", "governance_delta"],
+  "forbidden_record_classes": ["case_evidence", "credential", "protected_identity", "raw_connector_response"],
+  "retention_state": "pending_human_policy",
+  "idempotency": {
+    "algorithm": "sha256",
+    "expression": "sha256(connector_id|namespace|record_class|source_version|payload_sha256)",
+    "collision_scope": "connector_id+namespace+record_class+source_version+payload_sha256",
+    "retry_behavior": "return_existing_memory_id",
+    "backend_evidence_state": "observed_once_not_contractual"
+  },
+  "activation_allowed": false
+}

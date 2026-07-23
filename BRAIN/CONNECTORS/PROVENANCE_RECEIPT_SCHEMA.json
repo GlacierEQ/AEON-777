@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:provenance-receipt:1.0.0",
+  "title": "CASEBRAIN Provenance Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "case_id",
+    "source",
+    "acquired_at",
+    "custodian",
+    "artifact_class",
+    "derivative_of",
+    "integrity",
+    "sensitivity",
+    "protected_minor",
+    "bucket",
+    "claim_class",
+    "verification_status",
+    "projection_allowed",
+    "human_review",
+    "idempotency_key",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "receipt_id": { "type": "string", "pattern": "^prv_[a-z0-9_-]{8,96}$" },
+    "case_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["connector_id", "canonical_uri", "source_version", "original_filename"],
+      "properties": {
+        "connector_id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "canonical_uri": { "type": "string", "format": "uri-reference", "minLength": 1 },
+        "source_version": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "original_filename": { "type": "string", "minLength": 1, "maxLength": 512 }
+      }
+    },
+    "acquired_at": { "type": "string", "format": "date-time" },
+    "custodian": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "artifact_class": { "enum": ["original", "derivative", "control_receipt"] },
+    "derivative_of": {
+      "oneOf": [
+        { "type": "string", "pattern": "^prv_[a-z0-9_-]{8,96}$" },
+        { "type": "null" }
+      ]
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256_exact_bytes", "byte_count", "mime_type"],
+      "properties": {
+        "sha256_exact_bytes": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "byte_count": { "type": "integer", "minimum": 0 },
+        "mime_type": { "type": "string", "minLength": 1, "maxLength": 256 }
+      }
+    },
+    "sensitivity": { "enum": ["public", "private", "restricted", "sealed"] },
+    "protected_minor": { "type": "boolean" },
+    "bucket": {
+      "enum": [
+        "original_evidence",
+        "sealed_evidence",
+        "derived_work",
+        "canonical_control",
+        "projection_receipt",
+        "quarantine"
+      ]
+    },
+    "claim_class": {
+      "enum": [
+        "source_fact",
+        "procedural_record",
+        "court_finding",
+        "party_allegation",
+        "witness_statement",
+        "model_inference",
+        "legal_argument",
+        "not_applicable"
+      ]
+    },
+    "verification_status": {
+      "enum": ["unverified", "partially_verified", "verified", "contradicted", "pending_review", "not_applicable"]
+    },
+    "projection_allowed": { "type": "boolean" },
+    "human_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "reviewer", "reviewed_at"],
+      "properties": {
+        "state": { "enum": ["required", "approved", "rejected", "not_applicable"] },
+        "reviewer": { "type": ["string", "null"] },
+        "reviewed_at": {
+          "oneOf": [
+            { "type": "string", "format": "date-time" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "idempotency_key": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "value", "collision_scope"],
+      "properties": {
+        "algorithm": { "const": "sha256(source_connector|canonical_uri|source_version|sha256_exact_bytes|artifact_class)" },
+        "value": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "collision_scope": { "const": "case_id" }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "artifact_class": { "const": "derivative" } }, "required": ["artifact_class"] },
+      "then": { "properties": { "derivative_of": { "type": "string" } } },
+      "else": { "properties": { "derivative_of": { "type": "null" } } }
+    },
+    {
+      "if": { "properties": { "protected_minor": { "const": true } }, "required": ["protected_minor"] },
+      "then": {
+        "properties": {
+          "sensitivity": { "const": "sealed" },
+          "bucket": { "const": "sealed_evidence" },
+          "projection_allowed": { "const": false }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "claim_class": {
+            "enum": ["party_allegation", "witness_statement", "model_inference", "legal_argument"]
+          }
+        },
+        "required": ["claim_class"]
+      },
+      "then": { "properties": { "verification_status": { "not": { "const": "verified" } } } }
+    }
+  ]
+}

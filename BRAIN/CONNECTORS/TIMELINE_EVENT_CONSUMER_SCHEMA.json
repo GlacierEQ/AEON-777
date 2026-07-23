@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:timeline-event-consumer-receipt:1.0.0",
+  "title": "CASEBRAIN Pointer-Only Timeline Event Consumer Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "thread_anchor", "generated_at", "consumer", "event", "candidate_envelopes", "guard_receipt", "raw_content_persisted"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "consumer": { "const": "timeline_event_pointer" },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_id", "event_class", "evidentiary_status", "timeline_status", "deadline_authorized", "legal_conclusion_authorized"],
+      "properties": {
+        "event_id": { "const": "memory-architecture-control-event-2026-07-21" },
+        "event_class": { "const": "control_event" },
+        "evidentiary_status": { "const": "non_evidentiary" },
+        "timeline_status": { "const": "pointer_only" },
+        "deadline_authorized": { "const": false },
+        "legal_conclusion_authorized": { "const": false }
+      }
+    },
+    "candidate_envelopes": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "urn:casebrain:schema:connector-candidate-envelope:1.0.0" } },
+    "guard_receipt": { "$ref": "urn:casebrain:schema:memory-retrieval-guard-receipt:1.0.0" },
+    "raw_content_persisted": { "const": false }
+  }
+}

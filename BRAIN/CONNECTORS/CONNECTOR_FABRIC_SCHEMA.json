@@ -1,0 +1,575 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:connector-fabric:1.2.0",
+  "title": "CASEBRAIN Connector Fabric",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at",
+    "thread_anchor",
+    "scope",
+    "policy",
+    "scoring",
+    "lifecycle",
+    "upload_manifest_required",
+    "requested_connector_ids",
+    "connectors",
+    "notion_workers",
+    "automations",
+    "automation_limit",
+    "links"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.2.0"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "thread_anchor": {
+      "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy": {
+      "type": "object"
+    },
+    "scoring": {
+      "type": "object"
+    },
+    "lifecycle": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "upload_manifest_required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 15,
+      "uniqueItems": true
+    },
+    "requested_connector_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9_]+$"
+      },
+      "uniqueItems": true
+    },
+    "connectors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/connector"
+      }
+    },
+    "notion_workers": {
+      "type": "array",
+      "minItems": 6
+    },
+    "automations": {
+      "type": "array",
+      "minItems": 5
+    },
+    "automation_limit": {
+      "type": "object"
+    },
+    "links": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "nullableDateTime": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullableScore": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "qualityComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "awarded",
+        "possible",
+        "evidence"
+      ],
+      "properties": {
+        "awarded": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "possible": {
+          "enum": [
+            10,
+            15,
+            20
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "connector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "connector_id",
+        "display_name",
+        "category",
+        "observed_state",
+        "auth_state",
+        "allocated_role",
+        "access_mode",
+        "approved_root",
+        "approved_roots",
+        "root_scope_state",
+        "last_successful_probe",
+        "freshness",
+        "provenance_coverage",
+        "idempotency_key_strategy",
+        "error_state",
+        "owner",
+        "connector_quality_components",
+        "connector_quality_score",
+        "data_quality_dimensions",
+        "data_quality_score",
+        "legacy_quality_snapshot",
+        "sensitivity_ceiling",
+        "next_gate",
+        "next_human_gate",
+        "evidence",
+        "notion_worker",
+        "automation_lanes"
+      ],
+      "properties": {
+        "connector_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observed_state": {
+          "enum": [
+            "connected",
+            "connected_restricted",
+            "blocked",
+            "tool_available_unassessed",
+            "not_surfaced"
+          ]
+        },
+        "auth_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "allocated_role": {
+          "enum": [
+            "canonical_control",
+            "source_byte_store",
+            "control_projection",
+            "task_projection",
+            "staging_only",
+            "legacy_read_only",
+            "observability_only",
+            "transform_only",
+            "public_derived_only",
+            "reference_only",
+            "excluded_confidential",
+            "communications_lead",
+            "timeline_lead",
+            "unallocated",
+            "memory_backend"
+          ]
+        },
+        "access_mode": {
+          "enum": [
+            "bounded_control_write",
+            "metadata_read_only",
+            "blocked",
+            "export_only",
+            "on_demand_only"
+          ]
+        },
+        "approved_root": {
+          "type": "boolean"
+        },
+        "approved_roots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri-reference",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "root_scope_state": {
+          "enum": [
+            "approved",
+            "approved_pointer_missing",
+            "not_approved",
+            "not_applicable",
+            "unknown"
+          ]
+        },
+        "last_successful_probe": {
+          "$ref": "#/$defs/nullableDateTime"
+        },
+        "freshness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "evaluated_at",
+            "max_age_hours",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "fresh",
+                "stale",
+                "unknown",
+                "not_applicable"
+              ]
+            },
+            "evaluated_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "max_age_hours": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "provenance_coverage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "covered_fields",
+            "missing_fields",
+            "evidence_refs"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "complete",
+                "partial",
+                "none",
+                "unknown",
+                "not_applicable"
+              ]
+            },
+            "covered_fields": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            },
+            "missing_fields": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            },
+            "evidence_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uri-reference",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          }
+        },
+        "idempotency_key_strategy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "expression",
+            "collision_scope"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "defined",
+                "unknown",
+                "not_applicable"
+              ]
+            },
+            "expression": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "collision_scope": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "error_state": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "code",
+            "detail",
+            "observed_at",
+            "receipt_uri"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "none",
+                "active",
+                "degraded",
+                "blocked",
+                "unknown"
+              ]
+            },
+            "code": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "detail": {
+              "type": "string",
+              "minLength": 1
+            },
+            "observed_at": {
+              "$ref": "#/$defs/nullableDateTime"
+            },
+            "receipt_uri": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "connector_quality_components": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authentication",
+            "scoped_access",
+            "freshness",
+            "provenance_support",
+            "idempotency_retry_safety",
+            "sensitivity_controls",
+            "observable_receipts"
+          ],
+          "properties": {
+            "authentication": {
+              "$ref": "#/$defs/qualityComponent"
+            },
+            "scoped_access": {
+              "$ref": "#/$defs/qualityComponent"
+            },
+            "freshness": {
+              "$ref": "#/$defs/qualityComponent"
+            },
+            "provenance_support": {
+              "$ref": "#/$defs/qualityComponent"
+            },
+            "idempotency_retry_safety": {
+              "$ref": "#/$defs/qualityComponent"
+            },
+            "sensitivity_controls": {
+              "$ref": "#/$defs/qualityComponent"
+            },
+            "observable_receipts": {
+              "$ref": "#/$defs/qualityComponent"
+            }
+          }
+        },
+        "connector_quality_score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "data_quality_dimensions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "completeness",
+            "uniqueness",
+            "validity",
+            "consistency",
+            "lineage",
+            "timeliness",
+            "duplicate_risk"
+          ],
+          "properties": {
+            "completeness": {
+              "$ref": "#/$defs/nullableScore"
+            },
+            "uniqueness": {
+              "$ref": "#/$defs/nullableScore"
+            },
+            "validity": {
+              "$ref": "#/$defs/nullableScore"
+            },
+            "consistency": {
+              "$ref": "#/$defs/nullableScore"
+            },
+            "lineage": {
+              "$ref": "#/$defs/nullableScore"
+            },
+            "timeliness": {
+              "$ref": "#/$defs/nullableScore"
+            },
+            "duplicate_risk": {
+              "$ref": "#/$defs/nullableScore"
+            }
+          }
+        },
+        "data_quality_score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "legacy_quality_snapshot": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "connector_quality_score",
+            "data_quality_score",
+            "status",
+            "reason"
+          ],
+          "properties": {
+            "connector_quality_score": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "data_quality_score": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "status": {
+              "const": "superseded_unreproducible"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "sensitivity_ceiling": {
+          "enum": [
+            "public",
+            "private",
+            "restricted",
+            "sealed"
+          ]
+        },
+        "next_gate": {
+          "type": "string",
+          "minLength": 8
+        },
+        "next_human_gate": {
+          "type": "string",
+          "minLength": 8
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "notion_worker": {
+          "enum": [
+            "intake_triage",
+            "provenance_hash",
+            "actor_entity",
+            "event_claim",
+            "document_organization",
+            "qa_exception"
+          ]
+        },
+        "automation_lanes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

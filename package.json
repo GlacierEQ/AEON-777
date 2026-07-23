@@ -1,0 +1,9 @@
+{
+  "name": "aeon-777-casebrain-validation",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "npm --prefix BRAIN/ACTORS install --ignore-scripts --no-audit --no-fund && npm --prefix BRAIN/ACTORS test && npm --prefix BRAIN/CONNECTORS ci --ignore-scripts --no-audit --no-fund && npm --prefix BRAIN/CONNECTORS test"
+  }
+}

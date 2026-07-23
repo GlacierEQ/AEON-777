@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:actor-registry:1.0.0",
+  "title": "CASEBRAIN Actor Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "generated_at",
+    "source_snapshot",
+    "policy",
+    "quality_summary",
+    "actors",
+    "identity_conflicts"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "case_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["notion_actor_database", "drive_exhibit_manifest", "aeon_truth_contract"],
+      "properties": {
+        "notion_actor_database": { "$ref": "#/$defs/sourcePointer" },
+        "drive_exhibit_manifest": { "$ref": "#/$defs/sourcePointer" },
+        "aeon_truth_contract": { "$ref": "#/$defs/sourcePointer" }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["github_canonical", "notion_projection_only", "allegations_promoted", "verified_live_claims", "minor_pii_allowed", "human_review_required"],
+      "properties": {
+        "github_canonical": { "const": true },
+        "notion_projection_only": { "const": true },
+        "allegations_promoted": { "const": false },
+        "verified_live_claims": { "const": false },
+        "minor_pii_allowed": { "const": false },
+        "human_review_required": { "const": true }
+      }
+    },
+    "quality_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_actor_rows", "distinct_actor_keys", "rows_with_allegation_text", "rows_missing_review_status", "rows_missing_numeric_evidence_count", "actors_with_external_file_candidates", "identity_conflicts_open", "evidence_count_trusted"],
+      "properties": {
+        "source_actor_rows": { "type": "integer", "minimum": 0 },
+        "distinct_actor_keys": { "type": "integer", "minimum": 0 },
+        "rows_with_allegation_text": { "type": "integer", "minimum": 0 },
+        "rows_missing_review_status": { "type": "integer", "minimum": 0 },
+        "rows_missing_numeric_evidence_count": { "type": "integer", "minimum": 0 },
+        "actors_with_external_file_candidates": { "type": "integer", "minimum": 0 },
+        "identity_conflicts_open": { "type": "integer", "minimum": 0 },
+        "evidence_count_trusted": { "const": false }
+      }
+    },
+    "actors": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/actor" }
+    },
+    "identity_conflicts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/conflict" }
+    }
+  },
+  "$defs": {
+    "sourcePointer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resource_id", "title", "uri", "source_system", "source_class", "authority_level", "link_status", "content_hash", "last_checked_at", "sensitivity", "notes"],
+      "properties": {
+        "resource_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,255}$" },
+        "title": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "uri": { "type": "string", "format": "uri", "minLength": 1 },
+        "source_system": { "enum": ["github", "notion", "google_drive", "casebrain", "dropbox", "other"] },
+        "source_class": { "enum": ["court_record_candidate", "evidence_candidate", "filing_candidate", "official_record_candidate", "restricted_record_candidate", "service_record_candidate", "working_index", "work_product", "system_contract", "folder_index", "other"] },
+        "authority_level": { "enum": ["primary_candidate", "official_candidate", "secondary", "work_product", "unknown"] },
+        "link_status": { "enum": ["linked", "candidate", "blocked", "duplicate_candidate", "restricted", "stale"] },
+        "content_hash": {
+          "oneOf": [
+            { "type": "string", "pattern": "^(sha256:)?[A-Fa-f0-9]{64}$" },
+            { "type": "null" }
+          ]
+        },
+        "last_checked_at": { "type": "string", "format": "date-time" },
+        "sensitivity": { "enum": ["public", "private", "restricted", "sealed"] },
+        "notes": { "type": "string", "maxLength": 2000 }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "claim_class", "verification_status", "source_ids"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1, "maxLength": 4000 },
+        "claim_class": { "enum": ["source_fact", "procedural_record", "court_finding", "party_allegation", "witness_statement", "model_inference", "legal_argument", "system_state"] },
+        "verification_status": { "enum": ["unverified", "partially_verified", "verified", "contradicted", "pending_review", "blocked", "stale"] },
+        "source_ids": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "alias": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "status"],
+      "properties": {
+        "value": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "status": { "enum": ["reported", "verified", "conflicted_not_alias", "spelling_variant"] }
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_actor_id", "relationship_type", "verification_status", "source_ids"],
+      "properties": {
+        "target_actor_id": { "type": "string", "pattern": "^actor-[a-z0-9-]+$" },
+        "relationship_type": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "verification_status": { "enum": ["unverified", "partially_verified", "verified", "contradicted", "pending_review"] },
+        "source_ids": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actor_id", "actor_key", "display_name", "aliases", "actor_type", "case_role", "priority", "profile_status", "identity_status", "sensitivity", "container_tag", "known_context", "source_links", "relationships", "open_questions", "last_reviewed_at"],
+      "properties": {
+        "actor_id": { "type": "string", "pattern": "^actor-[a-z0-9-]+$" },
+        "actor_key": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]{1,63}$" },
+        "display_name": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "aliases": { "type": "array", "items": { "$ref": "#/$defs/alias" } },
+        "actor_type": { "enum": ["person", "organization", "government_agency", "court_office", "service_provider", "financial_institution", "protected_minor", "unknown"] },
+        "case_role": { "enum": ["party_self", "adverse_party", "protected_party", "counsel", "former_counsel", "judicial_officer", "clerk", "agency", "service_provider", "witness", "third_party", "evidence_source", "unknown"] },
+        "priority": { "enum": ["P0", "P1", "P2"] },
+        "profile_status": { "enum": ["source_linked", "source_pending", "conflict_review", "restricted_review"] },
+        "identity_status": { "enum": ["verified", "partially_verified", "conflicted", "unverified"] },
+        "sensitivity": { "enum": ["public", "private", "restricted", "sealed"] },
+        "container_tag": { "enum": ["shared", "shaw", "naso", "yamatani", "brower", "hpd", "csea", "other"] },
+        "known_context": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/context" } },
+        "source_links": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourcePointer" } },
+        "relationships": { "type": "array", "items": { "$ref": "#/$defs/relationship" } },
+        "open_questions": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 1000 } },
+        "last_reviewed_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "conflict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["conflict_id", "actor_ids", "conflict_type", "description", "resolution_status", "source_ids"],
+      "properties": {
+        "conflict_id": { "type": "string", "pattern": "^conflict-[a-z0-9-]+$" },
+        "actor_ids": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^actor-[a-z0-9-]+$" }, "uniqueItems": true },
+        "conflict_type": { "enum": ["name", "role", "identity_merge", "spelling", "source_authority"] },
+        "description": { "type": "string", "minLength": 1, "maxLength": 2000 },
+        "resolution_status": { "enum": ["open", "resolved", "blocked"] },
+        "source_ids": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true }
+      }
+    }
+  }
+}
