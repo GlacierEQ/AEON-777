@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:memory-tombstone-registry:1.0.0",
+  "title": "CASEBRAIN Logical Memory Tombstone Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "thread_anchor", "entries"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["tombstone_id", "namespace", "target_memory_id", "idempotency_key", "effective_at", "reason", "logical_delete_active", "physical_delete_confirmed", "retrieval_action", "receipt_ref"],
+        "properties": {
+          "tombstone_id": { "type": "string", "pattern": "^tomb_[a-z0-9_]+$" },
+          "namespace": { "const": "sm_project_memory_master" },
+          "target_memory_id": { "type": "string", "pattern": "^[A-Za-z0-9_-]{8,64}$" },
+          "idempotency_key": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "effective_at": { "type": "string", "format": "date-time" },
+          "reason": { "const": "synthetic_control_canary_retired" },
+          "logical_delete_active": { "const": true },
+          "physical_delete_confirmed": { "const": false },
+          "retrieval_action": { "const": "reject_by_idempotency_key" },
+          "receipt_ref": { "type": "string", "minLength": 8 }
+        }
+      }
+    }
+  }
+}

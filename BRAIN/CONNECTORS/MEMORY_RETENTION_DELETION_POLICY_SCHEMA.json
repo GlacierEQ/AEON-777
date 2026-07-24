@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:memory-retention-deletion-policy:1.0.0",
+  "title": "CASEBRAIN Memory Retention and Deletion Policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "thread_anchor", "policy_id", "approval_state", "owner", "namespace", "class_rules", "deletion_receipt_required", "logical_tombstone_on_physical_failure", "projection_rules", "activation_allowed"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
+    "policy_id": { "const": "memory-retention-deletion-v1" },
+    "approval_state": { "const": "pending_human_approval" },
+    "owner": { "const": "unassigned" },
+    "namespace": { "const": "sm_project_memory_master" },
+    "class_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["control_canary", "governance_delta", "correction_overlay"],
+      "properties": {
+        "control_canary": { "const": "retire_after_validation_with_receipt" },
+        "governance_delta": { "const": "append_only_supersession" },
+        "correction_overlay": { "const": "append_only_supersession" }
+      }
+    },
+    "deletion_receipt_required": { "const": true },
+    "logical_tombstone_on_physical_failure": { "const": true },
+    "projection_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw_content_allowed", "safe_fields"],
+      "properties": {
+        "raw_content_allowed": { "const": false },
+        "safe_fields": {
+          "type": "array",
+          "items": { "enum": ["receipt_id", "namespace", "target_id", "content_sha256", "idempotency_key", "status", "timestamp"] },
+          "minItems": 7,
+          "maxItems": 7,
+          "uniqueItems": true
+        }
+      }
+    },
+    "activation_allowed": { "const": false }
+  }
+}

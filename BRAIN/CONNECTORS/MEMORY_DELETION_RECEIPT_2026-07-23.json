@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "receipt_id": "memory-delete-2026-07-23-canary-v1",
+  "generated_at": "2026-07-24T03:53:08Z",
+  "connector_id": "supermemory",
+  "namespace": "sm_project_memory_master",
+  "target": {
+    "memory_id": "t5gh14KtFr6EoSQymcnB3J",
+    "record_class": "control_canary",
+    "content_sha256": "b4389ae9bdd2ef5f6dd7faae3fc530c162add3b1d2a72910645361b694eb76b5",
+    "idempotency_key": "e3f2ff4216546b1aed274c655fe9d3b367044a0101d2b834fcca761241210677"
+  },
+  "attempts": [
+    { "attempt": 1, "connector_error": false, "outcome": "no_exact_memory_document_chunks_only" },
+    { "attempt": 2, "connector_error": false, "outcome": "no_exact_memory_document_chunks_only" }
+  ],
+  "post_delete_recall": {
+    "status": "success",
+    "content_block_count": 1,
+    "idempotency_key_found": true,
+    "raw_response_persisted": false
+  },
+  "physical_delete_confirmed": false,
+  "logical_tombstone_required": true,
+  "result": "physical_delete_failed_logical_tombstone_required",
+  "raw_content_persisted": false
+}

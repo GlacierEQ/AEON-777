@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "entries": [
+    {
+      "tombstone_id": "tomb_control_canary_20260723",
+      "namespace": "sm_project_memory_master",
+      "target_memory_id": "t5gh14KtFr6EoSQymcnB3J",
+      "idempotency_key": "e3f2ff4216546b1aed274c655fe9d3b367044a0101d2b834fcca761241210677",
+      "effective_at": "2026-07-24T03:53:08Z",
+      "reason": "synthetic_control_canary_retired",
+      "logical_delete_active": true,
+      "physical_delete_confirmed": false,
+      "retrieval_action": "reject_by_idempotency_key",
+      "receipt_ref": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_DELETION_RECEIPT_2026-07-23.json"
+    }
+  ]
+}
