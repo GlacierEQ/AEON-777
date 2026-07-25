@@ -7,7 +7,8 @@ export function applyMemoryTombstones(candidates, registry) {
   const eligible = [];
   const rejected = [];
   for (const candidate of candidates) {
-    const key = `${candidate.namespace}|${candidate.idempotency_key}`;
+    const namespace = candidate.namespace ?? candidate.container_tag;
+    const key = `${namespace}|${candidate.idempotency_key}`;
     const tombstone = active.get(key);
     if (tombstone) {
       rejected.push({ candidate_id: candidate.candidate_id, reason: "logical_tombstone", tombstone_id: tombstone.tombstone_id });

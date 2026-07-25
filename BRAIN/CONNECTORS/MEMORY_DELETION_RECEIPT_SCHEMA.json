@@ -27,16 +27,29 @@
       "type": "array",
       "minItems": 2,
       "maxItems": 2,
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["attempt", "connector_error", "outcome"],
-        "properties": {
-          "attempt": { "type": "integer", "minimum": 1, "maximum": 2 },
-          "connector_error": { "const": false },
-          "outcome": { "const": "no_exact_memory_document_chunks_only" }
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["attempt", "connector_error", "outcome"],
+          "properties": {
+            "attempt": { "const": 1 },
+            "connector_error": { "const": false },
+            "outcome": { "const": "no_exact_memory_document_chunks_only" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["attempt", "connector_error", "outcome"],
+          "properties": {
+            "attempt": { "const": 2 },
+            "connector_error": { "const": false },
+            "outcome": { "const": "no_exact_memory_document_chunks_only" }
+          }
         }
-      }
+      ],
+      "items": false
     },
     "post_delete_recall": {
       "type": "object",

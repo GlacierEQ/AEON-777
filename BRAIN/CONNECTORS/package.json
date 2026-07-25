@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node validate_connector_fabric.mjs && python3 validate_connector_fabric.py && node validate_provenance_schema.mjs && node validate_memory_quarantine.mjs && node validate_memory_recall_regression.mjs && node validate_memory_retrieval_guard.mjs && node validate_memory_architecture_consumer.mjs && node validate_actor_profile_consumer.mjs && node validate_timeline_event_consumer.mjs && node validate_memory_namespace_replay.mjs && node validate_memory_deletion_tombstone.mjs"
+    "test": "node validate_connector_fabric.mjs && python3 validate_connector_fabric.py && node validate_provenance_schema.mjs && node validate_memory_quarantine.mjs && node validate_memory_recall_regression.mjs && node validate_memory_retrieval_guard.mjs && node validate_memory_architecture_consumer.mjs && node validate_actor_profile_consumer.mjs && node validate_timeline_event_consumer.mjs && node validate_memory_namespace_replay.mjs && node validate_memory_deletion_tombstone.mjs && node validate_memory_backend_capability.mjs"
   },
   "dependencies": {
     "ajv": "^8.17.1",

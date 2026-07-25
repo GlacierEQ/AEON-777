@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "probe_id": "memory-capability-probe-2026-07-24-v1",
+  "observed_at": "2026-07-25T04:28:02Z",
+  "connector_id": "supermemory",
+  "namespace": "sm_project_memory_master",
+  "graph_observation": {
+    "document_count": 10,
+    "memory_count": 33,
+    "document_ids_exposed": false,
+    "chunk_ids_exposed": false
+  },
+  "recall_observation": {
+    "status": "success",
+    "retired_key_found": true,
+    "stable_target_ids_exposed": false,
+    "raw_response_persisted": false
+  },
+  "mutation_interface": {
+    "actions": ["save", "forget"],
+    "target_selector": "content_text_only",
+    "delete_by_id_supported": false,
+    "delete_document_chunks_supported": false
+  },
+  "deletion_contract": {
+    "physical_delete_claim_allowed": false,
+    "negative_recall_confirmed": false,
+    "logical_tombstone_required": true,
+    "next_gate": "stable_target_id_plus_delete_by_id_plus_immutable_receipt_plus_negative_recall"
+  },
+  "raw_content_persisted": false
+}

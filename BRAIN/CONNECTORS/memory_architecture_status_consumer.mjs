@@ -1,6 +1,9 @@
+import fs from "node:fs";
 import { guardRecall } from "./memory_retrieval_guard.mjs";
+import { applyMemoryTombstones } from "./memory_tombstone_filter.mjs";
 
 const HASH = /^[a-f0-9]{64}$/;
+const tombstoneRegistry = JSON.parse(fs.readFileSync(new URL("./MEMORY_TOMBSTONE_REGISTRY.json", import.meta.url), "utf8"));
 
 export function consumeMemoryArchitectureStatus(probe, generatedAt = new Date().toISOString()) {
   if (!probe || probe.connector !== "supermemory") throw new Error("unsupported connector");
@@ -22,7 +25,8 @@ export function consumeMemoryArchitectureStatus(probe, generatedAt = new Date().
       effective_at: generatedAt,
       source_locator: null,
       provenance_ref: null,
-      sensitivity: "restricted"
+      sensitivity: "restricted",
+      idempotency_key: probe.idempotency_key
     },
     {
       candidate_id: "mrg_memory_architecture_canonical_status",
@@ -39,7 +43,9 @@ export function consumeMemoryArchitectureStatus(probe, generatedAt = new Date().
     }
   ];
 
-  const guardReceipt = guardRecall(request, candidates, generatedAt);
+  const tombstoneResult = applyMemoryTombstones(candidates, tombstoneRegistry);
+  const guardReceipt = guardRecall(request, tombstoneResult.eligible, generatedAt);
+  guardReceipt.rejected.push(...tombstoneResult.rejected);
   return {
     schema_version: "1.0.0",
     thread_anchor: "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",

@@ -22,9 +22,9 @@
           "idempotency_key": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
           "effective_at": { "type": "string", "format": "date-time" },
           "reason": { "const": "synthetic_control_canary_retired" },
-          "logical_delete_active": { "const": true },
-          "physical_delete_confirmed": { "const": false },
-          "retrieval_action": { "const": "reject_by_idempotency_key" },
+          "logical_delete_active": { "type": "boolean" },
+          "physical_delete_confirmed": { "type": "boolean" },
+          "retrieval_action": { "enum": ["reject_by_idempotency_key", "none"] },
           "receipt_ref": { "type": "string", "minLength": 8 }
         }
       }

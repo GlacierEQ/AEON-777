@@ -5480,7 +5480,7 @@
       "connector_quality_score": 60,
       "data_quality_score": 0,
       "sensitivity_ceiling": "restricted",
-      "next_gate": "Obtain addressable chunk deletion, physically remove the retired canary, then approve the exact namespace, retention policy, and owner.",
+      "next_gate": "Require stable document or chunk IDs plus delete-by-ID and an immutable receipt; then physically remove the retired canary and prove negative recall.",
       "evidence": [
         "Five topic-specific correction writes returned stable memory IDs and passed targeted recall read-back on 2026-07-16.",
         "Broad project recall on 2026-07-17 returned correction precedence first in 3 of 5 scopes; CSEA and Brower scopes still ranked unqualified legacy assertions first.",
@@ -5490,7 +5490,8 @@
         "A bounded live actor-container recall succeeded on 2026-07-20; typed normalization rejected the raw payload and projected only a conflicted, pointer-only GitHub actor control.",
         "A bounded live memory-master recall succeeded on 2026-07-21; the typed timeline consumer rejected raw output and projected only a non-evidentiary, pointer-only GitHub control event.",
         "Two identical synthetic control-canary writes on 2026-07-22 used one deterministic key and returned the same backend memory ID; keyed read-after-write recall succeeded in sm_project_memory_master.",
-        "Two exact-forget attempts on 2026-07-23 returned document-chunks-only with no physical deletion; post-delete recall still found the key, so a namespace-scoped logical tombstone is active."
+        "Two exact-forget attempts on 2026-07-23 returned document-chunks-only with no physical deletion; post-delete recall still found the key, so a namespace-scoped logical tombstone is active.",
+        "A bounded capability probe on 2026-07-24 reported 10 documents and 33 memories but exposed no document or chunk IDs; keyed recall still found the retired canary and the mutation interface exposed no delete-by-ID operation."
       ],
       "notion_worker": "qa_exception",
       "automation_lanes": [
@@ -5500,12 +5501,12 @@
       ],
       "approved_roots": [],
       "root_scope_state": "not_approved",
-      "last_successful_probe": "2026-07-23T17:53:08-10:00",
+      "last_successful_probe": "2026-07-24T18:28:02-10:00",
       "freshness": {
         "status": "fresh",
-        "evaluated_at": "2026-07-23T17:53:08-10:00",
+        "evaluated_at": "2026-07-24T18:28:02-10:00",
         "max_age_hours": 24,
-        "reason": "Post-delete recall succeeded and confirmed the retired synthetic key remains backend-visible; the deletion receipt preserves the failure without raw content."
+        "reason": "Memory-graph and keyed-recall probes succeeded; they confirmed the retired key remains backend-visible and that stable document/chunk deletion targets are not exposed."
       },
       "provenance_coverage": {
         "status": "partial",
@@ -5522,7 +5523,8 @@
           "idempotency_key",
           "retry_memory_id",
           "deletion_receipt",
-          "logical_tombstone"
+          "logical_tombstone",
+          "backend_capability_probe"
         ],
         "missing_fields": [
           "canonical_source_uri",
@@ -5536,7 +5538,8 @@
           "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/TIMELINE_EVENT_LIVE_CONSUMER_RECEIPT_2026-07-21.json",
           "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_REPLAY_RECEIPT_2026-07-22.json",
           "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_DELETION_RECEIPT_2026-07-23.json",
-          "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_TOMBSTONE_REGISTRY.json"
+          "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_TOMBSTONE_REGISTRY.json",
+          "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_BACKEND_CAPABILITY_PROBE_2026-07-24.json"
         ]
       },
       "idempotency_key_strategy": {
@@ -5547,12 +5550,12 @@
       "error_state": {
         "status": "degraded",
         "code": "MEMORY_DELETE_NOT_ADDRESSABLE_DOCUMENT_CHUNKS",
-        "detail": "Exact forget cannot address the saved synthetic item because recall exposes document chunks rather than an exactly forgettable record. Physical deletion failed twice; a logical tombstone now blocks application-layer reuse while backend cleanup remains open.",
-        "observed_at": "2026-07-23T17:53:08-10:00",
-        "receipt_uri": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_DELETION_RECEIPT_2026-07-23.json"
+        "detail": "The live graph reports document and memory counts but exposes no document/chunk IDs; recall returns ranked chunks and the mutation interface supports only content-text forget. Physical deletion cannot be claimed, so the logical tombstone remains active.",
+        "observed_at": "2026-07-24T18:28:02-10:00",
+        "receipt_uri": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_BACKEND_CAPABILITY_PROBE_2026-07-24.json"
       },
       "owner": "unassigned",
-      "next_human_gate": "Obtain addressable chunk deletion, physically remove the retired canary, then approve the exact namespace, retention policy, and owner.",
+      "next_human_gate": "Require stable document or chunk IDs plus delete-by-ID and an immutable receipt; then physically remove the retired canary and prove negative recall.",
       "connector_quality_components": {
         "authentication": {
           "awarded": 15,
@@ -5570,7 +5573,7 @@
           "awarded": 15,
           "possible": 15,
           "evidence": [
-            "2026-07-23 deletion-attempt and post-delete recall receipt"
+            "2026-07-24 graph and keyed-recall capability probe"
           ]
         },
         "provenance_support": {

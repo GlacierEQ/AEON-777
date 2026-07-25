@@ -27,7 +27,7 @@ const control = { candidate_id: "current_control", namespace: receipt.namespace,
 const filtered = applyMemoryTombstones([target, control], registry);
 if (filtered.eligible.length !== 1 || filtered.eligible[0].candidate_id !== "current_control") throw new Error("non-tombstoned control was not preserved");
 if (filtered.rejected.length !== 1 || filtered.rejected[0].reason !== "logical_tombstone") throw new Error("retired canary escaped tombstone filter");
-if (receipt.physical_delete_confirmed || !receipt.post_delete_recall.idempotency_key_found) throw new Error("deletion receipt overstates backend result");
+if (receipt.physical_delete_confirmed !== false || receipt.post_delete_recall.idempotency_key_found !== true) throw new Error("deletion receipt overstates backend result");
 if (policy.approval_state !== "pending_human_approval" || policy.owner !== "unassigned" || policy.activation_allowed) throw new Error("policy overstates approval");
 
 const inactive = structuredClone(registry);
@@ -35,6 +35,21 @@ inactive.entries[0].logical_delete_active = false;
 if (applyMemoryTombstones([target], inactive).rejected.length !== 0) throw new Error("inactive tombstone unexpectedly rejected candidate");
 const wrongNamespace = { ...target, namespace: "sm_project_default" };
 if (applyMemoryTombstones([wrongNamespace], registry).rejected.length !== 0) throw new Error("tombstone leaked across namespace");
+const currentConsumerShape = {
+  candidate_id: "current_consumer_canary",
+  container_tag: receipt.namespace,
+  idempotency_key: receipt.target.idempotency_key
+};
+if (applyMemoryTombstones([currentConsumerShape], registry).rejected.length !== 1) throw new Error("container_tag recall candidate escaped tombstone filter");
+
+const completed = structuredClone(registry);
+completed.entries[0].logical_delete_active = false;
+completed.entries[0].physical_delete_confirmed = true;
+completed.entries[0].retrieval_action = "none";
+const completedAjv = new Ajv2020({ allErrors: true, strict: true });
+addFormats(completedAjv);
+const validateCompleted = completedAjv.compile(read("./MEMORY_TOMBSTONE_REGISTRY_SCHEMA.json"));
+if (!validateCompleted(completed)) throw new Error(`completed cleanup cannot be represented: ${JSON.stringify(validateCompleted.errors)}`);
 
 const serialized = JSON.stringify({ policy, receipt, registry });
 for (const pattern of [/\b(?:api[_-]?key|access[_-]?token|refresh[_-]?token|password|secret)\b/i, /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i, /\b\d{3}-\d{2}-\d{4}\b/]) {

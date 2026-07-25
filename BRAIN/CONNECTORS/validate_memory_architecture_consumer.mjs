@@ -21,6 +21,14 @@ if (actual.guard_receipt.promoted.length !== 1 || actual.normalization.raw_paylo
 if (!actual.guard_receipt.rejected.some((item) => item.reason === "review_state_unknown")) {
   throw new Error("unstructured live payload rejection was not preserved");
 }
+const tombstonedProbe = {
+  ...probe,
+  idempotency_key: "e3f2ff4216546b1aed274c655fe9d3b367044a0101d2b834fcca761241210677"
+};
+const tombstoned = consumeMemoryArchitectureStatus(tombstonedProbe, expected.generated_at);
+if (!tombstoned.guard_receipt.rejected.some((item) => item.reason === "logical_tombstone")) {
+  throw new Error("retired keyed recall escaped the live consumer tombstone path");
+}
 
 for (const bad of [
   { ...probe, query_sha256: "invalid" },
