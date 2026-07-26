@@ -159,7 +159,6 @@
         "missing_fields": [
           "source_uri",
           "source_version",
-          "observed_at",
           "custodian",
           "sha256_exact_bytes",
           "run_receipt"
@@ -1045,12 +1044,13 @@
       "allocated_role": "source_byte_store",
       "access_mode": "blocked",
       "approved_root": false,
-      "connector_quality_score": 30,
+      "connector_quality_score": 55,
       "data_quality_score": 0,
       "sensitivity_ceiling": "restricted",
-      "next_gate": "Pair one trusted device, confirm count > 0, inspect configuration, and allowlist one read-only folder.",
+      "next_gate": "Bind the trusted Mac to the callable connector principal, verify online device count > 0, then approve one non-sensitive metadata-only root.",
       "evidence": [
-        "Connector is authenticated but device count is zero."
+        "Connector is authenticated but device count is zero.",
+        "A live authentication and device-list probe on 2026-07-25 succeeded under one hashed principal but returned zero devices; a separate pairing claim therefore remains unbound and unverified for this callable principal."
       ],
       "notion_worker": "qa_exception",
       "automation_lanes": [
@@ -1058,25 +1058,33 @@
       ],
       "approved_roots": [],
       "root_scope_state": "not_approved",
-      "last_successful_probe": null,
+      "last_successful_probe": "2026-07-25T17:43:24-10:00",
       "freshness": {
-        "status": "unknown",
-        "evaluated_at": "2026-07-15T18:06:57-10:00",
-        "max_age_hours": null,
-        "reason": "No source-linked successful-probe timestamp is preserved in the v1.0 registry."
+        "status": "fresh",
+        "evaluated_at": "2026-07-25T17:43:24-10:00",
+        "max_age_hours": 24,
+        "reason": "Authentication and device enumeration completed successfully; the live result was zero devices and no source roots were touched."
       },
       "provenance_coverage": {
-        "status": "unknown",
-        "covered_fields": [],
+        "status": "partial",
+        "covered_fields": [
+          "principal_sha256",
+          "device_count",
+          "online_device_count",
+          "observed_at",
+          "routing_decision"
+        ],
         "missing_fields": [
           "source_uri",
           "source_version",
-          "observed_at",
           "custodian",
           "sha256_exact_bytes",
-          "run_receipt"
+          "run_receipt",
+          "bound_device_id"
         ],
-        "evidence_refs": []
+        "evidence_refs": [
+          "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/DESKTOP_COMMANDER_BINDING_RECEIPT_2026-07-25.json"
+        ]
       },
       "idempotency_key_strategy": {
         "status": "unknown",
@@ -1084,14 +1092,14 @@
         "collision_scope": null
       },
       "error_state": {
-        "status": "unknown",
-        "code": null,
-        "detail": "The v1.0 narrative evidence is not a structured connector error receipt.",
-        "observed_at": null,
-        "receipt_uri": null
+        "status": "blocked",
+        "code": "DESKTOP_COMMANDER_PRINCIPAL_UNBOUND_ZERO_DEVICES",
+        "detail": "The callable authenticated principal reports zero devices. A separately reported pairing cannot be treated as bound to this connector until the same principal returns an online device.",
+        "observed_at": "2026-07-25T17:43:24-10:00",
+        "receipt_uri": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/DESKTOP_COMMANDER_BINDING_RECEIPT_2026-07-25.json"
       },
       "owner": "unassigned",
-      "next_human_gate": "Pair one trusted device, confirm count > 0, inspect configuration, and allowlist one read-only folder.",
+      "next_human_gate": "Bind the trusted Mac to the callable connector principal, verify online device count > 0, then approve one non-sensitive metadata-only root.",
       "connector_quality_components": {
         "authentication": {
           "awarded": 15,
@@ -1106,9 +1114,11 @@
           "evidence": []
         },
         "freshness": {
-          "awarded": 0,
+          "awarded": 15,
           "possible": 15,
-          "evidence": []
+          "evidence": [
+            "2026-07-25 authentication and zero-device enumeration receipt"
+          ]
         },
         "provenance_support": {
           "awarded": 0,
@@ -1128,9 +1138,11 @@
           ]
         },
         "observable_receipts": {
-          "awarded": 0,
+          "awarded": 10,
           "possible": 10,
-          "evidence": []
+          "evidence": [
+            "Privacy-safe principal hash, device count, timestamp, and routing decision receipt"
+          ]
         }
       },
       "data_quality_dimensions": {
