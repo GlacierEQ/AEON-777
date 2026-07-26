@@ -16,12 +16,15 @@ const blocked = evaluateDesktopCommanderRoute({
   mode: "metadata_read",
   write_requested: false
 }, receipt);
-if (blocked.allowed || !blocked.reasons.includes("no_online_bound_device") ||
+if (blocked.allowed || !blocked.reasons.includes("principal_binding_unverified") ||
+    !blocked.reasons.includes("no_online_bound_device") ||
     !blocked.reasons.includes("outside_approved_root")) {
-  throw new Error("zero-device or root gate did not fail closed");
+  throw new Error("unverified binding, zero-device, or root gate did not fail closed");
 }
 
 const syntheticReady = structuredClone(receipt);
+syntheticReady.binding.state = "verified";
+syntheticReady.binding.principal_match = "verified";
 syntheticReady.device_probe.device_count = 1;
 syntheticReady.device_probe.online_device_count = 1;
 syntheticReady.routing.approved_roots = ["/synthetic/pilot"];
@@ -67,4 +70,4 @@ const serialized = JSON.stringify(receipt);
 for (const pattern of [/@/, /\b(?:api[_-]?key|access[_-]?token|refresh[_-]?token|password|secret)\b/i, /\b\d{3}-\d{2}-\d{4}\b/]) {
   if (pattern.test(serialized)) throw new Error(`forbidden identifier or secret pattern: ${pattern}`);
 }
-console.log("PASS: Desktop Commander principal binding is hashed; zero-device and root/write gates fail closed");
+console.log("PASS: Desktop Commander binding must be verified; principal, device, root, and write gates fail closed");
