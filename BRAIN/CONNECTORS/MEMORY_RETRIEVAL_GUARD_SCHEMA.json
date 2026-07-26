@@ -54,7 +54,13 @@
           ]
         },
         "tombstone_id": { "type": "string", "pattern": "^tomb_[a-z0-9_]+$" }
-      }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "reason": { "const": "logical_tombstone" } }, "required": ["reason"] },
+          "then": { "required": ["tombstone_id"] }
+        }
+      ]
     }
   }
 }
