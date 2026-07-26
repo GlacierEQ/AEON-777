@@ -3,6 +3,9 @@ const normalize = (path) => path.replaceAll("\\", "/").replace(/\/+$/, "");
 export function evaluateDesktopCommanderRoute(request, control) {
   const reasons = [];
   if (control.authentication.status !== "authenticated") reasons.push("connector_not_authenticated");
+  if (control.binding.state !== "verified" || control.binding.principal_match !== "verified") {
+    reasons.push("principal_binding_unverified");
+  }
   if (control.device_probe.online_device_count < 1) reasons.push("no_online_bound_device");
   if (request.principal_sha256 !== control.authentication.principal_sha256) reasons.push("principal_mismatch");
   if (!request.path) reasons.push("path_missing");
