@@ -58,7 +58,10 @@
       "allOf": [
         {
           "if": { "properties": { "reason": { "const": "logical_tombstone" } }, "required": ["reason"] },
-          "then": { "required": ["tombstone_id"] }
+          "then": {
+            "properties": { "tombstone_id": { "type": "string" } },
+            "required": ["tombstone_id"]
+          }
         }
       ]
     }
