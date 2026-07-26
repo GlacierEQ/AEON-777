@@ -1,9 +1,28 @@
+import crypto from "node:crypto";
 import fs from "node:fs";
 import { guardRecall } from "./memory_retrieval_guard.mjs";
 import { applyMemoryTombstones } from "./memory_tombstone_filter.mjs";
 
 const HASH = /^[a-f0-9]{64}$/;
+const VERSION = /^[0-9]+\.[0-9]+\.[0-9]+$/;
 const tombstoneRegistry = JSON.parse(fs.readFileSync(new URL("./MEMORY_TOMBSTONE_REGISTRY.json", import.meta.url), "utf8"));
+
+function deriveTrustedIdempotencyKey(probe) {
+  if (probe.idempotency_key !== undefined) throw new Error("caller supplied idempotency key is untrusted");
+  const inputs = [probe.record_class, probe.source_version, probe.payload_sha256];
+  if (inputs.every((value) => value === undefined)) return undefined;
+  if (typeof probe.record_class !== "string" || probe.record_class.length < 3 ||
+      !VERSION.test(probe.source_version ?? "") || !HASH.test(probe.payload_sha256 ?? "")) {
+    throw new Error("incomplete trusted idempotency inputs");
+  }
+  return crypto.createHash("sha256").update([
+    probe.connector,
+    probe.container_tag,
+    probe.record_class,
+    probe.source_version,
+    probe.payload_sha256
+  ].join("|")).digest("hex");
+}
 
 export function consumeMemoryArchitectureStatus(probe, generatedAt = new Date().toISOString()) {
   if (!probe || probe.connector !== "supermemory") throw new Error("unsupported connector");
@@ -11,6 +30,7 @@ export function consumeMemoryArchitectureStatus(probe, generatedAt = new Date().
   if (!HASH.test(probe.query_sha256) || !HASH.test(probe.response_sha256)) throw new Error("invalid probe digest");
   if (!Number.isInteger(probe.content_block_count) || probe.content_block_count < 1) throw new Error("empty connector response");
   if (probe.status !== "success") throw new Error("connector probe was not successful");
+  const trustedIdempotencyKey = deriveTrustedIdempotencyKey(probe);
 
   const request = { scope: "memory_architecture", container_tag: "sm_project_memory_master" };
   const candidates = [
@@ -26,7 +46,7 @@ export function consumeMemoryArchitectureStatus(probe, generatedAt = new Date().
       source_locator: null,
       provenance_ref: null,
       sensitivity: "restricted",
-      idempotency_key: probe.idempotency_key
+      idempotency_key: trustedIdempotencyKey
     },
     {
       candidate_id: "mrg_memory_architecture_canonical_status",
