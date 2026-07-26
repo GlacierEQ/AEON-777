@@ -7,8 +7,16 @@ export function evaluatePhysicalDeleteRequest(request, capabilityProbe) {
     reasons.push("addressable_backend_id_unavailable");
   }
   if (!capabilityProbe.mutation_interface.delete_by_id_supported) reasons.push("delete_by_id_unsupported");
-  if (!request.immutable_receipt_required) reasons.push("immutable_receipt_not_required");
-  if (!request.negative_recall_required) reasons.push("negative_recall_not_required");
+
+  const receipt = request.deletion_evidence?.immutable_receipt;
+  const receiptVerified = receipt?.verified === true && receipt?.immutable === true &&
+    receipt?.namespace === request.namespace && receipt?.target_id === request.stable_target_id;
+  if (!receiptVerified) reasons.push("immutable_deletion_receipt_unverified");
+
+  const negativeRecall = request.deletion_evidence?.negative_recall;
+  const negativeRecallVerified = negativeRecall?.verified === true && negativeRecall?.result === "not_found" &&
+    negativeRecall?.namespace === request.namespace && negativeRecall?.target_id === request.stable_target_id;
+  if (!negativeRecallVerified) reasons.push("negative_recall_unverified");
 
   return {
     executable: reasons.length === 0,
