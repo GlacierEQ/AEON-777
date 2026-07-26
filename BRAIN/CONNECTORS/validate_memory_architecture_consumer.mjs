@@ -23,7 +23,9 @@ if (!actual.guard_receipt.rejected.some((item) => item.reason === "review_state_
 }
 const tombstonedProbe = {
   ...probe,
-  idempotency_key: "e3f2ff4216546b1aed274c655fe9d3b367044a0101d2b834fcca761241210677"
+  record_class: "control_canary",
+  source_version: "1.0.0",
+  payload_sha256: "f9d18bffbe21cf7a658b0881c7dc92039636b4c0d057b1cac4b673f76327dfa0"
 };
 const tombstoned = consumeMemoryArchitectureStatus(tombstonedProbe, expected.generated_at);
 if (!tombstoned.guard_receipt.rejected.some((item) => item.reason === "logical_tombstone")) {
@@ -34,7 +36,9 @@ for (const bad of [
   { ...probe, query_sha256: "invalid" },
   { ...probe, content_block_count: 0 },
   { ...probe, container_tag: "sm_project_default" },
-  { ...probe, status: "error" }
+  { ...probe, status: "error" },
+  { ...probe, idempotency_key: "e3f2ff4216546b1aed274c655fe9d3b367044a0101d2b834fcca761241210677" },
+  { ...probe, record_class: "control_canary", source_version: "1.0.0" }
 ]) {
   let rejected = false;
   try { consumeMemoryArchitectureStatus(bad, expected.generated_at); } catch { rejected = true; }
@@ -45,4 +49,4 @@ const serialized = JSON.stringify(expected);
 for (const pattern of [/\b(?:api[_-]?key|access[_-]?token|refresh[_-]?token|password|secret)\b/i, /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i, /\b\d{3}-\d{2}-\d{4}\b/]) {
   if (pattern.test(serialized)) throw new Error(`forbidden sensitive pattern: ${pattern}`);
 }
-console.log("PASS: live Supermemory probe normalized; raw payload rejected; canonical status pointer promoted with deterministic receipt");
+console.log("PASS: live Supermemory payload rejected; tombstone key derived from trusted replay inputs; canonical pointer promoted");
