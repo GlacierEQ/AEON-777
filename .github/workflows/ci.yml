@@ -6,12 +6,11 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
-  ci:
-    uses: GlacierEQ/public-actions-runner-host/.github/workflows/reusable-ci.yml@main
+  casebrain-validation:
+    uses: GlacierEQ/public-actions-runner-host/.github/workflows/casebrain-validation.yml@f9c342c9ecdb1dddbefd64d776ec326b0c0703e8
     with:
-      repo_name: ${{ github.event.repository.name }}
-      language: python
-      run_tests: true
-      run_lint: true
-      run_security: true
+      expected_head_sha: ${{ github.event.pull_request.head.sha || github.sha }}
