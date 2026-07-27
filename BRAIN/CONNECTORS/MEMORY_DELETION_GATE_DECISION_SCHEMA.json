@@ -26,6 +26,7 @@
       ]
     },
     "reason": {
+      "type": "string",
       "enum": [
         "namespace_mismatch",
         "stable_target_id_missing",
@@ -62,10 +63,10 @@
         "reasons"
       ],
       "properties": {
-        "phase": { "const": "pre_delete_authorization" },
+        "phase": { "type": "string", "const": "pre_delete_authorization" },
         "authorized": { "type": "boolean" },
         "executable": { "type": "boolean" },
-        "action": { "enum": ["authorize_physical_delete", "retain_logical_tombstone"] },
+        "action": { "type": "string", "enum": ["authorize_physical_delete", "retain_logical_tombstone"] },
         "authorization_id": { "$ref": "#/$defs/sha256_or_null" },
         "namespace": { "$ref": "#/$defs/string_or_null" },
         "target_id": { "$ref": "#/$defs/string_or_null" },
@@ -78,23 +79,29 @@
       },
       "allOf": [
         {
-          "if": { "properties": { "authorized": { "const": true } }, "required": ["authorized"] },
+          "if": {
+            "type": "object",
+            "properties": { "authorized": { "type": "boolean", "const": true } },
+            "required": ["authorized"]
+          },
           "then": {
+            "type": "object",
             "properties": {
-              "executable": { "const": true },
-              "action": { "const": "authorize_physical_delete" },
+              "executable": { "type": "boolean", "const": true },
+              "action": { "type": "string", "const": "authorize_physical_delete" },
               "authorization_id": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
               "authorized_at": { "type": "string", "format": "date-time" },
-              "reasons": { "maxItems": 0 }
+              "reasons": { "type": "array", "maxItems": 0 }
             }
           },
           "else": {
+            "type": "object",
             "properties": {
-              "executable": { "const": false },
-              "action": { "const": "retain_logical_tombstone" },
+              "executable": { "type": "boolean", "const": false },
+              "action": { "type": "string", "const": "retain_logical_tombstone" },
               "authorization_id": { "type": "null" },
               "authorized_at": { "type": "null" },
-              "reasons": { "minItems": 1 }
+              "reasons": { "type": "array", "minItems": 1 }
             }
           }
         }
@@ -115,9 +122,9 @@
         "reasons"
       ],
       "properties": {
-        "phase": { "const": "post_delete_closure" },
+        "phase": { "type": "string", "const": "post_delete_closure" },
         "closable": { "type": "boolean" },
-        "action": { "enum": ["close_logical_tombstone", "retain_logical_tombstone"] },
+        "action": { "type": "string", "enum": ["close_logical_tombstone", "retain_logical_tombstone"] },
         "closure_id": { "$ref": "#/$defs/sha256_or_null" },
         "authorization_id": { "$ref": "#/$defs/sha256_or_null" },
         "namespace": { "$ref": "#/$defs/string_or_null" },
@@ -131,22 +138,28 @@
       },
       "allOf": [
         {
-          "if": { "properties": { "closable": { "const": true } }, "required": ["closable"] },
+          "if": {
+            "type": "object",
+            "properties": { "closable": { "type": "boolean", "const": true } },
+            "required": ["closable"]
+          },
           "then": {
+            "type": "object",
             "properties": {
-              "action": { "const": "close_logical_tombstone" },
+              "action": { "type": "string", "const": "close_logical_tombstone" },
               "closure_id": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
               "authorization_id": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
               "closed_at": { "type": "string", "format": "date-time" },
-              "reasons": { "maxItems": 0 }
+              "reasons": { "type": "array", "maxItems": 0 }
             }
           },
           "else": {
+            "type": "object",
             "properties": {
-              "action": { "const": "retain_logical_tombstone" },
+              "action": { "type": "string", "const": "retain_logical_tombstone" },
               "closure_id": { "type": "null" },
               "closed_at": { "type": "null" },
-              "reasons": { "minItems": 1 }
+              "reasons": { "type": "array", "minItems": 1 }
             }
           }
         }
