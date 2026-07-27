@@ -12,15 +12,16 @@ This directory is the canonical control layer for CaseBuilder 4000 / Apex Memory
 4. `PROVENANCE_RECEIPT_SCHEMA.json` — exact-byte provenance and deterministic replay.
 5. `MEMORY_RETRIEVAL_GUARD_SCHEMA.json` — fail-closed factual-promotion receipt.
 6. `MEMORY_TOMBSTONE_REGISTRY.json` — logical deletion controls for backend-recallable retired records.
-7. `MEMORY_BACKEND_CAPABILITY_PROBE_2026-07-24.json` — measured memory deletion capability boundary.
-8. `DESKTOP_COMMANDER_BINDING_RECEIPT_2026-07-25.json` — privacy-safe desktop principal and device-binding result.
-9. `MEMORY_ARCHITECTURE_DELTA_*.md` — append-only history.
+7. `MEMORY_DELETION_GATE_DECISION_SCHEMA.json` — two-phase pre-delete authorization and post-delete tombstone-closure contract.
+8. `MEMORY_BACKEND_CAPABILITY_PROBE_2026-07-24.json` — measured memory deletion capability boundary.
+9. `DESKTOP_COMMANDER_BINDING_RECEIPT_2026-07-25.json` — privacy-safe desktop principal and device-binding result.
+10. `MEMORY_ARCHITECTURE_DELTA_*.md` — append-only history.
 
 ## Connector fabric
 
 Every connector record preserves role, approved roots, sensitivity, read/write mode, last successful probe, freshness, provenance coverage, idempotency strategy, error state, owner, next human gate, connector-quality score, and independent data-quality score. Authentication is established only by a successful connector probe.
 
-Desktop Commander routing additionally requires the same hashed principal, at least one online bound device, an exact approved root, and metadata-read mode. Root-prefix lookalikes, principal drift, zero devices, and writes fail closed.
+Desktop Commander routing additionally requires the same hashed principal, at least one online bound device, an exact approved root, and metadata-read mode. Root-prefix lookalikes, principal drift, zero devices, stale receipts, traversal paths, and writes fail closed.
 
 ## Memory governance
 
@@ -32,13 +33,19 @@ Raw recall is never promoted directly. The application guard enforces container 
 
 Deterministic replay is an observed connector behavior, not a contractual backend guarantee. A content-text `forget` response is not proof of deletion.
 
+Deletion is governed by two ordered decisions:
+
+1. **Pre-delete authorization** verifies a stable backend target ID, exact approved namespace, assigned owner, fresh capability probe, addressable target support, and delete-by-ID. It may authorize an operation, but it never claims that deletion occurred.
+2. **Post-delete closure** verifies that an immutable successful deletion receipt was produced after authorization and that a later negative-recall result is bound to the same authorization ID, namespace, and target. Only this phase may close the logical tombstone.
+
 Physical deletion is confirmed only when all of the following exist:
 
 1. Stable backend document or chunk ID.
-2. Exact namespace binding.
-3. Delete-by-ID operation.
-4. Immutable deletion receipt.
-5. Negative recall after deletion.
+2. Exact approved namespace binding and assigned owner.
+3. Fresh probe establishing delete-by-ID capability.
+4. Deterministic pre-delete authorization ID.
+5. Immutable successful deletion receipt created after authorization.
+6. Negative recall performed after deletion and bound to the same authorization ID.
 
 Until then, the logical tombstone remains active in the live-consumer path.
 
@@ -57,11 +64,11 @@ Original bytes and derivatives are never co-mingled. Notion, task systems, analy
 
 ## Current release gates
 
-1. Reconcile the active Memory Architecture PR with canonical `main`.
-2. Bind Desktop Commander to the verified trusted device and approve one metadata-only root.
-3. Obtain addressable memory deletion and prove negative recall.
-4. Approve namespace, retention policy, and connector owner.
-5. Raise raw correction precedence from 3/5 to 5/5.
-6. Preserve a successful hosted validation receipt.
+1. Preserve a successful hosted validation receipt for the final PR #57 head.
+2. Approve the exact memory namespace, retention policy, and connector owner.
+3. Obtain a fresh addressable delete-by-ID capability probe.
+4. Complete the ordered authorization → deletion receipt → negative recall → tombstone closure sequence.
+5. Bind Desktop Commander to the verified trusted device and approve one metadata-only root.
+6. Raise raw correction precedence from 3/5 to 5/5.
 
 No production ingestion, factual promotion, identity verification, evidence release, filing, publication, or external action is authorized by this directory.
