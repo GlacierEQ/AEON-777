@@ -8,7 +8,7 @@ export function applyMemoryTombstones(candidates, registry) {
   const rejected = [];
   for (const candidate of candidates) {
     const namespaces = [...new Set([candidate.namespace, candidate.container_tag].filter(Boolean))];
-    if (namespaces.length === 0 || !candidate.idempotency_key) {
+    if (namespaces.length === 0) {
       rejected.push({ candidate_id: candidate.candidate_id, reason: "missing_required_status_or_routing_field" });
       continue;
     }
