@@ -134,7 +134,7 @@ if (!closure.closable || closure.action !== "close_logical_tombstone") {
 }
 
 const deletionBeforeAuthorization = structuredClone(verifiedEvidence);
-delectionBeforeAuthorization.immutable_receipt.deleted_at = "2026-07-25T04:29:30Z";
+deletionBeforeAuthorization.immutable_receipt.deleted_at = "2026-07-25T04:29:30Z";
 const invertedDeletion = evaluatePhysicalDeleteClosure(authorization, deletionBeforeAuthorization);
 assertDecision(invertedDeletion, "temporally inverted deletion decision");
 if (!invertedDeletion.reasons.includes("deletion_precedes_authorization")) {
