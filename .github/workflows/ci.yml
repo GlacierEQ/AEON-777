@@ -11,6 +11,6 @@ permissions:
 
 jobs:
   casebrain-validation:
-    uses: GlacierEQ/public-actions-runner-host/.github/workflows/casebrain-validation.yml@f9c342c9ecdb1dddbefd64d776ec326b0c0703e8
+    uses: GlacierEQ/public-actions-runner-host/.github/workflows/casebrain-validation.yml@d66820d708a6333e519c2cde56e1d5c297a475cb
     with:
       expected_head_sha: ${{ github.event.pull_request.head.sha || github.sha }}
