@@ -26,7 +26,23 @@
           "physical_delete_confirmed": { "type": "boolean" },
           "retrieval_action": { "enum": ["reject_by_idempotency_key", "none"] },
           "receipt_ref": { "type": "string", "minLength": 8 }
-        }
+        },
+        "oneOf": [
+          {
+            "properties": {
+              "logical_delete_active": { "const": true },
+              "physical_delete_confirmed": { "const": false },
+              "retrieval_action": { "const": "reject_by_idempotency_key" }
+            }
+          },
+          {
+            "properties": {
+              "logical_delete_active": { "const": false },
+              "physical_delete_confirmed": { "const": true },
+              "retrieval_action": { "const": "none" }
+            }
+          }
+        ]
       }
     }
   }
