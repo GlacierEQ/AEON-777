@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:memory-deletion-receipt:1.0.0",
+  "title": "CASEBRAIN Memory Deletion Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "thread_anchor", "receipt_id", "generated_at", "connector_id", "namespace", "target", "attempts", "post_delete_recall", "physical_delete_confirmed", "logical_tombstone_required", "result", "raw_content_persisted"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
+    "receipt_id": { "const": "memory-delete-2026-07-23-canary-v1" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "connector_id": { "const": "supermemory" },
+    "namespace": { "const": "sm_project_memory_master" },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["memory_id", "record_class", "content_sha256", "idempotency_key"],
+      "properties": {
+        "memory_id": { "type": "string", "pattern": "^[A-Za-z0-9_-]{8,64}$" },
+        "record_class": { "const": "control_canary" },
+        "content_sha256": { "$ref": "#/$defs/sha256" },
+        "idempotency_key": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "attempts": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["attempt", "connector_error", "outcome"],
+          "properties": {
+            "attempt": { "const": 1 },
+            "connector_error": { "const": false },
+            "outcome": { "const": "no_exact_memory_document_chunks_only" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["attempt", "connector_error", "outcome"],
+          "properties": {
+            "attempt": { "const": 2 },
+            "connector_error": { "const": false },
+            "outcome": { "const": "no_exact_memory_document_chunks_only" }
+          }
+        }
+      ],
+      "items": false
+    },
+    "post_delete_recall": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "content_block_count", "idempotency_key_found", "raw_response_persisted"],
+      "properties": {
+        "status": { "const": "success" },
+        "content_block_count": { "type": "integer", "minimum": 1 },
+        "idempotency_key_found": { "const": true },
+        "raw_response_persisted": { "const": false }
+      }
+    },
+    "physical_delete_confirmed": { "const": false },
+    "logical_tombstone_required": { "const": true },
+    "result": { "const": "physical_delete_failed_logical_tombstone_required" },
+    "raw_content_persisted": { "const": false }
+  },
+  "$defs": { "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" } }
+}

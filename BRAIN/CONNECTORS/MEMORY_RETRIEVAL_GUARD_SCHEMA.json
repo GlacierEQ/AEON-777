@@ -50,10 +50,20 @@
             "review_state_quarantined", "review_state_superseded", "review_state_unknown",
             "missing_source_or_provenance", "invalid_correction_state", "unqualified_source_fact",
             "record_class_not_promotable", "conflicting_verified_candidates_fail_closed",
-            "lower_precedence_qualified_candidate"
+            "lower_precedence_qualified_candidate", "logical_tombstone"
           ]
+        },
+        "tombstone_id": { "type": "string", "pattern": "^tomb_[a-z0-9_]+$" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "reason": { "const": "logical_tombstone" } }, "required": ["reason"] },
+          "then": {
+            "properties": { "tombstone_id": { "type": "string" } },
+            "required": ["tombstone_id"]
+          }
         }
-      }
+      ]
     }
   }
 }

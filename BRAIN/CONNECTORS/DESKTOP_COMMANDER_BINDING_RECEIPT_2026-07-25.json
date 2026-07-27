@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "receipt_id": "desktop-commander-binding-2026-07-25-v1",
+  "observed_at": "2026-07-26T03:43:24Z",
+  "connector_id": "desktop_commander",
+  "authentication": {
+    "status": "authenticated",
+    "principal_sha256": "83fa464dacebad3b76f808bc0bd4699f49347cd62915ff6bb6bbd3715902bb2c",
+    "backend_connected": true
+  },
+  "device_probe": {
+    "status": "success",
+    "device_count": 0,
+    "online_device_count": 0
+  },
+  "binding": {
+    "external_pairing_claim_present": true,
+    "principal_match": "unknown",
+    "state": "split_principal_or_stale_registration"
+  },
+  "routing": {
+    "approved_roots": [],
+    "read_allowed": false,
+    "write_allowed": false,
+    "decision": "blocked_no_bound_device",
+    "next_gate": "same_principal_device_count_positive_then_metadata_only_root_probe"
+  },
+  "raw_principal_identifiers_persisted": false,
+  "raw_file_metadata_persisted": false
+}

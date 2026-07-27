@@ -10,7 +10,8 @@
   "access_mode": "bounded_control_write",
   "allowed_record_classes": ["correction_overlay", "control_canary", "governance_delta"],
   "forbidden_record_classes": ["case_evidence", "credential", "protected_identity", "raw_connector_response"],
-  "retention_state": "pending_human_policy",
+  "retention_state": "policy_defined_pending_human_approval",
+  "retention_policy_ref": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_RETENTION_DELETION_POLICY.json",
   "idempotency": {
     "algorithm": "sha256",
     "expression": "sha256(connector_id|namespace|record_class|source_version|payload_sha256)",

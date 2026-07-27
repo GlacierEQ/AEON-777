@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "policy_id": "memory-retention-deletion-v1",
+  "approval_state": "pending_human_approval",
+  "owner": "unassigned",
+  "namespace": "sm_project_memory_master",
+  "class_rules": {
+    "control_canary": "retire_after_validation_with_receipt",
+    "governance_delta": "append_only_supersession",
+    "correction_overlay": "append_only_supersession"
+  },
+  "deletion_receipt_required": true,
+  "logical_tombstone_on_physical_failure": true,
+  "projection_rules": {
+    "raw_content_allowed": false,
+    "safe_fields": ["receipt_id", "namespace", "target_id", "content_sha256", "idempotency_key", "status", "timestamp"]
+  },
+  "activation_allowed": false
+}

@@ -4,7 +4,7 @@
   "title": "CASEBRAIN Memory Namespace Control",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "thread_anchor", "control_id", "connector_id", "namespace", "namespace_scope", "approval_state", "owner", "access_mode", "allowed_record_classes", "forbidden_record_classes", "retention_state", "idempotency", "activation_allowed"],
+  "required": ["schema_version", "thread_anchor", "control_id", "connector_id", "namespace", "namespace_scope", "approval_state", "owner", "access_mode", "allowed_record_classes", "forbidden_record_classes", "retention_state", "retention_policy_ref", "idempotency", "activation_allowed"],
   "properties": {
     "schema_version": { "const": "1.0.0" },
     "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
@@ -29,7 +29,8 @@
       "maxItems": 4,
       "uniqueItems": true
     },
-    "retention_state": { "const": "pending_human_policy" },
+    "retention_state": { "const": "policy_defined_pending_human_approval" },
+    "retention_policy_ref": { "const": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/MEMORY_RETENTION_DELETION_POLICY.json" },
     "idempotency": {
       "type": "object",
       "additionalProperties": false,

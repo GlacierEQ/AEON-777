@@ -2,68 +2,60 @@
 
 Thread anchor: `MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51`
 
-This directory is the canonical control layer for CaseBuilder 4000 / Apex Memory Nexus connector routing, memory governance, provenance, quarantine, validation, and audit receipts. GitHub is authoritative for these controls. Notion and task systems are projections only.
+This directory is the canonical control layer for CaseBuilder 4000 / Apex Memory Nexus connector routing, memory governance, provenance, quarantine, validation, and audit receipts. GitHub is authoritative. Notion and task systems are safe projections only.
 
 ## Start here
 
-1. `MEMORY_ARCHITECTURE_STATUS.md` — current state, blockers, and ordered next actions.
-2. `CONNECTOR_FABRIC.json` — one registry for advertised, connected, blocked, staging-only, projection-only, and excluded systems.
-3. `CONNECTOR_FABRIC_SCHEMA.json` — strict connector-fabric contract.
-4. `MEMORY_TAXONOMY_AND_GOVERNANCE.md` — authority order, claim classes, bucket separation, state transitions, and promotion gates.
-5. `PROVENANCE_RECEIPT_SCHEMA.json` — exact-byte provenance and deterministic replay contract.
-6. `MEMORY_QUARANTINE_REGISTRY.json` — active correction and quarantine routing.
-7. `MEMORY_RECALL_REGRESSION_2026-07-17.json` — measured correction-precedence and isolation results.
-8. `PUBLIC_RUNNER_DISPATCH_2026-07-16.md` — hosted validation routing and credential gate.
-9. `MEMORY_ARCHITECTURE_DELTA_*.md` — append-only dated history.
+1. `MEMORY_ARCHITECTURE_STATUS.md` — current controls, blockers, and execution order.
+2. `CONNECTOR_FABRIC.json` — one registry covering advertised, connected, blocked, staging-only, projection-only, and excluded systems.
+3. `MEMORY_TAXONOMY_AND_GOVERNANCE.md` — authority, claim classes, buckets, promotion, and audit rules.
+4. `PROVENANCE_RECEIPT_SCHEMA.json` — exact-byte provenance and deterministic replay.
+5. `MEMORY_RETRIEVAL_GUARD_SCHEMA.json` — fail-closed factual-promotion receipt.
+6. `MEMORY_TOMBSTONE_REGISTRY.json` — logical deletion controls for backend-recallable retired records.
+7. `MEMORY_DELETION_GATE_DECISION_SCHEMA.json` — two-phase pre-delete authorization and post-delete tombstone-closure contract.
+8. `MEMORY_BACKEND_CAPABILITY_PROBE_2026-07-24.json` — measured memory deletion capability boundary.
+9. `DESKTOP_COMMANDER_BINDING_RECEIPT_2026-07-25.json` — privacy-safe desktop principal and device-binding result.
+10. `MEMORY_ARCHITECTURE_DELTA_*.md` — append-only history.
 
-## Artifact groups
+## Connector fabric
 
-### Connector fabric
+Every connector record preserves role, approved roots, sensitivity, read/write mode, last successful probe, freshness, provenance coverage, idempotency strategy, error state, owner, next human gate, connector-quality score, and independent data-quality score. Authentication is established only by a successful connector probe.
 
-- `CONNECTOR_FABRIC.json`
-- `CONNECTOR_FABRIC_SCHEMA.json`
-- `CONNECTOR_FABRIC_REPORT_2026-07-15.md`
-- `migrate_connector_fabric_v1_1.mjs`
-- `migrate_connector_fabric_v1_2.mjs`
-- `validate_connector_fabric.mjs`
-- `validate_connector_fabric.py`
+Desktop Commander routing additionally requires the same hashed principal, at least one online bound device, an exact approved root, and metadata-read mode. Root-prefix lookalikes, principal drift, zero devices, stale receipts, traversal paths, and writes fail closed.
 
-The registry is the only connector inventory. Tool availability never establishes authentication. Every connector retains its role, approved roots, sensitivity, read/write mode, last successful probe, freshness, provenance coverage, idempotency strategy, error state, owner, next human gate, connector-quality score, and independent data-quality score.
+## Memory governance
 
-### Memory governance and quarantine
+General memory is a non-evidentiary projection. Unsupported allegations, identities, role disputes, legal conclusions, model inferences, cyber attribution, and generated scores remain qualified or quarantined unless promoted through source-linked review.
 
-- `MEMORY_TAXONOMY_AND_GOVERNANCE.md`
-- `LEGACY_MEMORY_QUARANTINE_2026-07-16.md`
-- `MEMORY_QUARANTINE_REGISTRY.json`
-- `MEMORY_QUARANTINE_REGISTRY_SCHEMA.json`
-- `validate_memory_quarantine.mjs`
+Raw recall is never promoted directly. The application guard enforces container and scope checks, review and claim-class filtering, correction precedence, provenance, logical tombstones, rejection receipts, and ambiguity fail-close.
 
-General memory is a non-evidentiary projection. Unsupported allegations, identities, roles, motive claims, legal conclusions, cyber attribution, and generated scores remain qualified or quarantined unless promoted through source-linked review.
+## Lifecycle and deletion
 
-### Recall safety
+Deterministic replay is an observed connector behavior, not a contractual backend guarantee. A content-text `forget` response is not proof of deletion.
 
-- `MEMORY_RECALL_REGRESSION_2026-07-17.json`
-- `MEMORY_RECALL_REGRESSION_SCHEMA.json`
-- `validate_memory_recall_regression.mjs`
+Deletion is governed by two ordered decisions:
 
-Raw broad recall is not an authorized factual-output path. `memory_retrieval_guard.mjs` implements explicit container/scope checks, status and claim-class filtering, correction precedence, provenance requirements, rejection receipts, and ambiguity fail-close. The application-layer fixture passes 5/5 with zero unqualified promotions; the last raw-backend measurement remains 3/5. The status consumer and first actor-profile consumer hash Supermemory request/response data, reject unstructured connector payloads, and promote only version-pinned canonical GitHub control pointers. Actor identity remains `conflicted` and the profile remains `conflict_review`.
+1. **Pre-delete authorization** verifies a stable backend target ID, exact approved namespace, assigned owner, fresh capability probe, addressable target support, and delete-by-ID. It may authorize an operation, but it never claims that deletion occurred.
+2. **Post-delete closure** verifies that an immutable successful deletion receipt was produced after authorization and that a later negative-recall result is bound to the same authorization ID, namespace, and target. Only this phase may close the logical tombstone.
 
-### Provenance and validation
+Physical deletion is confirmed only when all of the following exist:
 
-- `PROVENANCE_RECEIPT_SCHEMA.json`
-- `validate_provenance_schema.mjs`
-- `PUBLIC_RUNNER_DISPATCH_2026-07-16.md`
-- root and directory `package.json` / `package-lock.json`
+1. Stable backend document or chunk ID.
+2. Exact approved namespace binding and assigned owner.
+3. Fresh probe establishing delete-by-ID capability.
+4. Deterministic pre-delete authorization ID.
+5. Immutable successful deletion receipt created after authorization.
+6. Negative recall performed after deletion and bound to the same authorization ID.
 
-A successful run must bind the exact source revision, execute schema and semantic validators, run negative controls, hash the governed artifacts, and preserve a retrievable receipt. A workflow failure before step one is an execution-platform failure, not proof that validators failed.
+Until then, the logical tombstone remains active in the live-consumer path.
 
 ## Bucket map
 
 | Bucket | Canonical contents | Permitted systems |
 |---|---|---|
 | `original_evidence` | Exact approved source bytes | Approved cloud/source roots only |
-| `sealed_evidence` | Privileged, medical, credential-bearing, protected-minor, or specially restricted bytes | Sealed approved source roots only |
-| `derived_work` | OCR, transcript, normalization, thumbnails, analysis | Approved derivative roots, linked to original receipt |
+| `sealed_evidence` | Privileged, medical, credential-bearing, protected-minor, or specially restricted bytes | Sealed approved roots only |
+| `derived_work` | OCR, transcript, normalization, thumbnails, analysis | Approved derivative roots linked to original receipts |
 | `canonical_control` | Schemas, registries, validators, migrations, decisions | GitHub |
 | `projection_receipt` | Safe status, owner, gate, score, pointer, task receipt | Notion and task systems |
 | `quarantine` | Unknown scope, duplicate ambiguity, sensitivity conflict, missing provenance | Isolated staging only |
@@ -72,11 +64,11 @@ Original bytes and derivatives are never co-mingled. Notion, task systems, analy
 
 ## Current release gates
 
-1. Implement the fail-closed retrieval guard and correction-precedence reranker.
-2. Reach 5/5 recall correction precedence with zero unqualified promoted outputs.
-3. Clean or quarantine default-container routing-test records with auditable receipts.
-4. Assign connector owners, approved memory namespaces, deterministic idempotency keys, retention rules, and deletion controls.
-5. Approve one exact non-privileged source root and run a metadata-only provenance/replay pilot.
-6. Restore the public runner private-read bridge and preserve a signed hosted validation receipt.
+1. Preserve a successful hosted validation receipt for the final PR #57 head.
+2. Approve the exact memory namespace, retention policy, and connector owner.
+3. Obtain a fresh addressable delete-by-ID capability probe.
+4. Complete the ordered authorization → deletion receipt → negative recall → tombstone closure sequence.
+5. Bind Desktop Commander to the verified trusted device and approve one metadata-only root.
+6. Raise raw correction precedence from 3/5 to 5/5.
 
 No production ingestion, factual promotion, identity verification, evidence release, filing, publication, or external action is authorized by this directory.
