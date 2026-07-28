@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "request_type": "hosted_exact_head_validation",
+  "requested_at": "2026-07-28T13:35:00Z",
+  "target_suite": "BRAIN/CONNECTORS/package.json#test",
+  "required_validator": "validate_execution_first_protocol.mjs",
+  "required_outcomes": [
+    "routine review handoff is rejected",
+    "premature operator handoff is rejected",
+    "partial failure continues unaffected work",
+    "completion requires current-run receipt fields",
+    "exact blockers require a supported stop boundary and nearest completed deliverable"
+  ],
+  "acceptance": {
+    "exact_head_checkout": true,
+    "full_connector_test_suite": true,
+    "hosted_conclusion": "success"
+  }
+}
