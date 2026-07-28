@@ -3,26 +3,45 @@
   "$id": "urn:casebrain:schema:memory-deletion-gate-decision:1.1.0",
   "title": "CASEBRAIN Memory Deletion Gate Decision",
   "oneOf": [
-    { "$ref": "#/$defs/pre_delete_authorization" },
-    { "$ref": "#/$defs/post_delete_closure" }
+    {
+      "$ref": "#/$defs/pre_delete_authorization"
+    },
+    {
+      "$ref": "#/$defs/post_delete_closure"
+    }
   ],
   "$defs": {
     "sha256_or_null": {
       "oneOf": [
-        { "type": "string", "pattern": "^[a-f0-9]{64}$" },
-        { "type": "null" }
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
       ]
     },
     "date_time_or_null": {
       "oneOf": [
-        { "type": "string", "format": "date-time" },
-        { "type": "null" }
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
       ]
     },
     "string_or_null": {
       "oneOf": [
-        { "type": "string", "minLength": 1 },
-        { "type": "null" }
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
       ]
     },
     "reason": {
@@ -68,49 +87,119 @@
         "reasons"
       ],
       "properties": {
-        "phase": { "type": "string", "const": "pre_delete_authorization" },
-        "authorized": { "type": "boolean" },
-        "executable": { "type": "boolean" },
-        "action": { "type": "string", "enum": ["authorize_physical_delete", "retain_logical_tombstone"] },
-        "authorization_id": { "$ref": "#/$defs/sha256_or_null" },
-        "capability_probe_id": { "$ref": "#/$defs/string_or_null" },
-        "namespace": { "$ref": "#/$defs/string_or_null" },
-        "target_id": { "$ref": "#/$defs/string_or_null" },
-        "owner_ref": { "$ref": "#/$defs/string_or_null" },
-        "authorized_at": { "$ref": "#/$defs/date_time_or_null" },
+        "phase": {
+          "type": "string",
+          "const": "pre_delete_authorization"
+        },
+        "authorized": {
+          "type": "boolean"
+        },
+        "executable": {
+          "type": "boolean"
+        },
+        "action": {
+          "type": "string",
+          "enum": [
+            "authorize_physical_delete",
+            "retain_logical_tombstone"
+          ]
+        },
+        "authorization_id": {
+          "$ref": "#/$defs/sha256_or_null"
+        },
+        "capability_probe_id": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "namespace": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "target_id": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "owner_ref": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "authorized_at": {
+          "$ref": "#/$defs/date_time_or_null"
+        },
         "reasons": {
           "type": "array",
           "uniqueItems": true,
-          "items": { "$ref": "#/$defs/reason" }
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
         }
       },
       "allOf": [
         {
           "if": {
-            "properties": { "authorized": { "const": true } },
-            "required": ["authorized"]
+            "properties": {
+              "authorized": {
+                "const": true
+              }
+            },
+            "required": [
+              "authorized"
+            ],
+            "type": "object"
           },
           "then": {
             "properties": {
-              "executable": { "const": true },
-              "action": { "const": "authorize_physical_delete" },
-              "authorization_id": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
-              "capability_probe_id": { "type": "string", "minLength": 8 },
-              "owner_ref": { "type": "string", "minLength": 3 },
-              "authorized_at": { "type": "string", "format": "date-time" },
-              "reasons": { "maxItems": 0 }
-            }
+              "executable": {
+                "const": true
+              },
+              "action": {
+                "const": "authorize_physical_delete"
+              },
+              "authorization_id": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "capability_probe_id": {
+                "type": "string",
+                "minLength": 8
+              },
+              "owner_ref": {
+                "type": "string",
+                "minLength": 3
+              },
+              "authorized_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "reasons": {
+                "maxItems": 0,
+                "type": "array"
+              }
+            },
+            "type": "object"
           },
           "else": {
             "properties": {
-              "executable": { "const": false },
-              "action": { "const": "retain_logical_tombstone" },
-              "authorization_id": { "type": "null" },
-              "capability_probe_id": { "type": "null" },
-              "owner_ref": { "type": "null" },
-              "authorized_at": { "type": "null" },
-              "reasons": { "minItems": 1 }
-            }
+              "executable": {
+                "const": false
+              },
+              "action": {
+                "const": "retain_logical_tombstone"
+              },
+              "authorization_id": {
+                "type": "null"
+              },
+              "capability_probe_id": {
+                "type": "null"
+              },
+              "owner_ref": {
+                "type": "null"
+              },
+              "authorized_at": {
+                "type": "null"
+              },
+              "reasons": {
+                "minItems": 1,
+                "type": "array"
+              }
+            },
+            "type": "object"
           }
         }
       ]
@@ -130,42 +219,95 @@
         "reasons"
       ],
       "properties": {
-        "phase": { "const": "post_delete_closure" },
-        "closable": { "type": "boolean" },
-        "action": { "enum": ["close_logical_tombstone", "retain_logical_tombstone"] },
-        "closure_id": { "$ref": "#/$defs/sha256_or_null" },
-        "authorization_id": { "$ref": "#/$defs/sha256_or_null" },
-        "namespace": { "$ref": "#/$defs/string_or_null" },
-        "target_id": { "$ref": "#/$defs/string_or_null" },
-        "closed_at": { "$ref": "#/$defs/date_time_or_null" },
+        "phase": {
+          "const": "post_delete_closure"
+        },
+        "closable": {
+          "type": "boolean"
+        },
+        "action": {
+          "enum": [
+            "close_logical_tombstone",
+            "retain_logical_tombstone"
+          ]
+        },
+        "closure_id": {
+          "$ref": "#/$defs/sha256_or_null"
+        },
+        "authorization_id": {
+          "$ref": "#/$defs/sha256_or_null"
+        },
+        "namespace": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "target_id": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "closed_at": {
+          "$ref": "#/$defs/date_time_or_null"
+        },
         "reasons": {
           "type": "array",
           "uniqueItems": true,
-          "items": { "$ref": "#/$defs/reason" }
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
         }
       },
       "allOf": [
         {
           "if": {
-            "properties": { "closable": { "const": true } },
-            "required": ["closable"]
+            "properties": {
+              "closable": {
+                "const": true
+              }
+            },
+            "required": [
+              "closable"
+            ],
+            "type": "object"
           },
           "then": {
             "properties": {
-              "action": { "const": "close_logical_tombstone" },
-              "closure_id": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
-              "authorization_id": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
-              "closed_at": { "type": "string", "format": "date-time" },
-              "reasons": { "maxItems": 0 }
-            }
+              "action": {
+                "const": "close_logical_tombstone"
+              },
+              "closure_id": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "authorization_id": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "closed_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "reasons": {
+                "maxItems": 0,
+                "type": "array"
+              }
+            },
+            "type": "object"
           },
           "else": {
             "properties": {
-              "action": { "const": "retain_logical_tombstone" },
-              "closure_id": { "type": "null" },
-              "closed_at": { "type": "null" },
-              "reasons": { "minItems": 1 }
-            }
+              "action": {
+                "const": "retain_logical_tombstone"
+              },
+              "closure_id": {
+                "type": "null"
+              },
+              "closed_at": {
+                "type": "null"
+              },
+              "reasons": {
+                "minItems": 1,
+                "type": "array"
+              }
+            },
+            "type": "object"
           }
         }
       ]
