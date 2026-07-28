@@ -3,7 +3,7 @@
   "receipt_type": "execution_first_activation",
   "effective_date": "2026-07-28",
   "authority_class": "explicit_operator_directive",
-  "current_state": "operative_machine_gated_and_hosted_validated",
+  "current_state": "operative_machine_gated_hosted_validated_and_task_projected",
   "canonical_github": {
     "repository": "GlacierEQ/AEON-777",
     "protocol_path": "BRAIN/CONNECTORS/EXECUTION_FIRST_OPERATING_PROTOCOL.md",
@@ -56,6 +56,18 @@
     "worker_registry_data_source": "collection://376badf8-a681-49cb-a0fb-5a0c892b2e9e",
     "compliance_gate_row_id": "3abb1e4f-3223-81d4-8ef6-c82949486ab6"
   },
+  "clickup_projection": {
+    "task_id": "86ajhvyj6",
+    "task_name": "CASEBRAIN Connector Fabric: approve roots + first organization receipt",
+    "operation": "markdown_description_updated_and_read_back",
+    "result": "verified",
+    "comment_endpoint_attempt": {
+      "result": "failed",
+      "error": "Tool clickup_create_task_comment not found"
+    },
+    "fallback": "updated existing task description through clickup_update_task",
+    "operator_action_required": false
+  },
   "automation_bindings": [
     {
       "title": "Memory Canon Recursive Hygiene",
@@ -105,9 +117,11 @@
   },
   "partial_failure_handling": {
     "drive_failure_aborted_run": false,
+    "clickup_comment_failure_aborted_run": false,
     "unaffected_notion_work_continued": true,
     "unaffected_github_work_continued": true,
     "unaffected_automation_work_continued": true,
+    "clickup_fallback_completed": true,
     "hosted_validation_completed_after_drive_failure": true
   },
   "operator_action_required": false,
