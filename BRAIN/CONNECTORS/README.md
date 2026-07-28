@@ -6,16 +6,25 @@ This directory is the canonical control layer for CaseBuilder 4000 / Apex Memory
 
 ## Start here
 
-1. `MEMORY_ARCHITECTURE_STATUS.md` — current controls, blockers, and execution order.
-2. `CONNECTOR_FABRIC.json` — one registry covering advertised, connected, blocked, staging-only, projection-only, and excluded systems.
-3. `MEMORY_TAXONOMY_AND_GOVERNANCE.md` — authority, claim classes, buckets, promotion, and audit rules.
-4. `PROVENANCE_RECEIPT_SCHEMA.json` — exact-byte provenance and deterministic replay.
-5. `MEMORY_RETRIEVAL_GUARD_SCHEMA.json` — fail-closed factual-promotion receipt.
-6. `MEMORY_TOMBSTONE_REGISTRY.json` — logical deletion controls for backend-recallable retired records.
-7. `MEMORY_DELETION_GATE_DECISION_SCHEMA.json` — two-phase pre-delete authorization and post-delete tombstone-closure contract.
-8. `MEMORY_BACKEND_CAPABILITY_PROBE_2026-07-24.json` — measured memory deletion capability boundary.
-9. `DESKTOP_COMMANDER_BINDING_RECEIPT_2026-07-25.json` — privacy-safe desktop principal and device-binding result.
-10. `MEMORY_ARCHITECTURE_DELTA_*.md` — append-only history.
+1. `EXECUTION_FIRST_OPERATING_PROTOCOL.md` — binding execution rule: complete routine internal, reversible, already-authorized work without review handoff; isolate partial failures and continue.
+2. `MEMORY_ARCHITECTURE_STATUS.md` — current controls, blockers, and execution order.
+3. `CONNECTOR_FABRIC.json` — one registry covering advertised, connected, blocked, staging-only, projection-only, and excluded systems.
+4. `MEMORY_TAXONOMY_AND_GOVERNANCE.md` — authority, claim classes, buckets, promotion, and audit rules.
+5. `PROVENANCE_RECEIPT_SCHEMA.json` — exact-byte provenance and deterministic replay.
+6. `MEMORY_RETRIEVAL_GUARD_SCHEMA.json` — fail-closed factual-promotion receipt.
+7. `MEMORY_TOMBSTONE_REGISTRY.json` — logical deletion controls for backend-recallable retired records.
+8. `MEMORY_DELETION_GATE_DECISION_SCHEMA.json` — two-phase pre-delete authorization and post-delete tombstone-closure contract.
+9. `MEMORY_BACKEND_CAPABILITY_PROBE_2026-07-24.json` — measured memory deletion capability boundary.
+10. `DESKTOP_COMMANDER_BINDING_RECEIPT_2026-07-25.json` — privacy-safe desktop principal and device-binding result.
+11. `MEMORY_ARCHITECTURE_DELTA_*.md` — append-only history.
+
+## Execution protocol
+
+Routine internal, reversible, already-authorized work is executed, verified, and receipt-backed. It does not end at `ready for review`, `draft ready`, `awaiting inspection`, or an equivalent supervision handoff.
+
+A failed connector or unavailable source is isolated as a partial failure. Dependent state is marked stale or unverified, every unaffected executable slice continues, and the result includes the exact blocker plus the nearest completed deliverable.
+
+A worker may stop only at a real technical impossibility, an unavailable required capability, a materially ambiguous target, or an irreversible external action for which authority is absent. Completion claims require current-run evidence.
 
 ## Connector fabric
 
