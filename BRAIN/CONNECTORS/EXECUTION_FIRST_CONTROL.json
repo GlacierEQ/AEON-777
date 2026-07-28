@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "status": "operative",
+  "effective_at": "2026-07-28",
+  "authority_scope": "internal_reversible_previously_authorized",
+  "completion_states": {
+    "allowed": [
+      "completed",
+      "partial_completed",
+      "blocked_exact"
+    ],
+    "prohibited_handoffs": [
+      "ready_for_review",
+      "draft_ready",
+      "awaiting_inspection",
+      "please_confirm"
+    ]
+  },
+  "required_receipt_fields": [
+    "work_item",
+    "action_class",
+    "authority_source",
+    "operation_performed",
+    "result",
+    "evidence_reference",
+    "verified_at",
+    "remaining_blocker",
+    "next_executable_step",
+    "operator_action_required"
+  ],
+  "stop_boundaries": [
+    "technical_impossibility",
+    "required_capability_unavailable",
+    "materially_ambiguous_target",
+    "irreversible_external_action_without_authority"
+  ],
+  "partial_failure_policy": {
+    "isolate_failed_slice": true,
+    "mark_dependent_state_stale_or_unverified": true,
+    "continue_unaffected_work": true,
+    "return_exact_blocker": true
+  },
+  "operator_handoff_policy": {
+    "operator_action_required_only_when_system_steps_exhausted": true
+  }
+}
