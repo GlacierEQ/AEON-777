@@ -21,7 +21,7 @@ This directory is the canonical control layer for CaseBuilder 4000 / Apex Memory
 
 Every connector record preserves role, approved roots, sensitivity, read/write mode, last successful probe, freshness, provenance coverage, idempotency strategy, error state, owner, next human gate, connector-quality score, and independent data-quality score. Authentication is established only by a successful connector probe.
 
-Desktop Commander routing additionally requires the same hashed principal, at least one online bound device, an exact approved root, and metadata-read mode. Root-prefix lookalikes, principal drift, zero devices, stale receipts, traversal paths, and writes fail closed.
+Desktop Commander routing additionally requires the same hashed principal, at least one online bound device, an affirmative metadata-read authorization, an exact approved root, and a connector-resolved real path contained by the approved root's resolved path. Root-prefix lookalikes, principal drift, zero devices, stale receipts, missing resolution proof, symlink or junction escapes, traversal paths, and writes fail closed.
 
 ## Memory governance
 
@@ -36,7 +36,7 @@ Deterministic replay is an observed connector behavior, not a contractual backen
 Deletion is governed by two ordered decisions:
 
 1. **Pre-delete authorization** verifies a stable backend target ID, exact approved namespace, assigned owner, fresh capability probe, addressable target support, and delete-by-ID. It may authorize an operation, but it never claims that deletion occurred.
-2. **Post-delete closure** verifies that an immutable successful deletion receipt was produced after authorization and that a later negative-recall result is bound to the same authorization ID, namespace, and target. Only this phase may close the logical tombstone.
+2. **Post-delete closure** recomputes the authorization ID, verifies an immutable authorization record containing the exact decision digest, requires non-empty deletion-receipt and negative-recall IDs, and verifies that both later proofs bind to the same authorization ID, namespace, and target. Only this phase may close the logical tombstone.
 
 Physical deletion is confirmed only when all of the following exist:
 
@@ -64,7 +64,7 @@ Original bytes and derivatives are never co-mingled. Notion, task systems, analy
 
 ## Current release gates
 
-1. Preserve a successful hosted validation receipt for the final PR #57 head.
+1. Preserve a successful hosted validation receipt for the final PR #58 head.
 2. Approve the exact memory namespace, retention policy, and connector owner.
 3. Obtain a fresh addressable delete-by-ID capability probe.
 4. Complete the ordered authorization → deletion receipt → negative recall → tombstone closure sequence.
