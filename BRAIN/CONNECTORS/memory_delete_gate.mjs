@@ -21,7 +21,7 @@ function authorizationId(probeId, namespace, targetId, ownerRef, authorizedAt) {
   return digest(["memory-delete-authorization-v1", probeId, namespace, targetId, ownerRef, authorizedAt]);
 }
 
-function authorizationDecisionDigest(decision) {
+export function authorizationDecisionDigest(decision) {
   return digest([
     "memory-delete-authorization-record-v1",
     decision?.phase,
