@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "1FDV-23-0001009",
+  "generated_at": "2026-07-28T21:25:01.672265Z",
+  "mode": "EXECUTION_FABRIC",
+  "canonical_ledger": {
+    "system": "Supabase",
+    "project_id": "dyhprklicgewmrimecey",
+    "project_name": "supabase-backend-ops",
+    "bound_connectors": 10,
+    "verified_capabilities": 34,
+    "route_policies": 26,
+    "route_runtime_rows": 26,
+    "fresh_health_receipts": 9
+  },
+  "execution_surfaces": {
+    "github": {
+      "status": "HEALTHY",
+      "canonical_repo": "GlacierEQ/AEON-777",
+      "case_repo": "GlacierEQ/AspenGrove-KEKOA-1FDV-23-0001009",
+      "write_routes": [
+        "github:create_file:repository_file_write:v1",
+        "github:update_file:repository_file_write:v1"
+      ]
+    },
+    "notion": {
+      "status": "HEALTHY",
+      "alignment_page_id": "3a4b1e4f-3223-81d8-a3db-d92edb353904",
+      "legal_war_room_id": "338b1e4f-3223-81ea-a0b9-d4e66fdd6069",
+      "write_route": "notion:notion-update-page:control_projection_write:v1"
+    },
+    "google_drive": {
+      "status": "HEALTHY",
+      "casebuilder_map_id": "1x_z1ReHZ6_f8w6NkgV5RqFVvX9S5pFMDgDphNMooDLM",
+      "rule60_full_source_id": "1hSayRTyKGhQWg4zBTd-BsRjXpCLIRU_2",
+      "rule60_curated_id": "1oJKet2oR8_iAeZdSfAVIGgkmeZYjMvDd",
+      "routes": [
+        "google_drive:search:case_asset_search:v1",
+        "google_drive:create_file:workspace_file_create:v1"
+      ]
+    },
+    "dropbox": {
+      "status": "DEGRADED",
+      "verified_root": "/Kahala Home Inspectors/00_Organized_Files/Code_and_Data/Projects/03_PROJECTS/1FDV-23-0001009",
+      "verified_folder_id": "id:M3qKixNrNsgAAAAAAAFTpw",
+      "missing_expected_root": "/ANTIGRAVITY_MEMORY_01/ANTIGRAVITY_MEMORY_01.dbx-external-drive/Case_1FDV-23-0001009_ORGANIZED",
+      "write_confirmation_required": true
+    },
+    "clickup": {
+      "status": "HEALTHY",
+      "space_id": "90137500721",
+      "list_id": "901321189802",
+      "build_task_id": "86ajrfqvn",
+      "build_task_url": "https://app.clickup.com/t/86ajrfqvn",
+      "routes": [
+        "clickup:clickup_search:execution_queue_search:v1",
+        "clickup:clickup_create_task:execution_task_create:v1",
+        "clickup:clickup_create_task_comment:execution_receipt_comment:v1"
+      ]
+    },
+    "gmail": {
+      "status": "HEALTHY",
+      "sample_message_id": "19faa89e06e9f810",
+      "docket_access_message_id": "19fa95ad7e7e16e0",
+      "routes": [
+        "gmail:search_emails:source_communications_search:v1",
+        "gmail:create_draft:source_request_draft:v1",
+        "gmail:bulk_label_matching_emails:case_labeling:v1"
+      ]
+    },
+    "box": {
+      "status": "HEALTHY",
+      "proofbook_folder_id": "401707782634",
+      "child_safety_folder_id": "401657939187",
+      "routes": [
+        "box:search_folders_by_name:approved_root_search:v1",
+        "box:create_folder:approved_root_create:v1",
+        "box:upload_file:control_receipt_upload:v1"
+      ]
+    },
+    "slack": {
+      "status": "DEGRADED",
+      "connector_probe": "SUCCESS",
+      "casebrain_channel_found": false,
+      "routes": [
+        "slack:slack_search_channels:coordination_channel_search:v1",
+        "slack:slack_create_canvas:coordination_canvas_create:v1"
+      ]
+    },
+    "supabase": {
+      "status": "HEALTHY",
+      "project_id": "dyhprklicgewmrimecey",
+      "routes": [
+        "supabase:execute_sql:operational_ledger_query:v1",
+        "supabase:execute_sql:operational_ledger_write:v1"
+      ]
+    },
+    "smithery": {
+      "status": "AUTHORIZED_DYNAMIC",
+      "permission": "full_access",
+      "role": "alternate_route_fabric"
+    }
+  },
+  "governance": {
+    "destructive_actions_allowed": false,
+    "public_share_allowed": false,
+    "external_write_requires_native_receipt": true,
+    "retrieval_verification_required": true,
+    "fallback_after_primary_failure": true
+  },
+  "next_execution_gates": [
+    "Project this receipt to Notion control plane",
+    "Label case automation messages in Gmail",
+    "Upload immutable receipt to Box proofbook control folder",
+    "Resolve or retire missing Dropbox root pointer",
+    "Create or select Slack coordination surface"
+  ]
+}
