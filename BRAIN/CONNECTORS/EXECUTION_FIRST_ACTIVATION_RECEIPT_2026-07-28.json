@@ -3,7 +3,7 @@
   "receipt_type": "execution_first_activation",
   "effective_date": "2026-07-28",
   "authority_class": "explicit_operator_directive",
-  "current_state": "operative_and_machine_gated",
+  "current_state": "operative_machine_gated_and_hosted_validated",
   "canonical_github": {
     "repository": "GlacierEQ/AEON-777",
     "protocol_path": "BRAIN/CONNECTORS/EXECUTION_FIRST_OPERATING_PROTOCOL.md",
@@ -15,7 +15,39 @@
     "validator_path": "BRAIN/CONNECTORS/validate_execution_first_protocol.mjs",
     "validator_commit": "d0113db568ce396da7ef4288e3c7949b3031fce8",
     "package_test_hook_commit": "d235a0f518d9f04cfb480bc3b721ad5f39c1cc23",
-    "readme_routing_commit": "e0b7a2102862218276ac914d007a1d3012572019"
+    "readme_routing_commit": "e0b7a2102862218276ac914d007a1d3012572019",
+    "hosted_validation_merge_commit": "95c20be388201a4e72b5525d8f0aebfb98a62b35"
+  },
+  "hosted_validation": {
+    "pull_request": 60,
+    "exact_head": "5d7296d756cd981d8f186b0e62b31cbc01f98934",
+    "ci_run": {
+      "id": 30364405515,
+      "conclusion": "success"
+    },
+    "pipeline_run": {
+      "id": 30364413775,
+      "conclusion": "success"
+    },
+    "job": {
+      "id": 90291838363,
+      "name": "casebrain-validation / Connector and memory controls",
+      "conclusion": "success"
+    },
+    "artifact": {
+      "id": 8690140857,
+      "name": "casebrain-validation-30364405515-1",
+      "digest": "sha256:6f12ccb73b5f2386b26235051b45447e5cb12be184b9c375074ed3cb250a4c00",
+      "expires_at": "2026-10-26T13:38:08Z"
+    },
+    "validated_sequence": [
+      "exact-head checkout",
+      "locked dependency installation",
+      "execution-first validator",
+      "remaining connector and memory validators",
+      "sanitized receipt generation",
+      "validation evidence upload"
+    ]
   },
   "notion_projection": {
     "protocol_page_id": "3abb1e4f-3223-81b5-8221-cf9845f6d58d",
@@ -75,11 +107,11 @@
     "drive_failure_aborted_run": false,
     "unaffected_notion_work_continued": true,
     "unaffected_github_work_continued": true,
-    "unaffected_automation_work_continued": true
+    "unaffected_automation_work_continued": true,
+    "hosted_validation_completed_after_drive_failure": true
   },
   "operator_action_required": false,
   "remaining_verification": [
-    "Obtain a hosted or equivalent test receipt for the package suite after the test-hook commit",
     "Re-attempt Google Drive projection only after the connection exposes Docs create or connector-file upload permission"
   ]
 }
