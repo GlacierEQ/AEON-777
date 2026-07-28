@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:casebrain:schema:memory-backend-capability-probe:1.0.0",
+  "$id": "urn:casebrain:schema:memory-backend-capability-probe:1.1.0",
   "title": "CASEBRAIN Memory Backend Capability Probe",
   "type": "object",
   "additionalProperties": false,
@@ -18,7 +18,7 @@
     "raw_content_persisted"
   ],
   "properties": {
-    "schema_version": { "const": "1.0.0" },
+    "schema_version": { "const": "1.1.0" },
     "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
     "probe_id": { "type": "string", "pattern": "^memory-capability-probe-[0-9]{4}-[0-9]{2}-[0-9]{2}-v[0-9]+$" },
     "observed_at": { "type": "string", "format": "date-time" },
@@ -27,12 +27,27 @@
     "graph_observation": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["document_count", "memory_count", "document_ids_exposed", "chunk_ids_exposed"],
+      "required": ["document_count", "memory_count", "document_ids_exposed", "chunk_ids_exposed", "target_observations"],
       "properties": {
         "document_count": { "type": "integer", "minimum": 0 },
         "memory_count": { "type": "integer", "minimum": 0 },
-        "document_ids_exposed": { "const": false },
-        "chunk_ids_exposed": { "const": false }
+        "document_ids_exposed": { "type": "boolean" },
+        "chunk_ids_exposed": { "type": "boolean" },
+        "target_observations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["target_id", "target_kind", "namespace", "observed_at", "addressable"],
+            "properties": {
+              "target_id": { "type": "string", "minLength": 8 },
+              "target_kind": { "enum": ["document", "chunk", "memory"] },
+              "namespace": { "const": "sm_project_memory_master" },
+              "observed_at": { "type": "string", "format": "date-time" },
+              "addressable": { "const": true }
+            }
+          }
+        }
       }
     },
     "recall_observation": {
@@ -41,8 +56,8 @@
       "required": ["status", "retired_key_found", "stable_target_ids_exposed", "raw_response_persisted"],
       "properties": {
         "status": { "const": "success" },
-        "retired_key_found": { "const": true },
-        "stable_target_ids_exposed": { "const": false },
+        "retired_key_found": { "type": "boolean" },
+        "stable_target_ids_exposed": { "type": "boolean" },
         "raw_response_persisted": { "const": false }
       }
     },
@@ -54,13 +69,16 @@
         "actions": {
           "type": "array",
           "minItems": 2,
-          "maxItems": 2,
-          "prefixItems": [{ "const": "save" }, { "const": "forget" }],
-          "items": false
+          "uniqueItems": true,
+          "items": { "enum": ["save", "forget", "delete_by_id"] },
+          "allOf": [
+            { "contains": { "const": "save" } },
+            { "contains": { "const": "forget" } }
+          ]
         },
-        "target_selector": { "const": "content_text_only" },
-        "delete_by_id_supported": { "const": false },
-        "delete_document_chunks_supported": { "const": false }
+        "target_selector": { "enum": ["content_text_only", "stable_id"] },
+        "delete_by_id_supported": { "type": "boolean" },
+        "delete_document_chunks_supported": { "type": "boolean" }
       }
     },
     "deletion_contract": {
@@ -68,12 +86,73 @@
       "additionalProperties": false,
       "required": ["physical_delete_claim_allowed", "negative_recall_confirmed", "logical_tombstone_required", "next_gate"],
       "properties": {
-        "physical_delete_claim_allowed": { "const": false },
-        "negative_recall_confirmed": { "const": false },
-        "logical_tombstone_required": { "const": true },
-        "next_gate": { "const": "stable_target_id_plus_delete_by_id_plus_immutable_receipt_plus_negative_recall" }
+        "physical_delete_claim_allowed": { "type": "boolean" },
+        "negative_recall_confirmed": { "type": "boolean" },
+        "logical_tombstone_required": { "type": "boolean" },
+        "next_gate": { "enum": ["stable_target_id_plus_delete_by_id_plus_immutable_receipt_plus_negative_recall", "pre_delete_authorization"] }
       }
     },
     "raw_content_persisted": { "const": false }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mutation_interface": {
+            "properties": { "delete_by_id_supported": { "const": true } },
+            "required": ["delete_by_id_supported"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "graph_observation": {
+            "properties": { "target_observations": { "minItems": 1 } },
+            "anyOf": [
+              { "properties": { "document_ids_exposed": { "const": true } } },
+              { "properties": { "chunk_ids_exposed": { "const": true } } }
+            ]
+          },
+          "recall_observation": {
+            "properties": { "stable_target_ids_exposed": { "const": true } }
+          },
+          "mutation_interface": {
+            "properties": {
+              "actions": { "contains": { "const": "delete_by_id" } },
+              "target_selector": { "const": "stable_id" }
+            }
+          },
+          "deletion_contract": {
+            "properties": {
+              "physical_delete_claim_allowed": { "const": false },
+              "negative_recall_confirmed": { "const": false },
+              "logical_tombstone_required": { "const": true },
+              "next_gate": { "const": "pre_delete_authorization" }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "graph_observation": {
+            "properties": { "target_observations": { "maxItems": 0 } }
+          },
+          "recall_observation": {
+            "properties": { "stable_target_ids_exposed": { "const": false } }
+          },
+          "mutation_interface": {
+            "properties": { "target_selector": { "const": "content_text_only" } }
+          },
+          "deletion_contract": {
+            "properties": {
+              "physical_delete_claim_allowed": { "const": false },
+              "negative_recall_confirmed": { "const": false },
+              "logical_tombstone_required": { "const": true },
+              "next_gate": { "const": "stable_target_id_plus_delete_by_id_plus_immutable_receipt_plus_negative_recall" }
+            }
+          }
+        }
+      }
+    }
+  ]
 }
