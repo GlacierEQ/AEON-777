@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:casebrain:schema:desktop-commander-binding-receipt:1.0.0",
+  "$id": "urn:casebrain:schema:desktop-commander-binding-receipt:1.1.0",
   "title": "CASEBRAIN Desktop Commander Principal Binding Receipt",
   "type": "object",
   "additionalProperties": false,
@@ -18,9 +18,9 @@
     "raw_file_metadata_persisted"
   ],
   "properties": {
-    "schema_version": { "const": "1.0.0" },
+    "schema_version": { "const": "1.1.0" },
     "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
-    "receipt_id": { "const": "desktop-commander-binding-2026-07-25-v1" },
+    "receipt_id": { "type": "string", "pattern": "^desktop-commander-binding-[0-9]{4}-[0-9]{2}-[0-9]{2}-v[0-9]+$" },
     "observed_at": { "type": "string", "format": "date-time" },
     "connector_id": { "const": "desktop_commander" },
     "authentication": {
@@ -28,9 +28,9 @@
       "additionalProperties": false,
       "required": ["status", "principal_sha256", "backend_connected"],
       "properties": {
-        "status": { "const": "authenticated" },
+        "status": { "enum": ["authenticated", "unauthenticated"] },
         "principal_sha256": { "$ref": "#/$defs/sha256" },
-        "backend_connected": { "const": true }
+        "backend_connected": { "type": "boolean" }
       }
     },
     "device_probe": {
@@ -38,9 +38,9 @@
       "additionalProperties": false,
       "required": ["status", "device_count", "online_device_count"],
       "properties": {
-        "status": { "const": "success" },
-        "device_count": { "const": 0 },
-        "online_device_count": { "const": 0 }
+        "status": { "enum": ["success", "error"] },
+        "device_count": { "type": "integer", "minimum": 0 },
+        "online_device_count": { "type": "integer", "minimum": 0 }
       }
     },
     "binding": {
@@ -48,27 +48,29 @@
       "additionalProperties": false,
       "required": ["external_pairing_claim_present", "principal_match", "state"],
       "properties": {
-        "external_pairing_claim_present": { "const": true },
-        "principal_match": { "const": "unknown" },
-        "state": { "const": "split_principal_or_stale_registration" }
+        "external_pairing_claim_present": { "type": "boolean" },
+        "principal_match": { "enum": ["unknown", "verified", "mismatch"] },
+        "state": { "enum": ["split_principal_or_stale_registration", "verified", "unverified"] }
       }
     },
     "routing": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["approved_roots", "read_allowed", "write_allowed", "decision", "next_gate"],
+      "required": ["approved_roots", "approved_root_real_paths", "read_allowed", "write_allowed", "decision", "next_gate"],
       "properties": {
-        "approved_roots": { "type": "array", "maxItems": 0 },
-        "read_allowed": { "const": false },
+        "approved_roots": { "type": "array", "items": { "$ref": "#/$defs/absolute_path" }, "uniqueItems": true },
+        "approved_root_real_paths": { "type": "array", "items": { "$ref": "#/$defs/absolute_path" }, "uniqueItems": true },
+        "read_allowed": { "type": "boolean" },
         "write_allowed": { "const": false },
-        "decision": { "const": "blocked_no_bound_device" },
-        "next_gate": { "const": "same_principal_device_count_positive_then_metadata_only_root_probe" }
+        "decision": { "enum": ["blocked_no_bound_device", "blocked", "metadata_read_allowed"] },
+        "next_gate": { "type": "string", "minLength": 8 }
       }
     },
     "raw_principal_identifiers_persisted": { "const": false },
     "raw_file_metadata_persisted": { "const": false }
   },
   "$defs": {
-    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "absolute_path": { "type": "string", "pattern": "^(?:/|[A-Za-z]:[\\\\/]).+" }
   }
 }
