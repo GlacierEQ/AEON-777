@@ -1,17 +1,70 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "case_id": "1FDV-23-0001009",
   "mode": "DOER",
   "policy": {
+    "action_always": true,
+    "tools_always": true,
+    "connectors_always": true,
+    "progress_always": true,
     "prose_is_not_completion": true,
     "plans_are_not_execution": true,
     "connectors_are_not_integrated_until_verified": true,
     "complete_requires_external_state_change": true,
     "complete_requires_retrieval_test": true,
-    "complete_requires_proof": true
+    "complete_requires_proof": true,
+    "every_turn_requires_delta_accounting": true,
+    "blocked_turn_requires_specific_capability_or_permission_evidence": true
   },
-  "allowed_statuses": ["QUEUED","IN_PROGRESS","BLOCKED","EXECUTED_UNVERIFIED","COMPLETE","SUPERSEDED"],
-  "completion_requirements": ["write_action","destination_system","destination_native_id","artifact_or_object_path","verification_method","verification_result","verified_at","proof"],
+  "verified_connector_inventory": [
+    {
+      "connector": "GitHub",
+      "route": "direct",
+      "permission": "full_access",
+      "verification": "Plugin Management permission inspection",
+      "status": "VERIFIED"
+    },
+    {
+      "connector": "Smithery",
+      "route": "dynamic connector plane",
+      "permission": "full_access",
+      "verification": "Plugin Management permission inspection",
+      "status": "VERIFIED"
+    }
+  ],
+  "connector_selection_rule": {
+    "inspect_before_claiming_unavailable": true,
+    "prefer_verified_write_path": true,
+    "use_alternate_connected_route_on_failure": true,
+    "do_not_stop_after_first_connector_failure": true,
+    "record_route_used_and_native_id": true
+  },
+  "allowed_statuses": [
+    "QUEUED",
+    "IN_PROGRESS",
+    "BLOCKED",
+    "EXECUTED_UNVERIFIED",
+    "COMPLETE",
+    "SUPERSEDED"
+  ],
+  "completion_requirements": [
+    "write_action",
+    "destination_system",
+    "destination_native_id",
+    "artifact_or_object_path",
+    "verification_method",
+    "verification_result",
+    "verified_at",
+    "proof"
+  ],
+  "turn_requirements": [
+    "inspect_relevant_tools_and_connectors",
+    "attempt_concrete_action_when_capability_exists",
+    "attempt_alternate_route_when_primary_route_fails",
+    "verify_result",
+    "report_exact_delta",
+    "record_next_executable_action"
+  ],
   "tasks": [
     {
       "task_id": "EX-001",
@@ -25,7 +78,7 @@
       "verification_result": null,
       "verified_at": null,
       "proof": [],
-      "next_executable_action": "Acquire official Dkt. 225 PDF, NEF, and current docket status; preserve exact bytes and metadata."
+      "next_executable_action": "Acquire official Dkt. 225 PDF, NEF, and current docket status; preserve exact bytes and metadata. Inspect both direct and alternate connector routes before reporting a blocker."
     },
     {
       "task_id": "SYS-DOER-001",
@@ -38,8 +91,28 @@
       "verification_method": "Fetch deployed files from main and run GitHub Actions validator",
       "verification_result": "PASS",
       "verified_at": "2026-07-28T11:06:00Z",
-      "proof": ["shared/casebrain/runtime/verify-completion.mjs",".github/workflows/casebrain-doer-gate.yml"],
+      "proof": [
+        "shared/casebrain/runtime/verify-completion.mjs",
+        ".github/workflows/casebrain-doer-gate.yml"
+      ],
       "next_executable_action": "Apply the gate to every Casebrain task and artifact registry."
+    },
+    {
+      "task_id": "SYS-CONNECTOR-001",
+      "title": "Verify dual GitHub-capable connector routes",
+      "status": "COMPLETE",
+      "write_action": "Inspect and record direct GitHub and Smithery connector permissions",
+      "destination_system": "GitHub",
+      "destination_native_id": "GlacierEQ/AEON-777@main",
+      "artifact_or_object_path": "shared/casebrain/runtime/doer-state.json",
+      "verification_method": "Plugin Management permission inspection followed by fetch of updated main-branch state",
+      "verification_result": "PASS",
+      "verified_at": "2026-07-28T11:20:00Z",
+      "proof": [
+        "GitHub permission: Allow all actions",
+        "Smithery permission: Allow all actions"
+      ],
+      "next_executable_action": "Use both available routes as execution options and fail over instead of stopping after one route fails."
     }
   ]
 }
