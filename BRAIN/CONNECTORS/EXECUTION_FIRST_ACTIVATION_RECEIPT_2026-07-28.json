@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "execution_first_activation",
+  "effective_date": "2026-07-28",
+  "authority_class": "explicit_operator_directive",
+  "current_state": "operative_and_machine_gated",
+  "canonical_github": {
+    "repository": "GlacierEQ/AEON-777",
+    "protocol_path": "BRAIN/CONNECTORS/EXECUTION_FIRST_OPERATING_PROTOCOL.md",
+    "protocol_commit": "f3c3e31420f324d1e9eeb644ef980ff9ca371cf0",
+    "control_path": "BRAIN/CONNECTORS/EXECUTION_FIRST_CONTROL.json",
+    "control_commit": "1501b942d45cad3dfa3a45f75e30a73cf771f031",
+    "guard_path": "BRAIN/CONNECTORS/execution_first_guard.mjs",
+    "guard_commit": "02c4072ee25f04e657c2ec12b9016dcd46f937c8",
+    "validator_path": "BRAIN/CONNECTORS/validate_execution_first_protocol.mjs",
+    "validator_commit": "d0113db568ce396da7ef4288e3c7949b3031fce8",
+    "package_test_hook_commit": "d235a0f518d9f04cfb480bc3b721ad5f39c1cc23",
+    "readme_routing_commit": "e0b7a2102862218276ac914d007a1d3012572019"
+  },
+  "notion_projection": {
+    "protocol_page_id": "3abb1e4f-3223-81b5-8221-cf9845f6d58d",
+    "worker_control_page_id": "39eb1e4f-3223-81a8-b360-f75aa3a4e905",
+    "aworkers_page_id": "39ab1e4f-3223-814e-a33c-eb4562d137d8",
+    "worker_registry_data_source": "collection://376badf8-a681-49cb-a0fb-5a0c892b2e9e",
+    "compliance_gate_row_id": "3abb1e4f-3223-81d4-8ef6-c82949486ab6"
+  },
+  "automation_bindings": [
+    {
+      "title": "Memory Canon Recursive Hygiene",
+      "id": "6a35602f7ab08191a24464efdb217f80",
+      "state": "enabled"
+    },
+    {
+      "title": "Daily Master Priorities + Execution",
+      "id": "6a3fdd345d3c81919bd4c0f004d44224",
+      "state": "enabled"
+    },
+    {
+      "title": "Shaw Transcript Watch",
+      "id": "6a5acbcc26d08191b387e116a20f70f8",
+      "state": "enabled"
+    },
+    {
+      "title": "Evidence Intake Lane",
+      "id": "6a355eeccc9c819196edc1cdd4816e38",
+      "state": "enabled"
+    },
+    {
+      "title": "Memory Architecture",
+      "id": "6a512c0bdb088191ab8d4a21d904888c",
+      "state": "enabled"
+    }
+  ],
+  "enforced_failures": [
+    "routine_review_handoff",
+    "operator_handoff_premature",
+    "partial_failure_aborted_lane",
+    "completion_receipt_missing",
+    "required_receipt_field_missing",
+    "unsupported_stop_boundary"
+  ],
+  "external_projection_attempts": {
+    "google_drive_native_doc": {
+      "result": "failed",
+      "error": "PERMISSION_DENIED",
+      "detail": "Google Docs documents.create returned HTTP 403"
+    },
+    "google_drive_markdown_upload": {
+      "result": "failed",
+      "error": "UNREGISTERED_FILE_REFERENCE",
+      "detail": "The local sandbox path could not be converted to a connector file reference"
+    }
+  },
+  "partial_failure_handling": {
+    "drive_failure_aborted_run": false,
+    "unaffected_notion_work_continued": true,
+    "unaffected_github_work_continued": true,
+    "unaffected_automation_work_continued": true
+  },
+  "operator_action_required": false,
+  "remaining_verification": [
+    "Obtain a hosted or equivalent test receipt for the package suite after the test-hook commit",
+    "Re-attempt Google Drive projection only after the connection exposes Docs create or connector-file upload permission"
+  ]
+}
