@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
   "receipt_id": "desktop-commander-binding-2026-07-25-v1",
   "observed_at": "2026-07-26T03:43:24Z",
@@ -24,7 +24,8 @@
     "read_allowed": false,
     "write_allowed": false,
     "decision": "blocked_no_bound_device",
-    "next_gate": "same_principal_device_count_positive_then_metadata_only_root_probe"
+    "next_gate": "same_principal_device_count_positive_then_metadata_only_root_probe",
+    "approved_root_real_paths": []
   },
   "raw_principal_identifiers_persisted": false,
   "raw_file_metadata_persisted": false

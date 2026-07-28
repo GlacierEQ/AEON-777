@@ -10,6 +10,8 @@ const canonicalize = (value) => {
   return path.posix.normalize(slashed).replace(/\/+$/, "");
 };
 
+const containedBy = (candidate, root) => candidate === root || candidate.startsWith(`${root}/`);
+
 export function evaluateDesktopCommanderRoute(request, control, evaluatedAt = new Date().toISOString()) {
   const reasons = [];
   const observedMs = Date.parse(control.observed_at);
@@ -26,17 +28,30 @@ export function evaluateDesktopCommanderRoute(request, control, evaluatedAt = ne
   }
   if (control.device_probe.online_device_count < 1) reasons.push("no_online_bound_device");
   if (request.principal_sha256 !== control.authentication.principal_sha256) reasons.push("principal_mismatch");
+  if (control.routing.read_allowed !== true || control.routing.decision !== "metadata_read_allowed") {
+    reasons.push("routing_read_not_authorized");
+  }
   if (!request.path) reasons.push("path_missing");
+  if (request.path_resolution_verified !== true || !request.resolved_path) reasons.push("path_resolution_unverified");
+  if (request.symlink_traversal_detected === true) reasons.push("symlink_escape_detected");
 
   const requestedPath = request.path ? canonicalize(request.path) : null;
-  if (!requestedPath) reasons.push("path_invalid");
-  const approvedRoot = requestedPath && control.routing.approved_roots.find((root) => {
+  const resolvedPath = request.resolved_path ? canonicalize(request.resolved_path) : null;
+  if (!requestedPath || !resolvedPath) reasons.push("path_invalid");
+
+  const approvedIndex = requestedPath ? control.routing.approved_roots.findIndex((root) => {
     const normalizedRoot = canonicalize(root);
-    return normalizedRoot && (requestedPath === normalizedRoot || requestedPath.startsWith(`${normalizedRoot}/`));
-  });
-  if (!approvedRoot) reasons.push("outside_approved_root");
+    return normalizedRoot && containedBy(requestedPath, normalizedRoot);
+  }) : -1;
+  const declaredRoot = approvedIndex >= 0 ? canonicalize(control.routing.approved_roots[approvedIndex]) : null;
+  const resolvedRoot = approvedIndex >= 0 ? canonicalize(control.routing.approved_root_real_paths?.[approvedIndex]) : null;
+  if (!declaredRoot || !resolvedRoot || !resolvedPath || !containedBy(resolvedPath, resolvedRoot)) {
+    reasons.push("outside_approved_root");
+  }
   if (request.mode !== "metadata_read") reasons.push("mode_not_approved");
-  if (request.write_requested) reasons.push("write_requires_separate_human_gate");
+  if (request.write_requested || control.routing.write_allowed !== false) {
+    reasons.push("write_requires_separate_human_gate");
+  }
 
   return {
     allowed: reasons.length === 0,
