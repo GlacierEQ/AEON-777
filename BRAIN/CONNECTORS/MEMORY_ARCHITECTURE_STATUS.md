@@ -7,7 +7,7 @@ Thread anchor: `MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51`
 - Repository: `GlacierEQ/AEON-777`
 - Merged foundation: PR #52
 - Merged deletion and Desktop controls: PR #57
-- Active proof-binding follow-on: PR #58
+- Merged proof-binding follow-on: PR #58
 - Control root: `BRAIN/CONNECTORS/`
 - Connector registry: `CONNECTOR_FABRIC.json` v1.2.0 with 49 records
 
@@ -25,14 +25,14 @@ Thread anchor: `MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51`
 - The capability schema represents both the currently blocked backend and a future addressable delete-by-ID backend without treating the future shape as observed fact.
 - Desktop metadata reads require affirmative route authorization and connector-resolved real-path containment; explicit denial, missing resolution proof, and symlink or junction escape fail closed.
 - Desktop Commander remains authenticated under a hashed principal, but the callable session reports zero devices and has no approved roots.
-- Hosted run 30327739655 passed all 49 connector and memory validators for the proof-binding implementation head; final PR-head validation remains mandatory after any further commit.
+- Hosted runs 30327828115 and 30327827814 passed at final PR #58 head `28c814d4e771e2a0bfee7acdb30b3544bcaee62a`; PR #58 merged as `89a511efb754e512bdddef9c0724c51f582470fb`.
 - Locked dependency installation reports zero known vulnerabilities.
 
 ## Ordered gap queue
 
 | Priority | Gap | State | Next gate |
 |---:|---|---|---|
-| 1 | Final PR #58 hosted receipt | In progress | Run the scoped workflow on the final documentation head and preserve its artifact digest. |
+| 1 | Final PR #58 hosted receipt | Completed | Runs 30327828115 and 30327827814 passed; artifact 8676302508 is preserved. |
 | 2 | Namespace and retention approval | Pending human gate | Approve exact namespace, retention policy, and owner; keep activation closed meanwhile. |
 | 3 | Memory physical deletion | Blocked | Expose stable document/chunk IDs and delete-by-ID, then pass target-bound pre-delete authorization. |
 | 4 | Tombstone closure | Blocked | Bind immutable authorization, deletion, and later negative-recall records to the same target. |
@@ -42,7 +42,7 @@ Thread anchor: `MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51`
 
 ## Execution order
 
-1. Capture a successful hosted receipt for the final PR #58 head.
+1. Preserve the completed PR #58 receipt and artifact digest.
 2. Complete namespace, retention, and connector-owner approval.
 3. Obtain a fresh target-specific capability probe exposing a stable target ID and delete-by-ID.
 4. Generate and immutably preserve a pre-delete authorization decision.
