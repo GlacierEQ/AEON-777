@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "1FDV-23-0001009",
+  "mode": "DOER",
+  "policy": {
+    "prose_is_not_completion": true,
+    "plans_are_not_execution": true,
+    "connectors_are_not_integrated_until_verified": true,
+    "complete_requires_external_state_change": true,
+    "complete_requires_retrieval_test": true,
+    "complete_requires_proof": true
+  },
+  "allowed_statuses": [
+    "QUEUED",
+    "IN_PROGRESS",
+    "BLOCKED",
+    "EXECUTED_UNVERIFIED",
+    "COMPLETE",
+    "SUPERSEDED"
+  ],
+  "completion_requirements": [
+    "write_action",
+    "destination_system",
+    "destination_native_id",
+    "artifact_or_object_path",
+    "verification_method",
+    "verification_result",
+    "verified_at",
+    "proof"
+  ],
+  "tasks": [
+    {
+      "task_id": "EX-001",
+      "title": "Source-lock Dkt. 225",
+      "status": "IN_PROGRESS",
+      "write_action": null,
+      "destination_system": null,
+      "destination_native_id": null,
+      "artifact_or_object_path": null,
+      "verification_method": null,
+      "verification_result": null,
+      "verified_at": null,
+      "proof": [],
+      "next_executable_action": "Acquire official Dkt. 225 PDF, NEF, and current docket status; preserve exact bytes and metadata."
+    },
+    {
+      "task_id": "SYS-DOER-001",
+      "title": "Enforce proof-backed completion",
+      "status": "EXECUTED_UNVERIFIED",
+      "write_action": "Create repository completion gate",
+      "destination_system": "GitHub",
+      "destination_native_id": "GlacierEQ/AEON-777:doer-mode-completion-gate-2026-07-28",
+      "artifact_or_object_path": "shared/casebrain/runtime",
+      "verification_method": "GitHub Actions workflow executes validator against doer-state.json",
+      "verification_result": null,
+      "verified_at": null,
+      "proof": [
+        "shared/casebrain/runtime/verify-completion.mjs",
+        ".github/workflows/casebrain-doer-gate.yml"
+      ],
+      "next_executable_action": "Open PR, run CI, merge only after gate passes."
+    }
+  ]
+}
