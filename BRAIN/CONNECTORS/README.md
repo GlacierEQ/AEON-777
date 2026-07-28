@@ -7,16 +7,19 @@ This directory is the canonical control layer for CaseBuilder 4000 / Apex Memory
 ## Start here
 
 1. `EXECUTION_FIRST_OPERATING_PROTOCOL.md` — binding execution rule: complete routine internal, reversible, already-authorized work without review handoff; isolate partial failures and continue.
-2. `MEMORY_ARCHITECTURE_STATUS.md` — current controls, blockers, and execution order.
-3. `CONNECTOR_FABRIC.json` — one registry covering advertised, connected, blocked, staging-only, projection-only, and excluded systems.
-4. `MEMORY_TAXONOMY_AND_GOVERNANCE.md` — authority, claim classes, buckets, promotion, and audit rules.
-5. `PROVENANCE_RECEIPT_SCHEMA.json` — exact-byte provenance and deterministic replay.
-6. `MEMORY_RETRIEVAL_GUARD_SCHEMA.json` — fail-closed factual-promotion receipt.
-7. `MEMORY_TOMBSTONE_REGISTRY.json` — logical deletion controls for backend-recallable retired records.
-8. `MEMORY_DELETION_GATE_DECISION_SCHEMA.json` — two-phase pre-delete authorization and post-delete tombstone-closure contract.
-9. `MEMORY_BACKEND_CAPABILITY_PROBE_2026-07-24.json` — measured memory deletion capability boundary.
-10. `DESKTOP_COMMANDER_BINDING_RECEIPT_2026-07-25.json` — privacy-safe desktop principal and device-binding result.
-11. `MEMORY_ARCHITECTURE_DELTA_*.md` — append-only history.
+2. `EXECUTION_FIRST_CONTROL.json` — machine-readable completion states, stop boundaries, receipt requirements, and partial-failure policy.
+3. `execution_first_guard.mjs` — reusable evaluator that rejects routine review handoffs, premature operator escalation, missing receipts, and whole-lane aborts on partial failure.
+4. `validate_execution_first_protocol.mjs` — positive and negative controls executed by the package test suite.
+5. `MEMORY_ARCHITECTURE_STATUS.md` — current controls, blockers, and execution order.
+6. `CONNECTOR_FABRIC.json` — one registry covering advertised, connected, blocked, staging-only, projection-only, and excluded systems.
+7. `MEMORY_TAXONOMY_AND_GOVERNANCE.md` — authority, claim classes, buckets, promotion, and audit rules.
+8. `PROVENANCE_RECEIPT_SCHEMA.json` — exact-byte provenance and deterministic replay.
+9. `MEMORY_RETRIEVAL_GUARD_SCHEMA.json` — fail-closed factual-promotion receipt.
+10. `MEMORY_TOMBSTONE_REGISTRY.json` — logical deletion controls for backend-recallable retired records.
+11. `MEMORY_DELETION_GATE_DECISION_SCHEMA.json` — two-phase pre-delete authorization and post-delete tombstone-closure contract.
+12. `MEMORY_BACKEND_CAPABILITY_PROBE_2026-07-24.json` — measured memory deletion capability boundary.
+13. `DESKTOP_COMMANDER_BINDING_RECEIPT_2026-07-25.json` — privacy-safe desktop principal and device-binding result.
+14. `MEMORY_ARCHITECTURE_DELTA_*.md` — append-only history.
 
 ## Execution protocol
 
@@ -25,6 +28,8 @@ Routine internal, reversible, already-authorized work is executed, verified, and
 A failed connector or unavailable source is isolated as a partial failure. Dependent state is marked stale or unverified, every unaffected executable slice continues, and the result includes the exact blocker plus the nearest completed deliverable.
 
 A worker may stop only at a real technical impossibility, an unavailable required capability, a materially ambiguous target, or an irreversible external action for which authority is absent. Completion claims require current-run evidence.
+
+The package test suite executes `validate_execution_first_protocol.mjs`. A change fails validation when it reintroduces a routine review handoff while system-side work remains, transfers supervision prematurely to the operator, aborts unaffected work after a partial failure, omits required completion-receipt fields, or uses an unsupported stop boundary.
 
 ## Connector fabric
 
