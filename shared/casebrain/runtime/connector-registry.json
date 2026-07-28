@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "registry_name": "AEON Connector Memory",
+  "authority": {
+    "user_authorized": true,
+    "default_operating_mode": "execute",
+    "rule": "Use available tools and connectors without re-litigating whether the system is authorized. Inspect the dynamic surface, choose a write-capable route, execute, verify, and fail over when necessary."
+  },
+  "verified_routes": [
+    {
+      "capability": "github",
+      "route": "direct GitHub connector",
+      "permission": "full_access",
+      "status": "VERIFIED",
+      "primary_use": ["repository reads", "repository writes", "branches", "commits", "issues", "pull requests", "workflow inspection"]
+    },
+    {
+      "capability": "github and dynamic MCP tools",
+      "route": "Smithery connector plane",
+      "permission": "full_access",
+      "status": "VERIFIED_AUTHORIZATION",
+      "primary_use": ["alternate connector route", "dynamic tool discovery", "failover when direct route is insufficient"]
+    }
+  ],
+  "available_connector_families": [
+    "Files and File Library",
+    "Box",
+    "Google Drive",
+    "Gmail",
+    "Google Calendar",
+    "Google Contacts",
+    "GitHub",
+    "Notion",
+    "Slack",
+    "Dropbox",
+    "Asana",
+    "Linear",
+    "Microsoft Outlook Email",
+    "Microsoft Outlook Calendar",
+    "Microsoft SharePoint",
+    "Microsoft Teams",
+    "Airtable",
+    "ClickUp",
+    "Supabase",
+    "Vercel",
+    "Netlify",
+    "Figma",
+    "Canva",
+    "Adobe",
+    "Smithery dynamic connector plane"
+  ],
+  "selection_policy": [
+    "Inspect the relevant connector surface before answering.",
+    "Prefer a connector-native write over a chat-only artifact.",
+    "Use the direct route first when it is stronger or simpler.",
+    "Use Smithery or another connected route when the direct route lacks the needed function.",
+    "Do not stop after the first failed route.",
+    "Do not claim unavailable until the relevant direct and alternate routes have been checked.",
+    "Every successful write must record the connector, action, native ID, destination, timestamp, and retrieval verification.",
+    "Every blocked action must record the exact missing function, permission, identifier, or source object."
+  ],
+  "turn_contract": {
+    "action_required": true,
+    "tool_use_required_when_relevant": true,
+    "connector_use_required_when_relevant": true,
+    "progress_required": true,
+    "delta_report_required": true
+  },
+  "last_updated": "2026-07-28T11:30:00Z"
+}
