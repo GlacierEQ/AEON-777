@@ -1,0 +1,58 @@
+{
+  "receipt_version": "1.0.0",
+  "validated_at": "2026-07-29T11:47:00Z",
+  "validation_mode": "isolated_current_run_node_execution",
+  "repository": "GlacierEQ/AEON-777",
+  "tested_repository_state_through_commit": "95ec1858cf52b51132ec5a43af38ec88c83bd8e4",
+  "artifacts": {
+    "protocol": {
+      "path": "BRAIN/CONNECTORS/WITNESS_JOURNAL_EVIDENCE_CONTROL.md",
+      "blob_sha": "3ba5fb577eb12d5c7d55f28b9c97355b161dc812",
+      "creation_commit": "ab54de19eb702f7a2668965b6fb0d8a5cb35474b"
+    },
+    "control": {
+      "path": "BRAIN/CONNECTORS/WITNESS_JOURNAL_EVIDENCE_CONTROL.json",
+      "blob_sha": "deb24a3c94a1e67e8665517299df6e3f4d454625",
+      "creation_commit": "1bc5e6ca59069140fbeb746bdb6205c36b362f4d"
+    },
+    "guard": {
+      "path": "BRAIN/CONNECTORS/witness_journal_guard.mjs",
+      "blob_sha": "2fef8cf6257fc95b2fe32289eaef6a32f00c8390",
+      "creation_commit": "4988ec3f46e677a4179aeed8312396cf915bf6ba"
+    },
+    "validator": {
+      "path": "BRAIN/CONNECTORS/validate_witness_journal_control.mjs",
+      "blob_sha": "90e73f9cdf9d665ceb6e148d5f53f8488dcca25a",
+      "creation_commit": "a83ccc98ead76f2557397069275654ec1d536bf9"
+    },
+    "package_gate": {
+      "path": "BRAIN/CONNECTORS/package.json",
+      "blob_sha": "8860d208b9799246d3525baa3a1c5e9a020d4acf",
+      "update_commit": "95ec1858cf52b51132ec5a43af38ec88c83bd8e4"
+    },
+    "readme": {
+      "path": "BRAIN/CONNECTORS/README.md",
+      "blob_sha": "680d9bc7adf63a39831b0035e0dc0ae86a5b5fa8",
+      "update_commit": "e591e6bc5ef0f69b6401ff92510809555daf7254"
+    }
+  },
+  "positive_controls": [
+    "firsthand observation with inaccessible current-run support remains preserved",
+    "support gap is not factual negation",
+    "repeated contemporaneous entries require a longitudinal thread",
+    "repeated issue salience is elevated"
+  ],
+  "negative_controls": [
+    "discarding a firsthand account due to unavailable corroboration is rejected",
+    "stripping emotional language from the preserved source is rejected",
+    "rewriting or deleting the historical source is rejected",
+    "breaking a repeated issue out of its journal series is rejected",
+    "failing to elevate repeated-entry salience is rejected",
+    "assistant analysis attributed to Casey is rejected",
+    "automatic admissibility claims without foundation are rejected"
+  ],
+  "result": "pass",
+  "stdout": "PASS: witness journal preservation guard",
+  "hosted_workflow_state": "not_observed_for_direct_default_branch_commits",
+  "limitation": "This receipt proves isolated execution of the committed witness-journal guard semantics. It does not determine courtroom admissibility, authenticate any specific journal entry, or claim that every supporting source is currently connected."
+}
