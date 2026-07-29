@@ -1,9 +1,10 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "case_id": "1FDV-23-0001009",
   "generated_at": "2026-07-28T21:25:01.672265Z",
   "verified_at": "2026-07-28T21:31:00-10:00",
   "mode": "EXECUTION_FABRIC",
+  "wave_1_status": "PENDING_REVIEW",
   "canonical_ledger": {
     "system": "Supabase",
     "project_id": "dyhprklicgewmrimecey",
@@ -12,7 +13,8 @@
     "verified_capabilities": 34,
     "route_policies": 26,
     "route_runtime_rows": 26,
-    "fresh_health_receipts": 9
+    "fresh_health_receipts_initial": 9,
+    "retrieval_verification_receipts_recorded": true
   },
   "verified_writes": {
     "github_manifest": {
@@ -25,7 +27,7 @@
     "notion_projection": {
       "status": "PASS",
       "page_id": "3a4b1e4f-3223-81d8-a3db-d92edb353904",
-      "verification_method": "page-scoped search",
+      "verification_method": "fetch page after write",
       "retrieved_marker": "WAVE 1 CONNECTED RESOURCE BUILD — EXECUTED 2026-07-28"
     },
     "gmail_label": {
@@ -40,17 +42,20 @@
     "box_receipt": {
       "status": "PASS",
       "file_id": "2374410088507",
+      "file_version_id": "2631216479707",
       "file_name": "CASEBRAIN_CONNECTED_RESOURCE_BUILD_V1_2026-07-28.json",
       "parent_folder_id": "401707782634",
       "sha1": "76fe5f54b429fd2b1226b3d2fcb214f4f866ee0f",
-      "verification_method": "folder-scoped keyword search"
+      "size_bytes": 1518,
+      "verification_method": "get_file_details"
     },
     "clickup_task": {
       "status": "PASS",
       "task_id": "86ajrfqvn",
       "task_url": "https://app.clickup.com/t/86ajrfqvn",
       "list_id": "901321189802",
-      "verification_method": "list-scoped task search"
+      "current_status": "pending review",
+      "verification_method": "clickup_get_task"
     }
   },
   "execution_surfaces": {
@@ -75,7 +80,7 @@
       "verified_root": "/Kahala Home Inspectors/00_Organized_Files/Code_and_Data/Projects/03_PROJECTS/1FDV-23-0001009",
       "verified_folder_id": "id:M3qKixNrNsgAAAAAAAFTpw",
       "missing_expected_root": "/ANTIGRAVITY_MEMORY_01/ANTIGRAVITY_MEMORY_01.dbx-external-drive/Case_1FDV-23-0001009_ORGANIZED",
-      "write_confirmation_required": true
+      "remediation_task_id": "86ajrm7n3"
     },
     "clickup": {
       "status": "HEALTHY",
@@ -94,12 +99,13 @@
       "receipt_file_id": "2374410088507"
     },
     "slack": {
-      "status": "BLOCKED",
+      "status": "DEGRADED",
       "connector_probe": "SUCCESS",
-      "casebrain_channel_found": false,
+      "canvas_created": false,
       "canvas_create_result": "not_supported_free_team",
-      "blocker_class": "workspace_plan",
-      "fallback": "Use ClickUp task comments and Notion control page as coordination surfaces"
+      "canvas_route_enabled": false,
+      "replacement_task_id": "86ajrm7n9",
+      "fallback": "Use ClickUp and Notion until a supported Slack surface is selected"
     },
     "supabase": {
       "status": "HEALTHY",
@@ -111,17 +117,43 @@
       "role": "alternate_route_fabric"
     }
   },
+  "case_execution_lanes": {
+    "dkt_225_source_lock": {
+      "task_id": "86ajrm7nq",
+      "task_url": "https://app.clickup.com/t/86ajrm7nq",
+      "status": "IN_PROGRESS",
+      "required_objects": [
+        "official Dkt. 225 PDF",
+        "NEF / Notice of Electronic Filing",
+        "current docket status or certified docket entry",
+        "exact bytes and SHA-256",
+        "connector-native IDs and retrieval verification"
+      ]
+    }
+  },
   "governance": {
     "destructive_actions_allowed": false,
     "public_share_allowed": false,
     "external_write_requires_native_receipt": true,
     "retrieval_verification_required": true,
-    "fallback_after_primary_failure": true
+    "unsupported_routes_are_disabled": true,
+    "degraded_routes_are_not_reported_as_complete": true
   },
-  "next_execution_gates": [
-    "Record sealed native receipts in Supabase health and upgrade ledgers",
-    "Attach receipt summary to ClickUp execution task",
-    "Repair or retire the missing Dropbox ANTIGRAVITY root pointer after explicit Dropbox mutation confirmation",
-    "Bind Wave 2 resources: Google Calendar, Google Contacts, Fireflies or Granola, Asana, Linear, Slack fallback"
+  "open_follow_up_tasks": [
+    {
+      "task_id": "86ajrm7n3",
+      "task_url": "https://app.clickup.com/t/86ajrm7n3",
+      "title": "Repair or retire stale Dropbox ANTIGRAVITY pointer"
+    },
+    {
+      "task_id": "86ajrm7n9",
+      "task_url": "https://app.clickup.com/t/86ajrm7n9",
+      "title": "Replace unsupported Slack Canvas route"
+    },
+    {
+      "task_id": "86ajrm7nq",
+      "task_url": "https://app.clickup.com/t/86ajrm7nq",
+      "title": "Source-lock official Dkt. 225 PDF, NEF, and docket status"
+    }
   ]
 }
