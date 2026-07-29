@@ -7,20 +7,28 @@ const protocol = readText("./WISEBASE_RETRIEVAL_CONTROL.md");
 const readme = readText("./README.md");
 
 if (control.status !== "operative") throw new Error("Wisebase retrieval control is not operative");
-if (control.authority.wisebase_role !== "candidate_retrieval_plane") {
-  throw new Error("Wisebase authority drifted from candidate retrieval");
+if (control.authority.wisebase_role !== "candidate_retrieval_and_historical_research_plane") {
+  throw new Error("Wisebase authority drifted from governed retrieval and historical research");
 }
 for (const phrase of [
-  "Exact anchors first",
+  "Legacy raw preservation doctrine",
+  "Preserve first",
   "Candidate evidence only",
-  "Restricted material fails closed",
+  "Restricted material fails closed for exposure and promotion, not retention",
   "Project identities remain separate",
-  "Similarity is not duplication"
+  "Similarity is not duplication",
+  "Supersession is append-only"
 ]) {
   if (!protocol.includes(phrase)) throw new Error(`Wisebase protocol missing rule: ${phrase}`);
 }
 if (!readme.includes("WISEBASE_RETRIEVAL_CONTROL.md")) {
   throw new Error("README does not route workers through Wisebase retrieval control");
+}
+if (!control.source_preservation_policy.failed_promotion_does_not_authorize_deletion) {
+  throw new Error("failed promotion no longer preserves the source artifact");
+}
+if (!control.source_preservation_policy.authorized_scope_searchability_preserved) {
+  throw new Error("authorized-scope legacy searchability is not preserved");
 }
 
 const baseCandidate = {
@@ -30,6 +38,11 @@ const baseCandidate = {
   exact_anchor_count: 4,
   source_name: "certified-record.pdf",
   source_pointer: "source://certified-record/pages/128-140",
+  raw_preservation_pointer: "source://certified-record/original",
+  source_retention_decision: "preserve_raw",
+  legacy_source: false,
+  captured_at: "2026-07-29T10:00:00Z",
+  moment_context_status: "not_required_for_nonlegacy_source",
   truth_class: "verified_source_fact",
   sensitivity: "confidential",
   proposition: "Dkt. 191 and Dkt. 193 were entered one minute apart",
@@ -39,6 +52,9 @@ const baseCandidate = {
   last_verified_at: "2026-07-29T10:00:00Z",
   contradictions: [],
   promotion_decision: "promote",
+  supersession_pointer: null,
+  rewrite_source: false,
+  deletion_requested: false,
   duplicate_action: "none",
   exact_hash_verified: false,
   project_identity_action: "none",
@@ -50,6 +66,30 @@ const baseCandidate = {
 
 const valid = evaluateWisebaseCandidate(baseCandidate, control);
 if (!valid.compliant) throw new Error(`valid source-linked candidate rejected: ${valid.reasons}`);
+if (valid.source_disposition !== "preserve_raw") throw new Error("valid source was not preserved");
+
+const legacyRaw = evaluateWisebaseCandidate({
+  ...baseCandidate,
+  candidate_id: "synthetic://wisebase/candidate/legacy",
+  query: "legacy export 2025 AEON strategy evolution",
+  query_profile: "historical_evolution",
+  exact_anchor_count: 3,
+  source_name: "legacy-chat-export.pdf",
+  source_pointer: "source://legacy-chat-export/passage/42",
+  raw_preservation_pointer: "source://legacy-chat-export/original",
+  legacy_source: true,
+  captured_at: "2025-06-25T18:36:00-07:00",
+  moment_context_status: "captured_with_available_evidence_model_state_and_emotional_register",
+  truth_class: "hypothesis",
+  proposition: "In-the-moment symbolic and strategic theory",
+  promotion_decision: "hold",
+  last_verified_at: null,
+  support_basis: "historical_context"
+}, control);
+if (!legacyRaw.compliant) throw new Error(`legacy raw preservation rejected: ${legacyRaw.reasons}`);
+if (legacyRaw.source_disposition !== "preserve_raw") {
+  throw new Error("legacy raw source was not preserved");
+}
 
 const broad = evaluateWisebaseCandidate({
   ...baseCandidate,
@@ -68,6 +108,7 @@ const restrictedPromotion = evaluateWisebaseCandidate({
   ...baseCandidate,
   candidate_id: "synthetic://wisebase/candidate/restricted",
   restricted_content_classes: ["credential"],
+  source_retention_decision: "preserve_restricted",
   promotion_decision: "promote"
 }, control);
 if (
@@ -76,18 +117,49 @@ if (
 ) {
   throw new Error("restricted-content promotion was not rejected");
 }
+if (restrictedPromotion.source_disposition !== "preserve_restricted") {
+  throw new Error("restricted source was not preserved despite failed promotion");
+}
 
 const restrictedQuarantine = evaluateWisebaseCandidate({
   ...baseCandidate,
   candidate_id: "synthetic://wisebase/candidate/quarantine",
+  source_retention_decision: "preserve_restricted",
   truth_class: "unresolved",
   sensitivity: "restricted",
   restricted_content_classes: ["credential"],
-  proposition: "restricted source family contains credential-bearing material",
+  proposition: "Restricted source family contains credential-bearing material",
   promotion_decision: "quarantine"
 }, control);
 if (!restrictedQuarantine.compliant) {
-  throw new Error(`valid quarantine disposition rejected: ${restrictedQuarantine.reasons}`);
+  throw new Error(`valid restricted preservation disposition rejected: ${restrictedQuarantine.reasons}`);
+}
+
+const deletionAttempt = evaluateWisebaseCandidate({
+  ...legacyRaw,
+  candidate_id: "synthetic://wisebase/candidate/delete-attempt",
+  deletion_requested: true
+}, control);
+if (
+  deletionAttempt.compliant ||
+  !deletionAttempt.reasons.includes("legacy_source_deletion_prohibited")
+) {
+  throw new Error("legacy deletion attempt was not rejected");
+}
+if (deletionAttempt.source_disposition !== "preserve_raw") {
+  throw new Error("legacy deletion rejection did not preserve source disposition");
+}
+
+const rewriteAttempt = evaluateWisebaseCandidate({
+  ...legacyRaw,
+  candidate_id: "synthetic://wisebase/candidate/rewrite-attempt",
+  rewrite_source: true
+}, control);
+if (
+  rewriteAttempt.compliant ||
+  !rewriteAttempt.reasons.includes("legacy_source_rewrite_prohibited")
+) {
+  throw new Error("legacy rewrite attempt was not rejected");
 }
 
 const mutableWithoutReceipt = evaluateWisebaseCandidate({
@@ -145,5 +217,5 @@ for (const supportBasis of ["relevance_only", "repetition_only"]) {
 }
 
 console.log(
-  "PASS: Wisebase retrieval control requires exact anchors, source-linked promotion, restricted-content quarantine, current receipts, exact-hash duplicate proof, and project-identity separation"
+  "PASS: Wisebase preserves legacy raw sources and historical voice while independently enforcing exact anchors, claim classification, restricted exposure, current receipts, exact-hash duplicate proof, and project-identity separation"
 );
