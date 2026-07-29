@@ -1,9 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "status": "operative",
   "effective_at": "2026-07-29",
+  "preservation_amended_at": "2026-07-29",
   "authority": {
-    "wisebase_role": "candidate_retrieval_plane",
+    "wisebase_role": "candidate_retrieval_and_historical_research_plane",
     "canonical_memory_authority": "operator_designated_canonical_conversation",
     "source_fact_authority": "native_source_artifact",
     "implementation_authority": "github",
@@ -17,8 +18,24 @@
     "active_case_facts",
     "actor_event_threads",
     "machine_pistons",
-    "quarantine_material"
+    "legacy_raw_corpus",
+    "restricted_preserved_material"
   ],
+  "source_preservation_policy": {
+    "default_retention_decision": "preserve_raw",
+    "preserve_original_language": true,
+    "preserve_historical_voice": true,
+    "preserve_timestamp": true,
+    "preserve_provenance": true,
+    "preserve_derivation_state": true,
+    "preserve_moment_context": true,
+    "quarantine_controls_access_not_retention": true,
+    "failed_promotion_does_not_authorize_deletion": true,
+    "supersession_is_append_only": true,
+    "rewrite_legacy_source_prohibited": true,
+    "delete_legacy_source_by_default_prohibited": true,
+    "authorized_scope_searchability_preserved": true
+  },
   "query_profiles": {
     "legal_record": {
       "required_anchor_types": [
@@ -41,11 +58,21 @@
       "approved_slices": [
         "source_hierarchy",
         "truth_taxonomy",
-        "sensitivity_quarantine",
+        "sensitivity_controls",
+        "legacy_preservation",
         "current_runtime_receipt",
         "project_identity",
         "connector_capability"
       ]
+    },
+    "historical_evolution": {
+      "allows_contradictory_material": true,
+      "allows_emotional_material": true,
+      "allows_symbolic_material": true,
+      "allows_incomplete_material": true,
+      "allows_superseded_material": true,
+      "minimum_exact_anchor_count": 2,
+      "purpose": "longitudinal_understanding_not_current_fact_promotion"
     }
   },
   "required_candidate_fields": [
@@ -55,6 +82,11 @@
     "exact_anchor_count",
     "source_name",
     "source_pointer",
+    "raw_preservation_pointer",
+    "source_retention_decision",
+    "legacy_source",
+    "captured_at",
+    "moment_context_status",
     "truth_class",
     "sensitivity",
     "proposition",
@@ -64,6 +96,9 @@
     "last_verified_at",
     "contradictions",
     "promotion_decision",
+    "supersession_pointer",
+    "rewrite_source",
+    "deletion_requested",
     "duplicate_action",
     "exact_hash_verified",
     "project_identity_action",
@@ -76,7 +111,9 @@
     "party_allegation",
     "third_party_statement",
     "model_inference",
+    "hypothesis",
     "runtime_state",
+    "superseded_view",
     "unresolved"
   ],
   "allowed_sensitivity_classes": [
@@ -85,6 +122,10 @@
     "confidential",
     "restricted",
     "sealed"
+  ],
+  "allowed_source_retention_decisions": [
+    "preserve_raw",
+    "preserve_restricted"
   ],
   "restricted_content_classes": [
     "credential",
@@ -102,14 +143,16 @@
     "truth_class_required": true,
     "sensitivity_required": true,
     "mutable_state_requires_current_run_receipt": true,
-    "restricted_content_may_only_be_quarantined": true
+    "restricted_content_may_only_be_quarantined_for_promotion": true,
+    "source_retention_is_independent_from_claim_promotion": true
   },
   "duplicate_policy": {
     "same_title_is_candidate_only": true,
     "same_size_is_candidate_only": true,
     "semantic_similarity_is_candidate_only": true,
     "consolidation_requires_exact_hash": true,
-    "consolidation_requires_provenance_review": true
+    "consolidation_requires_provenance_review": true,
+    "originals_preserved_after_consolidation": true
   },
   "project_identity_policy": {
     "merge_by_similarity_prohibited": true,
@@ -134,6 +177,7 @@
     "supported": [
       "file_browser",
       "semantic_retrieval",
+      "historical_research",
       "upload_interaction",
       "translation",
       "knowledge_graph_assets",
