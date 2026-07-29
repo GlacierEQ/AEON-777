@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0.0",
+  "status": "operative",
+  "effective_at": "2026-07-29",
+  "authority": {
+    "operator_first_person_account": "evidence_bearing_source_material",
+    "operator_controls_own_recollection_representation": true,
+    "external_fact_and_legal_conclusions_separate": true
+  },
+  "allowed_statement_classes": [
+    "first_person_observation",
+    "contemporaneous_journal_entry",
+    "party_allegation",
+    "lay_inference",
+    "legal_characterization",
+    "model_analysis",
+    "third_party_statement",
+    "unresolved"
+  ],
+  "allowed_support_states": [
+    "support_not_currently_loaded",
+    "support_pointer_known",
+    "support_inaccessible_current_run",
+    "corroboration_pending",
+    "corroborated",
+    "disputed",
+    "unknown"
+  ],
+  "required_entry_fields": [
+    "entry_id",
+    "witness_id",
+    "source_pointer",
+    "raw_source_preserved",
+    "captured_at",
+    "speaker_attribution",
+    "statement_class",
+    "statement_pointer",
+    "personal_knowledge_scope",
+    "support_state",
+    "claimed_additional_support",
+    "historical_voice_preserved",
+    "assistant_text_separated",
+    "event_vectors",
+    "journal_series",
+    "correction_overlay_pointer",
+    "derivative_pointers",
+    "deletion_requested",
+    "rewrite_source",
+    "strip_emotional_language",
+    "discard_due_to_uncorroborated",
+    "legal_use_status",
+    "remaining_gate"
+  ],
+  "required_event_vector_fields": [
+    "who",
+    "what",
+    "when",
+    "where",
+    "communication_channel",
+    "institution_or_system",
+    "procedural_stage",
+    "related_document_or_recording",
+    "action_or_omission",
+    "consequence_or_harm",
+    "evidence_type",
+    "support_status",
+    "later_corroboration_pointer",
+    "contradiction_pointer"
+  ],
+  "required_series_fields": [
+    "journal_series_id",
+    "occurrence_index",
+    "occurrence_count",
+    "first_seen_at",
+    "last_seen_at",
+    "cross_chat_consistency",
+    "material_evolution",
+    "correction_overlay_pointer",
+    "salience"
+  ],
+  "preservation_policy": {
+    "preserve_original": true,
+    "preserve_exact_language": true,
+    "preserve_timestamp": true,
+    "preserve_context": true,
+    "preserve_emotional_register": true,
+    "append_only_corrections": true,
+    "derivatives_must_link_to_raw": true,
+    "missing_connected_support_is_not_absence": true,
+    "failed_promotion_never_authorizes_deletion": true,
+    "assistant_text_must_remain_separately_attributed": true
+  },
+  "repetition_policy": {
+    "repetition_increases_chronological_salience": true,
+    "repetition_increases_continuity_value": true,
+    "repetition_increases_retrieval_priority": true,
+    "repetition_supports_notice_and_persistence_analysis": true,
+    "repetition_alone_does_not_prove_external_conclusion": true,
+    "repeated_issue_requires_longitudinal_thread": true
+  },
+  "prohibited_operations": [
+    "discard_due_to_uncorroborated",
+    "strip_emotional_language",
+    "attribute_assistant_text_to_witness",
+    "rewrite_historical_statement",
+    "delete_disputed_source",
+    "treat_not_loaded_as_nonexistent",
+    "collapse_observation_into_legal_characterization",
+    "treat_repeated_entries_as_noise"
+  ],
+  "legal_use_policy": {
+    "automatic_admissibility_claim_prohibited": true,
+    "foundation_required": true,
+    "potential_uses": [
+      "personal_knowledge_testimony",
+      "refresh_recollection",
+      "past_recollection_recorded",
+      "prior_statement_analysis",
+      "chronology_and_notice",
+      "state_of_mind_or_context",
+      "authentication_support"
+    ]
+  }
+}
