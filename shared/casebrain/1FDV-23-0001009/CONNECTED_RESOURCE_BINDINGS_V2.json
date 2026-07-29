@@ -1,23 +1,25 @@
 {
-  "schema_version": "2.3.0",
+  "schema_version": "2.4.0",
   "case_id": "1FDV-23-0001009",
-  "reconciled_at": "2026-07-29T10:54:07Z",
+  "closed_at": "2026-07-29T11:10:06.972866Z",
   "wave": "WAVE_2",
-  "completion_state": "PENDING_FINAL_READBACK",
+  "completion_state": "COMPLETE",
   "canonical_ledger": {
     "system": "Supabase",
     "project_id": "dyhprklicgewmrimecey",
     "anchor_receipt_id": "20ac0844-4c1f-477a-a06e-e8cdee1fcece",
+    "closure_receipt_id": "59cc3b44-ced0-4b84-8b94-4e4968a1696f",
     "wave2_connectors": 7,
     "total_routes": 52,
-    "total_capability_records": 66
+    "total_capability_records": 66,
+    "readback_status": "VERIFIED"
   },
   "canonical_execution_anchors": {
     "asana": {
       "task_id": "1213120181650215",
       "designation_receipt_story_id": "1216981586643869",
       "role": "secondary_execution_anchor",
-      "status": "DESIGNATED_WRITE_CONFIRMED_PENDING_READBACK"
+      "status": "DESIGNATED_RETRIEVAL_VERIFIED"
     },
     "linear": {
       "issue_id": "HI-51",
@@ -25,11 +27,41 @@
       "project_id": "3a994960-ee4d-49c6-a224-2435e8869f57",
       "project_name": "1FDV Actor Case Execution",
       "role": "clean_primary_linear_execution_anchor",
-      "status": "CREATED_WRITE_CONFIRMED_PENDING_READBACK"
+      "status": "ACTIVE_RETRIEVAL_VERIFIED"
     },
     "clickup": {
       "wave2_task_id": "86ajrm7t5",
-      "status": "IN_PROGRESS_PENDING_FINAL_READBACK"
+      "wave2_status": "Closed",
+      "wave2_closed_at_epoch_ms": "1785323348830",
+      "wave2_readback_status": "VERIFIED",
+      "dkt225_task_id": "86ajrmv85",
+      "dkt225_status": "in progress"
+    }
+  },
+  "native_readbacks": {
+    "asana": true,
+    "linear": true,
+    "supabase": true,
+    "github_manifest": true,
+    "github_dkt225_workflow": true,
+    "notion": true,
+    "box_wave2_receipt": true,
+    "box_dkt225_workflow": true,
+    "clickup_wave2_closed": true,
+    "clickup_dkt225_active": true
+  },
+  "box_receipts": {
+    "wave2": {
+      "file_id": "2375333152498",
+      "file_version_id": "2632705171171",
+      "sha1": "b40626abf66fc8faaeb33a1d7e0f1f426a75cf15",
+      "status": "READBACK_VERIFIED_PRE_FINAL_SEAL"
+    },
+    "dkt225_workflow": {
+      "file_id": "2375684917549",
+      "file_version_id": "2632707637549",
+      "sha1": "e5607943a9d9459ca0a28d85e4d3fef498237245",
+      "status": "READBACK_VERIFIED"
     }
   },
   "bindings": {
@@ -42,26 +74,24 @@
     "granola": {"status":"BLOCKED_AUTH_REQUIRED"}
   },
   "dkt225_acquisition": {
-    "workflow_version": "1.0.0",
+    "workflow_version": "1.1.0",
     "workflow_path": "shared/casebrain/1FDV-23-0001009/DKT225_ACQUISITION_WORKFLOW_V1.json",
-    "state": "INITIALIZED",
-    "required_objects": [
-      "official_docket_entry",
-      "filed_pdf",
-      "notice_of_electronic_filing_or_equivalent",
-      "surrounding_current_docket_status"
-    ],
+    "state": "ACTIVE_SOURCE_DISCOVERY",
+    "linear_issue_id": "HI-51",
+    "clickup_task_id": "86ajrmv85",
+    "box_workflow_file_id": "2375684917549",
+    "candidate_115_page_sha256": "26201dc2a2b4849b2a578267b57f840240fd141dea5ff4d87f9b668444ffffd8",
+    "separate_scheduling_order_sha256": "82d43431cfc5e957588e4df776b3688241c12a1e687c75b9d4df7972032d6d0f",
+    "raw_jims_byte_identity": "UNRESOLVED",
+    "scheduling_order_filing_relationship": "UNRESOLVED",
+    "dkt224_nef": "NOT_LOCATED",
+    "docket_rows_223_226": "NOT_ACQUIRED",
+    "older_27_page_pointer_vs_115_page_candidate": "PRESERVED_CONFLICT",
     "completion_rule": "Acquire each official object or record a source-specific blocker; preserve original bytes and native identifiers; compute SHA-256; register every write; retrieve every destination record."
-  },
-  "cross_system_projection": {
-    "supabase": "WRITE_CONFIRMED_PENDING_FINAL_QUERY",
-    "github": "WRITE_IN_PROGRESS",
-    "notion": "PENDING",
-    "box": "PENDING",
-    "clickup": "PENDING"
   },
   "governance": {
     "original_evidence_controls": true,
+    "candidate_promoted_to_official": false,
     "unsupported_historical_completion_claims_inherited": false,
     "zero_results_are_not_case_evidence": true,
     "blocked_routes_are_disabled": true,
@@ -70,14 +100,9 @@
     "destructive_actions_allowed": false,
     "protected_evidence_bytes_allowed_in_github": false
   },
-  "closure_gates": [
-    "Retrieve Asana designation receipt from task",
-    "Retrieve Linear HI-51 issue",
-    "Retrieve Supabase anchor receipt",
-    "Retrieve this GitHub manifest and Dkt. 225 workflow",
-    "Retrieve Notion projection",
-    "Retrieve Box receipt and workflow file",
-    "Retrieve ClickUp task updates",
-    "Close Wave 2 ClickUp task and retrieve closed state"
-  ]
+  "successor_execution": {
+    "wave2_coordination": "CLOSED",
+    "dkt225_source_acquisition": "ACTIVE",
+    "next_required_action": "Obtain the raw Judiciary JIMS Dkt. 225 lead document, official docket rows 223-226, the Dkt. 224 NEF or a source-specific nonexistence result, and the official filing relationship of the separate scheduling order."
+  }
 }
