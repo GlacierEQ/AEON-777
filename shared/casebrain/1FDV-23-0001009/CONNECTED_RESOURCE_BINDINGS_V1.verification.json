@@ -1,0 +1,45 @@
+{
+  "case_id": "1FDV-23-0001009",
+  "verification_time": "2026-07-28T21:29:00-10:00",
+  "github": {
+    "manifest_commit": "568ec6495f934c41fa75c4d285fd905925b201ec",
+    "manifest_path": "shared/casebrain/1FDV-23-0001009/CONNECTED_RESOURCE_BINDINGS_V1.json",
+    "status": "WRITE_CONFIRMED"
+  },
+  "notion": {
+    "page_id": "3a4b1e4f-3223-81d8-a3db-d92edb353904",
+    "status": "WRITE_CONFIRMED"
+  },
+  "gmail": {
+    "label_id": "Label_34",
+    "label_name": "CASEBRAIN/1FDV-23-0001009/Automation-and-Source",
+    "messages_total": 2364,
+    "messages_unread": 2247,
+    "threads_total": 1136,
+    "retrieval_sample_ids": ["19faa89e06e9f810","19fa9c3a6b0bf46d","19fa9bff528d9c03","19fa9b81e51d917b","19fa978f2d92291b"],
+    "status": "RETRIEVAL_VERIFIED"
+  },
+  "box": {
+    "file_id": "2374410088507",
+    "parent_folder_id": "401707782634",
+    "status": "WRITE_CONFIRMED_PENDING_CONTENT_READBACK"
+  },
+  "clickup": {
+    "task_id": "86ajrfqvn",
+    "status": "WRITE_CONFIRMED_PENDING_TASK_READBACK"
+  },
+  "slack": {
+    "canvas_status": "BLOCKED",
+    "error": "not_supported_free_team",
+    "classification": "PLATFORM_PLAN_LIMITATION"
+  },
+  "completion_state": "IN_PROGRESS",
+  "open_gates": [
+    "Box content readback",
+    "ClickUp task readback",
+    "Notion content readback",
+    "Supabase receipt consolidation",
+    "Dropbox stale-root remediation",
+    "Slack fallback surface"
+  ]
+}
