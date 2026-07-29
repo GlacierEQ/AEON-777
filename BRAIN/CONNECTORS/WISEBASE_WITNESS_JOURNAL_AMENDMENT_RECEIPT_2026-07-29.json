@@ -1,0 +1,79 @@
+{
+  "receipt_version": "1.0.0",
+  "validated_at": "2026-07-29T11:58:00Z",
+  "repository": "GlacierEQ/AEON-777",
+  "amendment": "Wisebase first-person witness and longitudinal journal integration",
+  "artifacts": {
+    "wisebase_control": {
+      "path": "BRAIN/CONNECTORS/WISEBASE_RETRIEVAL_CONTROL.json",
+      "blob_sha": "4945c3fcd091e340ff3c3db0915ceec7d8058448",
+      "update_commit": "5cbe7d962a910f3038306e405791466bfd28d29c"
+    },
+    "wisebase_guard": {
+      "path": "BRAIN/CONNECTORS/wisebase_retrieval_guard.mjs",
+      "blob_sha": "efe53fa35062d522c417f0e0681650529527cb30",
+      "update_commit": "71d72e4dd58ca71de7f67df288564ed0af0349d5"
+    },
+    "wisebase_validator": {
+      "path": "BRAIN/CONNECTORS/validate_wisebase_retrieval_control.mjs",
+      "blob_sha": "7c63eef314b5a20ecf92b3209f34315f81614974",
+      "update_commit": "57f984152b2598641f7f3d352cf226629100fa6b"
+    },
+    "witness_protocol": {
+      "path": "BRAIN/CONNECTORS/WITNESS_JOURNAL_EVIDENCE_CONTROL.md",
+      "blob_sha": "3ba5fb577eb12d5c7d55f28b9c97355b161dc812",
+      "creation_commit": "ab54de19eb702f7a2668965b6fb0d8a5cb35474b"
+    },
+    "witness_control": {
+      "path": "BRAIN/CONNECTORS/WITNESS_JOURNAL_EVIDENCE_CONTROL.json",
+      "blob_sha": "deb24a3c94a1e67e8665517299df6e3f4d454625",
+      "creation_commit": "1bc5e6ca59069140fbeb746bdb6205c36b362f4d"
+    },
+    "witness_guard": {
+      "path": "BRAIN/CONNECTORS/witness_journal_guard.mjs",
+      "blob_sha": "2fef8cf6257fc95b2fe32289eaef6a32f00c8390",
+      "creation_commit": "4988ec3f46e677a4179aeed8312396cf915bf6ba"
+    },
+    "witness_validator": {
+      "path": "BRAIN/CONNECTORS/validate_witness_journal_control.mjs",
+      "blob_sha": "90e73f9cdf9d665ceb6e148d5f53f8488dcca25a",
+      "creation_commit": "a83ccc98ead76f2557397069275654ec1d536bf9"
+    },
+    "package_gate": {
+      "path": "BRAIN/CONNECTORS/package.json",
+      "blob_sha": "8860d208b9799246d3525baa3a1c5e9a020d4acf",
+      "update_commit": "95ec1858cf52b51132ec5a43af38ec88c83bd8e4"
+    },
+    "readme": {
+      "path": "BRAIN/CONNECTORS/README.md",
+      "blob_sha": "680d9bc7adf63a39831b0035e0dc0ae86a5b5fa8",
+      "update_commit": "e591e6bc5ef0f69b6401ff92510809555daf7254"
+    }
+  },
+  "current_run_tests": [
+    {
+      "name": "witness journal preservation guard",
+      "result": "pass",
+      "stdout": "PASS: witness journal preservation guard"
+    },
+    {
+      "name": "Wisebase witness-aware guard",
+      "result": "pass",
+      "stdout": "PASS: Wisebase witness-aware guard"
+    }
+  ],
+  "operative_corrections": [
+    "Casey's firsthand account is evidence-bearing source material",
+    "missing connector access to support is not factual negation",
+    "claimed additional support is preserved even when inaccessible in the current run",
+    "repeated contemporaneous chats increase chronology, continuity, notice, retrieval priority, and journal salience",
+    "repeated witness entries require a longitudinal thread rather than duplicate suppression",
+    "emotional intensity and detail remain part of the preserved historical voice",
+    "assistant analysis remains separately attributed",
+    "source retention is independent from claim promotion",
+    "no automatic courtroom-admissibility claim is made without foundation"
+  ],
+  "result": "pass",
+  "hosted_workflow_state": "not_observed_for_direct_default_branch_commits",
+  "limitation": "This receipt validates control semantics and isolated Node execution. It does not authenticate a specific journal entry, determine admissibility, or claim current access to every source Casey possesses."
+}
