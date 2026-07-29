@@ -10,9 +10,14 @@ if (control.status !== "operative") throw new Error("witness journal control is 
 if (control.authority.operator_first_person_account !== "evidence_bearing_source_material") {
   throw new Error("first-person account authority drifted");
 }
+if (!control.authority.regularly_kept_journal_has_direct_hre_803_b_6_route) {
+  throw new Error("direct HRE 803(b)(6) journal route is not recognized");
+}
 for (const phrase of [
   "Casey's firsthand account is evidence-bearing source material",
   "Lack of access to corroborating files does not mean the account lacks support in reality",
+  "A regularly kept journal is not merely a memory aid",
+  "Hawaiʻi deliberately uses `regularly conducted activity`, not only `business activity`",
   "Repeated statements across contemporaneous chats do not receive zero weight",
   "Preserve emotional intensity",
   "The system must not discard the first-person observation"
@@ -52,6 +57,25 @@ const series = {
   salience: "elevated"
 };
 
+const regularActivityFoundation = {
+  regularly_conducted_activity: "ongoing recording of material events and procedural developments",
+  regular_practice_description: "Casey regularly records events and concerns through chats and linked journal derivatives",
+  practice_start_date: "2023-01-01",
+  practice_frequency: "recurring and event-driven",
+  recording_method: "timestamped chat entries preserved in platform conversation history",
+  made_at_or_near_time: true,
+  person_with_knowledge: "casey",
+  author_or_adopter: "casey",
+  custodian_or_qualified_witness: "casey",
+  reliance_on_records: "used to track chronology, filings, communications, and later evidence",
+  continuity_and_gaps: "series preserves occurrence dates and any gaps",
+  trustworthiness_factors: "timestamps, repeated practice, preserved raw source, append-only corrections, and speaker attribution",
+  authentication_method: "Casey testimony plus native conversation metadata and source pointers",
+  rule_902_11_certification_status: "available_if_procedurally_appropriate",
+  source_integrity_and_hash_status: "native-source pointers preserved; exact hashes pending where export occurs",
+  raw_to_derivative_chain: "raw chat -> journal chronology -> evidentiary packet"
+};
+
 const baseEntry = {
   entry_id: "journal://entry/1",
   witness_id: "casey",
@@ -68,13 +92,16 @@ const baseEntry = {
   assistant_text_separated: true,
   event_vectors: vectors,
   journal_series: series,
+  regular_activity_foundation: regularActivityFoundation,
   correction_overlay_pointer: null,
   derivative_pointers: ["journal://chronology/entry/1"],
   deletion_requested: false,
   rewrite_source: false,
   strip_emotional_language: false,
   discard_due_to_uncorroborated: false,
-  legal_use_status: "foundation_required",
+  legal_use_status: "hre_803_b_6_regularly_conducted_activity",
+  deny_hre_803_b_6_route: false,
+  business_only_rule: false,
   remaining_gate: "load_additional_support"
 };
 
@@ -86,6 +113,45 @@ if (valid.support_disposition !== "support_gap_not_factual_negation") {
 }
 if (valid.repetition_disposition !== "longitudinal_thread_required") {
   throw new Error("repeated issue did not require longitudinal thread");
+}
+if (valid.admissibility_disposition !== "direct_hre_803_b_6_route_foundation_complete") {
+  throw new Error("complete regularly conducted activity foundation was not recognized");
+}
+
+const incompleteFoundation = evaluateWitnessJournalEntry({
+  ...baseEntry,
+  entry_id: "journal://entry/incomplete-foundation",
+  regular_activity_foundation: {
+    ...regularActivityFoundation,
+    made_at_or_near_time: false
+  }
+}, control);
+if (
+  incompleteFoundation.compliant ||
+  !incompleteFoundation.reasons.includes("hre_803_b_6_near_time_foundation_incomplete")
+) {
+  throw new Error("incomplete HRE 803(b)(6) foundation was not identified");
+}
+if (incompleteFoundation.admissibility_disposition !== "direct_hre_803_b_6_route_foundation_incomplete") {
+  throw new Error("foundation gap incorrectly destroyed the HRE 803(b)(6) route");
+}
+
+const deniedRoute = evaluateWitnessJournalEntry({
+  ...baseEntry,
+  entry_id: "journal://entry/deny-route",
+  deny_hre_803_b_6_route: true
+}, control);
+if (deniedRoute.compliant || !deniedRoute.reasons.includes("hre_803_b_6_route_denial_prohibited")) {
+  throw new Error("denial of the direct journal admissibility route was not rejected");
+}
+
+const businessOnly = evaluateWitnessJournalEntry({
+  ...baseEntry,
+  entry_id: "journal://entry/business-only",
+  business_only_rule: true
+}, control);
+if (businessOnly.compliant || !businessOnly.reasons.includes("business_only_limitation_prohibited")) {
+  throw new Error("business-only limitation was not rejected");
 }
 
 const discard = evaluateWitnessJournalEntry({
@@ -143,18 +209,18 @@ if (
   throw new Error("assistant analysis misattribution was not rejected");
 }
 
-const automaticAdmissibility = evaluateWitnessJournalEntry({
+const automaticWithoutFoundation = evaluateWitnessJournalEntry({
   ...baseEntry,
-  entry_id: "journal://entry/admissibility",
-  legal_use_status: "automatically_admissible"
+  entry_id: "journal://entry/automatic",
+  legal_use_status: "automatically_admitted_without_foundation"
 }, control);
 if (
-  automaticAdmissibility.compliant ||
-  !automaticAdmissibility.reasons.includes("automatic_admissibility_claim_prohibited")
+  automaticWithoutFoundation.compliant ||
+  !automaticWithoutFoundation.reasons.includes("unsupported_legal_use_status")
 ) {
-  throw new Error("automatic admissibility claim was not rejected");
+  throw new Error("automatic admission without foundation was not rejected");
 }
 
 console.log(
-  "PASS: witness journal control preserves Casey's firsthand account, emotional detail, inaccessible support, repeated-chat salience, longitudinal chronology, and speaker attribution without claiming automatic admissibility"
+  "PASS: witness journal control recognizes the direct HRE 803(b)(6) route for a regularly kept journal, enforces foundation and trustworthiness fields, preserves Casey's firsthand account and emotional detail, treats inaccessible support as a support gap, links repeated chats longitudinally, and keeps speaker attribution exact"
 );
