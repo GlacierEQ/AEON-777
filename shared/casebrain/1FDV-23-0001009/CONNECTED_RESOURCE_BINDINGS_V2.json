@@ -1,0 +1,114 @@
+{
+  "schema_version": "2.0.0",
+  "case_id": "1FDV-23-0001009",
+  "generated_at": "2026-07-28T21:36:00-10:00",
+  "wave": "WAVE_2",
+  "canonical_ledger": {
+    "system": "Supabase",
+    "project_id": "dyhprklicgewmrimecey",
+    "total_connectors": 18,
+    "total_capabilities": 53,
+    "total_routes": 40,
+    "runtime_rows": 40
+  },
+  "bindings": {
+    "google_calendar": {
+      "status": "HEALTHY_ZERO_CASE_RESULTS",
+      "calendar_id": "primary",
+      "timezone": "Pacific/Honolulu",
+      "search_window": {
+        "start": "2023-01-01T00:00:00-10:00",
+        "end": "2027-12-31T23:59:59-10:00"
+      },
+      "case_number_matches": 0,
+      "routes": [
+        "google_calendar:search_events:bounded_event_search:v1",
+        "google_calendar:read_event:event_read:v1"
+      ]
+    },
+    "google_contacts": {
+      "status": "HEALTHY_NATIVE_ANCHORS",
+      "primary_contact": {
+        "id": "otherContacts/c7818948388716558257",
+        "name": "Casey Barton",
+        "email": "glacier.equilibrium@gmail.com"
+      },
+      "alternate_contact": {
+        "id": "otherContacts/c1167200628183011960",
+        "name": "casey barton",
+        "email": "casey.barton92@gmail.com"
+      },
+      "route": "google_contacts:search_contacts:contact_search:v1"
+    },
+    "fireflies": {
+      "status": "HEALTHY_ZERO_CASE_RESULTS",
+      "query": "keyword:\"1FDV-23-0001009\" scope:all limit:20",
+      "case_transcript_matches": 0,
+      "routes": [
+        "fireflies:fireflies_search:meeting_search:v1",
+        "fireflies:fireflies_fetch:meeting_fetch:v1"
+      ]
+    },
+    "asana": {
+      "status": "HEALTHY_NATIVE_ANCHORS",
+      "tasks": [
+        {
+          "gid": "1213120181650215",
+          "name": "CASE 1FDV-23-0001009 / GLOBAL",
+          "project_gid": "1213132434974069",
+          "completed": false
+        },
+        {
+          "gid": "1213132497156753",
+          "name": "Case 1FDV-23-0001009 - Complete Document Index",
+          "project_gid": "1211960317839287",
+          "completed": false
+        }
+      ],
+      "routes": [
+        "asana:search_objects:workspace_object_search:v1",
+        "asana:search_tasks:task_search:v1"
+      ]
+    },
+    "linear": {
+      "status": "HEALTHY_NATIVE_ANCHORS",
+      "federal_project_url": "https://linear.app/hi-classhomeservices/project/case-1fdv-23-0001009-federal-litigation-0025ecbed053",
+      "anchor_issue": {
+        "id": "HI-16",
+        "title": "[CASE 1FDV-23-0001009] Deploy Forensics Arsenal - 8 Tools",
+        "status": "Canceled",
+        "team_id": "91ddbf0c-d442-4ff5-a670-ab9996ef9562"
+      },
+      "warning": "HI-16 is a native identity anchor only and must not be treated as an active execution task while canceled.",
+      "routes": [
+        "linear:search:entity_search:v1",
+        "linear:fetch:entity_fetch:v1"
+      ]
+    },
+    "slack": {
+      "canvas_status": "BLOCKED_WORKSPACE_PLAN",
+      "canvas_error": "not_supported_free_team",
+      "public_search_status": "HEALTHY_ZERO_CASE_RESULTS",
+      "public_case_matches": 0,
+      "active_route": "slack:slack_search_public:public_case_search:v1",
+      "coordination_fallbacks": [
+        "ClickUp task 86ajrfqvn",
+        "Notion page 3a4b1e4f-3223-81d8-a3db-d92edb353904"
+      ]
+    }
+  },
+  "governance": {
+    "zero_results_are_not_connector_failures": true,
+    "canceled_tasks_are_not_active_execution": true,
+    "native_ids_required_for_anchor_status": true,
+    "write_routes_require_separate_write_verification": true,
+    "destructive_actions_allowed": false
+  },
+  "next_execution_gates": [
+    "Inspect active Asana case tasks and select the canonical execution task",
+    "Inspect live Linear case issues and replace canceled HI-16 as the active execution anchor",
+    "Build calendar deadline projection from verified docket and filing dates rather than empty keyword search",
+    "Ingest meeting audio or transcripts into Fireflies only when a source-native meeting record exists",
+    "Bind Google Contacts identities to Gmail source communications without merging unrelated Barton contacts"
+  ]
+}
