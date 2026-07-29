@@ -1,0 +1,87 @@
+{
+  "receipt_version": "1.0.0",
+  "validated_at": "2026-07-29T12:24:00-10:00",
+  "repository": "GlacierEQ/AEON-777",
+  "correction": "A regularly kept journal has a direct Hawaiʻi Rule of Evidence 803(b)(6) records-of-regularly-conducted-activity route; the rule is not confined to commercial business records.",
+  "legal_authorities_verified_current_run": [
+    {
+      "authority": "HRE Rule 803(b)(6)",
+      "proposition": "A memorandum, report, record, or data compilation in any form may be admitted when made in the course of a regularly conducted activity, at or near the time, through a custodian, qualified witness, or compliant certification, unless circumstances indicate lack of trustworthiness."
+    },
+    {
+      "authority": "HRE Rule 803 commentary",
+      "proposition": "Hawaiʻi expanded the formulation beyond business activity to all forms of regularly conducted activity whose records are regularly and reliably prepared and maintained."
+    },
+    {
+      "authority": "HRE Rule 902(11)",
+      "proposition": "A certified record of regularly conducted activity may be self-authenticated when the declaration addresses near-time creation, course of the activity, and regular practice, with advance notice."
+    },
+    {
+      "authority": "HRE Rule 802.1(4)",
+      "proposition": "Past recollection recorded remains an additional route when the witness once knew the matter, now lacks sufficient recollection, and made or adopted an accurate record while memory was fresh."
+    },
+    {
+      "authority": "HRE Rules 602 and 612",
+      "proposition": "Personal-knowledge testimony and refreshed recollection remain additional routes for the same underlying journal material."
+    }
+  ],
+  "operative_distinction": {
+    "direct_route": "regularly_kept_journal_plus_HRE_803_b_6_foundation",
+    "foundation_gap": "entry_or_series_preparation_defect",
+    "foundation_gap_does_not_mean": [
+      "journal_category_inadmissible",
+      "source_disposable",
+      "business_records_only"
+    ]
+  },
+  "artifacts": {
+    "protocol": {
+      "path": "BRAIN/CONNECTORS/WITNESS_JOURNAL_EVIDENCE_CONTROL.md",
+      "blob_sha": "467dce6e2d45b5a11091566475bca512b977efca",
+      "update_commit": "7d97c86a48e9f3458ac2fd758538e520114c0e9e"
+    },
+    "control": {
+      "path": "BRAIN/CONNECTORS/WITNESS_JOURNAL_EVIDENCE_CONTROL.json",
+      "blob_sha": "8ff3d45c0ef747f99036086e2c7c6d71032c5f43",
+      "update_commit": "e1b5f8806886c6dca739a002ed8646b57d50a59c"
+    },
+    "guard": {
+      "path": "BRAIN/CONNECTORS/witness_journal_guard.mjs",
+      "blob_sha": "fdf69b312a54e069ca59389d88c5b606871063ca",
+      "update_commit": "2d13f386fcbca2f1daed9b3b8c65caf0dc90eecd"
+    },
+    "validator": {
+      "path": "BRAIN/CONNECTORS/validate_witness_journal_control.mjs",
+      "blob_sha": "ccb2d5d7ee182f503b512bcbc44da1e39dcb3144",
+      "update_commit": "2cddc9e6bb46baabc8d719186ece780eea1f77d3"
+    },
+    "readme": {
+      "path": "BRAIN/CONNECTORS/README.md",
+      "blob_sha": "07e23e5867c2bff249b3408548096646c7b22fae",
+      "update_commit": "62b95843e397f73fbb5351e6457979c32a7df58e"
+    }
+  },
+  "current_run_execution": {
+    "mode": "isolated_node_semantic_validation",
+    "result": "pass",
+    "stdout": "PASS: direct HRE 803(b)(6) regularly kept journal route recognized; foundation defects remain curable entry-level gates and do not erase the category",
+    "local_sha256": {
+      "control_json": "1dc93f832ea7f015d7b70a47ad73ab30b3607036a9134f709247b16bcced89d9",
+      "guard_module": "fd4fdee498b88e871f22655e8c2f92fc7d6e3960cacb8b0a20776c3a1b3313d2",
+      "test_script": "898fb1043a7f726af702fd5df566b04a4ef2e5ac4bb1f0976c6533ce486e3cde"
+    }
+  },
+  "positive_controls": [
+    "complete regular-activity foundation produces direct HRE 803(b)(6) route",
+    "Casey may be represented as author, custodian, and qualified witness for records he created, maintained, or adopted",
+    "repeated contemporaneous entries support regularity and continuity"
+  ],
+  "negative_controls": [
+    "denial of HRE 803(b)(6) route without analysis is rejected",
+    "business-only limitation is rejected",
+    "near-time foundation defect is identified without erasing the category",
+    "source deletion remains prohibited"
+  ],
+  "hosted_workflow_state": "not_observed_for_direct_default_branch_commits",
+  "limitation": "This receipt proves the corrected legal-control semantics and isolated Node execution. Admission of a specific journal entry or series still depends on the record offered, foundation, authentication, purpose, objections, and the court's trustworthiness determination."
+}
