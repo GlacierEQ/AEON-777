@@ -1,11 +1,13 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "status": "operative",
   "effective_at": "2026-07-29",
+  "hawaii_admissibility_corrected_at": "2026-07-29",
   "authority": {
     "operator_first_person_account": "evidence_bearing_source_material",
     "operator_controls_own_recollection_representation": true,
-    "external_fact_and_legal_conclusions_separate": true
+    "external_fact_and_legal_conclusions_separate": true,
+    "regularly_kept_journal_has_direct_hre_803_b_6_route": true
   },
   "allowed_statement_classes": [
     "first_person_observation",
@@ -26,6 +28,15 @@
     "disputed",
     "unknown"
   ],
+  "allowed_legal_use_statuses": [
+    "hre_803_b_6_regularly_conducted_activity",
+    "hre_802_1_4_past_recollection_recorded",
+    "hre_612_refresh_recollection",
+    "hre_602_personal_knowledge",
+    "other_foundation_required",
+    "foundation_in_progress",
+    "not_yet_classified"
+  ],
   "required_entry_fields": [
     "entry_id",
     "witness_id",
@@ -42,6 +53,7 @@
     "assistant_text_separated",
     "event_vectors",
     "journal_series",
+    "regular_activity_foundation",
     "correction_overlay_pointer",
     "derivative_pointers",
     "deletion_requested",
@@ -78,6 +90,24 @@
     "correction_overlay_pointer",
     "salience"
   ],
+  "required_regular_activity_foundation_fields": [
+    "regularly_conducted_activity",
+    "regular_practice_description",
+    "practice_start_date",
+    "practice_frequency",
+    "recording_method",
+    "made_at_or_near_time",
+    "person_with_knowledge",
+    "author_or_adopter",
+    "custodian_or_qualified_witness",
+    "reliance_on_records",
+    "continuity_and_gaps",
+    "trustworthiness_factors",
+    "authentication_method",
+    "rule_902_11_certification_status",
+    "source_integrity_and_hash_status",
+    "raw_to_derivative_chain"
+  ],
   "preservation_policy": {
     "preserve_original": true,
     "preserve_exact_language": true,
@@ -88,15 +118,36 @@
     "derivatives_must_link_to_raw": true,
     "missing_connected_support_is_not_absence": true,
     "failed_promotion_never_authorizes_deletion": true,
-    "assistant_text_must_remain_separately_attributed": true
+    "assistant_text_must_remain_separately_attributed": true,
+    "regular_keeping_foundation_must_be_preserved": true
   },
   "repetition_policy": {
     "repetition_increases_chronological_salience": true,
     "repetition_increases_continuity_value": true,
     "repetition_increases_retrieval_priority": true,
     "repetition_supports_notice_and_persistence_analysis": true,
+    "repetition_supports_regular_activity_foundation": true,
     "repetition_alone_does_not_prove_external_conclusion": true,
     "repeated_issue_requires_longitudinal_thread": true
+  },
+  "admissibility_policy": {
+    "hre_803_b_6_applies_to_regularly_conducted_activity_not_only_business": true,
+    "journal_category_has_direct_hearsay_exception_route": true,
+    "particular_entry_requires_foundation": true,
+    "foundation_failure_for_one_entry_does_not_destroy_category": true,
+    "custodian_or_qualified_witness_may_establish_foundation": true,
+    "rule_902_11_certification_may_establish_foundation": true,
+    "trustworthiness_remains_court_determination": true,
+    "alternative_routes_preserved": [
+      "hre_602_personal_knowledge",
+      "hre_612_refresh_recollection",
+      "hre_802_1_4_past_recollection_recorded",
+      "present_sense_impression",
+      "excited_utterance",
+      "then_existing_state_of_mind",
+      "prior_statement_analysis",
+      "chronology_notice_authentication"
+    ]
   },
   "prohibited_operations": [
     "discard_due_to_uncorroborated",
@@ -106,12 +157,17 @@
     "delete_disputed_source",
     "treat_not_loaded_as_nonexistent",
     "collapse_observation_into_legal_characterization",
-    "treat_repeated_entries_as_noise"
+    "treat_repeated_entries_as_noise",
+    "deny_hre_803_b_6_route_without_analysis",
+    "limit_regularly_conducted_activity_to_business_only",
+    "treat_single_entry_foundation_gap_as_category_inadmissibility"
   ],
   "legal_use_policy": {
-    "automatic_admissibility_claim_prohibited": true,
+    "automatic_admission_without_foundation_prohibited": true,
+    "direct_admissibility_route_recognized": true,
     "foundation_required": true,
     "potential_uses": [
+      "records_of_regularly_conducted_activity",
       "personal_knowledge_testimony",
       "refresh_recollection",
       "past_recollection_recorded",
