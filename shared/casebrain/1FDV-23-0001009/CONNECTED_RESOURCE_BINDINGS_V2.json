@@ -1,55 +1,61 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "case_id": "1FDV-23-0001009",
   "generated_at": "2026-07-28T21:36:00-10:00",
+  "reconciled_at": "2026-07-29T07:39:00Z",
   "wave": "WAVE_2",
   "canonical_ledger": {
     "system": "Supabase",
     "project_id": "dyhprklicgewmrimecey",
+    "wave2_connectors": 5,
     "total_connectors": 18,
-    "total_capabilities": 53,
-    "total_routes": 40,
-    "runtime_rows": 40
+    "total_routes": 46,
+    "count_source": "post-binding Supabase verification query"
   },
   "bindings": {
     "google_calendar": {
-      "status": "HEALTHY_ZERO_CASE_RESULTS",
+      "role": "deadline_and_hearing_schedule",
+      "status": "CONNECTED_READY_EMPTY",
       "calendar_id": "primary",
       "timezone": "Pacific/Honolulu",
       "search_window": {
         "start": "2023-01-01T00:00:00-10:00",
-        "end": "2027-12-31T23:59:59-10:00"
+        "end": "2027-01-01T00:00:00-10:00"
       },
-      "case_number_matches": 0,
-      "routes": [
-        "google_calendar:search_events:bounded_event_search:v1",
-        "google_calendar:read_event:event_read:v1"
-      ]
+      "queries": ["1FDV-23-0001009", "family court"],
+      "case_matches": 0,
+      "governance": "No event may be created from memory or inference; verified source-backed deadline and readback receipt are required."
     },
     "google_contacts": {
-      "status": "HEALTHY_NATIVE_ANCHORS",
-      "primary_contact": {
-        "id": "otherContacts/c7818948388716558257",
-        "name": "Casey Barton",
-        "email": "glacier.equilibrium@gmail.com"
+      "role": "recipient_and_actor_resolution",
+      "status": "CONNECTED_READY",
+      "case_actor_probe": {
+        "query": "Scot Brower",
+        "results": 0
       },
-      "alternate_contact": {
-        "id": "otherContacts/c1167200628183011960",
-        "name": "casey barton",
-        "email": "casey.barton92@gmail.com"
-      },
-      "route": "google_contacts:search_contacts:contact_search:v1"
+      "known_operator_contacts": [
+        {
+          "id": "otherContacts/c7818948388716558257",
+          "name": "Casey Barton",
+          "email": "glacier.equilibrium@gmail.com"
+        },
+        {
+          "id": "otherContacts/c1167200628183011960",
+          "name": "casey barton",
+          "email": "casey.barton92@gmail.com"
+        }
+      ],
+      "governance": "Do not merge distinct contact identities without source confirmation."
     },
     "fireflies": {
-      "status": "HEALTHY_ZERO_CASE_RESULTS",
-      "query": "keyword:\"1FDV-23-0001009\" scope:all limit:20",
+      "role": "meeting_transcript_intelligence",
+      "status": "CONNECTED_READY_EMPTY",
+      "query": "keyword:\"1FDV-23-0001009\" scope:all from:2023-01-01 to:2026-07-29 limit:20",
       "case_transcript_matches": 0,
-      "routes": [
-        "fireflies:fireflies_search:meeting_search:v1",
-        "fireflies:fireflies_fetch:meeting_fetch:v1"
-      ]
+      "governance": "Fetch or ingest only when a source-native meeting or transcript identity exists."
     },
     "asana": {
+      "role": "secondary_execution_queue",
       "status": "HEALTHY_NATIVE_ANCHORS",
       "tasks": [
         {
@@ -65,50 +71,51 @@
           "completed": false
         }
       ],
-      "routes": [
-        "asana:search_objects:workspace_object_search:v1",
-        "asana:search_tasks:task_search:v1"
-      ]
+      "next_gate": "Inspect both tasks and designate one canonical Asana execution anchor."
     },
     "linear": {
+      "role": "engineering_and_investigation_execution",
       "status": "HEALTHY_NATIVE_ANCHORS",
-      "federal_project_url": "https://linear.app/hi-classhomeservices/project/case-1fdv-23-0001009-federal-litigation-0025ecbed053",
-      "anchor_issue": {
-        "id": "HI-16",
-        "title": "[CASE 1FDV-23-0001009] Deploy Forensics Arsenal - 8 Tools",
-        "status": "Canceled",
-        "team_id": "91ddbf0c-d442-4ff5-a670-ab9996ef9562"
-      },
-      "warning": "HI-16 is a native identity anchor only and must not be treated as an active execution task while canceled.",
-      "routes": [
-        "linear:search:entity_search:v1",
-        "linear:fetch:entity_fetch:v1"
-      ]
+      "projects": [
+        "https://linear.app/hi-classhomeservices/project/case-1fdv-23-0001009-federal-litigation-0025ecbed053",
+        "https://linear.app/hi-classhomeservices/project/opryxx-investigation-command-center-6bafe7131a82",
+        "https://linear.app/hi-classhomeservices/project/1fdv-actor-case-execution-826c9d8cc666"
+      ],
+      "issues_found": ["HI-16", "HI-15", "HI-17", "HI-19", "HI-11"],
+      "anchor_warning": "HI-16 is canceled and is identity evidence only, not an active execution anchor.",
+      "next_gate": "Inspect live issues and designate a non-canceled canonical execution issue."
     },
     "slack": {
       "canvas_status": "BLOCKED_WORKSPACE_PLAN",
       "canvas_error": "not_supported_free_team",
-      "public_search_status": "HEALTHY_ZERO_CASE_RESULTS",
-      "public_case_matches": 0,
-      "active_route": "slack:slack_search_public:public_case_search:v1",
+      "completion_claim_allowed": false,
       "coordination_fallbacks": [
         "ClickUp task 86ajrfqvn",
         "Notion page 3a4b1e4f-3223-81d8-a3db-d92edb353904"
       ]
     }
   },
+  "clickup_projection": {
+    "wave1_task_id": "86ajrfqvn",
+    "wave1_status": "pending review",
+    "wave2_task_id": "86ajrm7t5",
+    "wave2_task_url": "https://app.clickup.com/t/86ajrm7t5",
+    "wave2_status": "in progress"
+  },
   "governance": {
     "zero_results_are_not_connector_failures": true,
+    "zero_results_are_not_case_evidence": true,
     "canceled_tasks_are_not_active_execution": true,
     "native_ids_required_for_anchor_status": true,
     "write_routes_require_separate_write_verification": true,
     "destructive_actions_allowed": false
   },
   "next_execution_gates": [
-    "Inspect active Asana case tasks and select the canonical execution task",
-    "Inspect live Linear case issues and replace canceled HI-16 as the active execution anchor",
-    "Build calendar deadline projection from verified docket and filing dates rather than empty keyword search",
-    "Ingest meeting audio or transcripts into Fireflies only when a source-native meeting record exists",
-    "Bind Google Contacts identities to Gmail source communications without merging unrelated Barton contacts"
+    "Fetch this reconciled manifest from main",
+    "Project Wave 2 receipt to Notion alignment page",
+    "Upload Wave 2 receipt to Box proofbook control folder",
+    "Fetch ClickUp Wave 2 task",
+    "Inspect active Asana and Linear candidates and designate canonical execution anchors",
+    "Build Dkt. 225 acquisition workflow on the available rails"
   ]
 }
