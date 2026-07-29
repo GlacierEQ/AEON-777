@@ -10,16 +10,20 @@ This directory is the canonical control layer for CaseBuilder 4000 / Apex Memory
 2. `EXECUTION_FIRST_CONTROL.json` — machine-readable completion states, stop boundaries, receipt requirements, and partial-failure policy.
 3. `execution_first_guard.mjs` — reusable evaluator that rejects routine review handoffs, premature operator escalation, missing receipts, and whole-lane aborts on partial failure.
 4. `validate_execution_first_protocol.mjs` — positive and negative controls executed by the package test suite.
-5. `MEMORY_ARCHITECTURE_STATUS.md` — current controls, blockers, and execution order.
-6. `CONNECTOR_FABRIC.json` — one registry covering advertised, connected, blocked, staging-only, projection-only, and excluded systems.
-7. `MEMORY_TAXONOMY_AND_GOVERNANCE.md` — authority, claim classes, buckets, promotion, and audit rules.
-8. `PROVENANCE_RECEIPT_SCHEMA.json` — exact-byte provenance and deterministic replay.
-9. `MEMORY_RETRIEVAL_GUARD_SCHEMA.json` — fail-closed factual-promotion receipt.
-10. `MEMORY_TOMBSTONE_REGISTRY.json` — logical deletion controls for backend-recallable retired records.
-11. `MEMORY_DELETION_GATE_DECISION_SCHEMA.json` — two-phase pre-delete authorization and post-delete tombstone-closure contract.
-12. `MEMORY_BACKEND_CAPABILITY_PROBE_2026-07-24.json` — measured memory deletion capability boundary.
-13. `DESKTOP_COMMANDER_BINDING_RECEIPT_2026-07-25.json` — privacy-safe desktop principal and device-binding result.
-14. `MEMORY_ARCHITECTURE_DELTA_*.md` — append-only history.
+5. `WISEBASE_RETRIEVAL_CONTROL.md` — binding Wisebase authority, precision-query, source-promotion, quarantine, duplicate, receipt, and project-identity rules.
+6. `WISEBASE_RETRIEVAL_CONTROL.json` — machine-readable Wisebase retrieval and candidate-promotion contract.
+7. `wisebase_retrieval_guard.mjs` — reusable evaluator for exact anchors, restricted content, mutable-state receipts, duplicate consolidation, and project-identity merges.
+8. `validate_wisebase_retrieval_control.mjs` — positive and negative Wisebase retrieval controls executed by the package test suite.
+9. `MEMORY_ARCHITECTURE_STATUS.md` — current controls, blockers, and execution order.
+10. `CONNECTOR_FABRIC.json` — one registry covering advertised, connected, blocked, staging-only, projection-only, and excluded systems.
+11. `MEMORY_TAXONOMY_AND_GOVERNANCE.md` — authority, claim classes, buckets, promotion, and audit rules.
+12. `PROVENANCE_RECEIPT_SCHEMA.json` — exact-byte provenance and deterministic replay.
+13. `MEMORY_RETRIEVAL_GUARD_SCHEMA.json` — fail-closed factual-promotion receipt.
+14. `MEMORY_TOMBSTONE_REGISTRY.json` — logical deletion controls for backend-recallable retired records.
+15. `MEMORY_DELETION_GATE_DECISION_SCHEMA.json` — two-phase pre-delete authorization and post-delete tombstone-closure contract.
+16. `MEMORY_BACKEND_CAPABILITY_PROBE_2026-07-24.json` — measured memory deletion capability boundary.
+17. `DESKTOP_COMMANDER_BINDING_RECEIPT_2026-07-25.json` — privacy-safe desktop principal and device-binding result.
+18. `MEMORY_ARCHITECTURE_DELTA_*.md` — append-only history.
 
 ## Execution protocol
 
@@ -30,6 +34,14 @@ A failed connector or unavailable source is isolated as a partial failure. Depen
 A worker may stop only at a real technical impossibility, an unavailable required capability, a materially ambiguous target, or an irreversible external action for which authority is absent. Completion claims require current-run evidence.
 
 The package test suite executes `validate_execution_first_protocol.mjs`. A change fails validation when it reintroduces a routine review handoff while system-side work remains, transfers supervision prematurely to the operator, aborts unaffected work after a partial failure, omits required completion-receipt fields, or uses an unsupported stop boundary.
+
+## Wisebase retrieval control
+
+Wisebase is a candidate-retrieval plane, not canonical truth. Exact case, docket, date, repository, object, workflow, commit, path, provider, and source-file anchors are used before broad semantic search. Retrieved passages remain candidates until they carry a source pointer, truth class, sensitivity class, current-or-historical state, verification timestamp, contradiction state, and promotion decision.
+
+Credentials, protected-minor details, medical details, private communications, unsupported accusations, synthetic anchors, and unqualified legal conclusions may only be quarantined. Mutable runtime claims require current-run receipts. Similar names, semantic overlap, matching titles, or matching byte counts cannot establish duplicate identity or merge distinct projects.
+
+The package test suite executes `validate_wisebase_retrieval_control.mjs`. A change fails when it permits broad unsplit architecture queries as promotion inputs, relevance-only or repetition-only promotion, restricted-content promotion, mutable-state promotion without a current receipt, duplicate consolidation without exact-hash proof, or project-identity merging without a source-proven relationship.
 
 ## Connector fabric
 
@@ -84,5 +96,6 @@ Original bytes and derivatives are never co-mingled. Notion, task systems, analy
 4. Complete the ordered authorization → deletion receipt → negative recall → tombstone closure sequence.
 5. Bind Desktop Commander to the verified trusted device and approve one metadata-only root.
 6. Raise raw correction precedence from 3/5 to 5/5.
+7. Keep Wisebase source-file mutation and corpus-exclusion capabilities marked unavailable until a connector exposes and verifies them.
 
 No production ingestion, factual promotion, identity verification, evidence release, filing, publication, or external action is authorized by this directory.
