@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0.0",
+  "status": "operative",
+  "effective_at": "2026-07-29",
+  "authority": {
+    "wisebase_role": "candidate_retrieval_plane",
+    "canonical_memory_authority": "operator_designated_canonical_conversation",
+    "source_fact_authority": "native_source_artifact",
+    "implementation_authority": "github",
+    "governance_projection": [
+      "notion",
+      "task_systems"
+    ]
+  },
+  "routing_domains": [
+    "canonical_truth",
+    "active_case_facts",
+    "actor_event_threads",
+    "machine_pistons",
+    "quarantine_material"
+  ],
+  "query_profiles": {
+    "legal_record": {
+      "required_anchor_types": [
+        "case_id",
+        "docket_or_record_id",
+        "date_or_time_or_document_class"
+      ],
+      "minimum_exact_anchor_count": 3
+    },
+    "repository_state": {
+      "required_anchor_types": [
+        "repository",
+        "object_id_or_path",
+        "requested_state"
+      ],
+      "minimum_exact_anchor_count": 3
+    },
+    "architecture": {
+      "must_split_broad_query": true,
+      "approved_slices": [
+        "source_hierarchy",
+        "truth_taxonomy",
+        "sensitivity_quarantine",
+        "current_runtime_receipt",
+        "project_identity",
+        "connector_capability"
+      ]
+    }
+  },
+  "required_candidate_fields": [
+    "candidate_id",
+    "query",
+    "query_profile",
+    "exact_anchor_count",
+    "source_name",
+    "source_pointer",
+    "truth_class",
+    "sensitivity",
+    "proposition",
+    "current_or_historical",
+    "mutable_state",
+    "current_run_receipt",
+    "last_verified_at",
+    "contradictions",
+    "promotion_decision",
+    "duplicate_action",
+    "exact_hash_verified",
+    "project_identity_action",
+    "source_proven_relationship",
+    "remaining_gate"
+  ],
+  "allowed_truth_classes": [
+    "verified_source_fact",
+    "documented_source_statement",
+    "party_allegation",
+    "third_party_statement",
+    "model_inference",
+    "runtime_state",
+    "unresolved"
+  ],
+  "allowed_sensitivity_classes": [
+    "public",
+    "internal",
+    "confidential",
+    "restricted",
+    "sealed"
+  ],
+  "restricted_content_classes": [
+    "credential",
+    "protected_minor_identifier",
+    "medical_detail",
+    "private_communication",
+    "unsupported_accusation",
+    "synthetic_anchor",
+    "unqualified_legal_conclusion"
+  ],
+  "promotion_policy": {
+    "relevance_alone_is_insufficient": true,
+    "repetition_alone_is_insufficient": true,
+    "source_pointer_required": true,
+    "truth_class_required": true,
+    "sensitivity_required": true,
+    "mutable_state_requires_current_run_receipt": true,
+    "restricted_content_may_only_be_quarantined": true
+  },
+  "duplicate_policy": {
+    "same_title_is_candidate_only": true,
+    "same_size_is_candidate_only": true,
+    "semantic_similarity_is_candidate_only": true,
+    "consolidation_requires_exact_hash": true,
+    "consolidation_requires_provenance_review": true
+  },
+  "project_identity_policy": {
+    "merge_by_similarity_prohibited": true,
+    "source_proven_relationship_required": true,
+    "protected_distinct_identities": [
+      "Megamind",
+      "Mastermind",
+      "AEON-777",
+      "CASEBRAIN",
+      "Echoes",
+      "1FDA-23-0000515",
+      "1FDV-23-0001009"
+    ]
+  },
+  "partial_failure_policy": {
+    "isolate_failed_slice": true,
+    "mark_dependent_state_stale_or_unverified": true,
+    "continue_unaffected_exact_source_probes": true,
+    "return_exact_limitation": true
+  },
+  "connector_capability_boundary": {
+    "supported": [
+      "file_browser",
+      "semantic_retrieval",
+      "upload_interaction",
+      "translation",
+      "knowledge_graph_assets",
+      "flashcard_assets",
+      "quiz_assets",
+      "video_explanation_assets"
+    ],
+    "not_exposed": [
+      "source_file_rename",
+      "source_file_tag",
+      "source_file_delete",
+      "collection_membership_change",
+      "source_metadata_edit",
+      "corpus_exclusion"
+    ]
+  }
+}
