@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "CBR-1FDV-DKT225-SOURCES-001",
+  "case_id": "1FDV-23-0001009",
+  "docket_number": 225,
+  "registered_at": "2026-07-29T11:25:00Z",
+  "source_objects": [
+    {
+      "object_id": "D225-NEF-GMAIL-001",
+      "object_type": "OFFICIAL_JEFS_NOTICE_OF_ELECTRONIC_FILING_AND_SERVICE",
+      "status": "ACQUIRED_NATIVE_GMAIL_RECORD",
+      "gmail_message_id": "19f7ae80a23b83e6",
+      "gmail_thread_id": "19f7ae80a23b83e6",
+      "rfc_message_id": "<384617262.11784473446187.JavaMail.jimsbroker@jimsbcc1.courts.state.hi.us>",
+      "sender": "efiling@courts.hawaii.gov",
+      "recipient": "glacier.equilibrium@gmail.com",
+      "subject": "JEFS Notice in case:1FDV-23-0001009, CASEY DEL CARPIO BARTON v TERESA DEL CARPIO BARTON",
+      "received_at_hst": "2026-07-19T05:04:06-10:00",
+      "filing_date_time_hst": "2026-07-18T23:58:19-10:00",
+      "filing_party": "Casey del Carpio Barton",
+      "lead_document": {
+        "sequence_number": 225,
+        "label": "225-Motion for ___________",
+        "native_download_url": "https://jimspss1.courts.state.hi.us/JIMSExternal/documentDownload.iface?seqNo=225&caseId=1FDV-23-0001009"
+      },
+      "supporting_document_name": "225-Plaintiff's Notice of Corrected Resubmission of Dkt. 215 Pursuant to Dkt. 223; Preservation of Original Filing Date; Request to Accept Corrected Motion and Set Hearing",
+      "service_recipients": [
+        "ag.csea.jefs.apb@hawaii.gov",
+        "glacier.equilibrium@gmail.com",
+        "sbrower@hawaii.rr.com"
+      ],
+      "sender_authentication": {
+        "dkim": "pass",
+        "spf": "pass",
+        "dmarc": "pass",
+        "originating_system": "jimsbroker@jimsbcc1.courts.state.hi.us"
+      },
+      "attachment_count": 0,
+      "control_note": "The notice states that where the filing included a document, the notice is service under the applicable electronic-filing/service rules. It proves submission/service-notice identity and metadata; it does not by itself prove byte identity of the downloaded lead PDF or later court disposition."
+    },
+    {
+      "object_id": "D225-CANDIDATE-LIBRARY-001",
+      "object_type": "CORRECTED_RESUBMISSION_PDF_CANDIDATE",
+      "status": "BYTE_VERIFIED_CANDIDATE_NOT_OFFICIAL_JIMS_LOCK",
+      "file_library_file_id": "file_000000003aa481f89d4fb9af96ccfe41",
+      "file_library_version_id": "1",
+      "original_filename": "01_FILE_NOW_CORRECTED_RESUBMISSION_DKT215_PURSUANT_DKT223_2026-07-18.pdf",
+      "size_bytes": 5003342,
+      "page_count": 115,
+      "sha256": "26201dc2a2b4849b2a578267b57f840240fd141dea5ff4d87f9b668444ffffd8",
+      "pdf_title": "Corrected Resubmission of Dkt. 215 Pursuant to Dkt. 223",
+      "pdf_author": "Casey Lee Del Carpio Barton",
+      "pdf_producer": "pypdf",
+      "box_binary_copy_status": "BLOCKED_CONNECTOR_TOOL_NOT_FOUND",
+      "control_note": "Original Library bytes are preserved and verified. This object is not promoted to official filed-byte status until compared with the native Judiciary JIMS lead document."
+    },
+    {
+      "object_id": "D225-CANDIDATE-LIBRARY-002",
+      "object_type": "CORRECTED_RESUBMISSION_PDF_DUPLICATE_COPY",
+      "status": "BYTE_IDENTICAL_DUPLICATE",
+      "file_library_file_id": "file_00000000dd1881fbad618f99d379c347",
+      "file_library_version_id": "1",
+      "original_filename": "01_FILE_NOW_CORRECTED_RESUBMISSION_DKT215_PURSUANT_DKT223_2026-07-18(1).pdf",
+      "size_bytes": 5003342,
+      "page_count": 115,
+      "sha256": "26201dc2a2b4849b2a578267b57f840240fd141dea5ff4d87f9b668444ffffd8",
+      "duplicate_of": "D225-CANDIDATE-LIBRARY-001",
+      "control_note": "No second Box binary was created because the two Library copies are byte-identical."
+    },
+    {
+      "object_id": "D225-SCHEDULING-ORDER-LIBRARY-001",
+      "object_type": "PROPOSED_SCHEDULING_ORDER_PDF",
+      "status": "BYTE_VERIFIED_DOCUMENT_FILING_RELATIONSHIP_UNPROVEN",
+      "file_library_file_id": "file_00000000a29081fdadea940f328ef64b",
+      "file_library_version_id": "1",
+      "original_filename": "02_FILE_NOW_PROPOSED_SCHEDULING_ORDER_POST_DECREE_2026-07-18.pdf",
+      "size_bytes": 46154,
+      "page_count": 1,
+      "sha256": "82d43431cfc5e957588e4df776b3688241c12a1e687c75b9d4df7972032d6d0f",
+      "pdf_creator": "Writer",
+      "pdf_producer": "LibreOffice 25.2.3.2 (X86_64) / LibreOffice Community",
+      "pdf_creation_date_utc": "2026-07-19T09:04:50Z",
+      "box_binary_copy_status": "BLOCKED_CONNECTOR_TOOL_NOT_FOUND",
+      "control_note": "The document exists and its bytes are verified. Whether it was attached to Dkt. 225, separately filed, or never filed remains unproven."
+    },
+    {
+      "object_id": "D223-NEF-GMAIL-001",
+      "object_type": "SURROUNDING_OFFICIAL_JEFS_NOTICE",
+      "status": "ACQUIRED_NATIVE_GMAIL_RECORD",
+      "gmail_message_id": "19f3ac40fbbc432b",
+      "gmail_thread_id": "19f3ac40fbbc432b",
+      "sender": "efiling@courts.hawaii.gov",
+      "received_at_hst": "2026-07-06T18:09:04-10:00",
+      "filing_date_time_hst": "2026-07-06T18:06:08-10:00",
+      "filing_party": "COURT FILED BY COURT",
+      "supporting_sequence_number": 223,
+      "document_name": "223-(RETURN TO PLAINTIFF PROSE) RE: ORDER DENYING PLAINTIFF'S MOTION TO VACATE DEFAULT ORDER, DIVORCE DECREE, FIRST AMENDED DIVORCE DECREE AND DERIVATIVE ORDER AS VOID OR ALTERNATIVELY SETTING EVIDENTIARY HEARING AND STAYING EFORCEMENT; DENIED",
+      "service_recipients": [
+        "ag.csea.jefs.apb@hawaii.gov",
+        "glacier.equilibrium@gmail.com",
+        "sbrower@hawaii.rr.com"
+      ]
+    },
+    {
+      "object_id": "D224-NEF-001",
+      "object_type": "DKT224_NEF_OR_EQUIVALENT",
+      "status": "NOT_LOCATED_GMAIL_SEARCH_NEGATIVE_OFFICIAL_SOURCE_UNRESOLVED",
+      "gmail_searches": [
+        "from:efiling@courts.hawaii.gov seqNo=224 1FDV-23-0001009",
+        "from:efiling@courts.hawaii.gov 224- 1FDV-23-0001009",
+        "from:efiling@courts.hawaii.gov Dkt. 224 OR Docket 224 OR Document Name 224 1FDV-23-0001009"
+      ],
+      "gmail_results": 0,
+      "date_window_sender_search": {
+        "window": "2026-07-05 through 2026-07-24",
+        "messages_found": ["D223-NEF-GMAIL-001","D225-NEF-GMAIL-001"]
+      },
+      "control_note": "This is a Gmail-specific negative result, not proof that Dkt. 224 never existed. Official JIMS docket rows and custodian records remain required."
+    },
+    {
+      "object_id": "D225-JIMS-RAW-001",
+      "object_type": "OFFICIAL_JIMS_LEAD_DOCUMENT_BYTES",
+      "status": "NOT_ACQUIRED_RUNTIME_ACCESS_BLOCKED",
+      "native_sequence_number": 225,
+      "native_download_url": "https://jimspss1.courts.state.hi.us/JIMSExternal/documentDownload.iface?seqNo=225&caseId=1FDV-23-0001009",
+      "access_attempts": [
+        "Web gateway rejected the deep URL as unsafe to open in the current runtime",
+        "Container network could not resolve jimspss1.courts.state.hi.us"
+      ],
+      "control_note": "Runtime access failure does not establish source unavailability. Acquire through an authenticated JEFS browser session or official records production, then compare SHA-256 to the Library candidate."
+    },
+    {
+      "object_id": "D225-POSTSTATUS-001",
+      "object_type": "POST_DKT225_JUDICIARY_NOTICE_OR_STATUS",
+      "status": "NO_GMAIL_SENDER_NOTICE_FOUND_THROUGH_2026_07_29_OFFICIAL_DOCKET_UNRESOLVED",
+      "gmail_query": "from:efiling@courts.hawaii.gov 1FDV-23-0001009 after:2026/07/18 before:2026/07/30",
+      "messages_found": ["D225-NEF-GMAIL-001"],
+      "control_note": "No later sender-native Judiciary email was found in Gmail through the search cutoff. This does not prove no docket action occurred; official rows 223-226/current docket status remain required."
+    }
+  ],
+  "preserved_conflicts": [
+    {
+      "conflict_key": "D225_PAGE_COUNT_POINTER",
+      "older_pointer": "27-page corrected motion",
+      "byte_verified_candidate": "115-page corrected resubmission PDF",
+      "status": "UNRESOLVED_PENDING_OFFICIAL_JIMS_COMPARISON"
+    }
+  ],
+  "next_required_actions": [
+    "Acquire official JIMS seqNo 225 bytes through authenticated JEFS or official records production",
+    "Acquire official docket rows 223-226 and current status",
+    "Acquire Dkt. 224 record/NEF or custodian-certified nonexistence/unavailability result",
+    "Establish the official filing relationship of the separate scheduling order",
+    "Store official bytes in approved custody and retrieve/hash-verify every write"
+  ]
+}
