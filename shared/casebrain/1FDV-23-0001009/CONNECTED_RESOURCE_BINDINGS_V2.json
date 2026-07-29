@@ -1,109 +1,83 @@
 {
-  "schema_version": "2.2.0",
+  "schema_version": "2.3.0",
   "case_id": "1FDV-23-0001009",
-  "reconciled_at": "2026-07-29T07:42:00Z",
+  "reconciled_at": "2026-07-29T10:54:07Z",
   "wave": "WAVE_2",
+  "completion_state": "PENDING_FINAL_READBACK",
   "canonical_ledger": {
     "system": "Supabase",
     "project_id": "dyhprklicgewmrimecey",
+    "anchor_receipt_id": "20ac0844-4c1f-477a-a06e-e8cdee1fcece",
     "wave2_connectors": 7,
     "total_routes": 52,
-    "total_capability_records": 66,
-    "count_source": "post-binding Supabase verification query"
+    "total_capability_records": 66
   },
-  "bindings": {
-    "google_calendar": {
-      "role": "deadline_and_hearing_schedule",
-      "status": "CONNECTED_READY_EMPTY",
-      "calendar_id": "primary",
-      "search_window": "2023-01-01/2027-12-31",
-      "query": "1FDV-23-0001009",
-      "case_matches": 0,
-      "route": "google_calendar:search:bounded_event_search:v1",
-      "governance": "No event may be created from memory or inference."
-    },
-    "google_contacts": {
-      "role": "recipient_and_actor_resolution",
-      "status": "CONNECTED_READY_EMPTY",
-      "query": "Scot Brower",
-      "case_actor_matches": 0,
-      "route": "google_contacts:search_contacts:contact_search:v1",
-      "governance": "Do not merge identities without source confirmation."
-    },
-    "fireflies": {
-      "role": "meeting_transcript_intelligence",
-      "status": "CONNECTED_READY_EMPTY",
-      "query": "1FDV-23-0001009",
-      "case_transcript_matches": 0,
-      "route": "fireflies:fireflies_search:transcript_search:v1"
-    },
+  "canonical_execution_anchors": {
     "asana": {
-      "role": "secondary_execution_queue",
-      "status": "HEALTHY_NATIVE_ANCHORS",
-      "global_task_gid": "1213120181650215",
-      "global_project_gid": "1213132434974069",
-      "document_index_task_gid": "1213132497156753",
-      "document_index_project_gid": "1211960317839287",
-      "routes": [
-        "asana:search_objects:case_task_search:v1",
-        "asana:update_tasks:task_update:v1"
-      ],
-      "next_gate": "Inspect both tasks and designate one canonical Asana execution anchor without replacing existing notes."
+      "task_id": "1213120181650215",
+      "designation_receipt_story_id": "1216981586643869",
+      "role": "secondary_execution_anchor",
+      "status": "DESIGNATED_WRITE_CONFIRMED_PENDING_READBACK"
     },
     "linear": {
-      "role": "engineering_and_investigation_execution",
-      "status": "HEALTHY_NATIVE_ANCHORS",
-      "primary_project_slug": "case-1fdv-23-0001009-federal-litigation-0025ecbed053",
-      "actor_project_slug": "1fdv-actor-case-execution-826c9d8cc666",
-      "issues_found": ["HI-15","HI-16","HI-17","HI-19","HI-11"],
-      "warning": "Issue status must be fetched before designation as an active execution anchor.",
-      "route": "linear:search:case_entity_search:v1"
+      "issue_id": "HI-51",
+      "issue_url": "https://linear.app/hi-classhomeservices/issue/HI-51/casebrain-wave-2-execution-anchor-dkt-225-source-acquisition",
+      "project_id": "3a994960-ee4d-49c6-a224-2435e8869f57",
+      "project_name": "1FDV Actor Case Execution",
+      "role": "clean_primary_linear_execution_anchor",
+      "status": "CREATED_WRITE_CONFIRMED_PENDING_READBACK"
     },
-    "airtable": {
-      "role": "structured_secondary_register",
-      "status": "BLOCKED_RATE_LIMIT",
-      "candidate_base_id": "appmx0daaLJMhA4Km",
-      "candidate_base_name": "Actor Relations, Legal Actions, and Procedural Violations - Table 1.csv",
-      "error": "429 API billing plan limit exceeded",
-      "base_discovery_route": "airtable:list_bases:base_discovery:v1",
-      "schema_route_enabled": false
-    },
-    "granola": {
-      "role": "meeting_context_secondary",
-      "status": "BLOCKED_AUTH_REQUIRED",
-      "error": "User has not created a Granola account",
-      "route_enabled": false
+    "clickup": {
+      "wave2_task_id": "86ajrm7t5",
+      "status": "IN_PROGRESS_PENDING_FINAL_READBACK"
     }
   },
-  "carried_remediation": {
-    "slack_canvas": "BLOCKED:not_supported_free_team",
-    "dropbox_stale_pointer": "TRANSFERRED_TO_WAVE_2",
-    "dropbox_verified_active_root": "id:M3qKixNrNsgAAAAAAAFTpw"
+  "bindings": {
+    "google_calendar": {"status":"CONNECTED_READY_EMPTY","case_matches":0},
+    "google_contacts": {"status":"CONNECTED_READY_EMPTY","case_actor_matches":0},
+    "fireflies": {"status":"CONNECTED_READY_EMPTY","case_transcript_matches":0},
+    "asana": {"status":"HEALTHY_DESIGNATED_ANCHOR","task_id":"1213120181650215","receipt_story_id":"1216981586643869"},
+    "linear": {"status":"HEALTHY_CLEAN_EXECUTION_ANCHOR","issue_id":"HI-51"},
+    "airtable": {"status":"BLOCKED_RATE_LIMIT","candidate_base_id":"appmx0daaLJMhA4Km"},
+    "granola": {"status":"BLOCKED_AUTH_REQUIRED"}
   },
-  "clickup_projection": {
-    "wave1_task_id": "86ajrfqvn",
-    "wave1_status": "Closed",
-    "canonical_wave2_task_id": "86ajrm7t5",
-    "canonical_wave2_task_url": "https://app.clickup.com/t/86ajrm7t5",
-    "canonical_wave2_status": "in progress",
-    "superseded_duplicate_task_id": "86ajrm7yp",
-    "superseded_duplicate_status": "Closed"
+  "dkt225_acquisition": {
+    "workflow_version": "1.0.0",
+    "workflow_path": "shared/casebrain/1FDV-23-0001009/DKT225_ACQUISITION_WORKFLOW_V1.json",
+    "state": "INITIALIZED",
+    "required_objects": [
+      "official_docket_entry",
+      "filed_pdf",
+      "notice_of_electronic_filing_or_equivalent",
+      "surrounding_current_docket_status"
+    ],
+    "completion_rule": "Acquire each official object or record a source-specific blocker; preserve original bytes and native identifiers; compute SHA-256; register every write; retrieve every destination record."
+  },
+  "cross_system_projection": {
+    "supabase": "WRITE_CONFIRMED_PENDING_FINAL_QUERY",
+    "github": "WRITE_IN_PROGRESS",
+    "notion": "PENDING",
+    "box": "PENDING",
+    "clickup": "PENDING"
   },
   "governance": {
-    "zero_results_are_not_connector_failures": true,
+    "original_evidence_controls": true,
+    "unsupported_historical_completion_claims_inherited": false,
     "zero_results_are_not_case_evidence": true,
     "blocked_routes_are_disabled": true,
     "native_ids_required_for_anchor_status": true,
-    "write_routes_require_separate_write_verification": true,
+    "retrieval_verification_required": true,
     "destructive_actions_allowed": false,
-    "no_duplicate_case_container_created": true,
-    "no_evidence_bytes_moved": true
+    "protected_evidence_bytes_allowed_in_github": false
   },
-  "next_execution_gates": [
-    "Fetch reconciled V2 manifest from main",
-    "Project Wave 2 receipt to Notion alignment page",
-    "Upload Wave 2 receipt to Box proofbook control folder and read content back",
-    "Inspect Asana and Linear candidates and designate canonical execution anchors",
-    "Build Dkt. 225 acquisition workflow on available rails"
+  "closure_gates": [
+    "Retrieve Asana designation receipt from task",
+    "Retrieve Linear HI-51 issue",
+    "Retrieve Supabase anchor receipt",
+    "Retrieve this GitHub manifest and Dkt. 225 workflow",
+    "Retrieve Notion projection",
+    "Retrieve Box receipt and workflow file",
+    "Retrieve ClickUp task updates",
+    "Close Wave 2 ClickUp task and retrieve closed state"
   ]
 }
