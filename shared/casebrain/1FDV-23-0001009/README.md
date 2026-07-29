@@ -1,60 +1,79 @@
 # CASEBRAIN Shared Control Root — 1FDV-23-0001009
 
-This directory is the canonical cross-actor control root for Case No. `1FDV-23-0001009`.
+This directory is the canonical cross-actor machine-control root for Case No. `1FDV-23-0001009`.
 
 ## Mission
 
-Protect Kekoa, restore the parent-child relationship, preserve the evidence, and obtain lawful review of every restriction affecting him.
+Protect Kekoa, restore the parent-child relationship, preserve original evidence, and obtain lawful review through source-specific, court-safe proof architecture.
 
-## Authority hierarchy
+## Canonical resource hierarchy
 
-1. **GitHub / `GlacierEQ/AEON-777`** — source-controlled schemas, manifests, runbooks, connector contracts, indexes, and generated public work product.
-2. **Notion** — control-plane UI, command dashboard, status, task routing, decisions, and links to canonical records.
-3. **Google Drive** — structured legal documents, filed copies, court-ready packets, readable evidence indexes, and working legal artifacts.
-4. **Dropbox** — raw forensic mirror, original files, large evidence collections, and recovery copies.
-5. **Supabase** — audited operational ledger, connector registry, state, RLS, hashes, and reversible staging.
-6. **ClickUp** — execution queue and human-review tasks.
-7. **Supermemory / MemoryPlugin / Mem0** — summaries, pointers, relationship context, and retrieval acceleration; never the sole evidentiary source.
+1. **Original evidence bytes and official/certified court records** control factual authenticity.
+2. **Box** is the canonical legal-evidence and actor-proofbook store.
+3. **GitHub / `GlacierEQ/AEON-777`** controls schemas, manifests, runbooks, graph structure, source pointers, connector contracts, and generated non-sensitive work product.
+4. **Notion** is the human command plane for status, decisions, routing, and source links.
+5. **Google Drive** is the readable structured legal-document mirror; current binary upload remains quota-degraded.
+6. **Dropbox** is the raw forensic mirror and recovery source. Originals are not moved, renamed, overwritten, deleted, or silently deduplicated.
+7. **Asana** is the execution queue. Raw protected evidence does not enter tasks.
+8. **Memory systems** store redacted summaries and pointers only and are never the sole evidentiary source.
 
 ## Canonical rules
 
-- All GitHub changes are branch-and-PR first. No direct writes to `main` for sensitive case material.
-- `shared` is the default cross-actor orchestration container.
-- Actor-specific records remain actor scoped; cross-actor events and connector state live here.
-- GitHub stores no raw protected-minor medical, school, psychological, credential, or private evidence files.
-- Every record must retain `case_id`, source pointer, verification status, claim class, hash when available, access class, and idempotency key.
-- Cloud evidence is never flattened, renamed, moved, or deleted by default. FILEBOSS operates dry-run first and produces a manifest before any mutation.
-- A failed theory closes only that theory. It does not erase the actor, source, event, or other open theories.
-- No artifact is called complete until verification, packaging, durable storage, and registry logging are all proven.
+- All sensitive GitHub changes are branch-and-PR first.
+- Every object retains case ID, stable object ID, source pointer, claim class, verification state, access class, content hash when available, and idempotency key.
+- Primary evidence, court-source comparators, transcript derivatives, analytical work product, and task/status projections remain separate.
+- No artifact is called cloud-stored or complete without a connector-native ID, metadata receipt, and hash/retrieval verification where bytes matter.
+- A failed theory closes only that theory; it does not erase the source, actor, event, or contrary evidence.
+- Use source-specific language such as **procedural asymmetry** and **selective urgency** unless intent is established by admissible proof.
 
-## Active work product
+## Current evidence release — February 19, 2025
 
-- Artifact: `1FDV-23-0001009_OSINT_ACTOR_INVESTIGATION_WORKBENCH_BATCH01_CONTROLLED.xlsx`
-- Version: `V-004`
-- SHA-256: `bdabe5237c5ac6c80cc75b02c871888f6ac67349d3b3a6ff32816c631e4e8ee1`
-- Size: `494567` bytes
-- Closure stage: `10 / 13`
-- State: `controlled_local_canonical`
-- Cloud byte state: `blocked — Google Drive storageQuotaExceeded`
-- Actual cloud file ID: `none`
-- Contents: closure controller, artifact lineage, Drive operation ledger, actor registry, raw-lead intake, query plan, event registry, actor-event edges, relationship edges, theory matrix, source log, search-run log, and OSINT Batch 01 findings.
+- Release ID: `CBR-REL-2026-07-28-F19-V2`
+- Event ID: `EVT-F19-2025-02-19-DKT141`
+- Judge: `ACT-007` — Judge Kyle T. Dowd
+- Docket chain: Dkts. `139`, `141`, `142`, `158`, and `160`
+- Evidence objects: `12`
+- Byte-verified Dropbox objects: `7`
+- Audio candidates: `5`
+- Proven transcript-source links: `0`
+- Knowledge-graph nodes / edges: `36 / 39`
+- Execution gates: `8`
 
-The authoritative file hash is stored in the detached control receipt and companion `.sha256` file. It is not embedded into the workbook because embedding a final hash would change the workbook bytes and invalidate that hash.
+### Box canonical event structure
 
-## Completion gate
+- Event root: `404097263046`
+- Native audio: `404097099997`
+- Transcripts: `404098012490`
+- Court source comparators: `404094844221`
+- Hashes and provenance: `404097030225`
+- Derived analysis and deployment: `404096106433`
 
-The artifact is locally verified and packaged, but it is not yet durably stored or cloud-verified. The remaining sequence is:
+### Proof boundary
 
-1. Free Google Drive storage or select another approved writable connector.
-2. Upload the exact V-004 workbook bytes.
-3. Fetch and record cloud metadata.
-4. Download the exact cloud file.
-5. Calculate and compare SHA-256.
-6. Update GitHub, Notion, and the workbook lineage with the cloud-native ID and verified hash.
-7. Mark closure stages 11 through 13 complete.
+The transcript and media bytes are verified. The transcript remains a machine-generated derivative; the official recording and court record control exact wording, inaudibles, speaker identity, completeness, and conflicts with minutes/orders. No M4A candidate has been promoted to source recording.
+
+## Active artifacts
+
+- Master package SHA-256: `ca23feda173f8cc4f3418b0547f72db903cc9dce6b9193a627c015b3c3f9cae1`
+- Core package SHA-256: `4af9f4419ceb2b18035aee1d713aeb8857c0d7050f619fc7bd5f9f1d810a0ed1`
+- Proof binder SHA-256: `359559eec91c61435bb38e44ba296983536eb1e2e99ed5572c3b0579722acc84`
+- Native-audio ZIP SHA-256: `b935fe305c1e64105eeebecf8c68bab71a232d6c9bbdf6d88fb6a97f99edd306`
+- Operational actor-workbench SHA-256: `4889b594b6b7d9e2bea0e93d43aaac792f7d4ade551b3616a29dd00b769e5ddd`
+
+## Immediate execution gates
+
+1. Obtain official February 19 audio, minutes, and recorder metadata.
+2. Resolve transcript-to-native-audio source relationship.
+3. Acquire the complete Dkt. 139 proposal/order/version/service chain.
+4. Acquire the Dkt. 158 draft/service/JEFS routing chain.
+5. Lock Dkt. 141 response and service history.
+6. Obtain the complete nonprivileged Judge Dowd disclosure record.
+7. Build the filing-use, foundation, redaction, and forum matrix.
+8. Close Box/GitHub/Notion/Asana/Drive/Dropbox deployment receipts.
 
 ## Files in this control root
 
-- `CONNECTOR_ALIGNMENT.yaml` — canonical role, path, status, and write-policy map.
-- `RESOURCE_REGISTRY.json` — machine-readable repository, Notion, Drive, Dropbox, artifact, closure, and blocker state.
+- `CONNECTOR_ALIGNMENT.yaml` — canonical roles, paths, statuses, boundaries, and flows.
+- `RESOURCE_REGISTRY.json` — machine-readable resource, artifact, evidence-release, and blocker state.
 - `SYNC_POLICY.md` — allowed flows, blocked flows, review gates, and conflict rules.
+- `releases/2026-07-28-feb19/` — the February 19 release manifest, graph, task plan, and deployment receipts.

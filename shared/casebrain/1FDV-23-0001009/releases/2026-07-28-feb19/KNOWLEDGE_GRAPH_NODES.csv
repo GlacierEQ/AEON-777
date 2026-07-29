@@ -1,0 +1,37 @@
+Node ID,Label,Node Type,Access Class,Verification Status,Primary Source,Release ID
+CASE-1FDV-23-0001009,Barton v. Barton - 1FDV-23-0001009,case,restricted,primary_source_verified,Court docket,CBR-REL-2026-07-28-F19-V2
+EVT-F19-2025-02-19-DKT141,"February 19, 2025 Dkt. 141 hearing",event,restricted,corroborated,Transcript + case-view event + Dkt. 158,CBR-REL-2026-07-28-F19-V2
+DKT-139,"Order arising from October 16, 2024",docket,restricted,supported,Preserved docket compilation,CBR-REL-2026-07-28-F19-V2
+DKT-141,Combined Rule 58/quash/contempt/sanctions motion,docket,restricted,supported,Preserved docket compilation,CBR-REL-2026-07-28-F19-V2
+DKT-142,Notice/hearing instrument for Dkt. 141,docket,restricted,supported,Preserved docket compilation,CBR-REL-2026-07-28-F19-V2
+DKT-158,"February 20, 2025 signed denial order",docket,restricted,supported,Preserved docket compilation,CBR-REL-2026-07-28-F19-V2
+DKT-160,Immediate next-day challenge,docket,restricted,supported,Preserved docket compilation,CBR-REL-2026-07-28-F19-V2
+ACT-001,Casey Lee Del Carpio Barton,actor,case_confidential,verified,Court caption and filings,CBR-REL-2026-07-28-F19-V2
+ACT-004,Scot Stuart Brower,actor,case_confidential,verified,Court filings and orders,CBR-REL-2026-07-28-F19-V2
+ACT-006,Judge Courtney N. Naso,actor,case_confidential,verified,Orders minutes audio calendars,CBR-REL-2026-07-28-F19-V2
+ACT-007,Judge Kyle T. Dowd,actor,case_confidential,partially_source_locked,Transcript and Dkt. 158; official audio/minutes pending,CBR-REL-2026-07-28-F19-V2
+ACT-011,Clerk Castillo,actor,case_confidential,located,JEFS logs and minutes required,CBR-REL-2026-07-28-F19-V2
+ACT-056,Miles Breiner,actor,case_confidential,located,Disclosure record required,CBR-REL-2026-07-28-F19-V2
+ACT-246,Sean Fitzsimmons,actor,case_confidential,located,Derivative transcript only,CBR-REL-2026-07-28-F19-V2
+ACT-247,Office of Miles S. Breiner,actor,case_confidential,located,Disclosure and nonprivileged assignment metadata,CBR-REL-2026-07-28-F19-V2
+EVID-F19-001,Canonical February 19 transcript,evidence,restricted,primary_source_verified,id:XudNjbfpncUAAAAAAAAPUg,CBR-REL-2026-07-28-F19-V2
+EVID-F19-002,Exact duplicate February 19 transcript,evidence,restricted,primary_source_verified,id:XudNjbfpncUAAAAAAAAP6w,CBR-REL-2026-07-28-F19-V2
+EVID-F19-AUD-001,Recording 154(0).m4a,evidence,restricted,primary_source_verified,id:XudNjbfpncUAAAAAAAAPfw,CBR-REL-2026-07-28-F19-V2
+EVID-F19-AUD-002,Recording 163(0).m4a,evidence,restricted,primary_source_verified,id:XudNjbfpncUAAAAAAAAOKA,CBR-REL-2026-07-28-F19-V2
+EVID-F19-AUD-003,Recording 136(0).m4a,evidence,restricted,primary_source_verified,id:XudNjbfpncUAAAAAAAAO6g,CBR-REL-2026-07-28-F19-V2
+EVID-F19-AUD-004,Recording 134(0).m4a,evidence,restricted,primary_source_verified,id:XudNjbfpncUAAAAAAAAOVQ,CBR-REL-2026-07-28-F19-V2
+EVID-F19-AUD-005,Recording 112.m4a,evidence,restricted,primary_source_verified,id:XudNjbfpncUAAAAAAAAPsg,CBR-REL-2026-07-28-F19-V2
+EVID-F19-010,Case-view event extract,evidence,restricted,corroborated,report pages 1-2,CBR-REL-2026-07-28-F19-V2
+EVID-F19-011,Dkts. 141-142 source extract,evidence,restricted,corroborated,report pages 313-363,CBR-REL-2026-07-28-F19-V2
+EVID-F19-012,Dkt. 158 signed order,evidence,restricted,corroborated,report page 415,CBR-REL-2026-07-28-F19-V2
+EVID-F19-013,Dkt. 160 immediate challenge,evidence,restricted,corroborated,report pages 434-451,CBR-REL-2026-07-28-F19-V2
+EVID-F19-014,Walk-out transcript pointer,evidence,restricted,located,id:XudNjbfpncUAAAAAAAAPoA,CBR-REL-2026-07-28-F19-V2
+AUTH-HFCR-58,Hawaiʻi Family Court Rules Rule 58,authority,public,primary_source_verified,Official rule,CBR-REL-2026-07-28-F19-V2
+AUTH-HRS-571-8.5,HRS § 571-8.5,authority,public,primary_source_verified,Official statute,CBR-REL-2026-07-28-F19-V2
+AUTH-OUGHTERSON,State v. Oughterson,authority,public,primary_source_verified,Official opinion,CBR-REL-2026-07-28-F19-V2
+RES-BOX-F19,Box February 19 evidence root,resource,case_confidential,located,folder:404097263046,CBR-REL-2026-07-28-F19-V2
+RES-GH-F19,GitHub February 19 release branch,resource,case_confidential,located,casebrain-feb19-resource-release-v2-20260728,CBR-REL-2026-07-28-F19-V2
+RES-NOTION-F19,Notion release control page,resource,case_confidential,located,alignment page,CBR-REL-2026-07-28-F19-V2
+RES-ASANA-F19,Asana execution queue,resource,case_confidential,located,project:1213132434974069,CBR-REL-2026-07-28-F19-V2
+RES-DRIVE-F19,Drive Casebuilder Map,resource,case_confidential,located,1x_z1ReHZ6_f8w6NkgV5RqFVvX9S5pFMDgDphNMooDLM,CBR-REL-2026-07-28-F19-V2
+RES-DBX-F19,Dropbox case root,resource,case_confidential,located,id:M3qKixNrNsgAAAAAAAFTpw,CBR-REL-2026-07-28-F19-V2

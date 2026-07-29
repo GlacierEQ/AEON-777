@@ -1,0 +1,73 @@
+{
+  "schema_version": "2.0.0",
+  "release_id": "CBR-REL-2026-07-28-F19-V2",
+  "case_id": "1FDV-23-0001009",
+  "generated_at": "2026-07-29T01:02:30Z",
+  "title": "February 19, 2025 Exhibit-Grade Evidence Resource Upgrade",
+  "status": "cross_resource_deployment_in_progress",
+  "canonical_event": {
+    "event_id": "EVT-F19-2025-02-19-DKT141",
+    "date": "2025-02-19",
+    "judge_actor_id": "ACT-007",
+    "judge": "Judge Kyle T. Dowd",
+    "dockets": ["139", "141", "142", "158", "160"]
+  },
+  "evidence_state": {
+    "evidence_objects": 12,
+    "byte_verified_dropbox_objects": 7,
+    "transcript_timestamp_lines": 479,
+    "timestamped_event_rows": 15,
+    "audio_candidates": 5,
+    "audio_source_links_proven": 0,
+    "working_exhibits": 6,
+    "open_evidence_gaps": 8,
+    "proof_boundary": "Transcript and media bytes are verified; transcript-to-audio source relationship and official court authentication remain unresolved."
+  },
+  "box": {
+    "case_root_id": "401707782634",
+    "event_root_id": "404097263046",
+    "native_audio_folder_id": "404097099997",
+    "transcripts_folder_id": "404098012490",
+    "court_sources_folder_id": "404094844221",
+    "hashes_folder_id": "404097030225",
+    "derived_folder_id": "404096106433",
+    "start_index_file_id": "2374733147075",
+    "event_proofbook_file_id": "2374733898907",
+    "release_registry_file_id": "2374734076591",
+    "binary_status": "staged_upload_action_unavailable"
+  },
+  "notion": {
+    "alignment_page_id": "3a4b1e4f-3223-81d8-a3db-d92edb353904",
+    "war_room_id": "338b1e4f-3223-81ea-a0b9-d4e66fdd6069",
+    "dashboard_id": "335b1e4f-3223-808a-ab91-f9b855614249"
+  },
+  "asana": {
+    "global_task_gid": "1213120181650215",
+    "project_gid": "1213132434974069",
+    "execution_gates": 8
+  },
+  "google_drive": {
+    "working_root_id": "1Ux2wckCWsJBljUpCmac73gBN7yiIZfSx",
+    "casebuilder_map_id": "1x_z1ReHZ6_f8w6NkgV5RqFVvX9S5pFMDgDphNMooDLM",
+    "binary_status": "degraded_storageQuotaExceeded"
+  },
+  "dropbox": {
+    "verified_root": "/Kahalainspector Team Folder/Case_1FDV-23-0001009_ORGANIZED",
+    "write_status": "staged_pending_exact_confirmation"
+  },
+  "artifacts": [
+    {"id":"feb19-master-v0.4","sha256":"ca23feda173f8cc4f3418b0547f72db903cc9dce6b9193a627c015b3c3f9cae1","size_bytes":222196392},
+    {"id":"feb19-core-v0.4","sha256":"4af9f4419ceb2b18035aee1d713aeb8857c0d7050f619fc7bd5f9f1d810a0ed1","size_bytes":7856377},
+    {"id":"feb19-proof-binder-v0.4","sha256":"359559eec91c61435bb38e44ba296983536eb1e2e99ed5572c3b0579722acc84","size_bytes":5466122},
+    {"id":"feb19-native-audio-v0.4","sha256":"b935fe305c1e64105eeebecf8c68bab71a232d6c9bbdf6d88fb6a97f99edd306","size_bytes":92178887},
+    {"id":"feb19-media-container-v0.4","sha256":"a29782f81c1d3aca47fb95763ddcddc99f5b564f45bafbabcc6b0770217f5b28","size_bytes":91406386}
+  ],
+  "control_rules": {
+    "source_before_claim": true,
+    "pr_first": true,
+    "protected_minor_data_in_github": false,
+    "binary_complete_requires_connector_native_id_and_hash_receipt": true,
+    "dropbox_mutation_requires_exact_confirmation": true,
+    "procedural_language": "Use procedural asymmetry and selective urgency unless improper intent is independently established."
+  }
+}
