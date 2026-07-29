@@ -15,8 +15,33 @@ export function evaluateWisebaseCandidate(candidate, control) {
   if (!control.allowed_sensitivity_classes.includes(candidate.sensitivity)) {
     reasons.push("unsupported_sensitivity_class");
   }
+  if (!control.allowed_source_retention_decisions.includes(candidate.source_retention_decision)) {
+    reasons.push("unsupported_source_retention_decision");
+  }
   if (!hasValue(candidate.source_pointer)) {
     reasons.push("source_pointer_missing");
+  }
+  if (!hasValue(candidate.raw_preservation_pointer)) {
+    reasons.push("raw_preservation_pointer_missing");
+  }
+  if (candidate.legacy_source === true && !hasValue(candidate.captured_at)) {
+    reasons.push("legacy_capture_time_missing");
+  }
+  if (candidate.legacy_source === true && !hasValue(candidate.moment_context_status)) {
+    reasons.push("legacy_moment_context_missing");
+  }
+
+  if (
+    control.source_preservation_policy.rewrite_legacy_source_prohibited &&
+    candidate.rewrite_source === true
+  ) {
+    reasons.push("legacy_source_rewrite_prohibited");
+  }
+  if (
+    control.source_preservation_policy.delete_legacy_source_by_default_prohibited &&
+    candidate.deletion_requested === true
+  ) {
+    reasons.push("legacy_source_deletion_prohibited");
   }
 
   const profile = control.query_profiles[candidate.query_profile];
@@ -95,6 +120,11 @@ export function evaluateWisebaseCandidate(candidate, control) {
   return {
     compliant: reasons.length === 0,
     reasons,
-    disposition: reasons.length === 0 ? candidate.promotion_decision : "reject_or_quarantine"
+    source_disposition:
+      reasons.includes("legacy_source_deletion_prohibited") ||
+      reasons.includes("legacy_source_rewrite_prohibited")
+        ? "preserve_raw"
+        : candidate.source_retention_decision,
+    claim_disposition: reasons.length === 0 ? candidate.promotion_decision : "reject_or_quarantine"
   };
 }
