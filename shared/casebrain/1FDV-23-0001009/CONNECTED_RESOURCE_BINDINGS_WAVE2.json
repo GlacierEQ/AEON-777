@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "1FDV-23-0001009",
+  "wave": 2,
+  "executed_at": "2026-07-28T21:34:00-10:00",
+  "status": "LIVE_VERIFIED_NEGATIVE_PROBES",
+  "canonical_ledger": {
+    "system": "Supabase",
+    "project_id": "dyhprklicgewmrimecey",
+    "total_bound_connectors": 13,
+    "wave2_capabilities": 6,
+    "wave2_routes": 6,
+    "wave2_health_receipts": 3
+  },
+  "clickup": {
+    "task_id": "86ajrm7qp",
+    "task_url": "https://app.clickup.com/t/86ajrm7qp",
+    "status": "in progress"
+  },
+  "bindings": {
+    "google_calendar": {
+      "canonical_role": "deadline_and_event_index",
+      "health": "HEALTHY",
+      "routes": [
+        "google_calendar:search_events:bounded_event_search:v1",
+        "google_calendar:read_event:event_read:v1",
+        "google_calendar:create_event:event_write:v1"
+      ],
+      "write_route_requires_approval": true,
+      "probe": {
+        "calendar_id": "primary",
+        "timezone": "Pacific/Honolulu",
+        "time_min": "2023-01-01T00:00:00-10:00",
+        "time_max": "2027-12-31T23:59:59-10:00",
+        "queries": ["1FDV-23-0001009", "Family Court", "Kekoa"],
+        "matches": 0
+      }
+    },
+    "google_contacts": {
+      "canonical_role": "recipient_and_actor_resolution",
+      "health": "HEALTHY",
+      "routes": [
+        "google_contacts:search_contacts:actor_contact_search:v1"
+      ],
+      "probe": {
+        "queries": ["Scot Brower", "Miki Yamatani"],
+        "matches": 0
+      }
+    },
+    "fireflies": {
+      "canonical_role": "meeting_transcript_index",
+      "health": "HEALTHY",
+      "routes": [
+        "fireflies:fireflies_search:meeting_transcript_search:v1",
+        "fireflies:fireflies_fetch:meeting_transcript_fetch:v1"
+      ],
+      "probe": {
+        "time_min": "2023-01-01",
+        "time_max": "2026-07-28",
+        "queries": ["1FDV-23-0001009", "Family Court"],
+        "matches": 0
+      }
+    }
+  },
+  "proof_boundary": {
+    "classification": "VERIFIED_NEGATIVE_SEARCH_RESULT",
+    "meaning": "No indexed matches were returned for the tested connector account, time window, query terms, and searchable fields.",
+    "does_not_mean": "No underlying event, person, meeting, recording, transcript, or record exists elsewhere."
+  },
+  "governance": {
+    "calendar_conflict_check_required_before_write": true,
+    "calendar_write_requires_user_intent": true,
+    "contact_search_must_be_narrow": true,
+    "transcript_fetch_requires_concrete_meeting_id": true,
+    "destructive_actions_allowed": false
+  },
+  "next_execution_gates": [
+    "Project this receipt into Notion and Box",
+    "Expand searches only from concrete source-derived names, dates, addresses, emails, or meeting IDs",
+    "Do not manufacture calendar deadlines from unverified docket assumptions",
+    "Continue binding useful connected resources with native probes and receipts"
+  ]
+}
