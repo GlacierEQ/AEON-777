@@ -1,14 +1,15 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "workflow_id": "CBR-1FDV-DKT225-ACQ-001",
   "case_id": "1FDV-23-0001009",
   "docket_number": 225,
-  "updated_at": "2026-07-29T11:10:06.972866Z",
-  "execution_state": "ACTIVE_SOURCE_DISCOVERY",
+  "updated_at": "2026-07-29T11:30:47.399946Z",
+  "execution_state": "ACTIVE_SOURCE_DISCOVERY_PARTIAL_ACQUISITION",
   "authority_boundary": {
     "original_court_records_control": true,
     "workflow_is_evidence": false,
     "candidate_is_official_source": false,
+    "jefs_notice_proves_lead_byte_identity": false,
     "no_content_inference_from_missing_objects": true,
     "protected_bytes_in_github": false
   },
@@ -18,61 +19,74 @@
     "linear_issue_id": "HI-51",
     "clickup_dkt225_task_id": "86ajrmv85",
     "supabase_wave2_closure_receipt_id": "59cc3b44-ced0-4b84-8b94-4e4968a1696f",
+    "supabase_source_registry_receipt_id": "04885c33-8c58-43c4-a13c-5a6fa21a2f8f",
     "notion_alignment_page_id": "3a4b1e4f-3223-81d8-a3db-d92edb353904",
     "box_workflow_file_id": "2375684917549"
   },
-  "controlled_source_locations": {
-    "box_case_root_id": "401707782634",
-    "box_live_control_folder_id": "401710271150",
-    "box_filed_source_folder_id": "401710598017",
-    "box_source_manifest_file_id": "2360379027745",
-    "box_processed_findings_file_id": "2360381379859",
-    "box_live_control_file_id": "2359187030093",
-    "box_docket_sequence_file_id": "2359222226198",
-    "box_source_pointers_file_id": "2359221765199"
+  "source_registry": {
+    "registry_id": "CBR-1FDV-DKT225-SOURCES-001",
+    "github_path": "shared/casebrain/1FDV-23-0001009/DKT225_SOURCE_OBJECT_REGISTRY_V1.json",
+    "github_commit": "c577851a414bd661664bf0b621f441da9542ff75",
+    "github_blob_sha": "e1afefbe8e60ddd65c1d8c33c116aef5c4789f91",
+    "box_file_id": "2375721764522",
+    "box_version_id": "2632749930122",
+    "box_sha1": "dbe4519670bfd8b96b22489589ac96df0375883d",
+    "github_readback_verified": true,
+    "box_readback_verified": true
   },
-  "verified_existing_leads": {
-    "authenticated_jefs_notice": {
-      "status": "VERIFIED_BY_CONTROLLED_PROCESSED_FINDINGS",
-      "filing_actor": "Casey",
-      "filing_time": "2026-07-18T23:58:19-10:00"
+  "acquired_native_objects": [
+    {
+      "object_key": "DKT225_JEFS_NOTICE_AND_SERVICE_RECORD",
+      "status": "ACQUIRED_NATIVE_GMAIL_RECORD",
+      "gmail_message_id": "19f7ae80a23b83e6",
+      "rfc_message_id": "<384617262.11784473446187.JavaMail.jimsbroker@jimsbcc1.courts.state.hi.us>",
+      "sender": "efiling@courts.hawaii.gov",
+      "filing_date_time_hst": "2026-07-18T23:58:19-10:00",
+      "filing_party": "Casey del Carpio Barton",
+      "lead_sequence_number": 225,
+      "service_recipients": ["ag.csea.jefs.apb@hawaii.gov","glacier.equilibrium@gmail.com","sbrower@hawaii.rr.com"],
+      "authentication": {"dkim":"pass","spf":"pass","dmarc":"pass"},
+      "attachment_count": 0,
+      "control_note": "Acquired as the official filing/service notice. It does not establish the SHA-256 of the native lead-document download or later court status."
     },
-    "dkt225_candidate": {
-      "status": "CANDIDATE_NOT_OFFICIAL_SOURCE_LOCK",
-      "copies_byte_identical": true,
-      "page_count": 115,
-      "size_bytes": 5003342,
-      "sha256": "26201dc2a2b4849b2a578267b57f840240fd141dea5ff4d87f9b668444ffffd8",
-      "contains": [
-        "signed notice and certificates",
-        "corrected 109-page Rule 60 packet",
-        "Dkt. 223 cover",
-        "Dkt. 223 pages"
-      ],
-      "contains_scheduling_order": false
-    },
-    "separate_scheduling_order": {
-      "status": "DOCUMENT_EXISTS_FILING_STATUS_UNPROVEN",
-      "page_count": 1,
-      "size_bytes": 46154,
-      "sha256": "82d43431cfc5e957588e4df776b3688241c12a1e687c75b9d4df7972032d6d0f"
-    },
-    "courtesy_combined_copy": {
-      "status": "DERIVED_COURTESY_COPY_NOT_OFFICIAL_SOURCE",
-      "page_count": 116,
-      "size_bytes": 5035422,
-      "sha256": "0f8bcbc24a47805ebc3c59d76e514264e027e6df55ad4b09c2298931f850f702"
-    },
-    "file_library_search": {
-      "status": "DERIVATIVE_CONTROLS_FOUND_RAW_OBJECT_NOT_IDENTIFIED",
-      "confirmed_points": [
-        "authenticated JEFS filing timestamp",
-        "115-page candidate hash",
-        "one-page scheduling-order hash",
-        "Dkt. 224 remains unresolved"
-      ]
+    {
+      "object_key": "DKT223_SURROUNDING_JEFS_NOTICE",
+      "status": "ACQUIRED_NATIVE_GMAIL_RECORD",
+      "gmail_message_id": "19f3ac40fbbc432b",
+      "filing_date_time_hst": "2026-07-06T18:06:08-10:00",
+      "filing_party": "COURT FILED BY COURT",
+      "supporting_sequence_number": 223
     }
-  },
+  ],
+  "byte_verified_nonofficial_objects": [
+    {
+      "object_key": "DKT225_LIBRARY_CANDIDATE_PRIMARY",
+      "status": "BYTE_VERIFIED_NOT_OFFICIAL_JIMS_LOCK",
+      "file_library_file_id": "file_000000003aa481f89d4fb9af96ccfe41",
+      "filename": "01_FILE_NOW_CORRECTED_RESUBMISSION_DKT215_PURSUANT_DKT223_2026-07-18.pdf",
+      "size_bytes": 5003342,
+      "page_count": 115,
+      "sha256": "26201dc2a2b4849b2a578267b57f840240fd141dea5ff4d87f9b668444ffffd8"
+    },
+    {
+      "object_key": "DKT225_LIBRARY_CANDIDATE_DUPLICATE",
+      "status": "BYTE_IDENTICAL_DUPLICATE",
+      "file_library_file_id": "file_00000000dd1881fbad618f99d379c347",
+      "filename": "01_FILE_NOW_CORRECTED_RESUBMISSION_DKT215_PURSUANT_DKT223_2026-07-18(1).pdf",
+      "size_bytes": 5003342,
+      "page_count": 115,
+      "sha256": "26201dc2a2b4849b2a578267b57f840240fd141dea5ff4d87f9b668444ffffd8"
+    },
+    {
+      "object_key": "PROPOSED_SCHEDULING_ORDER_LIBRARY",
+      "status": "BYTE_VERIFIED_FILING_RELATIONSHIP_UNPROVEN",
+      "file_library_file_id": "file_00000000a29081fdadea940f328ef64b",
+      "filename": "02_FILE_NOW_PROPOSED_SCHEDULING_ORDER_POST_DECREE_2026-07-18.pdf",
+      "size_bytes": 46154,
+      "page_count": 1,
+      "sha256": "82d43431cfc5e957588e4df776b3688241c12a1e687c75b9d4df7972032d6d0f"
+    }
+  ],
   "required_source_objects": [
     {
       "object_key": "DKT225_DOCKET_ENTRY_AND_ROWS_223_226",
@@ -81,97 +95,92 @@
     },
     {
       "object_key": "DKT225_RAW_JIMS_LEAD_DOCUMENT",
-      "status": "NOT_ACQUIRED",
+      "status": "NOT_ACQUIRED_RUNTIME_ACCESS_BLOCKED",
+      "native_sequence_number": 225,
+      "native_download_url": "https://jimspss1.courts.state.hi.us/JIMSExternal/documentDownload.iface?seqNo=225&caseId=1FDV-23-0001009",
       "candidate_comparison_sha256": "26201dc2a2b4849b2a578267b57f840240fd141dea5ff4d87f9b668444ffffd8",
-      "required_fields": ["original_filename","byte_size","page_count","sha256","official_source_id","retrieved_at","storage_object_id"]
+      "access_blockers": ["WEB_GATEWAY_DEEP_URL_REJECTED","CONTAINER_JIMS_HOST_DNS_UNRESOLVED"],
+      "control_note": "Runtime access blocker is not proof of source unavailability."
     },
     {
       "object_key": "DKT224_NEF_OR_EQUIVALENT",
-      "status": "NOT_LOCATED",
-      "required_fields": ["notice_type","issue_time","recipients_or_service_metadata","original_filename","byte_size","sha256","official_source_id","storage_object_id"]
+      "status": "NOT_LOCATED_GMAIL_EXACT_SEARCH_NEGATIVE_OFFICIAL_SOURCE_UNRESOLVED",
+      "gmail_exact_search_results": 0,
+      "control_note": "Gmail-specific negative only; JIMS/custodian sources remain required."
     },
     {
       "object_key": "SCHEDULING_ORDER_OFFICIAL_FILING_RELATIONSHIP",
       "status": "DOCUMENT_EXISTS_RELATIONSHIP_UNPROVEN",
-      "known_document_sha256": "82d43431cfc5e957588e4df776b3688241c12a1e687c75b9d4df7972032d6d0f",
-      "required_fields": ["official_docket_number_or_attachment_id","relationship_to_dkt225","filed_or_unfiled_status","official_source_id","sha256"]
+      "known_document_sha256": "82d43431cfc5e957588e4df776b3688241c12a1e687c75b9d4df7972032d6d0f"
+    },
+    {
+      "object_key": "POST_DKT225_OFFICIAL_STATUS",
+      "status": "NO_LATER_GMAIL_NOTICE_FOUND_THROUGH_2026_07_29_OFFICIAL_DOCKET_UNRESOLVED"
     }
   ],
+  "storage_state": {
+    "file_library_original_bytes_preserved": true,
+    "box_text_registries_preserved": true,
+    "box_original_pdf_bytes_preserved": false,
+    "box_binary_upload_status": "BLOCKED_CONNECTOR_TOOL_NOT_FOUND",
+    "duplicate_candidate_upload_suppressed": true
+  },
   "preserved_conflicts": [
     {
       "conflict_key": "D225_PAGE_COUNT_POINTER",
       "source_a": "Older Box source pointer describes a 27-page corrected motion in ChatGPT Library",
-      "source_b": "Later controlled findings identify a 115-page candidate containing a 109-page Rule 60 packet plus cure materials",
-      "resolution_status": "UNRESOLVED_PENDING_RAW_OBJECT_COMPARISON",
+      "source_b": "Materialized File Library objects establish a byte-verified 115-page candidate",
+      "resolution_status": "UNRESOLVED_PENDING_OFFICIAL_JIMS_COMPARISON",
       "prohibited_action": "Do not silently choose either page count as the official filed packet"
     }
   ],
   "execution_phases": [
     {
       "phase": 1,
-      "name": "SOURCE_DISCOVERY",
+      "name": "SOURCE_DISCOVERY_AND_PARTIAL_ACQUISITION",
       "status": "IN_PROGRESS",
       "completed_actions": [
-        "Inspected Box live Dkt. 225 control and filed-source folders",
-        "Read controlled source manifest and processed findings",
-        "Searched ChatGPT conversation and File Library for candidate, JEFS, scheduling-order, and Dkt. 224 leads",
-        "Recorded exact candidate and order hashes without promoting either to official status"
+        "Acquired and read the native Gmail Dkt. 225 JEFS filing/service notice",
+        "Acquired and read the surrounding Dkt. 223 Judiciary notice",
+        "Materialized both 115-page Library candidates and the one-page scheduling order",
+        "Computed and matched SHA-256, byte size, and page count",
+        "Ran exact Gmail searches for Dkt. 224 with zero results",
+        "Registered source objects in GitHub, Box, and Supabase with native IDs",
+        "Recorded JIMS and Box-binary runtime blockers without treating them as source nonexistence"
       ],
       "next_actions": [
-        "Obtain raw Judiciary JIMS Dkt. 225 lead document",
-        "Obtain official docket rows 223 through 226",
-        "Obtain Dkt. 224 NEF or exact source-specific nonexistence/unavailability certification",
+        "Acquire raw Judiciary JIMS seqNo 225 bytes through an authenticated JEFS browser session or official records production",
+        "Acquire official docket rows 223 through 226 and current status",
+        "Acquire Dkt. 224 record/NEF or exact custodian-certified nonexistence/unavailability result",
         "Identify official filing relationship of the separate scheduling order"
-      ],
-      "exit_gate": "Every required object is located by official native ID or has a precise source-specific blocker"
+      ]
     },
     {
       "phase": 2,
-      "name": "BYTE_PRESERVATION",
-      "status": "BLOCKED_ON_PHASE_1",
+      "name": "OFFICIAL_BYTE_PRESERVATION",
+      "status": "BLOCKED_ON_RAW_JIMS_ACQUISITION",
       "actions": [
-        "Acquire original bytes without editing or conversion",
-        "Preserve original filename, size, timestamps, native identifiers, and metadata",
-        "Compute SHA-256 and store in Box without overwrite",
+        "Preserve official original filename, size, timestamps, native identifiers, and metadata",
+        "Compute SHA-256 and compare with Library candidate",
+        "Store official bytes in an approved writable evidence store without overwrite",
         "Download/read back and hash-compare stored bytes"
       ]
     },
     {
       "phase": 3,
       "name": "IDENTITY_AND_STATUS_VERIFICATION",
-      "status": "BLOCKED_ON_PHASE_2",
-      "actions": [
-        "Verify case number, docket number, entry date, filer, title, page count, and procedural status",
-        "Compare official JIMS bytes to candidate and scheduling-order hashes",
-        "Distinguish motion, proposed order, entered order, return/rejection, and NEF as separate objects",
-        "Record contradictions without resolving by assumption"
-      ]
+      "status": "BLOCKED_ON_OFFICIAL_BYTES_AND_DOCKET_ROWS"
     },
     {
       "phase": 4,
-      "name": "CROSS_SYSTEM_REGISTRATION",
-      "status": "BLOCKED_ON_PHASE_3",
-      "destinations": {
-        "supabase": "canonical acquisition ledger, hashes, state transitions, readback receipts",
-        "github": "manifest and status only; no protected source bytes",
-        "notion": "reviewed command projection and pointers",
-        "box": "original source bytes and provenance receipt",
-        "clickup_asana_linear": "execution state and review gates only"
-      }
+      "name": "FINAL_CROSS_SYSTEM_REGISTRATION",
+      "status": "BLOCKED_ON_IDENTITY_VERIFICATION"
     },
     {
       "phase": 5,
-      "name": "COMPLETION_OR_PRECISE_BLOCKER",
-      "status": "BLOCKED_ON_PHASE_4",
-      "completion_test": [
-        "Official filed PDF acquired and hash-verified, or exact source blocker recorded",
-        "NEF or equivalent acquired and hash-verified, or exact source blocker recorded",
-        "Official docket rows 223-226 and current status captured",
-        "Scheduling-order relationship established or source-specific blocker recorded",
-        "All storage and control-plane writes retrieved",
-        "No unsupported content inference remains"
-      ]
+      "name": "COMPLETION_OR_PRECISE_SOURCE_BLOCKER",
+      "status": "BLOCKED_ON_FINAL_REGISTRATION"
     }
   ],
-  "next_action": "Acquire the raw Judiciary JIMS Dkt. 225 lead document and official docket rows 223-226; compare official bytes and metadata against the preserved candidate and scheduling-order hashes."
+  "next_action": "Use an authenticated JEFS browser session to download seqNo 225 and the official docket rows 223-226, then compare the native PDF SHA-256 to the byte-verified 115-page Library candidate."
 }
