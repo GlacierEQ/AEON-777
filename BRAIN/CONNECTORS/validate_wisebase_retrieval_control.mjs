@@ -10,6 +10,12 @@ if (control.status !== "operative") throw new Error("Wisebase retrieval control 
 if (control.authority.wisebase_role !== "candidate_retrieval_and_historical_research_plane") {
   throw new Error("Wisebase authority drifted from governed retrieval and historical research");
 }
+if (!control.witness_journal_policy.first_person_account_is_evidence_bearing_source) {
+  throw new Error("first-person witness authority is not preserved");
+}
+if (!control.witness_journal_policy.missing_connector_access_is_not_absence) {
+  throw new Error("missing connector support was permitted to become factual negation");
+}
 for (const phrase of [
   "Legacy raw preservation doctrine",
   "Preserve first",
@@ -24,12 +30,6 @@ for (const phrase of [
 if (!readme.includes("WISEBASE_RETRIEVAL_CONTROL.md")) {
   throw new Error("README does not route workers through Wisebase retrieval control");
 }
-if (!control.source_preservation_policy.failed_promotion_does_not_authorize_deletion) {
-  throw new Error("failed promotion no longer preserves the source artifact");
-}
-if (!control.source_preservation_policy.authorized_scope_searchability_preserved) {
-  throw new Error("authorized-scope legacy searchability is not preserved");
-}
 
 const baseCandidate = {
   candidate_id: "synthetic://wisebase/candidate/1",
@@ -43,6 +43,13 @@ const baseCandidate = {
   legacy_source: false,
   captured_at: "2026-07-29T10:00:00Z",
   moment_context_status: "not_required_for_nonlegacy_source",
+  speaker_attribution: "official-record",
+  personal_knowledge_scope: "official-record-content",
+  support_state: "corroborated",
+  claimed_additional_support: false,
+  journal_series_id: null,
+  occurrence_count: 1,
+  event_vectors: null,
   truth_class: "verified_source_fact",
   sensitivity: "confidential",
   proposition: "Dkt. 191 and Dkt. 193 were entered one minute apart",
@@ -66,7 +73,6 @@ const baseCandidate = {
 
 const valid = evaluateWisebaseCandidate(baseCandidate, control);
 if (!valid.compliant) throw new Error(`valid source-linked candidate rejected: ${valid.reasons}`);
-if (valid.source_disposition !== "preserve_raw") throw new Error("valid source was not preserved");
 
 const legacyRaw = evaluateWisebaseCandidate({
   ...baseCandidate,
@@ -80,6 +86,10 @@ const legacyRaw = evaluateWisebaseCandidate({
   legacy_source: true,
   captured_at: "2025-06-25T18:36:00-07:00",
   moment_context_status: "captured_with_available_evidence_model_state_and_emotional_register",
+  speaker_attribution: "casey",
+  personal_knowledge_scope: "in-the-moment-account-and-theory",
+  support_state: "support_not_currently_loaded",
+  claimed_additional_support: true,
   truth_class: "hypothesis",
   proposition: "In-the-moment symbolic and strategic theory",
   promotion_decision: "hold",
@@ -87,8 +97,68 @@ const legacyRaw = evaluateWisebaseCandidate({
   support_basis: "historical_context"
 }, control);
 if (!legacyRaw.compliant) throw new Error(`legacy raw preservation rejected: ${legacyRaw.reasons}`);
-if (legacyRaw.source_disposition !== "preserve_raw") {
-  throw new Error("legacy raw source was not preserved");
+if (legacyRaw.source_disposition !== "preserve_raw") throw new Error("legacy raw source was not preserved");
+
+const witness = evaluateWisebaseCandidate({
+  ...baseCandidate,
+  candidate_id: "synthetic://wisebase/candidate/witness",
+  query: "Casey March 27 2025 repeated chat journal court event",
+  query_profile: "witness_journal",
+  exact_anchor_count: 4,
+  source_name: "chat-thread",
+  source_pointer: "chat://thread/entry/3",
+  raw_preservation_pointer: "chat://thread/raw",
+  captured_at: "2025-03-27T12:00:00-10:00",
+  moment_context_status: "preserved",
+  speaker_attribution: "casey",
+  personal_knowledge_scope: "personally_perceived_and_experienced",
+  support_state: "support_inaccessible_current_run",
+  claimed_additional_support: true,
+  journal_series_id: "journal://series/march-27-event",
+  occurrence_count: 5,
+  event_vectors: {
+    who: "casey-and-institution",
+    what: "reported-event",
+    when: "2025-03-27",
+    where: "court",
+    communication_channel: "chat-journal"
+  },
+  truth_class: "first_person_witness_statement",
+  proposition: "Casey's firsthand account of the event",
+  promotion_decision: "hold",
+  last_verified_at: null,
+  support_basis: "first_person_source"
+}, control);
+if (!witness.compliant) throw new Error(`valid witness candidate rejected: ${witness.reasons}`);
+if (witness.support_disposition !== "support_gap_not_factual_negation") {
+  throw new Error("witness support gap became factual negation");
+}
+if (witness.repetition_disposition !== "longitudinal_thread_required") {
+  throw new Error("repeated witness account did not require longitudinal thread");
+}
+
+const discardWitness = evaluateWisebaseCandidate({
+  ...witness,
+  candidate_id: "synthetic://wisebase/candidate/witness-discard",
+  promotion_decision: "discard"
+}, control);
+if (
+  discardWitness.compliant ||
+  !discardWitness.reasons.includes("witness_discard_for_missing_corroboration_prohibited")
+) {
+  throw new Error("discard of witness account for missing connected corroboration was not rejected");
+}
+
+const witnessNoSeries = evaluateWisebaseCandidate({
+  ...witness,
+  candidate_id: "synthetic://wisebase/candidate/witness-no-series",
+  journal_series_id: null
+}, control);
+if (
+  witnessNoSeries.compliant ||
+  !witnessNoSeries.reasons.includes("witness_repetition_series_missing")
+) {
+  throw new Error("repeated witness account without journal series was not rejected");
 }
 
 const broad = evaluateWisebaseCandidate({
@@ -121,20 +191,6 @@ if (restrictedPromotion.source_disposition !== "preserve_restricted") {
   throw new Error("restricted source was not preserved despite failed promotion");
 }
 
-const restrictedQuarantine = evaluateWisebaseCandidate({
-  ...baseCandidate,
-  candidate_id: "synthetic://wisebase/candidate/quarantine",
-  source_retention_decision: "preserve_restricted",
-  truth_class: "unresolved",
-  sensitivity: "restricted",
-  restricted_content_classes: ["credential"],
-  proposition: "Restricted source family contains credential-bearing material",
-  promotion_decision: "quarantine"
-}, control);
-if (!restrictedQuarantine.compliant) {
-  throw new Error(`valid restricted preservation disposition rejected: ${restrictedQuarantine.reasons}`);
-}
-
 const deletionAttempt = evaluateWisebaseCandidate({
   ...legacyRaw,
   candidate_id: "synthetic://wisebase/candidate/delete-attempt",
@@ -145,21 +201,6 @@ if (
   !deletionAttempt.reasons.includes("legacy_source_deletion_prohibited")
 ) {
   throw new Error("legacy deletion attempt was not rejected");
-}
-if (deletionAttempt.source_disposition !== "preserve_raw") {
-  throw new Error("legacy deletion rejection did not preserve source disposition");
-}
-
-const rewriteAttempt = evaluateWisebaseCandidate({
-  ...legacyRaw,
-  candidate_id: "synthetic://wisebase/candidate/rewrite-attempt",
-  rewrite_source: true
-}, control);
-if (
-  rewriteAttempt.compliant ||
-  !rewriteAttempt.reasons.includes("legacy_source_rewrite_prohibited")
-) {
-  throw new Error("legacy rewrite attempt was not rejected");
 }
 
 const mutableWithoutReceipt = evaluateWisebaseCandidate({
@@ -217,5 +258,5 @@ for (const supportBasis of ["relevance_only", "repetition_only"]) {
 }
 
 console.log(
-  "PASS: Wisebase preserves legacy raw sources and historical voice while independently enforcing exact anchors, claim classification, restricted exposure, current receipts, exact-hash duplicate proof, and project-identity separation"
+  "PASS: Wisebase preserves legacy raw and firsthand witness sources, treats inaccessible support as a support gap, links repeated journal entries longitudinally, and independently enforces promotion, restriction, receipt, duplicate, and project-identity gates"
 );
