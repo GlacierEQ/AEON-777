@@ -1,0 +1,56 @@
+{
+  "receipt_version": "1.0.0",
+  "validated_at": "2026-07-29T10:49:00Z",
+  "validation_mode": "isolated_current_run_node_execution",
+  "repository": "GlacierEQ/AEON-777",
+  "tested_repository_state_through_commit": "6be980f4c44fb95c9b919adcd17acccb62b2223e",
+  "artifacts": {
+    "protocol": {
+      "path": "BRAIN/CONNECTORS/WISEBASE_RETRIEVAL_CONTROL.md",
+      "blob_sha": "bd1acca6e760e883b74e84e7286bbbfce3e6abc3",
+      "creation_commit": "4d8cceabb2ed831bc8551101dcc371dbaeaaec1c"
+    },
+    "control": {
+      "path": "BRAIN/CONNECTORS/WISEBASE_RETRIEVAL_CONTROL.json",
+      "blob_sha": "75d1443adf0aeff281e99296758a376373f26efe",
+      "creation_commit": "47129217f24fee35d758b90db44a2d0117634af2"
+    },
+    "guard": {
+      "path": "BRAIN/CONNECTORS/wisebase_retrieval_guard.mjs",
+      "blob_sha": "1652425996e59875fe65bf2ca238fcb70e03c0e1",
+      "creation_commit": "45a2440f7974208daba2fbebd362b6a998062986"
+    },
+    "validator": {
+      "path": "BRAIN/CONNECTORS/validate_wisebase_retrieval_control.mjs",
+      "blob_sha": "c02789a504b22a17bd88c9ebc9cdedee226f28d1",
+      "creation_commit": "7251a8ba08dfe1716c1c95bbfe6a7fba05d02b03"
+    },
+    "readme": {
+      "path": "BRAIN/CONNECTORS/README.md",
+      "blob_sha": "c6b10c50e270cf102f42c36a6f9fc6c003760b3e",
+      "update_commit": "4dedd9e63342a5dce29aa0a6f41b17bbedee135e"
+    },
+    "package_gate": {
+      "path": "BRAIN/CONNECTORS/package.json",
+      "blob_sha": "210615642b99552c2ce11867f236828cfb53a01a",
+      "update_commit": "6be980f4c44fb95c9b919adcd17acccb62b2223e"
+    }
+  },
+  "positive_controls": [
+    "source-linked exact-anchor candidate is accepted",
+    "restricted material may be quarantined"
+  ],
+  "negative_controls": [
+    "unsplit broad architecture query is rejected",
+    "restricted-content promotion is rejected",
+    "mutable-state promotion without a current receipt is rejected",
+    "duplicate consolidation without exact-hash proof is rejected",
+    "project-identity merge without source proof is rejected",
+    "relevance-only promotion is rejected",
+    "repetition-only promotion is rejected"
+  ],
+  "result": "pass",
+  "stdout": "PASS: Wisebase retrieval control requires exact anchors, source-linked promotion, restricted-content quarantine, current receipts, exact-hash duplicate proof, and project-identity separation",
+  "hosted_workflow_state": "not_observed_for_direct_default_branch_commits",
+  "limitation": "This receipt proves isolated execution of the new Wisebase validator against the committed control semantics. It does not claim a GitHub-hosted workflow run or physical corpus mutation."
+}
