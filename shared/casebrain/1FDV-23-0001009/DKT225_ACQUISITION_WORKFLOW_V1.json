@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0.0",
+  "workflow_id": "CBR-1FDV-DKT225-ACQ-001",
+  "case_id": "1FDV-23-0001009",
+  "docket_number": 225,
+  "created_at": "2026-07-29T10:55:00Z",
+  "execution_state": "ACTIVE_SOURCE_DISCOVERY",
+  "authority_boundary": {
+    "original_court_records_control": true,
+    "workflow_is_evidence": false,
+    "no_content_inference_from_missing_objects": true,
+    "protected_bytes_in_github": false
+  },
+  "required_source_objects": [
+    {
+      "object_key": "DKT225_DOCKET_ENTRY",
+      "description": "Official docket entry and metadata for Dkt. 225",
+      "status": "NOT_ACQUIRED",
+      "required_fields": ["case_id","docket_number","entry_date","title","filer","official_source_id","source_location","retrieved_at"]
+    },
+    {
+      "object_key": "DKT225_FILED_PDF",
+      "description": "Original filed PDF associated with Dkt. 225",
+      "status": "NOT_ACQUIRED",
+      "required_fields": ["original_filename","byte_size","page_count","sha256","official_source_id","retrieved_at","storage_object_id"]
+    },
+    {
+      "object_key": "DKT225_NEF",
+      "description": "Notice of Electronic Filing or equivalent service/entry notice",
+      "status": "NOT_ACQUIRED",
+      "required_fields": ["notice_type","issue_time","recipients_or_service_metadata","original_filename","byte_size","sha256","official_source_id","storage_object_id"]
+    },
+    {
+      "object_key": "DKT225_SURROUNDING_STATUS",
+      "description": "Official current docket status and immediately surrounding entries necessary to interpret procedural posture",
+      "status": "NOT_ACQUIRED",
+      "required_fields": ["preceding_entries","following_entries","current_status","official_source_id","retrieved_at"]
+    }
+  ],
+  "execution_phases": [
+    {
+      "phase": 1,
+      "name": "SOURCE_DISCOVERY",
+      "status": "IN_PROGRESS",
+      "actions": [
+        "Search approved official and source-native repositories using exact case number and docket number",
+        "Capture native object identifiers and source locations before downloading",
+        "Separate filed motion, proposed order, entered order, rejection notice, and NEF identities"
+      ],
+      "exit_gate": "Every required object is either located by official native ID or has a precise source-specific access blocker"
+    },
+    {
+      "phase": 2,
+      "name": "BYTE_PRESERVATION",
+      "status": "BLOCKED_ON_PHASE_1",
+      "actions": [
+        "Acquire original bytes without editing or conversion",
+        "Preserve original filename, size, timestamps, and metadata",
+        "Compute SHA-256 and store in approved evidence custody without overwrite"
+      ],
+      "exit_gate": "Every acquired object has verified bytes, hash, custody object ID, and readback"
+    },
+    {
+      "phase": 3,
+      "name": "IDENTITY_AND_STATUS_VERIFICATION",
+      "status": "BLOCKED_ON_PHASE_2",
+      "actions": [
+        "Verify case number, docket number, entry date, filer, title, page count, and procedural status",
+        "Compare docket metadata to acquired PDF and notice metadata",
+        "Record contradictions or missing fields without resolving by assumption"
+      ],
+      "exit_gate": "All identities are reconciled or explicitly flagged with evidence-grounded discrepancies"
+    },
+    {
+      "phase": 4,
+      "name": "CROSS_SYSTEM_REGISTRATION",
+      "status": "BLOCKED_ON_PHASE_3",
+      "destinations": {
+        "supabase": "canonical acquisition ledger, hashes, state transitions, readback receipts",
+        "github": "manifest and status only; no protected source bytes",
+        "notion": "reviewed command projection and pointers",
+        "box": "original source bytes and provenance receipt",
+        "clickup_asana_linear": "execution state and review gates only"
+      },
+      "exit_gate": "Every destination write is retrieved and native IDs are recorded"
+    },
+    {
+      "phase": 5,
+      "name": "COMPLETION_OR_PRECISE_BLOCKER",
+      "status": "BLOCKED_ON_PHASE_4",
+      "completion_test": [
+        "Official filed PDF acquired and hash-verified, or exact source blocker recorded",
+        "NEF or equivalent acquired and hash-verified, or exact source blocker recorded",
+        "Official docket entry and surrounding status captured",
+        "All storage and control-plane writes retrieved",
+        "No unsupported content inference remains"
+      ]
+    }
+  ],
+  "canonical_execution_anchors": {
+    "asana_task_id": "1213120181650215",
+    "asana_receipt_story_id": "1216981586643869",
+    "linear_issue_id": "HI-51",
+    "clickup_wave2_task_id": "86ajrm7t5",
+    "supabase_receipt_id": "20ac0844-4c1f-477a-a06e-e8cdee1fcece",
+    "notion_alignment_page_id": "3a4b1e4f-3223-81d8-a3db-d92edb353904",
+    "box_wave2_receipt_file_id": "2375333152498"
+  },
+  "next_action": "Search existing controlled evidence stores for the official Dkt. 225 docket entry, filed PDF, NEF, and surrounding status; do not infer missing contents."
+}
