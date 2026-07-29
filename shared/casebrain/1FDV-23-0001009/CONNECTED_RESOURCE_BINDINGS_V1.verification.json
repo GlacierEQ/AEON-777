@@ -1,13 +1,14 @@
 {
   "case_id": "1FDV-23-0001009",
   "verification_time": "2026-07-28T21:29:00-10:00",
-  "closed_at": "2026-07-28T21:34:00-10:00",
+  "closed_at": "2026-07-28T21:36:13-10:00",
   "github": {
     "manifest_commit": "568ec6495f934c41fa75c4d285fd905925b201ec",
     "manifest_path": "shared/casebrain/1FDV-23-0001009/CONNECTED_RESOURCE_BINDINGS_V1.json",
     "manifest_blob_sha": "19994ddd8c8d9cc1ce4749a8f9afd8f5b57b02c0",
-    "status": "RETRIEVAL_VERIFIED",
-    "temporary_probe_removed_commit": "4f34401fc8b2aa45856bc6028c0198db281eeacb"
+    "verification_commit": "b75044bdfb1815ef3e8119f1bedeef6361486d11",
+    "temporary_probe_removed_commit": "4f34401fc8b2aa45856bc6028c0198db281eeacb",
+    "status": "RETRIEVAL_VERIFIED"
   },
   "notion": {
     "page_id": "3a4b1e4f-3223-81d8-a3db-d92edb353904",
@@ -35,8 +36,14 @@
   "clickup": {
     "task_id": "86ajrfqvn",
     "task_url": "https://app.clickup.com/t/86ajrfqvn",
-    "status": "Closed",
-    "status": "RETRIEVAL_VERIFIED_CLOSED"
+    "task_status": "Closed",
+    "verification_status": "RETRIEVAL_VERIFIED_CLOSED"
+  },
+  "supabase": {
+    "project_id": "dyhprklicgewmrimecey",
+    "closure_recorded_at": "2026-07-29T07:36:13.019181Z",
+    "change_type": "wave_1_verification_closed",
+    "status": "RETRIEVAL_VERIFIED"
   },
   "slack": {
     "canvas_status": "BLOCKED",
