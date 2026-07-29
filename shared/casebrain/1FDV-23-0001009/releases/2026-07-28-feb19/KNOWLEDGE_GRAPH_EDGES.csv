@@ -1,0 +1,40 @@
+Edge ID,Source Node,Relationship,Target Node,Proof Status,Note,Release ID
+EDGE-001,EVT-F19-2025-02-19-DKT141,concerns,DKT-141,supported,,CBR-REL-2026-07-28-F19-V2
+EDGE-002,EVT-F19-2025-02-19-DKT141,concerns,DKT-142,supported,,CBR-REL-2026-07-28-F19-V2
+EDGE-003,DKT-158,disposes,DKT-141,corroborated,Oral denial + written order,CBR-REL-2026-07-28-F19-V2
+EDGE-004,DKT-160,challenges,DKT-158,supported,Immediate next-day filing,CBR-REL-2026-07-28-F19-V2
+EDGE-005,DKT-141,challenges_order_process,DKT-139,supported,,CBR-REL-2026-07-28-F19-V2
+EDGE-006,ACT-007,presided_over,EVT-F19-2025-02-19-DKT141,corroborated,,CBR-REL-2026-07-28-F19-V2
+EDGE-007,ACT-001,presented_motion,DKT-141,corroborated,,CBR-REL-2026-07-28-F19-V2
+EDGE-008,ACT-004,opposed,DKT-141,supported,,CBR-REL-2026-07-28-F19-V2
+EDGE-009,ACT-007,disclosed_connection_to,ACT-247,located,Derivative transcript; official record required,CBR-REL-2026-07-28-F19-V2
+EDGE-010,ACT-247,associated_with,ACT-056,located,,CBR-REL-2026-07-28-F19-V2
+EDGE-011,ACT-246,identified_as_prior_matter_handler_for,ACT-001,located,Disclosure only; privilege boundary,CBR-REL-2026-07-28-F19-V2
+EDGE-012,ACT-011,court_staff_for,EVT-F19-2025-02-19-DKT141,located,Minutes/source lock required,CBR-REL-2026-07-28-F19-V2
+EDGE-013,EVID-F19-001,documents,EVT-F19-2025-02-19-DKT141,primary_source_verified,,CBR-REL-2026-07-28-F19-V2
+EDGE-014,EVID-F19-002,documents,EVT-F19-2025-02-19-DKT141,primary_source_verified,,CBR-REL-2026-07-28-F19-V2
+EDGE-015,EVID-F19-AUD-001,documents,EVT-F19-2025-02-19-DKT141,primary_source_verified,,CBR-REL-2026-07-28-F19-V2
+EDGE-016,EVID-F19-AUD-002,documents,EVT-F19-2025-02-19-DKT141,primary_source_verified,,CBR-REL-2026-07-28-F19-V2
+EDGE-017,EVID-F19-AUD-003,documents,EVT-F19-2025-02-19-DKT141,primary_source_verified,,CBR-REL-2026-07-28-F19-V2
+EDGE-018,EVID-F19-AUD-004,documents,EVT-F19-2025-02-19-DKT141,primary_source_verified,,CBR-REL-2026-07-28-F19-V2
+EDGE-019,EVID-F19-AUD-005,documents,EVT-F19-2025-02-19-DKT141,primary_source_verified,,CBR-REL-2026-07-28-F19-V2
+EDGE-020,EVID-F19-010,documents,EVT-F19-2025-02-19-DKT141,corroborated,,CBR-REL-2026-07-28-F19-V2
+EDGE-021,EVID-F19-011,documents,EVT-F19-2025-02-19-DKT141,corroborated,,CBR-REL-2026-07-28-F19-V2
+EDGE-022,EVID-F19-012,documents,EVT-F19-2025-02-19-DKT141,corroborated,,CBR-REL-2026-07-28-F19-V2
+EDGE-023,EVID-F19-013,documents,EVT-F19-2025-02-19-DKT141,corroborated,,CBR-REL-2026-07-28-F19-V2
+EDGE-024,EVID-F19-014,documents,EVT-F19-2025-02-19-DKT141,located,,CBR-REL-2026-07-28-F19-V2
+EDGE-025,EVID-F19-002,exact_duplicate_of,EVID-F19-001,primary_source_verified,,CBR-REL-2026-07-28-F19-V2
+EDGE-026,EVID-F19-AUD-001,candidate_source_for,EVID-F19-001,unresolved,No candidate promoted to source,CBR-REL-2026-07-28-F19-V2
+EDGE-027,EVID-F19-AUD-002,candidate_source_for,EVID-F19-001,unresolved,No candidate promoted to source,CBR-REL-2026-07-28-F19-V2
+EDGE-028,EVID-F19-AUD-003,candidate_source_for,EVID-F19-001,unresolved,No candidate promoted to source,CBR-REL-2026-07-28-F19-V2
+EDGE-029,EVID-F19-AUD-004,candidate_source_for,EVID-F19-001,unresolved,No candidate promoted to source,CBR-REL-2026-07-28-F19-V2
+EDGE-030,EVID-F19-AUD-005,candidate_source_for,EVID-F19-001,unresolved,No candidate promoted to source,CBR-REL-2026-07-28-F19-V2
+EDGE-031,DKT-158,cites_or_relies_on,AUTH-HFCR-58,supported,,CBR-REL-2026-07-28-F19-V2
+EDGE-032,DKT-158,cites_or_relies_on,AUTH-HRS-571-8.5,supported,,CBR-REL-2026-07-28-F19-V2
+EDGE-033,DKT-158,cites_or_relies_on,AUTH-OUGHTERSON,supported,,CBR-REL-2026-07-28-F19-V2
+EDGE-034,RES-BOX-F19,projects_control_for,EVT-F19-2025-02-19-DKT141,located,,CBR-REL-2026-07-28-F19-V2
+EDGE-035,RES-GH-F19,projects_control_for,EVT-F19-2025-02-19-DKT141,located,,CBR-REL-2026-07-28-F19-V2
+EDGE-036,RES-NOTION-F19,projects_control_for,EVT-F19-2025-02-19-DKT141,located,,CBR-REL-2026-07-28-F19-V2
+EDGE-037,RES-ASANA-F19,projects_control_for,EVT-F19-2025-02-19-DKT141,located,,CBR-REL-2026-07-28-F19-V2
+EDGE-038,RES-DRIVE-F19,projects_control_for,EVT-F19-2025-02-19-DKT141,located,,CBR-REL-2026-07-28-F19-V2
+EDGE-039,RES-DBX-F19,projects_control_for,EVT-F19-2025-02-19-DKT141,located,,CBR-REL-2026-07-28-F19-V2
