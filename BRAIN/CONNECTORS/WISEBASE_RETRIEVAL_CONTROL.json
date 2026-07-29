@@ -1,12 +1,14 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "status": "operative",
   "effective_at": "2026-07-29",
   "preservation_amended_at": "2026-07-29",
+  "witness_journal_amended_at": "2026-07-29",
   "authority": {
     "wisebase_role": "candidate_retrieval_and_historical_research_plane",
     "canonical_memory_authority": "operator_designated_canonical_conversation",
-    "source_fact_authority": "native_source_artifact",
+    "source_fact_authority": "native_source_artifact_or_first_person_witness_source",
+    "operator_controls_own_recollection_representation": true,
     "implementation_authority": "github",
     "governance_projection": [
       "notion",
@@ -18,6 +20,7 @@
     "active_case_facts",
     "actor_event_threads",
     "machine_pistons",
+    "witness_journal",
     "legacy_raw_corpus",
     "restricted_preserved_material"
   ],
@@ -35,6 +38,19 @@
     "rewrite_legacy_source_prohibited": true,
     "delete_legacy_source_by_default_prohibited": true,
     "authorized_scope_searchability_preserved": true
+  },
+  "witness_journal_policy": {
+    "first_person_account_is_evidence_bearing_source": true,
+    "missing_connector_access_is_not_absence": true,
+    "claimed_additional_support_must_be_preserved": true,
+    "speaker_attribution_must_be_separated": true,
+    "emotional_register_must_be_preserved": true,
+    "repeated_entries_increase_chronological_salience": true,
+    "repeated_entries_require_longitudinal_thread": true,
+    "repetition_supports_continuity_notice_and_persistence_analysis": true,
+    "repetition_alone_does_not_decide_external_conclusion": true,
+    "observation_survives_dispute_over_legal_characterization": true,
+    "derivatives_must_point_to_raw_source": true
   },
   "query_profiles": {
     "legal_record": {
@@ -60,6 +76,7 @@
         "truth_taxonomy",
         "sensitivity_controls",
         "legacy_preservation",
+        "witness_journal",
         "current_runtime_receipt",
         "project_identity",
         "connector_capability"
@@ -73,6 +90,15 @@
       "allows_superseded_material": true,
       "minimum_exact_anchor_count": 2,
       "purpose": "longitudinal_understanding_not_current_fact_promotion"
+    },
+    "witness_journal": {
+      "required_anchor_types": [
+        "witness_or_speaker",
+        "timeframe_or_source_pointer",
+        "event_vector_or_journal_series"
+      ],
+      "minimum_exact_anchor_count": 3,
+      "purpose": "preserve_and_link_first_person_account_chronology_and_support_state"
     }
   },
   "required_candidate_fields": [
@@ -87,6 +113,13 @@
     "legacy_source",
     "captured_at",
     "moment_context_status",
+    "speaker_attribution",
+    "personal_knowledge_scope",
+    "support_state",
+    "claimed_additional_support",
+    "journal_series_id",
+    "occurrence_count",
+    "event_vectors",
     "truth_class",
     "sensitivity",
     "proposition",
@@ -107,14 +140,27 @@
   ],
   "allowed_truth_classes": [
     "verified_source_fact",
+    "first_person_witness_statement",
+    "contemporaneous_journal_entry",
     "documented_source_statement",
     "party_allegation",
     "third_party_statement",
+    "lay_inference",
     "model_inference",
+    "legal_characterization",
     "hypothesis",
     "runtime_state",
     "superseded_view",
     "unresolved"
+  ],
+  "allowed_support_states": [
+    "support_not_currently_loaded",
+    "support_pointer_known",
+    "support_inaccessible_current_run",
+    "corroboration_pending",
+    "corroborated",
+    "disputed",
+    "unknown"
   ],
   "allowed_sensitivity_classes": [
     "public",
@@ -132,19 +178,21 @@
     "protected_minor_identifier",
     "medical_detail",
     "private_communication",
-    "unsupported_accusation",
+    "sensitive_accusation_requiring_controlled_exposure",
     "synthetic_anchor",
     "unqualified_legal_conclusion"
   ],
   "promotion_policy": {
     "relevance_alone_is_insufficient": true,
-    "repetition_alone_is_insufficient": true,
+    "repetition_alone_is_insufficient_for_external_conclusion": true,
+    "repetition_has_chronology_and_salience_value": true,
     "source_pointer_required": true,
     "truth_class_required": true,
     "sensitivity_required": true,
     "mutable_state_requires_current_run_receipt": true,
     "restricted_content_may_only_be_quarantined_for_promotion": true,
-    "source_retention_is_independent_from_claim_promotion": true
+    "source_retention_is_independent_from_claim_promotion": true,
+    "first_person_observation_must_not_be_discarded_for_missing_corroboration": true
   },
   "duplicate_policy": {
     "same_title_is_candidate_only": true,
@@ -152,7 +200,8 @@
     "semantic_similarity_is_candidate_only": true,
     "consolidation_requires_exact_hash": true,
     "consolidation_requires_provenance_review": true,
-    "originals_preserved_after_consolidation": true
+    "originals_preserved_after_consolidation": true,
+    "repeated_witness_entries_are_not_duplicate_noise": true
   },
   "project_identity_policy": {
     "merge_by_similarity_prohibited": true,
@@ -178,6 +227,7 @@
       "file_browser",
       "semantic_retrieval",
       "historical_research",
+      "witness_journal_retrieval",
       "upload_interaction",
       "translation",
       "knowledge_graph_assets",
