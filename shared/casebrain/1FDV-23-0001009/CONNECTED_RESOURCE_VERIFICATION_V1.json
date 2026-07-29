@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "1FDV-23-0001009",
+  "verified_at": "2026-07-29T01:30:00Z",
+  "wave": "CONNECTED_RESOURCE_BUILD_V1",
+  "status": "VERIFIED_WITH_TWO_RESIDUALS",
+  "receipts": {
+    "supabase": {
+      "project_id": "dyhprklicgewmrimecey",
+      "bound_connectors": 10,
+      "verified_capabilities": 34,
+      "route_policies": 26,
+      "runtime_rows": 26,
+      "fresh_health_receipts": 9,
+      "verified": true
+    },
+    "github": {
+      "manifest_path": "shared/casebrain/1FDV-23-0001009/CONNECTED_RESOURCE_BINDINGS_V1.json",
+      "manifest_blob_sha": "19994ddd8c8d9cc1ce4749a8f9afd8f5b57b02c0",
+      "manifest_commit_sha": "568ec6495f934c41fa75c4d285fd905925b201ec",
+      "retrieval_verified": true
+    },
+    "notion": {
+      "page_id": "3a4b1e4f-3223-81d8-a3db-d92edb353904",
+      "wave_1_section_retrieved": true,
+      "retrieval_verified": true
+    },
+    "gmail": {
+      "label_id": "Label_34",
+      "label_name": "CASEBRAIN/1FDV-23-0001009/Automation-and-Source",
+      "messages_matched": 2364,
+      "sample_message_id": "19faa89e06e9f810",
+      "sample_message_contains_label": true,
+      "retrieval_verified": true
+    },
+    "box": {
+      "file_id": "2374410088507",
+      "file_version_id": "2631216479707",
+      "file_name": "CASEBRAIN_CONNECTED_RESOURCE_BUILD_V1_2026-07-28.json",
+      "size": 1518,
+      "sha1": "76fe5f54b429fd2b1226b3d2fcb214f4f866ee0f",
+      "parent_folder_id": "401707782634",
+      "retrieval_verified": true
+    },
+    "clickup": {
+      "task_id": "86ajrfqvn",
+      "list_id": "901321189802",
+      "status_before_verification": "in progress",
+      "retrieval_verified": true
+    }
+  },
+  "residuals": [
+    {
+      "system": "dropbox",
+      "status": "DEGRADED",
+      "reason": "Expected ANTIGRAVITY case root did not resolve.",
+      "active_fallback_folder_id": "id:M3qKixNrNsgAAAAAAAFTpw"
+    },
+    {
+      "system": "slack",
+      "status": "BLOCKED_BY_PLAN",
+      "reason": "Slack Canvas creation returned not_supported_free_team.",
+      "fallback": "Notion control page plus ClickUp execution task"
+    }
+  ],
+  "completion_boundary": "Wave 1 binding and verification are complete. Dropbox pointer remediation and Slack plan limitation are separate follow-on workstreams and do not invalidate verified routes."
+}
