@@ -1,182 +1,58 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "2.0.0",
   "case_id": "1FDV-23-0001009",
-  "generated_at": "2026-07-22T19:04:00Z",
+  "generated_at": "2026-07-29T01:12:00Z",
   "canonical": {
     "github_repo": "GlacierEQ/AEON-777",
     "github_root": "shared/casebrain/1FDV-23-0001009",
     "notion_dashboard_id": "335b1e4f-3223-808a-ab91-f9b855614249",
     "notion_war_room_id": "338b1e4f-3223-81ea-a0b9-d4e66fdd6069",
-    "case_execution_repo": "GlacierEQ/AspenGrove-KEKOA-1FDV-23-0001009"
+    "notion_alignment_id": "3a4b1e4f-3223-81d8-a3db-d92edb353904",
+    "box_case_root_id": "401707782634",
+    "box_feb19_event_root_id": "404097263046",
+    "case_execution_repo": "GlacierEQ/AspenGrove-KEKOA-1FDV-23-0001009",
+    "asana_global_task_gid": "1213120181650215",
+    "asana_project_gid": "1213132434974069"
   },
   "artifacts": [
-    {
-      "artifact_id": "actor-investigation-workbench-v004",
-      "version_id": "V-004",
-      "filename": "1FDV-23-0001009_OSINT_ACTOR_INVESTIGATION_WORKBENCH_BATCH01_CONTROLLED.xlsx",
-      "sha256": "bdabe5237c5ac6c80cc75b02c871888f6ac67349d3b3a6ff32816c631e4e8ee1",
-      "size_bytes": 494567,
-      "status": "controlled_local_canonical",
-      "closure_stage": 10,
-      "required_final_stage": 13,
-      "access_class": "restricted_casework",
-      "hash_storage": {
-        "embedded_in_workbook": false,
-        "receipt": "1FDV-23-0001009_WORKBOOK_CONTROL_RECEIPT.json",
-        "sha256_file": "1FDV-23-0001009_WORKBOOK_CONTROL_SHA256.txt",
-        "reason": "Embedding a final file hash changes the workbook bytes and invalidates the hash."
-      },
-      "authoritative_content": [
-        "closure_control",
-        "artifact_lineage",
-        "drive_control",
-        "actor_registry",
-        "raw_lead_intake",
-        "public_record_query_plan",
-        "event_registry",
-        "actor_event_edges",
-        "relationship_edges",
-        "theory_matrix",
-        "source_log",
-        "search_run_log",
-        "osint_findings_batch01"
-      ],
-      "completion_state": {
-        "located": true,
-        "acquired": true,
-        "hashed": true,
-        "preserved": true,
-        "parsed": true,
-        "classified": true,
-        "correlated": true,
-        "drafted": true,
-        "verified": true,
-        "packaged": true,
-        "stored": false,
-        "logged": "partial",
-        "ready_for_use": false
-      }
-    }
+    {"artifact_id":"actor-investigation-workbench-operational","filename":"1FDV-23-0001009_OSINT_ACTOR_INVESTIGATION_WORKBENCH_BATCH01_OPERATIONAL.xlsx","sha256":"4889b594b6b7d9e2bea0e93d43aaac792f7d4ade551b3616a29dd00b769e5ddd","size_bytes":525092,"status":"operational_verified","closure_stage":13,"access_class":"restricted_casework","storage":"file_library_and_box_registry_pointer"},
+    {"artifact_id":"feb19-master-v0.4","filename":"HISTORICAL_CHAT_EXHIBIT_CASEBUILDING_V0_4_2026-07-28.zip","sha256":"ca23feda173f8cc4f3418b0547f72db903cc9dce6b9193a627c015b3c3f9cae1","size_bytes":222196392,"status":"locally_verified_packaged","access_class":"restricted_casework"},
+    {"artifact_id":"feb19-core-v0.4","filename":"FEB19_EXHIBIT_GRADE_CORE_PACKAGE_2026-07-28.zip","sha256":"4af9f4419ceb2b18035aee1d713aeb8857c0d7050f619fc7bd5f9f1d810a0ed1","size_bytes":7856377,"status":"locally_verified_packaged","access_class":"restricted_casework"},
+    {"artifact_id":"feb19-proof-binder-v0.4","filename":"FEB19_COMPLETE_EXHIBIT_GRADE_PROOF_BINDER.pdf","sha256":"359559eec91c61435bb38e44ba296983536eb1e2e99ed5572c3b0579722acc84","size_bytes":5466122,"status":"locally_verified_packaged","access_class":"restricted_casework"},
+    {"artifact_id":"feb19-native-audio-v0.4","filename":"FEB19_NATIVE_AUDIO_CANDIDATES_WITH_HASHES.zip","sha256":"b935fe305c1e64105eeebecf8c68bab71a232d6c9bbdf6d88fb6a97f99edd306","size_bytes":92178887,"status":"locally_verified_packaged_source_link_unresolved","access_class":"restricted_case_audio"},
+    {"artifact_id":"resource-control-v0.5","filename":"CASEBRAIN_1FDV_RESOURCE_CONTROL_V0_5_2026-07-28.xlsx","status":"generated","access_class":"restricted_casework","contents":["resource_command_dashboard","deployment_matrix","knowledge_graph_nodes","knowledge_graph_edges","execution_queue","release_registry"]}
   ],
-  "notion": {
-    "pages": [
-      {
-        "role": "canonical_control_plane",
-        "id": "335b1e4f-3223-808a-ab91-f9b855614249",
-        "title": "APEX MASTER DASHBOARD — Case 1FDV-23-0001009 — KEKOA REUNIFICATION"
-      },
-      {
-        "role": "legal_war_room",
-        "id": "338b1e4f-3223-81ea-a0b9-d4e66fdd6069",
-        "title": "APEX LEGAL WAR ROOM — Case 1FDV-23-0001009"
-      },
-      {
-        "role": "case_evidence_inventory",
-        "id": "2eeb1e4f-3223-8198-9b88-d91bf2b02046",
-        "title": "CASE EVIDENCE INVENTORY - 1FDV-23-0001009"
-      },
-      {
-        "role": "connector_status",
-        "id": "11564bf7-3e90-4016-a2a9-0e37eee1cbb8",
-        "title": "Connector Status Matrix"
-      }
-    ]
+  "feb19_release": {
+    "release_id": "CBR-REL-2026-07-28-F19-V2",
+    "event_id": "EVT-F19-2025-02-19-DKT141",
+    "date": "2025-02-19",
+    "judge_actor_id": "ACT-007",
+    "dockets": ["139", "141", "142", "158", "160"],
+    "evidence_objects": 12,
+    "byte_verified_dropbox_objects": 7,
+    "audio_candidates": 5,
+    "audio_source_links_proven": 0,
+    "knowledge_graph_nodes": 36,
+    "knowledge_graph_edges": 39,
+    "execution_gates": 8,
+    "proof_boundary": "Transcript/media bytes verified; transcript-to-audio source relationship and official court authentication unresolved."
   },
-  "google_drive": {
-    "working_root": {
-      "id": "1Ux2wckCWsJBljUpCmac73gBN7yiIZfSx",
-      "title": "CASEBRAIN — 1FDV-23-0001009 — Working Documents"
-    },
-    "investigation_folder": {
-      "id": "1MhTWrue9G9RoJ0Y4fQvT7xZZ-5fg1V9h",
-      "title": "Investigation Workbooks"
-    },
-    "registry_pointer": {
-      "id": "17TzZx6rNflgWt06M1j-UyW4n7sX5aRUF",
-      "status": "metadata_pointer_only"
-    },
-    "actual_workbook_file_id": null,
-    "byte_upload_status": "blocked",
-    "blocker": "storageQuotaExceeded",
-    "fresh_retrieval_test": "not_possible",
-    "assets": [
-      {
-        "id": "1x_z1ReHZ6_f8w6NkgV5RqFVvX9S5pFMDgDphNMooDLM",
-        "title": "1FDV-23-0001009 Casebuilder Map",
-        "role": "case_map"
-      },
-      {
-        "id": "1kx6RAQI2nt9Rj4M01BH3Qc3TxbJkI4pagaMvEYViT7M",
-        "title": "1FDV-23-0001009 Response Packet Workflow",
-        "role": "packet_workflow"
-      },
-      {
-        "id": "1yoDGAnNToR87NTXLueFs1hS8dAao0DkqfPemtnereu4",
-        "title": "1FDV-23-0001009 Cite Bank",
-        "role": "authority_and_citation_bank"
-      },
-      {
-        "id": "1EZ6AjhkK13_g9Nk1uc7djkWkXZlH7gpWz-JPUb7HzTc",
-        "title": "1FDV-23-0001009 Response Packet Draft",
-        "role": "working_draft"
-      },
-      {
-        "id": "1kHeh7xzGTcRGISiscq0FDCWZzazRMD-6",
-        "title": "CASE_CONTINUITY_CAPSULE_1FDV-23-0001009.md",
-        "role": "continuity_capsule"
-      }
-    ]
+  "box": {
+    "role": "canonical_legal_evidence_and_actor_proofbook_store",
+    "status": "live_verified_write_text_binary_upload_action_unavailable",
+    "case_root": {"id":"401707782634","title":"1FDV-23-0001009 - ACTOR PROOFBOOKS AND LIVE FILING CONTROL"},
+    "feb19": {"event_root":"404097263046","native_audio":"404097099997","transcripts":"404098012490","court_sources":"404094844221","hashes":"404097030225","derived":"404096106433","start_index_file_id":"2374733147075","event_proofbook_file_id":"2374733898907","release_registry_file_id":"2374734076591"},
+    "binary_rule": "No binary is called stored until Box returns a file ID and metadata receipt."
   },
-  "dropbox": {
-    "roots": [
-      {
-        "path": "/ANTIGRAVITY_MEMORY_01/ANTIGRAVITY_MEMORY_01.dbx-external-drive/Case_1FDV-23-0001009_ORGANIZED",
-        "role": "raw_forensic_mirror_candidate"
-      },
-      {
-        "path": "/Kahala Home Inspectors/00_Organized_Files/Code_and_Data/Projects/03_PROJECTS/1FDV-23-0001009",
-        "role": "legacy_project_control_root"
-      }
-    ]
-  },
+  "notion": {"role":"human_control_plane","alignment_page_id":"3a4b1e4f-3223-81d8-a3db-d92edb353904","war_room_id":"338b1e4f-3223-81ea-a0b9-d4e66fdd6069","dashboard_id":"335b1e4f-3223-808a-ab91-f9b855614249","boundary":"non-sensitive summaries, decisions, status and pointers only"},
+  "asana": {"role":"execution_queue","global_task_gid":"1213120181650215","project_gid":"1213132434974069","pending_release_tasks":8,"boundary":"No raw protected evidence attachments"},
+  "google_drive": {"role":"structured_legal_document_mirror","working_root_id":"1Ux2wckCWsJBljUpCmac73gBN7yiIZfSx","casebuilder_map_id":"1x_z1ReHZ6_f8w6NkgV5RqFVvX9S5pFMDgDphNMooDLM","binary_upload_status":"degraded_storageQuotaExceeded","rule":"Do not call binary stored without successful upload and retrieval verification"},
+  "dropbox": {"role":"raw_forensic_mirror","verified_root":"/Kahalainspector Team Folder/Case_1FDV-23-0001009_ORGANIZED","root_id":"id:M3qKixNrNsgAAAAAAAFTpw","write_status":"staged_pending_exact_confirmation","rules":["no move","no rename","no overwrite","no delete","no dedupe of originals"]},
   "repositories": [
-    {
-      "repo": "GlacierEQ/AEON-777",
-      "role": "canonical_casebrain_contract_and_shared_control",
-      "default_branch": "main"
-    },
-    {
-      "repo": "GlacierEQ/AspenGrove-KEKOA-1FDV-23-0001009",
-      "role": "case_execution_and_legacy_case_material",
-      "default_branch": "main"
-    },
-    {
-      "repo": "GlacierEQ/SUPERLUMINAL_CASE_MATRIX",
-      "role": "canonical_legal_artifact_and_case_packet_spine",
-      "default_branch": "main"
-    }
+    {"repo":"GlacierEQ/AEON-777","role":"canonical machine-control contract","default_branch":"main"},
+    {"repo":"GlacierEQ/AspenGrove-KEKOA-1FDV-23-0001009","role":"case execution and legacy material","default_branch":"main"},
+    {"repo":"GlacierEQ/SUPERLUMINAL_CASE_MATRIX","role":"legal artifact and packet spine","default_branch":"main"}
   ],
-  "next_executable_action": {
-    "action": "upload_exact_controlled_workbook_bytes",
-    "precondition": "free Google Drive storage or select another approved writable connector",
-    "then": [
-      "fetch cloud metadata",
-      "download exact cloud file",
-      "calculate SHA-256",
-      "compare with detached local SHA-256",
-      "update GitHub and Notion registries",
-      "mark closure stages 11 through 13 complete"
-    ]
-  },
-  "control_rules": {
-    "pr_first": true,
-    "direct_main_writes": false,
-    "destructive_cloud_sync": false,
-    "protected_minor_data_in_github": false,
-    "raw_secrets_in_notion_or_github": false,
-    "source_pointer_required": true,
-    "verification_status_required": true,
-    "hash_required_for_materialized_evidence": true,
-    "artifact_complete_requires_stages_9_through_12": true
-  }
+  "next_executable_actions": ["obtain official February 19 audio/minutes/recorder metadata","resolve transcript-to-audio relationship","acquire Dkt. 139 version/service chain","acquire Dkt. 158 draft/service/JEFS chain","lock Dkt. 141 response/service history","obtain nonprivileged disclosure record","complete filing-use matrix","close connector-native deployment receipts"],
+  "control_rules": {"pr_first":true,"direct_main_writes":false,"destructive_cloud_sync":false,"protected_minor_data_in_github":false,"raw_secrets_in_notion_or_github":false,"source_pointer_required":true,"verification_status_required":true,"hash_required_for_materialized_evidence":true,"procedural_language":"Use procedural asymmetry/selective urgency and source-specific descriptions; reserve intent labels unless proven."}
 }
