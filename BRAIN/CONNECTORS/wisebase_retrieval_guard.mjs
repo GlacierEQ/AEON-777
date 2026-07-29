@@ -18,12 +18,11 @@ export function evaluateWisebaseCandidate(candidate, control) {
   if (!control.allowed_source_retention_decisions.includes(candidate.source_retention_decision)) {
     reasons.push("unsupported_source_retention_decision");
   }
-  if (!hasValue(candidate.source_pointer)) {
-    reasons.push("source_pointer_missing");
+  if (!control.allowed_support_states.includes(candidate.support_state)) {
+    reasons.push("unsupported_support_state");
   }
-  if (!hasValue(candidate.raw_preservation_pointer)) {
-    reasons.push("raw_preservation_pointer_missing");
-  }
+  if (!hasValue(candidate.source_pointer)) reasons.push("source_pointer_missing");
+  if (!hasValue(candidate.raw_preservation_pointer)) reasons.push("raw_preservation_pointer_missing");
   if (candidate.legacy_source === true && !hasValue(candidate.captured_at)) {
     reasons.push("legacy_capture_time_missing");
   }
@@ -111,10 +110,56 @@ export function evaluateWisebaseCandidate(candidate, control) {
 
   if (
     candidate.promotion_decision === "promote" &&
-    control.promotion_policy.repetition_alone_is_insufficient &&
+    control.promotion_policy.repetition_alone_is_insufficient_for_external_conclusion &&
     candidate.support_basis === "repetition_only"
   ) {
-    reasons.push("repetition_only_promotion");
+    reasons.push("repetition_only_external_conclusion_promotion");
+  }
+
+  const witnessClass = [
+    "first_person_witness_statement",
+    "contemporaneous_journal_entry"
+  ].includes(candidate.truth_class);
+
+  if (
+    witnessClass &&
+    control.witness_journal_policy.first_person_account_is_evidence_bearing_source &&
+    !hasValue(candidate.speaker_attribution)
+  ) {
+    reasons.push("witness_speaker_attribution_missing");
+  }
+  if (witnessClass && !hasValue(candidate.personal_knowledge_scope)) {
+    reasons.push("witness_personal_knowledge_scope_missing");
+  }
+  if (
+    witnessClass &&
+    ["support_not_currently_loaded", "support_inaccessible_current_run"].includes(candidate.support_state) &&
+    candidate.claimed_additional_support !== true
+  ) {
+    reasons.push("witness_support_gap_misrepresented");
+  }
+  if (
+    witnessClass &&
+    Number(candidate.occurrence_count) > 1 &&
+    control.witness_journal_policy.repeated_entries_require_longitudinal_thread &&
+    !hasValue(candidate.journal_series_id)
+  ) {
+    reasons.push("witness_repetition_series_missing");
+  }
+  if (
+    witnessClass &&
+    Number(candidate.occurrence_count) > 1 &&
+    !candidate.event_vectors
+  ) {
+    reasons.push("witness_event_vectors_missing");
+  }
+  if (
+    witnessClass &&
+    control.promotion_policy.first_person_observation_must_not_be_discarded_for_missing_corroboration &&
+    candidate.promotion_decision === "discard" &&
+    ["support_not_currently_loaded", "support_inaccessible_current_run"].includes(candidate.support_state)
+  ) {
+    reasons.push("witness_discard_for_missing_corroboration_prohibited");
   }
 
   return {
@@ -122,9 +167,18 @@ export function evaluateWisebaseCandidate(candidate, control) {
     reasons,
     source_disposition:
       reasons.includes("legacy_source_deletion_prohibited") ||
-      reasons.includes("legacy_source_rewrite_prohibited")
+      reasons.includes("legacy_source_rewrite_prohibited") ||
+      reasons.includes("witness_discard_for_missing_corroboration_prohibited")
         ? "preserve_raw"
         : candidate.source_retention_decision,
-    claim_disposition: reasons.length === 0 ? candidate.promotion_decision : "reject_or_quarantine"
+    claim_disposition: reasons.length === 0 ? candidate.promotion_decision : "reject_or_quarantine",
+    support_disposition:
+      ["support_not_currently_loaded", "support_inaccessible_current_run"].includes(candidate.support_state)
+        ? "support_gap_not_factual_negation"
+        : candidate.support_state,
+    repetition_disposition:
+      witnessClass && Number(candidate.occurrence_count) > 1
+        ? "longitudinal_thread_required"
+        : "preserve_entry"
   };
 }
