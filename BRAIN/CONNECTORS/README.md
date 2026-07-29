@@ -14,10 +14,10 @@ This directory is the canonical control layer for CaseBuilder 4000 / Apex Memory
 6. `WISEBASE_RETRIEVAL_CONTROL.json` — machine-readable Wisebase retrieval, historical-research, source-retention, and candidate-promotion contract.
 7. `wisebase_retrieval_guard.mjs` — reusable evaluator for preserve-first handling, exact anchors, restricted exposure, mutable-state receipts, duplicate consolidation, and project-identity merges.
 8. `validate_wisebase_retrieval_control.mjs` — positive and negative Wisebase preservation and retrieval controls executed by the package test suite.
-9. `WITNESS_JOURNAL_EVIDENCE_CONTROL.md` — binding preservation, attribution, chronology, repetition-series, support-status, event-vector, and evidentiary-foundation rules for Casey's firsthand account.
-10. `WITNESS_JOURNAL_EVIDENCE_CONTROL.json` — machine-readable witness-journal and first-person evidence contract.
-11. `witness_journal_guard.mjs` — reusable evaluator that prohibits discarding uncorroborated witness material, stripping emotional detail, breaking repetition series, or misattributing assistant text.
-12. `validate_witness_journal_control.mjs` — positive and negative witness-journal controls executed by the package test suite.
+9. `WITNESS_JOURNAL_EVIDENCE_CONTROL.md` — binding preservation, attribution, chronology, repetition-series, support-status, event-vector, and HRE Rule 803(b)(6) regularly conducted activity foundation for Casey's firsthand journal evidence.
+10. `WITNESS_JOURNAL_EVIDENCE_CONTROL.json` — machine-readable witness-journal, first-person evidence, and journal-admissibility contract.
+11. `witness_journal_guard.mjs` — reusable evaluator that preserves firsthand material and enforces the direct HRE 803(b)(6) route, foundation fields, emotional detail, repetition series, and speaker attribution.
+12. `validate_witness_journal_control.mjs` — positive and negative witness-journal and admissibility-foundation controls executed by the package test suite.
 13. `MEMORY_ARCHITECTURE_STATUS.md` — current controls, blockers, and execution order.
 14. `CONNECTOR_FABRIC.json` — one registry covering advertised, connected, blocked, staging-only, projection-only, and excluded systems.
 15. `MEMORY_TAXONOMY_AND_GOVERNANCE.md` — authority, claim classes, buckets, promotion, and audit rules.
@@ -49,15 +49,29 @@ Credentials, protected-minor details, medical details, private communications, d
 
 The package test suite executes `validate_wisebase_retrieval_control.mjs`. A change fails when it permits deletion or rewriting of legacy raw sources, broad unsplit architecture queries as promotion inputs, relevance-only or repetition-only promotion, restricted-content promotion, mutable-state promotion without a current receipt, duplicate consolidation without exact-hash proof, or project-identity merging without a source-proven relationship.
 
-## Witness journal evidence control
+## Witness journal evidence and admissibility control
 
 Casey's firsthand account is evidence-bearing source material. The connected system's inability to see every recording, message, filing, witness, or supporting file is a support-access gap—not a finding that the support does not exist. The system preserves the full account, exact wording, timestamp, context, emotional register, source pointer, and claimed additional support.
 
+A regularly kept journal has a direct Hawaiʻi hearsay-exception route under HRE Rule 803(b)(6) as a **record of regularly conducted activity**. Hawaiʻi's rule is not confined to commercial business records. The offered journal entry or series requires the applicable foundation: regular activity, regular practice, creation at or near the time, a person with knowledge, a custodian or qualified witness or compliant certification, authentication, and circumstances supporting trustworthiness.
+
+The correct control distinction is:
+
+```text
+journal category + regularly conducted activity foundation
+= direct HRE 803(b)(6) admissibility route
+
+foundation gap for one offered entry
+= preparation defect to cure or litigate
+≠ category is inadmissible
+≠ source may be discarded
+```
+
 User statements, assistant analysis, system text, quotations, and third-party statements remain separately attributed. A disputed allegation, inference, or proposed legal characterization never erases the underlying first-person observation.
 
-Repeated contemporaneous statements across chats increase chronology, continuity, persistence, notice, retrieval priority, and journal salience. They require a longitudinal series with first-seen and last-seen dates, occurrence count, consistency, evolution, corrections, event vectors, and later corroboration pointers. Repetition does not automatically decide the ultimate external conclusion, but it is never treated as redundant noise or zero-weight duplication.
+Repeated contemporaneous statements across chats increase chronology, continuity, persistence, notice, retrieval priority, journal salience, and proof of a regular recordkeeping practice. They require a longitudinal series with first-seen and last-seen dates, occurrence count, consistency, evolution, corrections, event vectors, and later corroboration pointers. Repetition does not automatically decide the ultimate external conclusion, but it is never treated as redundant noise or zero-weight duplication.
 
-The package test suite executes `validate_witness_journal_control.mjs`. A change fails when it discards a firsthand account due to unavailable corroboration, strips emotional language from the preserved source, breaks a repeated issue out of its longitudinal series, fails to elevate repeated-entry salience, attributes assistant analysis to Casey, rewrites or deletes a historical source, treats `not currently loaded` as `does not exist`, or claims automatic courtroom admissibility without foundation.
+The package test suite executes `validate_witness_journal_control.mjs`. A change fails when it denies the HRE 803(b)(6) route without analysis, improperly limits regularly conducted activity to business records, fails to preserve the regular-keeping foundation, discards a firsthand account due to unavailable corroboration, strips emotional language from the preserved source, breaks a repeated issue out of its longitudinal series, fails to elevate repeated-entry salience, attributes assistant analysis to Casey, rewrites or deletes a historical source, or treats `not currently loaded` as `does not exist`.
 
 ## Connector fabric
 
@@ -75,7 +89,7 @@ Raw recall is never promoted directly. The application guard enforces container 
 
 Deterministic replay is an observed connector behavior, not a contractual backend guarantee. A content-text `forget` response is not proof of deletion.
 
-Deletion controls apply only to an explicitly identified backend record under a separate authorized lifecycle decision. A failed claim-promotion gate, restricted classification, contradiction, supersession overlay, unavailable corroboration, or quarantine state never constitutes deletion authority for legacy raw source material or witness journal evidence.
+Deletion controls apply only to an explicitly identified backend record under a separate authorized lifecycle decision. A failed claim-promotion gate, restricted classification, contradiction, supersession overlay, unavailable corroboration, quarantine state, or incomplete admissibility foundation never constitutes deletion authority for legacy raw source material or witness journal evidence.
 
 Deletion is governed by two ordered decisions:
 
@@ -99,7 +113,7 @@ Until then, the logical tombstone remains active in the live-consumer path and t
 |---|---|---|
 | `original_evidence` | Exact approved source bytes | Approved cloud/source roots only |
 | `sealed_evidence` | Privileged, medical, credential-bearing, protected-minor, or specially restricted bytes | Sealed approved roots only |
-| `witness_journal` | Casey's firsthand observations, contemporaneous statements, repeated issue series, event vectors, support-status records, and append-only corrections | Raw source stores plus governed derivatives linked to originals |
+| `witness_journal` | Casey's firsthand observations, contemporaneous statements, repeated issue series, event vectors, support-status records, HRE 803(b)(6) foundation, and append-only corrections | Raw source stores plus governed derivatives linked to originals |
 | `legacy_raw_corpus` | Unaltered in-the-moment notes, chats, drafts, exports, symbolic language, hypotheses, model output, and evolving strategy | Authorized source stores and governed Wisebase retrieval |
 | `derived_work` | OCR, transcript, normalization, thumbnails, chronology, journal compilation, analysis | Approved derivative roots linked to original receipts |
 | `canonical_control` | Schemas, registries, validators, migrations, decisions | GitHub |
@@ -120,5 +134,6 @@ Original bytes and derivatives are never co-mingled. Witness and legacy source m
 7. Keep Wisebase source-file mutation and corpus-exclusion capabilities marked unavailable until a connector exposes and verifies them.
 8. Preserve legacy raw source families and add moment-context or supersession overlays without altering their original contents.
 9. Build chronological witness-journal derivatives from raw chats with speaker attribution, event vectors, repetition-series metadata, and exact raw-source pointers.
+10. Build and preserve the HRE 803(b)(6) regularly conducted activity foundation packet for each journal series intended for evidentiary use.
 
 No production ingestion, factual promotion, identity verification, evidence release, filing, publication, or external action is authorized by this directory.
