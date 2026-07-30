@@ -99,7 +99,7 @@ const legacyRaw = evaluateWisebaseCandidate({
 if (!legacyRaw.compliant) throw new Error(`legacy raw preservation rejected: ${legacyRaw.reasons}`);
 if (legacyRaw.source_disposition !== "preserve_raw") throw new Error("legacy raw source was not preserved");
 
-const witness = evaluateWisebaseCandidate({
+const witnessCandidate = {
   ...baseCandidate,
   candidate_id: "synthetic://wisebase/candidate/witness",
   query: "Casey March 27 2025 repeated chat journal court event",
@@ -128,7 +128,8 @@ const witness = evaluateWisebaseCandidate({
   promotion_decision: "hold",
   last_verified_at: null,
   support_basis: "first_person_source"
-}, control);
+};
+const witness = evaluateWisebaseCandidate(witnessCandidate, control);
 if (!witness.compliant) throw new Error(`valid witness candidate rejected: ${witness.reasons}`);
 if (witness.support_disposition !== "support_gap_not_factual_negation") {
   throw new Error("witness support gap became factual negation");
@@ -138,7 +139,7 @@ if (witness.repetition_disposition !== "longitudinal_thread_required") {
 }
 
 const discardWitness = evaluateWisebaseCandidate({
-  ...witness,
+  ...witnessCandidate,
   candidate_id: "synthetic://wisebase/candidate/witness-discard",
   promotion_decision: "discard"
 }, control);
@@ -150,7 +151,7 @@ if (
 }
 
 const witnessNoSeries = evaluateWisebaseCandidate({
-  ...witness,
+  ...witnessCandidate,
   candidate_id: "synthetic://wisebase/candidate/witness-no-series",
   journal_series_id: null
 }, control);
