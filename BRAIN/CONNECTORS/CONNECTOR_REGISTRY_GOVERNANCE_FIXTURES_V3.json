@@ -1,0 +1,117 @@
+{
+  "schema_version": "3.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "records": [
+    {
+      "connector_key": "synthetic_unknown_connector",
+      "canonical_role": "auxiliary",
+      "lifecycle_state": "staging_only",
+      "authentication_state": "unknown",
+      "canonical_source_ref": null,
+      "approved_roots": [],
+      "sensitivity_ceiling": "unknown",
+      "read_write_mode": "none",
+      "last_successful_probe_at": null,
+      "last_successful_probe_receipt_ref": null,
+      "freshness_status": "unknown",
+      "freshness_sla_seconds": null,
+      "provenance_coverage": {
+        "status": "unknown",
+        "covered_fields": [],
+        "receipt_ref": null
+      },
+      "idempotency_strategy": {
+        "status": "unknown",
+        "expression": null,
+        "receipt_ref": null
+      },
+      "error_state": {
+        "status": "unknown",
+        "code": null,
+        "observed_at": null,
+        "receipt_ref": null
+      },
+      "owner": "unassigned",
+      "next_human_gate": "classify_connector_assign_owner_and_approve_roots",
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown",
+        "evidence": []
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown",
+        "dimensions": {
+          "completeness": null,
+          "uniqueness": null,
+          "validity": null,
+          "consistency": null,
+          "lineage": null,
+          "timeliness": null,
+          "duplicate_risk": null
+        },
+        "evidence": []
+      }
+    },
+    {
+      "connector_key": "synthetic_verified_read_connector",
+      "canonical_role": "source_locator",
+      "lifecycle_state": "connected",
+      "authentication_state": "authenticated",
+      "canonical_source_ref": "github:synthetic/control@v1",
+      "approved_roots": [
+        "synthetic://approved-root"
+      ],
+      "sensitivity_ceiling": "internal",
+      "read_write_mode": "read_only",
+      "last_successful_probe_at": "2026-07-30T03:00:00Z",
+      "last_successful_probe_receipt_ref": "receipt:synthetic-probe-v1",
+      "freshness_status": "fresh",
+      "freshness_sla_seconds": 86400,
+      "provenance_coverage": {
+        "status": "complete",
+        "covered_fields": [
+          "source_ref",
+          "source_version",
+          "sha256"
+        ],
+        "receipt_ref": "receipt:synthetic-provenance-v1"
+      },
+      "idempotency_strategy": {
+        "status": "verified",
+        "expression": "sha256(connector_key|source_version|payload_sha256)",
+        "receipt_ref": "receipt:synthetic-replay-v1"
+      },
+      "error_state": {
+        "status": "clear",
+        "code": null,
+        "observed_at": "2026-07-30T03:00:00Z",
+        "receipt_ref": "receipt:synthetic-probe-v1"
+      },
+      "owner": "synthetic-control-owner",
+      "next_human_gate": "none_bounded_read_only",
+      "connector_quality": {
+        "score": 60,
+        "status": "measured",
+        "evidence": [
+          "receipt:synthetic-probe-v1",
+          "receipt:synthetic-replay-v1"
+        ]
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown",
+        "dimensions": {
+          "completeness": null,
+          "uniqueness": null,
+          "validity": null,
+          "consistency": null,
+          "lineage": null,
+          "timeliness": null,
+          "duplicate_risk": null
+        },
+        "evidence": []
+      }
+    }
+  ]
+}
