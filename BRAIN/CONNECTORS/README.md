@@ -20,14 +20,16 @@ This directory is the canonical control layer for CaseBuilder 4000 / Apex Memory
 12. `validate_witness_journal_control.mjs` — positive and negative witness-journal and admissibility-foundation controls executed by the package test suite.
 13. `MEMORY_ARCHITECTURE_STATUS.md` — current controls, blockers, and execution order.
 14. `CONNECTOR_FABRIC.json` — one registry covering advertised, connected, blocked, staging-only, projection-only, and excluded systems.
-15. `MEMORY_TAXONOMY_AND_GOVERNANCE.md` — authority, claim classes, buckets, promotion, and audit rules.
+15. `CONNECTOR_REGISTRY_GOVERNANCE_SCHEMA_V3.json` — typed Supabase projection contract for lifecycle, authentication, roots, sensitivity, probes, provenance, idempotency, errors, ownership, human gates, and independent quality dimensions.
+16. `validate_connector_registry_governance_v3.mjs` — schema, semantic, sensitive-pattern, and negative-control validator for registry projections.
+23. `MEMORY_TAXONOMY_AND_GOVERNANCE.md` — authority, claim classes, buckets, promotion, and audit rules.
 16. `PROVENANCE_RECEIPT_SCHEMA.json` — exact-byte provenance and deterministic replay.
-17. `MEMORY_RETRIEVAL_GUARD_SCHEMA.json` — fail-closed factual-promotion receipt.
-18. `MEMORY_TOMBSTONE_REGISTRY.json` — logical deletion controls for backend-recallable retired records.
-19. `MEMORY_DELETION_GATE_DECISION_SCHEMA.json` — two-phase pre-delete authorization and post-delete tombstone-closure contract.
-20. `MEMORY_BACKEND_CAPABILITY_PROBE_2026-07-24.json` — measured memory deletion capability boundary.
-21. `DESKTOP_COMMANDER_BINDING_RECEIPT_2026-07-25.json` — privacy-safe desktop principal and device-binding result.
-22. `MEMORY_ARCHITECTURE_DELTA_*.md` — append-only history.
+23. `MEMORY_RETRIEVAL_GUARD_SCHEMA.json` — fail-closed factual-promotion receipt.
+24. `MEMORY_TOMBSTONE_REGISTRY.json` — logical deletion controls for backend-recallable retired records.
+23. `MEMORY_DELETION_GATE_DECISION_SCHEMA.json` — two-phase pre-delete authorization and post-delete tombstone-closure contract.
+24. `MEMORY_BACKEND_CAPABILITY_PROBE_2026-07-24.json` — measured memory deletion capability boundary.
+23. `DESKTOP_COMMANDER_BINDING_RECEIPT_2026-07-25.json` — privacy-safe desktop principal and device-binding result.
+24. `MEMORY_ARCHITECTURE_DELTA_*.md` — append-only history.
 
 ## Execution protocol
 
