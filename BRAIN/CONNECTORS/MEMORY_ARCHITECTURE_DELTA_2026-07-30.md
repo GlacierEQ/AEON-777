@@ -82,9 +82,27 @@ The two open circuits remain disabled and were not reset or promoted.
 
 The migration creates a typed control surface; it does not authenticate connectors, approve roots, measure corpus quality, enable destructive operations, or authorize production ingestion.
 
+## Circuit temporal-state remediation
+
+Applied migration: `enforce_connector_circuit_temporal_state_v3`.
+
+The migration preserved circuit decisions while repairing timestamp drift:
+
+- two disabled open circuits received deterministic opening and cooldown timestamps;
+- one closed circuit had stale opening timestamps cleared;
+- no circuit was reset, promoted, or invoked;
+- the final state remains 50 closed, 2 open, and 0 half-open.
+
+A validated constraint now requires:
+
+- closed circuits to have no opening or probe state;
+- open circuits to have ordered opening and cooldown timestamps with no active probe;
+- half-open circuits to have ordered timestamps and an all-or-none probe lease pair.
+
+A negative control attempted to attach an opening timestamp to a closed circuit. PostgreSQL rejected it.
+
 ## Next executable moves
 
-1. Add a safe registry projection validator against the JSON schema.
-2. Assign canonical source references without embedding credentials or protected source locators.
-3. Add temporal circuit invariants while preserving the two disabled blockers.
-4. Prove one scoped read-only invocation with route, budget, reservation, ledger, projection, and queue receipts.
+1. Assign canonical source references without embedding credentials or protected source locators.
+2. Prove one scoped read-only invocation with route, budget, reservation, ledger, projection, and queue receipts.
+3. Preserve the two disabled open-circuit blockers until their authentication or rate-limit conditions are independently resolved.
