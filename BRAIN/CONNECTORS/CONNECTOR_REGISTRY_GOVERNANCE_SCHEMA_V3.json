@@ -1,0 +1,362 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/GlacierEQ/AEON-777/BRAIN/CONNECTORS/CONNECTOR_REGISTRY_GOVERNANCE_SCHEMA_V3.json",
+  "title": "CASEBRAIN Connector Registry Governance Projection v3",
+  "description": "Safe runtime projection contract. GitHub remains canonical. Unknown values never imply authentication, authority, provenance, freshness, or quality.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "connector_key",
+    "canonical_role",
+    "lifecycle_state",
+    "authentication_state",
+    "canonical_source_ref",
+    "approved_roots",
+    "sensitivity_ceiling",
+    "read_write_mode",
+    "last_successful_probe_at",
+    "last_successful_probe_receipt_ref",
+    "freshness_status",
+    "freshness_sla_seconds",
+    "provenance_coverage",
+    "idempotency_strategy",
+    "error_state",
+    "owner",
+    "next_human_gate",
+    "connector_quality",
+    "data_quality"
+  ],
+  "properties": {
+    "connector_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lifecycle_state": {
+      "enum": [
+        "advertised",
+        "connected",
+        "blocked",
+        "staging_only",
+        "projection_only",
+        "excluded"
+      ]
+    },
+    "authentication_state": {
+      "enum": [
+        "unknown",
+        "unauthenticated",
+        "auth_required",
+        "configuring",
+        "authenticated",
+        "error"
+      ]
+    },
+    "canonical_source_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "approved_roots": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "sensitivity_ceiling": {
+      "enum": [
+        "unknown",
+        "public",
+        "internal",
+        "confidential",
+        "privileged",
+        "sealed"
+      ]
+    },
+    "read_write_mode": {
+      "enum": [
+        "none",
+        "read_only",
+        "write_only",
+        "read_write"
+      ],
+      "readOnly": true
+    },
+    "last_successful_probe_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "last_successful_probe_receipt_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "freshness_status": {
+      "enum": [
+        "unknown",
+        "fresh",
+        "stale",
+        "expired",
+        "not_applicable"
+      ]
+    },
+    "freshness_sla_seconds": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "provenance_coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "covered_fields",
+        "receipt_ref"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "unknown",
+            "none",
+            "partial",
+            "complete"
+          ]
+        },
+        "covered_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "receipt_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "idempotency_strategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "expression",
+        "receipt_ref"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "unknown",
+            "undefined",
+            "defined",
+            "verified"
+          ]
+        },
+        "expression": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "receipt_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "error_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "code",
+        "observed_at",
+        "receipt_ref"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "unknown",
+            "clear",
+            "blocked",
+            "degraded",
+            "error"
+          ]
+        },
+        "code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "receipt_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "next_human_gate": {
+      "type": "string",
+      "minLength": 1
+    },
+    "connector_quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "score",
+        "status",
+        "evidence"
+      ],
+      "properties": {
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "status": {
+          "enum": [
+            "unknown",
+            "measured"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "data_quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "score",
+        "status",
+        "dimensions",
+        "evidence"
+      ],
+      "properties": {
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "status": {
+          "enum": [
+            "unknown",
+            "measured"
+          ]
+        },
+        "dimensions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "completeness",
+            "uniqueness",
+            "validity",
+            "consistency",
+            "lineage",
+            "timeliness",
+            "duplicate_risk"
+          ],
+          "properties": {
+            "completeness": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "uniqueness": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "validity": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "consistency": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "lineage": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "timeliness": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "duplicate_risk": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            }
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}
