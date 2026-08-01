@@ -18,6 +18,15 @@
 
 The toolbox probe proves connection-fabric visibility, not downstream data access, approved roots, corpus quality, mutation authority, or production readiness. All matching downstream connectors remain without approved roots and owners. No route was promoted to Live and no external mutation was invoked.
 
+### Circuit classification follow-up
+
+- Runtime read-back: 47 closed, 5 open, and 0 half-open circuits.
+- All 5 open circuits are attached to disabled routes; enabled open circuits remain 0.
+- The three newly observed open circuits are Gmail routes carrying the same evidence-linked `auth_required` failure.
+- The two pre-existing open circuits remain Airtable rate limiting and Granola authorization failure.
+- All 5 open states satisfy the temporal-state guard: opening timestamp, ordered cooldown, and no stray half-open probe lease.
+- No circuit was reset or reopened. Their blockers remain preserved.
+
 ### Open gaps
 
 - Canonical source references remain unset for registry records without a version-pinned source receipt.
