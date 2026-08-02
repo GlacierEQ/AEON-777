@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "executed_at": "2026-08-02T04:06:22.323710Z",
+  "route_key": "notion:fetch:workspace_page_read:v1",
+  "negative_control": {
+    "job_id": "7cd41c1d-a90d-4e1d-a1f7-07d542fb297f",
+    "status": "partial",
+    "reservation_status": "released",
+    "failure_code": "protocol_order_violation",
+    "projection_eligible": false
+  },
+  "recovery": {
+    "job_id": "c43cad02-c396-49a6-ab35-c1c048ec3d27",
+    "attempt": 1,
+    "status": "succeeded",
+    "reservation_status": "consumed",
+    "rpc_units_verified": 1,
+    "request_sha256": "71a9f82f9f5ffa23c4aec0ab947aa5aebdef9f43b6c2280e144a2495d589a50f",
+    "response_sha256": "7da98b94ec0ff3a305f9c151774cc8613dcc9ba8e22f16fe630eef21ff11246a",
+    "projection_key": "memory_architecture.connector_mesh_control_plane.current",
+    "projection_version": 1,
+    "verification_status": "verified",
+    "notion_sync_status": "synced",
+    "raw_persisted": false
+  },
+  "safety_boundary": {
+    "source_bytes_persisted": false,
+    "protected_identifiers_persisted": false,
+    "connector_quality_changed": false,
+    "data_quality_changed": false,
+    "route_promoted_live": false
+  },
+  "queue_ack": "not_exercised"
+}
