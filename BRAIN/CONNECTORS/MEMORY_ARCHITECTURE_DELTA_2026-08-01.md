@@ -32,6 +32,10 @@ The first full governed read-only connector path now has durable execution evide
 
 Job `7cd41c1d-a90d-4e1d-a1f7-07d542fb297f` called the connector before the invocation-begin transition. It remains `partial`, its reservation is released, and it is structurally ineligible for verified projection.
 
+### Registry promotion
+
+The version-pinned receipt now directly supports the Notion connector's `connected` and `authenticated` states, fresh probe timestamp, and partial provenance coverage. Approved roots remain empty, owner remains unassigned, and both quality scores remain zero. No downstream connector inherited Notion's authentication evidence.
+
 ### Open boundary
 
 The Cloudflare Queue acknowledgement and DLQ path were not exercised. The receipt explicitly records `queue_ack: not_exercised`; this run proves the durable connector core and Notion projection sync, not deployed Queue delivery.
