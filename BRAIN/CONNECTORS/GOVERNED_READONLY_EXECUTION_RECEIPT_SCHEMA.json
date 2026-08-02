@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/GlacierEQ/AEON-777/BRAIN/CONNECTORS/GOVERNED_READONLY_EXECUTION_RECEIPT_SCHEMA.json",
+  "title": "Governed read-only connector execution receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "thread_anchor",
+    "executed_at",
+    "route_key",
+    "negative_control",
+    "recovery",
+    "safety_boundary",
+    "queue_ack"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "thread_anchor": {
+      "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51"
+    },
+    "executed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "route_key": {
+      "const": "notion:fetch:workspace_page_read:v1"
+    },
+    "negative_control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "job_id",
+        "status",
+        "reservation_status",
+        "failure_code",
+        "projection_eligible"
+      ],
+      "properties": {
+        "job_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "status": {
+          "const": "partial"
+        },
+        "reservation_status": {
+          "const": "released"
+        },
+        "failure_code": {
+          "const": "protocol_order_violation"
+        },
+        "projection_eligible": {
+          "const": false
+        }
+      }
+    },
+    "recovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "job_id",
+        "attempt",
+        "status",
+        "reservation_status",
+        "rpc_units_verified",
+        "request_sha256",
+        "response_sha256",
+        "projection_key",
+        "projection_version",
+        "verification_status",
+        "notion_sync_status",
+        "raw_persisted"
+      ],
+      "properties": {
+        "job_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "attempt": {
+          "const": 1
+        },
+        "status": {
+          "const": "succeeded"
+        },
+        "reservation_status": {
+          "const": "consumed"
+        },
+        "rpc_units_verified": {
+          "const": 1
+        },
+        "request_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "response_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "projection_key": {
+          "const": "memory_architecture.connector_mesh_control_plane.current"
+        },
+        "projection_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "verification_status": {
+          "const": "verified"
+        },
+        "notion_sync_status": {
+          "const": "synced"
+        },
+        "raw_persisted": {
+          "const": false
+        }
+      }
+    },
+    "safety_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_bytes_persisted",
+        "protected_identifiers_persisted",
+        "connector_quality_changed",
+        "data_quality_changed",
+        "route_promoted_live"
+      ],
+      "properties": {
+        "source_bytes_persisted": {
+          "const": false
+        },
+        "protected_identifiers_persisted": {
+          "const": false
+        },
+        "connector_quality_changed": {
+          "const": false
+        },
+        "data_quality_changed": {
+          "const": false
+        },
+        "route_promoted_live": {
+          "const": false
+        }
+      }
+    },
+    "queue_ack": {
+      "const": "not_exercised"
+    }
+  }
+}
