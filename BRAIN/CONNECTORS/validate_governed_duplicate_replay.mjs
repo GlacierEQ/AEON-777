@@ -4,7 +4,7 @@ import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
 const schema = JSON.parse(fs.readFileSync(new URL("./IDEMPOTENT_REPLAY_RECEIPT_SCHEMA.json", import.meta.url)));
-const receipt = JSON.parse(fs.readFileSync(new URL("./GOVERNED_NOTION_DUPLICATE_REPLAY_2026-08-02.json", import.meta.url)));
+const receipt = JSON.parse(fs.readFileSync(new URL("./receipts/GOVERNED_NOTION_DUPLICATE_REPLAY_2026-08-02.json", import.meta.url)));
 
 const ajv = new Ajv2020({allErrors: true, strict: true});
 addFormats(ajv);
