@@ -1,0 +1,272 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "chatgpt_memory_federation_manifest",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "updated_at": "2026-08-03T03:37:00-10:00",
+  "identity": {
+    "active_memory_id": "9502ce38-b91e-498e-8bc5-5718ddea06e8",
+    "superseded_memory_id": "19858cb4-33a6-4db9-9192-0b842880e407",
+    "update_policy": "create_successor_then_supersede",
+    "silent_overwrite_allowed": false
+  },
+  "canonical_control": {
+    "github": {
+      "repository": "GlacierEQ/AEON-777",
+      "responsibilities": [
+        "schemas",
+        "policies",
+        "migrations",
+        "validators",
+        "immutable_history"
+      ],
+      "runtime_merge_sha": "7741668024ddf4fd6ee3e508bd0e8da069d18f85",
+      "reconciliation_merge_sha": "e5645e0eddc8f1c40fd100670d0bba5979a0a420",
+      "canonical_receipt_path": "BRAIN/CONNECTORS/receipts/MEMORY_FEDERATION_RECONCILIATION_2026-08-03.json"
+    },
+    "supabase": {
+      "project_id": "dyhprklicgewmrimecey",
+      "dispatcher": "memory-federation-dispatcher",
+      "dispatcher_function_id": "5c3f7454-89f0-4c56-86d8-b8e56e98155c",
+      "dispatcher_version": 1,
+      "dispatcher_status": "ACTIVE",
+      "verify_jwt": true,
+      "deployment_sha256": "0b3b22e09b765b329a9234ef0fe7ffcea44e76631a00ca001571a8960786e8dc",
+      "responsibilities": [
+        "global_memory_identity",
+        "backend_registry",
+        "external_bindings",
+        "synchronization_events",
+        "conflicts",
+        "tombstones",
+        "leases",
+        "runtime_receipts"
+      ]
+    }
+  },
+  "source_authority_order": [
+    { "rank": 1, "backend": "approved_source_bytes", "role": "highest_authority" },
+    { "rank": 2, "backend": "github", "role": "canonical_architecture_and_policy" },
+    { "rank": 3, "backend": "supabase", "role": "canonical_runtime_and_ledger" },
+    { "rank": 4, "backend": "casebrain", "role": "evidence_aware_graph_projection" },
+    { "rank": 5, "backend": "mem", "role": "human_readable_semantic_projection" },
+    { "rank": 6, "backend": "supermemory", "role": "cross_agent_semantic_projection" },
+    { "rank": 7, "backend": "mem0", "role": "episodic_and_personalization_projection" },
+    { "rank": 8, "backend": "pinecone", "role": "rebuildable_vector_projection" },
+    { "rank": 8, "backend": "qdrant", "role": "rebuildable_filtered_vector_projection" },
+    { "rank": 9, "backend": "memoryplugin", "role": "compact_portable_profile_projection" }
+  ],
+  "backends": {
+    "approved_source_bytes": {
+      "lifecycle_state": "connected",
+      "authentication_state": "authenticated",
+      "write_mode": "canonical",
+      "truth_authority": true,
+      "rebuildable": false
+    },
+    "github": {
+      "lifecycle_state": "connected",
+      "authentication_state": "authenticated",
+      "write_mode": "canonical",
+      "truth_authority": true,
+      "rebuildable": false
+    },
+    "supabase": {
+      "lifecycle_state": "connected",
+      "authentication_state": "authenticated",
+      "write_mode": "canonical",
+      "truth_authority": true,
+      "rebuildable": false
+    },
+    "casebrain": {
+      "lifecycle_state": "blocked",
+      "authentication_state": "previously_proven_but_current_route_unavailable",
+      "write_mode": "projection",
+      "truth_authority": false,
+      "required_configuration": [
+        "CASEBRAIN_BRIDGE_URL",
+        "CASEBRAIN_BRIDGE_TOKEN_optional"
+      ]
+    },
+    "mem": {
+      "lifecycle_state": "connected",
+      "authentication_state": "authenticated",
+      "write_mode": "projection",
+      "truth_authority": false,
+      "persistent_bridge_state": "unconfigured",
+      "required_configuration": [
+        "MEM_BRIDGE_URL",
+        "MEM_BRIDGE_TOKEN_optional"
+      ]
+    },
+    "supermemory": {
+      "lifecycle_state": "staging_only",
+      "authentication_state": "auth_required",
+      "write_mode": "projection",
+      "truth_authority": false,
+      "required_configuration": [
+        "SUPERMEMORY_API_KEY"
+      ]
+    },
+    "mem0": {
+      "lifecycle_state": "staging_only",
+      "authentication_state": "auth_required",
+      "write_mode": "projection",
+      "truth_authority": false,
+      "required_configuration": [
+        "MEM0_API_KEY",
+        "MEM0_USER_ID"
+      ]
+    },
+    "pinecone": {
+      "lifecycle_state": "projection_only",
+      "authentication_state": "auth_required",
+      "write_mode": "projection",
+      "truth_authority": false,
+      "rebuildable": true,
+      "required_configuration": [
+        "PINECONE_API_KEY",
+        "PINECONE_INDEX_HOST"
+      ]
+    },
+    "qdrant": {
+      "lifecycle_state": "projection_only",
+      "authentication_state": "auth_required",
+      "write_mode": "projection",
+      "truth_authority": false,
+      "rebuildable": true,
+      "required_configuration": [
+        "QDRANT_URL",
+        "QDRANT_COLLECTION",
+        "QDRANT_API_KEY_optional"
+      ]
+    },
+    "memoryplugin": {
+      "lifecycle_state": "connected",
+      "authentication_state": "authenticated",
+      "write_mode": "portable_projection",
+      "truth_authority": false,
+      "rebuildable": true,
+      "sensitivity_ceiling": "internal"
+    }
+  },
+  "synchronized_bindings": {
+    "mem": {
+      "binding_id": "3af73d24-ffae-4add-8743-14a05af6dc52",
+      "external_object_id": "63f1d7cd-9202-577a-8d0d-211c40a07606",
+      "external_version": "3",
+      "projection_status": "synced",
+      "content_hash": "518bea24d284bce81b010dd6101598f22795ee3b4b137006d32c57682c7dc12f"
+    },
+    "memoryplugin": {
+      "binding_id": "8d61d74f-dd31-4479-8b0f-0c8ee8355eb5",
+      "event_id": 7,
+      "event_status": "succeeded",
+      "external_version": "visible-text-v1",
+      "projection_status": "synced",
+      "content_hash": "518bea24d284bce81b010dd6101598f22795ee3b4b137006d32c57682c7dc12f",
+      "receipt_sha256": "ad1b28daf1a4aeb9f1506b29666e5963b3cb37d8deeee0f71fefb82211231d54"
+    }
+  },
+  "runtime_state": {
+    "registered_backends": 10,
+    "assigned_backend_owners": 10,
+    "global_memory_objects": 2,
+    "active_objects": 1,
+    "superseded_objects": 1,
+    "synchronized_bindings": 2,
+    "sync_events": {
+      "blocked_historical": 6,
+      "succeeded": 1,
+      "pending": 0,
+      "claimed": 0,
+      "failed": 0,
+      "ambiguous": 0
+    },
+    "stale_claims": 0,
+    "direct_client_grants": 0,
+    "restrictive_rls_deny_policies": 6
+  },
+  "provenance_layers": [
+    "original_source",
+    "verified_fact",
+    "documented_source_statement",
+    "party_allegation",
+    "third_party_statement",
+    "model_inference",
+    "discovery_hypothesis",
+    "legal_work_product"
+  ],
+  "safety_policy": {
+    "vector_stores_are_truth_authorities": false,
+    "connector_availability_proves_authentication": false,
+    "failed_backend_aborts_other_targets": false,
+    "timeout_after_side_effect_is_automatically_retried": false,
+    "sensitive_data_excluded_from_portable_and_broad_projections": [
+      "credentials",
+      "protected_minor_identifiers",
+      "medical_data",
+      "sealed_content",
+      "privileged_material",
+      "raw_original_source_bytes"
+    ],
+    "deletion_requirements": [
+      "logical_tombstone",
+      "backend_delete_receipts",
+      "negative_recall_verification"
+    ]
+  },
+  "chatgpt_operating_behavior": {
+    "retrieve_connected_memory_first": true,
+    "preserve_thread_anchor": true,
+    "preserve_case_boundaries": true,
+    "distinguish_fact_allegation_inference_and_work_product": true,
+    "require_receipts_for": [
+      "authentication",
+      "synchronization",
+      "mutation",
+      "deletion"
+    ],
+    "continue_from_existing_canonical_architecture": true,
+    "create_competing_memory_stack": false,
+    "completion_report_fields": [
+      "completed",
+      "verified",
+      "blocked",
+      "unresolved",
+      "next_highest_value_action"
+    ]
+  },
+  "completion_state": {
+    "completed": [
+      "canonical_architecture",
+      "runtime_dispatcher",
+      "backend_adapters",
+      "security_controls",
+      "identity_reconciliation",
+      "mem_projection",
+      "memoryplugin_projection",
+      "hosted_validation"
+    ],
+    "verified": [
+      "github_ci",
+      "github_pipeline",
+      "supabase_readback",
+      "rls_boundaries",
+      "mem_binding",
+      "memoryplugin_binding"
+    ],
+    "blocked": [
+      "casebrain_current_write_route",
+      "supermemory_credentials",
+      "mem0_credentials_and_user_id",
+      "pinecone_credentials_and_index_host",
+      "qdrant_endpoint_and_collection",
+      "persistent_mem_bridge",
+      "persistent_casebrain_bridge"
+    ],
+    "unresolved": [
+      "external_queue_ack_dlq_acceptance_proof"
+    ],
+    "next_highest_value_action": "activate provider secrets and endpoints, then prove HI-46 Queue ACK/DLQ flow"
+  }
+}
