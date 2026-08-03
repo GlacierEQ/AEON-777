@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/GlacierEQ/AEON-777/BRAIN/CONNECTORS/IDEMPOTENT_REPLAY_RECEIPT_SCHEMA.json",
+  "title": "Governed connector duplicate replay receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "thread_anchor",
+    "observed_at",
+    "route_key",
+    "idempotency_key",
+    "original_job_id",
+    "replay_result",
+    "before_counts",
+    "after_counts",
+    "safety_boundary"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "thread_anchor": {"const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "route_key": {"const": "notion:fetch:workspace_page_read:v1"},
+    "idempotency_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "original_job_id": {"type": "string", "format": "uuid"},
+    "replay_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["job_id", "status", "reason", "enqueued"],
+      "properties": {
+        "job_id": {"type": "string", "format": "uuid"},
+        "status": {"const": "succeeded"},
+        "reason": {"const": "idempotency_conflict"},
+        "enqueued": {"const": false}
+      }
+    },
+    "before_counts": {"$ref": "#/$defs/counts"},
+    "after_counts": {"$ref": "#/$defs/counts"},
+    "safety_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["external_invocation", "additional_rpc_spend", "additional_projection", "raw_persisted", "queue_delivery_claimed"],
+      "properties": {
+        "external_invocation": {"const": false},
+        "additional_rpc_spend": {"const": false},
+        "additional_projection": {"const": false},
+        "raw_persisted": {"const": false},
+        "queue_delivery_claimed": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["jobs", "reservations", "ledger", "projections"],
+      "properties": {
+        "jobs": {"type": "integer", "minimum": 0},
+        "reservations": {"type": "integer", "minimum": 0},
+        "ledger": {"type": "integer", "minimum": 0},
+        "projections": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}
