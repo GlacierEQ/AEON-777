@@ -8,23 +8,38 @@
     "schema_version",
     "record_type",
     "thread_anchor",
-    "identity",
+    "updated_at",
+    "manifest_identity",
+    "charter_identity",
     "canonical_control",
     "source_authority_order",
     "backends",
-    "synchronized_bindings",
-    "runtime_state",
+    "charter_synchronized_bindings",
+    "manifest_expected_bindings",
+    "runtime_snapshot",
     "provenance_layers",
     "safety_policy",
     "chatgpt_operating_behavior",
     "completion_state"
   ],
   "properties": {
-    "schema_version": { "const": "1.0.0" },
+    "schema_version": { "const": "1.1.0" },
     "record_type": { "const": "chatgpt_memory_federation_manifest" },
     "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
     "updated_at": { "type": "string", "format": "date-time" },
-    "identity": {
+    "manifest_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["memory_id", "supersedes", "update_policy", "silent_overwrite_allowed", "source_version_policy"],
+      "properties": {
+        "memory_id": { "type": "string", "format": "uuid" },
+        "supersedes": { "type": "string", "format": "uuid" },
+        "update_policy": { "const": "create_successor_then_supersede" },
+        "silent_overwrite_allowed": { "const": false },
+        "source_version_policy": { "const": "git_merge_receipt_external" }
+      }
+    },
+    "charter_identity": {
       "type": "object",
       "additionalProperties": false,
       "required": ["active_memory_id", "superseded_memory_id", "update_policy", "silent_overwrite_allowed"],
@@ -43,13 +58,17 @@
         "github": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["repository", "responsibilities", "runtime_merge_sha", "reconciliation_merge_sha", "canonical_receipt_path"],
+          "required": ["repository", "responsibilities", "runtime_merge_sha", "reconciliation_merge_sha", "manifest_v1_merge_sha", "canonical_receipt_path", "manifest_path", "schema_path", "validator_path"],
           "properties": {
             "repository": { "const": "GlacierEQ/AEON-777" },
             "responsibilities": { "$ref": "#/$defs/nonEmptyStringArray" },
             "runtime_merge_sha": { "$ref": "#/$defs/gitSha" },
             "reconciliation_merge_sha": { "$ref": "#/$defs/gitSha" },
-            "canonical_receipt_path": { "type": "string", "minLength": 1 }
+            "manifest_v1_merge_sha": { "$ref": "#/$defs/gitSha" },
+            "canonical_receipt_path": { "type": "string", "minLength": 1 },
+            "manifest_path": { "type": "string", "minLength": 1 },
+            "schema_path": { "type": "string", "minLength": 1 },
+            "validator_path": { "type": "string", "minLength": 1 }
           }
         },
         "supabase": {
@@ -101,7 +120,7 @@
         "memoryplugin": { "$ref": "#/$defs/backendState" }
       }
     },
-    "synchronized_bindings": {
+    "charter_synchronized_bindings": {
       "type": "object",
       "additionalProperties": false,
       "required": ["mem", "memoryplugin"],
@@ -110,33 +129,46 @@
         "memoryplugin": { "$ref": "#/$defs/binding" }
       }
     },
-    "runtime_state": {
+    "manifest_expected_bindings": {
+      "type": "array",
+      "prefixItems": [
+        { "const": "github" },
+        { "const": "mem" },
+        { "const": "memoryplugin" }
+      ],
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "runtime_snapshot": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["registered_backends", "assigned_backend_owners", "global_memory_objects", "active_objects", "superseded_objects", "synchronized_bindings", "sync_events", "stale_claims", "direct_client_grants", "restrictive_rls_deny_policies"],
+      "required": ["observed_at", "source", "snapshot_is_historical", "registered_backends", "assigned_backend_owners", "global_memory_objects", "active_objects", "superseded_objects", "synchronized_bindings", "sync_events", "stale_claims", "direct_client_grants", "restrictive_rls_deny_policies"],
       "properties": {
-        "registered_backends": { "const": 10 },
-        "assigned_backend_owners": { "const": 10 },
-        "global_memory_objects": { "const": 2 },
-        "active_objects": { "const": 1 },
-        "superseded_objects": { "const": 1 },
-        "synchronized_bindings": { "const": 2 },
+        "observed_at": { "type": "string", "format": "date-time" },
+        "source": { "const": "supabase_readback" },
+        "snapshot_is_historical": { "const": true },
+        "registered_backends": { "type": "integer", "minimum": 1 },
+        "assigned_backend_owners": { "type": "integer", "minimum": 0 },
+        "global_memory_objects": { "type": "integer", "minimum": 1 },
+        "active_objects": { "type": "integer", "minimum": 0 },
+        "superseded_objects": { "type": "integer", "minimum": 0 },
+        "synchronized_bindings": { "type": "integer", "minimum": 0 },
         "sync_events": {
           "type": "object",
           "additionalProperties": false,
           "required": ["blocked_historical", "succeeded", "pending", "claimed", "failed", "ambiguous"],
           "properties": {
-            "blocked_historical": { "const": 6 },
-            "succeeded": { "const": 1 },
-            "pending": { "const": 0 },
-            "claimed": { "const": 0 },
-            "failed": { "const": 0 },
-            "ambiguous": { "const": 0 }
+            "blocked_historical": { "type": "integer", "minimum": 0 },
+            "succeeded": { "type": "integer", "minimum": 0 },
+            "pending": { "type": "integer", "minimum": 0 },
+            "claimed": { "type": "integer", "minimum": 0 },
+            "failed": { "type": "integer", "minimum": 0 },
+            "ambiguous": { "type": "integer", "minimum": 0 }
           }
         },
         "stale_claims": { "const": 0 },
         "direct_client_grants": { "const": 0 },
-        "restrictive_rls_deny_policies": { "const": 6 }
+        "restrictive_rls_deny_policies": { "type": "integer", "minimum": 6 }
       }
     },
     "provenance_layers": {
