@@ -5,6 +5,7 @@ const receipt = JSON.parse(fs.readFileSync(
   'utf8',
 ));
 
+const GIT_SHA = /^[0-9a-f]{40}$/;
 const SHA256 = /^[0-9a-f]{64}$/;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 const THREAD = 'MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51';
@@ -20,7 +21,7 @@ function validate(value) {
 
   assert(value.canonical_runtime.repository === 'GlacierEQ/AEON-777', 'canonical repository drift');
   assert(value.canonical_runtime.pull_request === 72, 'canonical runtime PR drift');
-  assert(SHA256.test(value.canonical_runtime.merge_sha), 'runtime merge SHA invalid');
+  assert(GIT_SHA.test(value.canonical_runtime.merge_sha), 'runtime merge Git SHA invalid');
 
   assert(value.deployment.supabase_project === 'dyhprklicgewmrimecey', 'Supabase project drift');
   assert(value.deployment.edge_function === 'memory-federation-dispatcher', 'dispatcher name drift');
@@ -103,6 +104,7 @@ for (const [label, mutate, expected] of [
   ['vector-authority', (x) => { x.safety_boundaries.vector_stores_truth_authority = true; }, 'vector store promoted'],
   ['portable-sensitivity', (x) => { x.bindings.memoryplugin.sensitivity_ceiling = 'restricted'; }, 'sensitivity ceiling unsafe'],
   ['broken-supersession', (x) => { x.identity_graph.active.supersedes = null; }, 'does not supersede'],
+  ['wrong-hash-type', (x) => { x.canonical_runtime.merge_sha = x.deployment.deployment_sha256; }, 'Git SHA invalid'],
 ]) {
   const candidate = structuredClone(receipt);
   mutate(candidate);
