@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "generated_at": "2026-08-03T12:29:28Z",
+  "canonical_runtime": {
+    "repository": "GlacierEQ/AEON-777",
+    "pull_request": 72,
+    "merge_sha": "7741668024ddf4fd6ee3e508bd0e8da069d18f85",
+    "ci_run": 30813139666,
+    "pipeline_run": 30813139077
+  },
+  "deployment": {
+    "supabase_project": "dyhprklicgewmrimecey",
+    "migrations": [
+      "memory_federation_runtime_v1",
+      "harden_memory_federation_runtime_v1"
+    ],
+    "edge_function": "memory-federation-dispatcher",
+    "function_id": "5c3f7454-89f0-4c56-86d8-b8e56e98155c",
+    "function_version": 1,
+    "function_status": "ACTIVE",
+    "verify_jwt": true,
+    "deployment_sha256": "0b3b22e09b765b329a9234ef0fe7ffcea44e76631a00ca001571a8960786e8dc"
+  },
+  "durable_state": {
+    "backends": 10,
+    "assigned_owners": 10,
+    "namespace_scoped_backends": 9,
+    "authenticated_backends": 6,
+    "auth_required_backends": 4,
+    "memory_objects": 2,
+    "active_objects": 1,
+    "superseded_objects": 1,
+    "synced_bindings": 2,
+    "events": {
+      "blocked": 6,
+      "succeeded": 1,
+      "pending": 0,
+      "claimed": 0,
+      "failed": 0,
+      "ambiguous": 0
+    },
+    "stale_claims": 0,
+    "client_grants": 0,
+    "restrictive_deny_policies": 6
+  },
+  "identity_graph": {
+    "active": {
+      "memory_id": "9502ce38-b91e-498e-8bc5-5718ddea06e8",
+      "source_system": "mem",
+      "source_object_id": "63f1d7cd-9202-577a-8d0d-211c40a07606",
+      "source_version": "3",
+      "content_hash": "518bea24d284bce81b010dd6101598f22795ee3b4b137006d32c57682c7dc12f",
+      "canonical_status": "active",
+      "supersedes": "19858cb4-33a6-4db9-9192-0b842880e407"
+    },
+    "superseded": {
+      "memory_id": "19858cb4-33a6-4db9-9192-0b842880e407",
+      "canonical_status": "superseded",
+      "superseded_by": "9502ce38-b91e-498e-8bc5-5718ddea06e8"
+    }
+  },
+  "bindings": {
+    "mem": {
+      "binding_id": "3af73d24-ffae-4add-8743-14a05af6dc52",
+      "memory_id": "9502ce38-b91e-498e-8bc5-5718ddea06e8",
+      "external_object_id": "63f1d7cd-9202-577a-8d0d-211c40a07606",
+      "external_version": "3",
+      "external_hash": "518bea24d284bce81b010dd6101598f22795ee3b4b137006d32c57682c7dc12f",
+      "projection_status": "synced",
+      "hash_scope": "safe_summary_projection",
+      "raw_note_bytes_hashed": false
+    },
+    "memoryplugin": {
+      "binding_id": "8d61d74f-dd31-4479-8b0f-0c8ee8355eb5",
+      "memory_id": "9502ce38-b91e-498e-8bc5-5718ddea06e8",
+      "event_id": 7,
+      "event_status": "succeeded",
+      "external_object_id": "ad1b28daf1a4aeb9f1506b29666e5963b3cb37d8deeee0f71fefb82211231d54",
+      "external_version": "visible-text-v1",
+      "external_hash": "518bea24d284bce81b010dd6101598f22795ee3b4b137006d32c57682c7dc12f",
+      "result_hash": "ad1b28daf1a4aeb9f1506b29666e5963b3cb37d8deeee0f71fefb82211231d54",
+      "receipt_ref": "memoryplugin://visible-response/ad1b28daf1a4aeb9f1506b29666e5963b3cb37d8deeee0f71fefb82211231d54",
+      "projection_status": "synced",
+      "sensitivity_ceiling": "internal"
+    }
+  },
+  "advisor_state": {
+    "federation_missing_rls_policy_findings": 0,
+    "federation_exposed_security_definer_findings": 0,
+    "federation_unindexed_foreign_key_findings": 0,
+    "federation_duplicate_index_findings": 0,
+    "fresh_unused_index_information_expected": true,
+    "unrelated_legacy_findings_isolated": true
+  },
+  "provider_gates": {
+    "casebrain": "bridge_unconfigured_and_tool_surface_unavailable",
+    "mem": "persistent_bridge_unconfigured_direct_binding_synced",
+    "supermemory": "credential_required",
+    "mem0": "credential_and_user_id_required",
+    "pinecone": "credential_and_index_host_required",
+    "qdrant": "endpoint_and_collection_required"
+  },
+  "safety_boundaries": {
+    "vector_stores_truth_authority": false,
+    "raw_source_bytes_persisted": false,
+    "credentials_persisted": false,
+    "protected_identifiers_persisted": false,
+    "sealed_content_portably_projected": false,
+    "historical_blocked_events_silently_requeued": false
+  }
+}
