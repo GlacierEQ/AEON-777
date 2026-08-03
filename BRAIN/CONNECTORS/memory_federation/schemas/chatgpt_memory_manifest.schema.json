@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/GlacierEQ/AEON-777/BRAIN/CONNECTORS/memory_federation/schemas/chatgpt_memory_manifest.schema.json",
+  "title": "ChatGPT Memory Federation Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_type",
+    "thread_anchor",
+    "identity",
+    "canonical_control",
+    "source_authority_order",
+    "backends",
+    "synchronized_bindings",
+    "runtime_state",
+    "provenance_layers",
+    "safety_policy",
+    "chatgpt_operating_behavior",
+    "completion_state"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "record_type": { "const": "chatgpt_memory_federation_manifest" },
+    "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["active_memory_id", "superseded_memory_id", "update_policy", "silent_overwrite_allowed"],
+      "properties": {
+        "active_memory_id": { "type": "string", "format": "uuid" },
+        "superseded_memory_id": { "type": "string", "format": "uuid" },
+        "update_policy": { "const": "create_successor_then_supersede" },
+        "silent_overwrite_allowed": { "const": false }
+      }
+    },
+    "canonical_control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["github", "supabase"],
+      "properties": {
+        "github": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "responsibilities", "runtime_merge_sha", "reconciliation_merge_sha", "canonical_receipt_path"],
+          "properties": {
+            "repository": { "const": "GlacierEQ/AEON-777" },
+            "responsibilities": { "$ref": "#/$defs/nonEmptyStringArray" },
+            "runtime_merge_sha": { "$ref": "#/$defs/gitSha" },
+            "reconciliation_merge_sha": { "$ref": "#/$defs/gitSha" },
+            "canonical_receipt_path": { "type": "string", "minLength": 1 }
+          }
+        },
+        "supabase": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["project_id", "dispatcher", "dispatcher_function_id", "dispatcher_version", "dispatcher_status", "verify_jwt", "deployment_sha256", "responsibilities"],
+          "properties": {
+            "project_id": { "const": "dyhprklicgewmrimecey" },
+            "dispatcher": { "const": "memory-federation-dispatcher" },
+            "dispatcher_function_id": { "type": "string", "format": "uuid" },
+            "dispatcher_version": { "type": "integer", "minimum": 1 },
+            "dispatcher_status": { "const": "ACTIVE" },
+            "verify_jwt": { "const": true },
+            "deployment_sha256": { "$ref": "#/$defs/sha256" },
+            "responsibilities": { "$ref": "#/$defs/nonEmptyStringArray" }
+          }
+        }
+      }
+    },
+    "source_authority_order": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rank", "backend", "role"],
+        "properties": {
+          "rank": { "type": "integer", "minimum": 1, "maximum": 9 },
+          "backend": { "$ref": "#/$defs/backendKey" },
+          "role": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "backends": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approved_source_bytes", "github", "supabase", "casebrain", "mem", "supermemory", "mem0", "pinecone", "qdrant", "memoryplugin"],
+      "properties": {
+        "approved_source_bytes": { "$ref": "#/$defs/backendState" },
+        "github": { "$ref": "#/$defs/backendState" },
+        "supabase": { "$ref": "#/$defs/backendState" },
+        "casebrain": { "$ref": "#/$defs/backendState" },
+        "mem": { "$ref": "#/$defs/backendState" },
+        "supermemory": { "$ref": "#/$defs/backendState" },
+        "mem0": { "$ref": "#/$defs/backendState" },
+        "pinecone": { "$ref": "#/$defs/backendState" },
+        "qdrant": { "$ref": "#/$defs/backendState" },
+        "memoryplugin": { "$ref": "#/$defs/backendState" }
+      }
+    },
+    "synchronized_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mem", "memoryplugin"],
+      "properties": {
+        "mem": { "$ref": "#/$defs/binding" },
+        "memoryplugin": { "$ref": "#/$defs/binding" }
+      }
+    },
+    "runtime_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["registered_backends", "assigned_backend_owners", "global_memory_objects", "active_objects", "superseded_objects", "synchronized_bindings", "sync_events", "stale_claims", "direct_client_grants", "restrictive_rls_deny_policies"],
+      "properties": {
+        "registered_backends": { "const": 10 },
+        "assigned_backend_owners": { "const": 10 },
+        "global_memory_objects": { "const": 2 },
+        "active_objects": { "const": 1 },
+        "superseded_objects": { "const": 1 },
+        "synchronized_bindings": { "const": 2 },
+        "sync_events": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["blocked_historical", "succeeded", "pending", "claimed", "failed", "ambiguous"],
+          "properties": {
+            "blocked_historical": { "const": 6 },
+            "succeeded": { "const": 1 },
+            "pending": { "const": 0 },
+            "claimed": { "const": 0 },
+            "failed": { "const": 0 },
+            "ambiguous": { "const": 0 }
+          }
+        },
+        "stale_claims": { "const": 0 },
+        "direct_client_grants": { "const": 0 },
+        "restrictive_rls_deny_policies": { "const": 6 }
+      }
+    },
+    "provenance_layers": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": ["original_source", "verified_fact", "documented_source_statement", "party_allegation", "third_party_statement", "model_inference", "discovery_hypothesis", "legal_work_product"]
+      },
+      "minItems": 8,
+      "maxItems": 8
+    },
+    "safety_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vector_stores_are_truth_authorities", "connector_availability_proves_authentication", "failed_backend_aborts_other_targets", "timeout_after_side_effect_is_automatically_retried", "sensitive_data_excluded_from_portable_and_broad_projections", "deletion_requirements"],
+      "properties": {
+        "vector_stores_are_truth_authorities": { "const": false },
+        "connector_availability_proves_authentication": { "const": false },
+        "failed_backend_aborts_other_targets": { "const": false },
+        "timeout_after_side_effect_is_automatically_retried": { "const": false },
+        "sensitive_data_excluded_from_portable_and_broad_projections": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "deletion_requirements": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "logical_tombstone" },
+            { "const": "backend_delete_receipts" },
+            { "const": "negative_recall_verification" }
+          ],
+          "minItems": 3,
+          "maxItems": 3
+        }
+      }
+    },
+    "chatgpt_operating_behavior": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["retrieve_connected_memory_first", "preserve_thread_anchor", "preserve_case_boundaries", "distinguish_fact_allegation_inference_and_work_product", "require_receipts_for", "continue_from_existing_canonical_architecture", "create_competing_memory_stack", "completion_report_fields"],
+      "properties": {
+        "retrieve_connected_memory_first": { "const": true },
+        "preserve_thread_anchor": { "const": true },
+        "preserve_case_boundaries": { "const": true },
+        "distinguish_fact_allegation_inference_and_work_product": { "const": true },
+        "require_receipts_for": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "continue_from_existing_canonical_architecture": { "const": true },
+        "create_competing_memory_stack": { "const": false },
+        "completion_report_fields": { "$ref": "#/$defs/nonEmptyStringArray" }
+      }
+    },
+    "completion_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["completed", "verified", "blocked", "unresolved", "next_highest_value_action"],
+      "properties": {
+        "completed": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "verified": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "blocked": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "unresolved": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "next_highest_value_action": { "type": "string", "minLength": 1 }
+      }
+    }
+  },
+  "$defs": {
+    "gitSha": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "nonEmptyStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "backendKey": {
+      "enum": ["approved_source_bytes", "github", "supabase", "casebrain", "mem", "supermemory", "mem0", "pinecone", "qdrant", "memoryplugin"]
+    },
+    "backendState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lifecycle_state", "authentication_state", "write_mode", "truth_authority"],
+      "properties": {
+        "lifecycle_state": { "enum": ["connected", "staging_only", "blocked", "projection_only", "excluded", "unknown"] },
+        "authentication_state": { "type": "string", "minLength": 1 },
+        "write_mode": { "enum": ["canonical", "projection", "portable_projection", "read_only", "blocked"] },
+        "truth_authority": { "type": "boolean" },
+        "rebuildable": { "type": "boolean" },
+        "persistent_bridge_state": { "type": "string" },
+        "sensitivity_ceiling": { "enum": ["public", "internal", "confidential", "restricted", "sealed"] },
+        "required_configuration": { "$ref": "#/$defs/nonEmptyStringArray" }
+      }
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["binding_id", "projection_status", "content_hash"],
+      "properties": {
+        "binding_id": { "type": "string", "format": "uuid" },
+        "external_object_id": { "type": "string", "minLength": 1 },
+        "external_version": { "type": "string", "minLength": 1 },
+        "event_id": { "type": "integer", "minimum": 1 },
+        "event_status": { "enum": ["pending", "claimed", "succeeded", "failed", "blocked", "ambiguous"] },
+        "projection_status": { "enum": ["pending", "synced", "stale", "failed", "blocked", "deleted", "unknown"] },
+        "content_hash": { "$ref": "#/$defs/sha256" },
+        "receipt_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    }
+  }
+}
