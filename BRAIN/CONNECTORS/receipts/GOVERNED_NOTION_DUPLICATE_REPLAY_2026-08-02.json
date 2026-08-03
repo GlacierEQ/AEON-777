@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "observed_at": "2026-08-03T04:28:00Z",
+  "route_key": "notion:fetch:workspace_page_read:v1",
+  "idempotency_key": "2eea3ef26537f1cd8b051322d80d1c74445ddb1b058bd3543c2b15acd4091d2c",
+  "original_job_id": "c43cad02-c396-49a6-ab35-c1c048ec3d27",
+  "replay_result": {
+    "job_id": "c43cad02-c396-49a6-ab35-c1c048ec3d27",
+    "status": "succeeded",
+    "reason": "idempotency_conflict",
+    "enqueued": false
+  },
+  "before_counts": {"jobs": 2, "reservations": 2, "ledger": 2, "projections": 1},
+  "after_counts": {"jobs": 2, "reservations": 2, "ledger": 2, "projections": 1},
+  "safety_boundary": {
+    "external_invocation": false,
+    "additional_rpc_spend": false,
+    "additional_projection": false,
+    "raw_persisted": false,
+    "queue_delivery_claimed": false
+  }
+}
