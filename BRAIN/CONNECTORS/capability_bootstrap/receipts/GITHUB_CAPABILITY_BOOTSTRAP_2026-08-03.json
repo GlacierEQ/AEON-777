@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "generated_at": "2026-08-03T23:59:00Z",
+  "work_item": "Prove live GitHub capability before any unavailable claim",
+  "connector_key": "github",
+  "tool_surface": {
+    "discovered": true,
+    "discovered_at": "2026-08-03T23:58:00Z",
+    "discovery_receipts": [
+      "github:list_repositories:connector_76869538009648d5b282a4bb21c3d157",
+      "github:search:MEMORY_FEDERATION_RECONCILIATION_2026-08-03"
+    ],
+    "actions_loaded": [
+      "list_repositories",
+      "search",
+      "fetch_file",
+      "create_branch",
+      "create_file",
+      "update_file"
+    ]
+  },
+  "authentication": {
+    "state": "authenticated",
+    "inferred_from_tool_visibility": false,
+    "evidence_ref": "github:list_repositories:successful-authorized-response"
+  },
+  "probe": {
+    "attempted": true,
+    "operation": "enumerate repositories, locate AEON-777 canonical files, and fetch current main-branch controls",
+    "success": true,
+    "receipt_refs": [
+      "github:repo:GlacierEQ/constellation-memory-engine",
+      "github:repo:GlacierEQ/supermemory",
+      "github:repo:GlacierEQ/FILEBOSS",
+      "github:file:GlacierEQ/AEON-777/BRAIN/CONNECTORS/EXECUTION_FIRST_OPERATING_PROTOCOL.md@main",
+      "github:file:GlacierEQ/AEON-777/BRAIN/CONNECTORS/package.json@main"
+    ],
+    "error_code": null
+  },
+  "classification": {
+    "availability": "connected",
+    "freshness": "fresh",
+    "source_linked": true,
+    "basis": "Current-run GitHub actions returned authorized repository inventory, code-search results, and canonical file contents."
+  },
+  "execution": {
+    "system_side_executable_remaining": true,
+    "next_action": "Commit, validate, and merge the no-false-unavailable capability guard into AEON-777.",
+    "operator_action_required": false,
+    "partial_failures": []
+  }
+}
