@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaciereq.dev/schemas/capability-bootstrap-v1.json",
+  "title": "Live Capability Bootstrap Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "thread_anchor",
+    "generated_at",
+    "work_item",
+    "connector_key",
+    "tool_surface",
+    "authentication",
+    "probe",
+    "classification",
+    "execution"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "work_item": { "type": "string", "minLength": 1 },
+    "connector_key": { "type": "string", "minLength": 1 },
+    "tool_surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["discovered", "discovered_at", "discovery_receipts", "actions_loaded"],
+      "properties": {
+        "discovered": { "type": "boolean" },
+        "discovered_at": { "type": ["string", "null"], "format": "date-time" },
+        "discovery_receipts": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "actions_loaded": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+      }
+    },
+    "authentication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "inferred_from_tool_visibility", "evidence_ref"],
+      "properties": {
+        "state": { "enum": ["authenticated", "auth_required", "blocked", "unknown"] },
+        "inferred_from_tool_visibility": { "const": false },
+        "evidence_ref": { "type": ["string", "null"] }
+      }
+    },
+    "probe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["attempted", "operation", "success", "receipt_refs", "error_code"],
+      "properties": {
+        "attempted": { "type": "boolean" },
+        "operation": { "type": ["string", "null"] },
+        "success": { "type": "boolean" },
+        "receipt_refs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "error_code": { "type": ["string", "null"] }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["availability", "freshness", "source_linked", "basis"],
+      "properties": {
+        "availability": { "enum": ["connected", "partial", "blocked", "unavailable", "unknown"] },
+        "freshness": { "enum": ["fresh", "stale", "expired", "unknown"] },
+        "source_linked": { "type": "boolean" },
+        "basis": { "type": "string", "minLength": 1 }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system_side_executable_remaining", "next_action", "operator_action_required", "partial_failures"],
+      "properties": {
+        "system_side_executable_remaining": { "type": "boolean" },
+        "next_action": { "type": ["string", "null"] },
+        "operator_action_required": { "type": "boolean" },
+        "partial_failures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["slice", "error_code", "dependent_state", "unaffected_work_continued"],
+            "properties": {
+              "slice": { "type": "string", "minLength": 1 },
+              "error_code": { "type": "string", "minLength": 1 },
+              "dependent_state": { "enum": ["stale", "unverified", "blocked"] },
+              "unaffected_work_continued": { "const": true }
+            }
+          }
+        }
+      }
+    }
+  }
+}
