@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:resource-pointer:1.0.0",
+  "title": "CASEBRAIN Resource Pointer",
+  "description": "Stable, provenance-aware locator for a resource whose authoritative bytes or state remain at the declared source. Pointer resolution status describes locator health, not factual truth or legal validity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "resource_id",
+    "canonical_uri",
+    "source_kind",
+    "last_checked_at"
+  ],
+  "properties": {
+    "resource_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "canonical_uri": {
+      "type": "string",
+      "format": "uri-reference",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "source_kind": {
+      "enum": [
+        "court_record",
+        "evidence",
+        "communication",
+        "filing",
+        "index",
+        "connector",
+        "system",
+        "other"
+      ]
+    },
+    "locator": {
+      "type": ["string", "null"],
+      "maxLength": 1024
+    },
+    "content_hash": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^(sha256:)?[A-Fa-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "last_checked_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "case_id": {
+      "type": ["string", "null"],
+      "maxLength": 128
+    },
+    "source_system": {
+      "type": ["string", "null"],
+      "maxLength": 128
+    },
+    "native_id": {
+      "type": ["string", "null"],
+      "maxLength": 512
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "resolution_status": {
+      "enum": [
+        "verified",
+        "unverified",
+        "stale",
+        "moved",
+        "blocked",
+        "unavailable",
+        "superseded",
+        "conflicting"
+      ]
+    },
+    "replaced_by": {
+      "type": ["string", "null"],
+      "maxLength": 256
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "maxLength": 4096
+    }
+  }
+}
