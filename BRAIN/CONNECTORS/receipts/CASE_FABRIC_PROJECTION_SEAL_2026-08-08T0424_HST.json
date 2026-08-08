@@ -1,0 +1,48 @@
+{
+  "schema": "casebrain.case-fabric.projection-seal-receipt.v1",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "observed_at": "2026-08-08T14:24:34Z",
+  "supersedes_state_in_merge": "c580ad69ac9170254644cf43f4937ce4eed3c408",
+  "completed": {
+    "notion_authority_label": {
+      "updated": true,
+      "readback": true,
+      "projection_only": true
+    },
+    "mem_projection": {
+      "note_id": "1c5f821b-af89-5898-97fe-2789095e1163",
+      "prior_version": 4,
+      "current_version": 5,
+      "write_verified": true,
+      "readback_verified": true
+    },
+    "supabase_registry": {
+      "total": 171,
+      "connected": 94,
+      "blocked": 51,
+      "staging_only": 26,
+      "authenticated": 10,
+      "auth_unknown": 97,
+      "auth_required": 41,
+      "audit_rows_added": 4
+    }
+  },
+  "runtime": {
+    "nonterminal_jobs": 0,
+    "enabled_open_or_half_open_routes": 0,
+    "stale_projections": 1
+  },
+  "fail_closed": {
+    "casebrain_primary": "authenticated_methods_unavailable",
+    "supermemory1_primary": "authenticated_methods_unavailable",
+    "smithery_notion": "blocked_auth_required",
+    "smithery_supermemory": "blocked_auth_required"
+  },
+  "safety": {
+    "source_bytes_projected": false,
+    "credentials_projected": false,
+    "protected_minor_details_projected": false,
+    "privileged_material_projected": false,
+    "allegations_projected": false
+  }
+}
