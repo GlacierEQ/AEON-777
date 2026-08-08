@@ -18,6 +18,6 @@ jobs:
   public-projection-safety:
     uses: GlacierEQ/public-actions-runner-host/.github/workflows/public-projection-safety.yml@26d0e596dd29e14e94dd2747d6a0e9cceef638d5
     with:
-      repository_visibility: ${{ github.event.repository.visibility }}
+      repository_visibility: public
       base_sha: ${{ github.event.pull_request.base.sha || github.event.before }}
       head_sha: ${{ github.event.pull_request.head.sha || github.sha }}
