@@ -1,0 +1,91 @@
+{
+  "schema": "casebrain.evidence-metadata-triage-receipt.v1",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "observed_at": "2026-08-08T15:07:08Z",
+  "lane": "evidence_intake_provenance_duplicate_sensitivity",
+  "scope": {
+    "source_bytes_opened": false,
+    "approved_roots_only": true,
+    "systems": [
+      {
+        "project": "supabase-backend-ops",
+        "tables": [
+          "documents"
+        ]
+      },
+      {
+        "project": "supabase-glaciereq",
+        "tables": [
+          "apex_legal_documents",
+          "court_documents",
+          "legal_documents"
+        ]
+      }
+    ]
+  },
+  "census": {
+    "audited_documents": {
+      "total": 0,
+      "invalid_or_missing_sha256": 0,
+      "duplicate_hash_groups": 0,
+      "missing_source_pointer": 0
+    },
+    "court_documents": {
+      "total": 0,
+      "missing_source_hash": 0,
+      "missing_provenance_hash": 0,
+      "duplicate_hash_groups": 0,
+      "missing_source_pointer": 0
+    },
+    "apex_legal_documents": {
+      "total": 112,
+      "missing_sha256": 112,
+      "missing_source_pointer": 112,
+      "missing_filing_date": 11,
+      "duplicate_status": "unknown_without_hashes"
+    },
+    "legal_documents": {
+      "total": 16,
+      "missing_github_sha": 16,
+      "missing_notion_pointer": 16,
+      "missing_case_id": 0,
+      "duplicate_status": "unknown_without_content_hashes"
+    }
+  },
+  "classification": {
+    "apex_legal_documents": "discovery_signal_only",
+    "legal_documents": "discovery_signal_only",
+    "audited_documents": "empty",
+    "court_documents": "empty",
+    "canonical_evidence_promoted": 0,
+    "filing_ready_assertions_promoted": 0
+  },
+  "promotion_gate": {
+    "state": "blocked",
+    "required_per_item": [
+      "exact_bytes_or_immutable_source_pointer",
+      "sha256_of_exact_bytes",
+      "acquisition_time_and_custodian",
+      "original_or_derived_classification",
+      "duplicate_group_and_controlling_copy",
+      "sensitivity_classification",
+      "chain_of_custody_requirements",
+      "verified_record_or_hypothesis_or_private_work_product_or_filing_ready_partition"
+    ]
+  },
+  "decisions": [
+    "filenames, titles, and indexed rows remain discovery signals",
+    "absence of a hash prevents duplicate clearance",
+    "no record may become verified evidence or filing-ready from these tables alone",
+    "original bytes remain in approved file or cloud roots",
+    "Supabase stores audited state and receipts only"
+  ],
+  "safety": {
+    "credentials_included": false,
+    "source_bytes_included": false,
+    "protected_minor_details_included": false,
+    "medical_or_school_content_included": false,
+    "privileged_narratives_included": false,
+    "allegation_narratives_included": false
+  }
+}

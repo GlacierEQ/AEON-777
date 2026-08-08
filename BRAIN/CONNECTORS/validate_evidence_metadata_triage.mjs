@@ -1,0 +1,13 @@
+import fs from "node:fs";
+const receipt = JSON.parse(fs.readFileSync(new URL("./receipts/EVIDENCE_METADATA_TRIAGE_2026-08-08T0507_HST.json", import.meta.url), "utf8"));
+const fail = (m) => { throw new Error(m); };
+if (receipt.schema !== "casebrain.evidence-metadata-triage-receipt.v1") fail("schema");
+if (receipt.thread_anchor !== "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51") fail("anchor");
+if (receipt.scope.source_bytes_opened !== false || receipt.scope.approved_roots_only !== true) fail("scope");
+if (receipt.census.apex_legal_documents.missing_sha256 !== receipt.census.apex_legal_documents.total) fail("apex hash boundary");
+if (receipt.census.legal_documents.missing_github_sha !== receipt.census.legal_documents.total) fail("legal pointer boundary");
+if (receipt.classification.canonical_evidence_promoted !== 0 || receipt.classification.filing_ready_assertions_promoted !== 0) fail("unsafe promotion");
+if (receipt.promotion_gate.state !== "blocked") fail("promotion gate");
+if (receipt.census.apex_legal_documents.duplicate_status !== "unknown_without_hashes") fail("duplicate inference");
+for (const v of Object.values(receipt.safety)) if (v !== false) fail("safety");
+console.log("evidence metadata triage receipt: valid");
