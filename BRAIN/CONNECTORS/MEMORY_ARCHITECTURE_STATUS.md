@@ -28,29 +28,52 @@ Thread anchor: `MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51`
 - Hosted runs 30327828115 and 30327827814 passed at final PR #58 head `28c814d4e771e2a0bfee7acdb30b3544bcaee62a`; PR #58 merged as `89a511efb754e512bdddef9c0724c51f582470fb`.
 - Locked dependency installation reports zero known vulnerabilities.
 
+## Resource-pointer reconciliation candidate
+
+The active reconciliation branch adds a reusable resource-pointer contract without introducing a second Library-of-Links, shadow registry, or memory backend.
+
+Canonical route invariant:
+
+`externally grounded memory -> source_pointers[*] -> stable resource_id -> existing registry -> canonical/source-specific record`
+
+Candidate controls:
+
+- `BRAIN/RESOURCE_POINTER_SCHEMA.json` defines the reusable pointer shape.
+- `BRAIN/MEMORY_RECORD_SCHEMA.json` binds memory `source_pointers[*]` to that schema.
+- `BRAIN/resource_pointer_resolver.py` performs read-only resolution over existing case resource, source-object, release, and connector-binding registries.
+- Pointer health is explicitly independent from memory claim verification, authenticity, admissibility, and legal validity.
+- Exact hash matches preserve multiple source-object identities when provenance differs; no silent deduplication is permitted.
+- Unknown lookups fail closed and do not manufacture a source identity.
+- Hosted CI must pass `validate_resource_pointer_reconciliation.mjs` before this candidate can be promoted.
+
+This section describes a branch candidate until its pull request and hosted validation receipt are complete; it is not a claim that the reconciliation has merged.
+
 ## Ordered gap queue
 
 | Priority | Gap | State | Next gate |
 |---:|---|---|---|
-| 1 | Final PR #58 hosted receipt | Completed | Runs 30327828115 and 30327827814 passed; artifact 8676302508 is preserved. |
+| 1 | Resource-pointer reconciliation | Branch candidate | Pass hosted CI, inspect receipt, then review PR for promotion. |
 | 2 | Namespace and retention approval | Pending human gate | Approve exact namespace, retention policy, and owner; keep activation closed meanwhile. |
 | 3 | Memory physical deletion | Blocked | Expose stable document/chunk IDs and delete-by-ID, then pass target-bound pre-delete authorization. |
 | 4 | Tombstone closure | Blocked | Bind immutable authorization, deletion, and later negative-recall records to the same target. |
 | 5 | Desktop principal/device binding | Blocked | Bind the trusted Mac to the callable principal and verify at least one online device. |
 | 6 | Desktop approved root | Blocked | After binding, approve one non-sensitive metadata-only root and require resolved-path containment. |
 | 7 | Raw correction precedence | Degraded | Keep application filtering mandatory until backend precedence reaches 5/5. |
+| 8 | Legacy pointer aliases | Pending reconciliation | Map DOCKETS/Monolith/Aspen legacy paths and aliases to stable resource IDs without copying source bytes. |
 
 ## Execution order
 
-1. Preserve the completed PR #58 receipt and artifact digest.
-2. Complete namespace, retention, and connector-owner approval.
-3. Obtain a fresh target-specific capability probe exposing a stable target ID and delete-by-ID.
-4. Generate and immutably preserve a pre-delete authorization decision.
-5. Execute physical deletion using that authorization.
-6. Verify an immutable deletion receipt with a non-empty receipt ID.
-7. Run later negative recall with a non-empty recall ID.
-8. Close the logical tombstone only after the post-delete closure gate authenticates the full chain.
-9. Bind the trusted Desktop Commander device to the callable principal.
-10. Approve and probe one non-sensitive metadata-only Desktop root with resolved-path proof.
+1. Pass the resource-pointer reconciliation through hosted branch/PR validation and preserve its receipt.
+2. Reconcile legacy locator aliases to stable resource IDs, preserving unresolved conflicts.
+3. Audit memory for pointerless, stale, conflicting, duplicate, and tombstoned records before any broad migration.
+4. Complete namespace, retention, and connector-owner approval.
+5. Obtain a fresh target-specific capability probe exposing a stable target ID and delete-by-ID.
+6. Generate and immutably preserve a pre-delete authorization decision.
+7. Execute physical deletion using that authorization.
+8. Verify an immutable deletion receipt with a non-empty receipt ID.
+9. Run later negative recall with a non-empty recall ID.
+10. Close the logical tombstone only after the post-delete closure gate authenticates the full chain.
+11. Bind the trusted Desktop Commander device to the callable principal.
+12. Approve and probe one non-sensitive metadata-only Desktop root with resolved-path proof.
 
 Production ingestion, source-byte movement, factual promotion, filing, publication, and external action remain disabled.
