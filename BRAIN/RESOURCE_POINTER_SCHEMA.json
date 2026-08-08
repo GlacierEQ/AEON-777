@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:resource-pointer:1.0.0",
+  "title": "CASEBRAIN Resource Pointer",
+  "description": "Stable, provenance-aware locator for a resource whose authoritative bytes or state remain at the declared source. Pointer resolution status describes locator health, not factual truth or legal validity.",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "resource_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "description": "Stable CASEBRAIN resource identity; bounded to remain index- and transport-safe."
+    },
+    "canonical_uri": {
+      "type": "string",
+      "format": "uri-reference",
+      "minLength": 1,
+      "maxLength": 4096,
+      "description": "Canonical path, URL, or URI-reference; bounded to support long source-system routes without unbounded payload growth."
+    },
+    "locator": {
+      "type": "string",
+      "maxLength": 1024,
+      "description": "Human-readable locator or route hint; descriptive only and never the source authority."
+    },
+    "sha256_digest": {
+      "type": "string",
+      "pattern": "^(sha256:)?[A-Fa-f0-9]{64}$",
+      "description": "SHA-256 digest in bare hexadecimal or sha256:-prefixed form."
+    },
+    "case_id": {
+      "type": "string",
+      "maxLength": 128,
+      "description": "Optional matter/case scope identifier."
+    },
+    "source_system": {
+      "type": "string",
+      "maxLength": 128,
+      "description": "Optional owning or originating source-system label."
+    },
+    "native_id": {
+      "type": "string",
+      "maxLength": 512,
+      "description": "Optional source-native object identifier, bounded for connector interoperability."
+    },
+    "alias": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "description": "Retrieval alias such as docket shorthand, filename, label, or legacy locator."
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 4096,
+      "description": "Provenance, limitations, blockers, or review notes; not a substitute for source evidence."
+    }
+  },
+  "required": [
+    "resource_id",
+    "canonical_uri",
+    "source_kind",
+    "last_checked_at"
+  ],
+  "properties": {
+    "resource_id": {
+      "$ref": "#/$defs/resource_id"
+    },
+    "canonical_uri": {
+      "$ref": "#/$defs/canonical_uri"
+    },
+    "source_kind": {
+      "enum": [
+        "court_record",
+        "evidence",
+        "communication",
+        "filing",
+        "index",
+        "connector",
+        "system",
+        "other"
+      ]
+    },
+    "locator": {
+      "oneOf": [
+        { "$ref": "#/$defs/locator" },
+        { "type": "null" }
+      ]
+    },
+    "content_hash": {
+      "oneOf": [
+        { "$ref": "#/$defs/sha256_digest" },
+        { "type": "null" }
+      ]
+    },
+    "last_checked_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "case_id": {
+      "oneOf": [
+        { "$ref": "#/$defs/case_id" },
+        { "type": "null" }
+      ]
+    },
+    "source_system": {
+      "oneOf": [
+        { "$ref": "#/$defs/source_system" },
+        { "type": "null" }
+      ]
+    },
+    "native_id": {
+      "oneOf": [
+        { "$ref": "#/$defs/native_id" },
+        { "type": "null" }
+      ]
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/alias"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "resolution_status": {
+      "enum": [
+        "verified",
+        "unverified",
+        "stale",
+        "moved",
+        "blocked",
+        "unavailable",
+        "superseded",
+        "conflicting"
+      ]
+    },
+    "replaced_by": {
+      "oneOf": [
+        { "$ref": "#/$defs/resource_id" },
+        { "type": "null" }
+      ]
+    },
+    "notes": {
+      "oneOf": [
+        { "$ref": "#/$defs/notes" },
+        { "type": "null" }
+      ]
+    }
+  }
+}

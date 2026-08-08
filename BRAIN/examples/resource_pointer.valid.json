@@ -1,0 +1,18 @@
+{
+  "resource_id": "D225-JIMS-RAW-001",
+  "canonical_uri": "https://jimspss1.courts.state.hi.us/JIMSExternal/documentDownload.iface?seqNo=225&caseId=1FDV-23-0001009",
+  "source_kind": "court_record",
+  "locator": "Judiciary JIMS lead document, sequence 225",
+  "content_hash": null,
+  "last_checked_at": "2026-07-29T11:25:00Z",
+  "case_id": "1FDV-23-0001009",
+  "source_system": "Hawaii Judiciary JIMS",
+  "native_id": "seqNo=225",
+  "aliases": [
+    "Dkt. 225",
+    "225-Motion for ___________"
+  ],
+  "resolution_status": "blocked",
+  "replaced_by": null,
+  "notes": "Native route is known, but official JIMS lead-document bytes were not acquired in the recorded runtime. This pointer does not promote the Library candidate to official filed-byte status."
+}
