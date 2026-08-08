@@ -4,6 +4,10 @@ import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
+const EXIT_SUCCESS = 0;
+const EXIT_NO_MATCH = 1;
+const SCORE_EXACT_STRONG = 100;
+
 const readJson = (relative) => JSON.parse(
   fs.readFileSync(new URL(relative, import.meta.url), "utf8")
 );
@@ -37,7 +41,7 @@ if (validateMemory(invalidMemory)) {
 const resolver = fileURLToPath(new URL("../resource_pointer_resolver.py", import.meta.url));
 const repoRoot = fileURLToPath(new URL("../../", import.meta.url));
 
-function runResolver(args, expectedStatus = 0) {
+function runResolver(args, expectedStatus = EXIT_SUCCESS) {
   const result = spawnSync("python3", [resolver, ...args], {
     cwd: repoRoot,
     encoding: "utf8",
@@ -52,37 +56,67 @@ function runResolver(args, expectedStatus = 0) {
 }
 
 const byId = JSON.parse(runResolver(["D225-JIMS-RAW-001", "--json", "--require-unique"]));
-if (byId.length < 1 || byId[0].score !== 100 || byId[0].resource_id !== "D225-JIMS-RAW-001") {
+if (
+  byId.length < 1 ||
+  byId[0].score !== SCORE_EXACT_STRONG ||
+  byId[0].resource_id !== "D225-JIMS-RAW-001"
+) {
   throw new Error("stable Dkt. 225 source-object identity did not resolve deterministically");
 }
 if (!byId[0].canonical_uri.includes("seqNo=225")) {
   throw new Error("Dkt. 225 resolver result lost its native Judiciary route");
 }
-if (byId[0].status !== "NOT_ACQUIRED_RUNTIME_ACCESS_BLOCKED") {
-  throw new Error("Dkt. 225 blocker state was not preserved");
+if (byId[0].source_status !== "NOT_ACQUIRED_RUNTIME_ACCESS_BLOCKED") {
+  throw new Error("Dkt. 225 raw source-registry blocker state was not preserved");
+}
+
+const fixtureById = JSON.parse(runResolver([
+  "D225-JIMS-RAW-001",
+  "--registry",
+  "BRAIN/examples/resource_pointer.valid.json",
+  "--json",
+  "--require-unique",
+]));
+const expectedAliases = new Set(["Dkt. 225", "225-Motion for ___________"]);
+const observedAliases = new Set(fixtureById[0]?.aliases ?? []);
+if (
+  observedAliases.size !== expectedAliases.size ||
+  [...expectedAliases].some((alias) => !observedAliases.has(alias))
+) {
+  throw new Error(`resource aliases were not preserved: ${JSON.stringify([...observedAliases])}`);
 }
 
 const digest = "26201dc2a2b4849b2a578267b57f840240fd141dea5ff4d87f9b668444ffffd8";
-const byHash = JSON.parse(runResolver([digest, "--json"]));
-const topHashIds = new Set(
-  byHash.filter((item) => item.score === 100).map((item) => item.resource_id)
-);
 const expectedHashIds = new Set([
   "D225-CANDIDATE-LIBRARY-001",
   "D225-CANDIDATE-LIBRARY-002",
 ]);
-if (
-  topHashIds.size !== expectedHashIds.size ||
-  [...expectedHashIds].some((resourceId) => !topHashIds.has(resourceId))
-) {
-  throw new Error(`byte-identical candidate ambiguity was not preserved: ${JSON.stringify([...topHashIds])}`);
+
+function assertExactDuplicateHash(query) {
+  const matches = JSON.parse(runResolver([query, "--json"]));
+  const topHashIds = new Set(
+    matches
+      .filter((item) => item.score === SCORE_EXACT_STRONG)
+      .map((item) => item.resource_id)
+  );
+  if (
+    topHashIds.size !== expectedHashIds.size ||
+    [...expectedHashIds].some((resourceId) => !topHashIds.has(resourceId))
+  ) {
+    throw new Error(
+      `byte-identical candidate ambiguity was not preserved for ${query}: ${JSON.stringify([...topHashIds])}`
+    );
+  }
 }
 
-const noMatch = runResolver(["not-a-real-pointer-zzzz", "--json"], 1);
+assertExactDuplicateHash(digest);
+assertExactDuplicateHash(`sha256:${digest}`);
+
+const noMatch = runResolver(["not-a-real-pointer-zzzz", "--json"], EXIT_NO_MATCH);
 if (noMatch !== "[]") {
   throw new Error("unknown pointer query did not fail closed");
 }
 
 console.log(
-  "PASS: reusable pointer schema, pointer-backed memory, exact native resolution, duplicate-hash ambiguity, and fail-closed no-match validated"
+  "PASS: reusable pointer schema, pointer-backed memory, exact native resolution, aliases, equivalent SHA-256 forms, duplicate-hash ambiguity, and fail-closed no-match validated"
 );
