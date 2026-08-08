@@ -90,6 +90,8 @@ EXIT_AMBIGUOUS = 3
 
 @dataclass(frozen=True)
 class ResolutionMatch:
+    """One provenance-preserving match from an existing registry record."""
+
     score: int
     registry_path: str
     json_path: str
@@ -104,6 +106,7 @@ class ResolutionMatch:
 
 
 def _normalize(value: Any) -> str:
+    """Normalize a scalar token for case-insensitive resolver comparison."""
     return str(value).strip().casefold()
 
 
@@ -145,6 +148,7 @@ def _match_scalar_items(record: dict[str, Any]) -> Iterator[tuple[str, str]]:
 
 
 def _direct_scalar(record: dict[str, Any], keys: Iterable[str]) -> str | None:
+    """Return the first non-empty direct scalar found under the ordered keys."""
     for key in keys:
         value = record.get(key)
         if isinstance(value, (str, int, float)) and str(value).strip():
@@ -153,10 +157,12 @@ def _direct_scalar(record: dict[str, Any], keys: Iterable[str]) -> str | None:
 
 
 def _identity(record: dict[str, Any]) -> str | None:
+    """Recover the record's established stable identity when one is present."""
     return _direct_scalar(record, IDENTITY_KEYS)
 
 
 def _aliases(record: dict[str, Any]) -> tuple[str, ...]:
+    """Return unique non-empty aliases without converting them into identities."""
     value = record.get("aliases")
     if not isinstance(value, list):
         return ()
@@ -170,10 +176,12 @@ def _aliases(record: dict[str, Any]) -> tuple[str, ...]:
 
 
 def _content_hash(record: dict[str, Any]) -> str | None:
+    """Return the strongest available recorded content digest without recomputing bytes."""
     return _direct_scalar(record, ("sha256", "content_hash", "sha1"))
 
 
 def _canonical_uri(record: dict[str, Any], registry_path: str, json_path: str) -> str:
+    """Recover a canonical route, falling back to the exact registry projection."""
     direct = _direct_scalar(record, LOCATOR_KEYS[:4])
     if direct:
         return direct
@@ -189,6 +197,7 @@ def _canonical_uri(record: dict[str, Any], registry_path: str, json_path: str) -
 
 
 def _native_ids(record: dict[str, Any]) -> dict[str, str]:
+    """Collect source-native identifiers while excluding content hashes."""
     result: dict[str, str] = {}
     for key, value in _match_scalar_items(record):
         leaf = key.rsplit(".", 1)[-1]
@@ -198,6 +207,7 @@ def _native_ids(record: dict[str, Any]) -> dict[str, str]:
 
 
 def _is_candidate(record: dict[str, Any]) -> bool:
+    """Return whether a mapping has enough locator/identity shape to be resolvable."""
     if any(key in record for key in IDENTITY_KEYS):
         return True
     if any(key in record for key in LOCATOR_KEYS):
@@ -206,6 +216,7 @@ def _is_candidate(record: dict[str, Any]) -> bool:
 
 
 def _walk(value: Any, path: str = "$") -> Iterator[tuple[str, dict[str, Any]]]:
+    """Walk registry JSON and yield candidate resource records with JSON paths."""
     if isinstance(value, dict):
         if _is_candidate(value):
             yield path, value
@@ -217,6 +228,7 @@ def _walk(value: Any, path: str = "$") -> Iterator[tuple[str, dict[str, Any]]]:
 
 
 def _match_score(query: str, record: dict[str, Any]) -> tuple[int, tuple[str, ...]]:
+    """Score one record while preserving exact-vs-substring and strong-ID priority."""
     q = _normalize(query)
     if not q:
         return SCORE_NO_MATCH, ()
@@ -285,6 +297,7 @@ def resolve(
     *,
     repo_root: Path | None = None,
 ) -> list[ResolutionMatch]:
+    """Resolve a query across the supplied existing registries without mutation."""
     matches: list[ResolutionMatch] = []
     root = repo_root.resolve() if repo_root is not None else None
 
@@ -335,6 +348,7 @@ def resolve(
 
 
 def _build_parser() -> argparse.ArgumentParser:
+    """Build the CLI parser for deterministic registry resolution."""
     parser = argparse.ArgumentParser(
         description="Resolve a stable resource identity across existing CASEBRAIN registries."
     )
@@ -357,6 +371,7 @@ def _build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    """Run the read-only CLI and return a stable resolver protocol exit code."""
     args = _build_parser().parse_args(argv)
     repo_root = Path(__file__).resolve().parents[1]
     registries = args.registry or default_registry_paths(repo_root, args.case_id)
