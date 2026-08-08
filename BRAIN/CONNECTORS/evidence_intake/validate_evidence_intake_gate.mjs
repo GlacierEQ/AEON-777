@@ -344,15 +344,21 @@ const unsafeSensitive = verifiedFixture();
 unsafeSensitive.gate_id = "eig_synthetic_sensitive_reject_001";
 unsafeSensitive.sensitivity.class = "privileged";
 unsafeSensitive.projection_policy = "allowed";
+unsafeSensitive.promotion.blockers = semanticBlockers(unsafeSensitive);
 const unsafeSensitiveResult = evaluate(unsafeSensitive);
 assert.equal(unsafeSensitiveResult.ok, false);
-assert.equal(unsafeSensitiveResult.class, "schema_reject");
+assert.equal(unsafeSensitiveResult.class, "promotion_blocked");
+assert.ok(unsafeSensitiveResult.blockers.includes("unsafe_sensitive_projection"));
 
 const filingAssertion = verifiedFixture();
 filingAssertion.gate_id = "eig_synthetic_filing_reject_001";
 filingAssertion.truth_partition = "filing_ready_assertion";
+filingAssertion.promotion.blockers = semanticBlockers(filingAssertion);
 const filingAssertionResult = evaluate(filingAssertion);
 assert.equal(filingAssertionResult.ok, false);
+assert.equal(filingAssertionResult.class, "promotion_blocked");
+assert.ok(filingAssertionResult.blockers.includes("truth_partition_not_verified_record"));
+assert.ok(filingAssertionResult.blockers.includes("filing_ready_assertion_requires_separate_gate"));
 
 console.log("PASS: evidence intake gate compiles against canonical Resource Pointer and Provenance Receipt schemas");
 console.log("PASS: discovery signals cannot silently omit blockers or promote without exact-byte integrity, provenance, duplicate, sensitivity, custody, and review gates");
