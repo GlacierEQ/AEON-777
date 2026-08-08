@@ -1,0 +1,106 @@
+{
+  "schema": "casebrain.memory-architecture.canon-hygiene-receipt.v1",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "cycle": {
+    "lane": "canon_hygiene",
+    "observed_at": "2026-08-08T13:20:13.309295Z",
+    "local_label": "2026-08-08T03:20:13-10:00"
+  },
+  "source_probes": {
+    "smithery_toolbox": {
+      "total": 141,
+      "connected": 81,
+      "auth_required": 37,
+      "input_required": 12,
+      "error": 11,
+      "setup_urls_persisted": false
+    },
+    "supabase_project": "dyhprklicgewmrimecey",
+    "notion_control_plane_page_id": "355b1e4f-3223-81de-b8a6-f783a875df5b",
+    "linear_issue": "HI-46",
+    "github": {
+      "canonical_repository": "GlacierEQ/AEON-777",
+      "previous_canonical_commit": "de30cf1338ea4ed21a3dcfcdb4d8f53a97deab36",
+      "superluminal_pr_70": {
+        "state": "open",
+        "draft": true,
+        "mergeable": true,
+        "head_sha": "53d3d5729fb43376c0a240650aacf0bb3f0daed9"
+      },
+      "superluminal_pr_71": {
+        "state": "open",
+        "draft": true,
+        "mergeable": true,
+        "head_sha": "8cae7b8da71ff6f8a70ca64c47355970589ad211"
+      }
+    }
+  },
+  "contradictions_resolved": [
+    {
+      "object": "smithery:notion",
+      "superseded_state": {
+        "lifecycle_state": "connected",
+        "authentication_state": "unknown",
+        "health_status": "connection_connected_unverified"
+      },
+      "current_state": {
+        "lifecycle_state": "blocked",
+        "authentication_state": "auth_required",
+        "health_status": "blocked_auth_required",
+        "freshness_status": "stale",
+        "capabilities_enabled": false
+      },
+      "basis": "current Smithery toolbox probe"
+    },
+    {
+      "object": "memory_architecture.connector_mesh_control_plane.current",
+      "superseded_state": "verified",
+      "current_state": "stale",
+      "expired_at": "2026-08-02T04:35:23.818190Z",
+      "source_hash_preserved": "71a9f82f9f5ffa23c4aec0ab947aa5aebdef9f43b6c2280e144a2495d589a50f",
+      "result_hash_preserved": "7da98b94ec0ff3a305f9c151774cc8613dcc9ba8e22f16fe630eef21ff11246a"
+    },
+    {
+      "object": "Linear HI-46",
+      "superseded_state": "Done",
+      "current_state": "In Progress",
+      "reason": "acceptance chain remains incomplete; child work packets and live external execution proof remain unfinished"
+    }
+  ],
+  "verified_postconditions": {
+    "registry_total": 169,
+    "lifecycle": {
+      "connected": 93,
+      "blocked": 51,
+      "staging_only": 25
+    },
+    "authentication": {
+      "auth_required": 41,
+      "unknown": 98
+    },
+    "active_jobs": 0,
+    "ambiguous_jobs": 0,
+    "enabled_open_or_half_open_routes": 0,
+    "unsafe_enabled_mutations": 0,
+    "append_only_audit_rows_added": 2
+  },
+  "next_execution_ready_object": {
+    "object": "scoped Notion projection refresh",
+    "dependency_order": [
+      "restore Smithery Notion authorization",
+      "run one scoped read-only tool probe",
+      "claim and reserve through the durable HI-48/HI-49 chain",
+      "persist a replacement projection",
+      "verify Notion readback through HI-50",
+      "close HI-46 only after full receipt reconciliation"
+    ],
+    "production_route_enabled": false
+  },
+  "safety": {
+    "credentials_included": false,
+    "privileged_source_bytes_included": false,
+    "protected_minor_details_included": false,
+    "allegation_bearing_narratives_included": false,
+    "authentication_inferred_from_connection_state": false
+  }
+}
