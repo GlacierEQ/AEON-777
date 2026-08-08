@@ -6,13 +6,28 @@ Thread anchor: `MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51`
 
 1. Approved original bytes and source-system metadata.
 2. Immutable provenance receipt tied to the exact bytes.
-3. GitHub schemas, validators, decisions, and migration maps.
+3. GitHub schemas, validators, decisions, resource registries, and migration maps.
 4. Validated derived artifacts tied to their original receipt.
 5. Notion control-plane projections.
 6. ClickUp, Linear, and Jira tasks or run receipts.
-7. General memory summaries.
+7. General memory summaries and pointer-backed recall projections.
 
 Lower layers never promote or overwrite claims in higher layers.
+
+## Pointer-backed organization
+
+Externally grounded memory follows this route:
+
+`memory record -> source_pointers[*] -> stable resource_id -> existing resource/source-object registry -> canonical source`
+
+- `RESOURCE_POINTER_SCHEMA.json` is the reusable shape for memory source pointers.
+- Resource registries remain the identity/route control surfaces; memory backends are recall and projection surfaces, not evidence authority.
+- One source object may have many aliases, working views, backend projections, and derived memories without creating parallel canonical identities.
+- Aliases improve retrieval only. They never create a second source of truth.
+- Raw source bytes are not copied into general memory merely to improve navigation.
+- Pointer health and claim verification remain separate state dimensions.
+- Namespace controls, quarantine, retrieval guards, and tombstones continue to govern memory even when a valid source pointer exists.
+- Conflicting resource identities, hash-equivalent objects with different provenance, stale routes, and unresolved source relationships remain explicit until source-specific review resolves them.
 
 ## Memory classes
 
@@ -53,6 +68,7 @@ Every artifact entering an approved queue must carry:
 
 - connector ID, canonical source URI, source version, acquisition time, and custodian;
 - exact original filename, MIME type, byte count, and SHA-256;
+- stable resource ID and source-native ID when available;
 - original/derivative class and parent receipt when derivative;
 - sensitivity, privilege/protected-minor gates, claim class, and verification state;
 - approved bucket, human-review state, idempotency key, and immutable run receipt.
@@ -66,6 +82,7 @@ Every artifact entering an approved queue must carry:
 - Positive connector-score components require field-level evidence.
 - Stale probes cannot support current-state claims.
 - Duplicate handling is compare-and-link; originals are not deleted automatically.
+- Hash-equivalent resources are not automatically identity-equivalent when custody, native ID, filing relationship, or source provenance differs.
 - Every write is followed by schema validation, semantic validation, read-back, and receipt verification.
 - External legal action, filing, service, publication, sharing, deletion, and access expansion remain human-only gates.
 
@@ -73,17 +90,20 @@ Every artifact entering an approved queue must carry:
 
 `discovered → metadata_indexed → quarantined → reviewed → canonical_linked`
 
-Promotion stops on missing root authorization, missing hash, unresolved duplicate, sensitivity ambiguity, protected-content leakage, unverifiable identity, claim-class conflict, schema drift, or absent human approval.
+Promotion stops on missing root authorization, missing hash where bytes are materialized and hash is required, unresolved duplicate, sensitivity ambiguity, protected-content leakage, unverifiable identity, claim-class conflict, schema drift, or absent human approval.
+
+A resolver hit is not a promotion gate by itself. Resolution answers “which registered route or identity matches?”; evidentiary verification answers a different question.
 
 ## Next integration slice
 
 Implement one end-to-end, metadata-only pilot against a single approved root:
 
 1. Record exact root URI and owner.
-2. Perform a bounded successful probe and preserve the timestamped receipt.
-3. Create a provenance receipt for one non-privileged test artifact.
-4. Derive the deterministic idempotency key and prove replay safety.
-5. Project only safe status fields to Notion and one task receipt.
-6. Read back all writes and reconcile the audit log.
+2. Resolve or assign the stable resource ID before memory projection.
+3. Perform a bounded successful probe and preserve the timestamped receipt.
+4. Create a provenance receipt for one non-privileged test artifact.
+5. Derive the deterministic idempotency key and prove replay safety.
+6. Project only safe status fields and source pointers to memory/Notion and one task receipt.
+7. Read back all writes and reconcile the audit log.
 
 No production ingestion is enabled by this document.
