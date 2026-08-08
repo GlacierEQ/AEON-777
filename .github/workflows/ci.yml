@@ -14,3 +14,10 @@ jobs:
     uses: GlacierEQ/public-actions-runner-host/.github/workflows/casebrain-validation.yml@d66820d708a6333e519c2cde56e1d5c297a475cb
     with:
       expected_head_sha: ${{ github.event.pull_request.head.sha || github.sha }}
+
+  public-projection-safety:
+    uses: GlacierEQ/public-actions-runner-host/.github/workflows/public-projection-safety.yml@26d0e596dd29e14e94dd2747d6a0e9cceef638d5
+    with:
+      repository_visibility: ${{ github.event.repository.visibility }}
+      base_sha: ${{ github.event.pull_request.base.sha || github.event.before }}
+      head_sha: ${{ github.event.pull_request.head.sha || github.sha }}
