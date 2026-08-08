@@ -10,7 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Iterable, Iterator
 
@@ -94,18 +94,32 @@ def _normalize(value: Any) -> str:
     return str(value).strip().casefold()
 
 
-def _scalar_items(value: Any, prefix: str = "") -> Iterator[tuple[str, str]]:
-    """Yield scalar leaf values with dotted keys, preserving nested metadata."""
-    if isinstance(value, dict):
-        for key, child in value.items():
-            child_prefix = f"{prefix}.{key}" if prefix else str(key)
-            yield from _scalar_items(child, child_prefix)
-    elif isinstance(value, list):
-        for index, child in enumerate(value):
-            child_prefix = f"{prefix}[{index}]"
-            yield from _scalar_items(child, child_prefix)
-    elif value is not None and not isinstance(value, (dict, list)):
-        yield prefix, str(value)
+def _match_scalar_items(record: dict[str, Any]) -> Iterator[tuple[str, str]]:
+    """Yield direct and one-level scalar metadata for one resource record.
+
+    Deliberately do not recurse through child record collections. That prevents a
+    registry root from matching every value owned by its descendant objects.
+    """
+    for key, value in record.items():
+        if value is None:
+            continue
+        if isinstance(value, (str, int, float, bool)):
+            yield key, str(value)
+            continue
+        if isinstance(value, list):
+            for child in value:
+                if isinstance(child, (str, int, float, bool)):
+                    yield key, str(child)
+            continue
+        if isinstance(value, dict):
+            for child_key, child in value.items():
+                dotted = f"{key}.{child_key}"
+                if isinstance(child, (str, int, float, bool)):
+                    yield dotted, str(child)
+                elif isinstance(child, list):
+                    for item in child:
+                        if isinstance(item, (str, int, float, bool)):
+                            yield dotted, str(item)
 
 
 def _direct_scalar(record: dict[str, Any], keys: Iterable[str]) -> str | None:
@@ -141,7 +155,7 @@ def _canonical_uri(record: dict[str, Any], registry_path: str, json_path: str) -
 
 def _native_ids(record: dict[str, Any]) -> dict[str, str]:
     result: dict[str, str] = {}
-    for key, value in _scalar_items(record):
+    for key, value in _match_scalar_items(record):
         leaf = key.rsplit(".", 1)[-1]
         if leaf in STRONG_EXACT_KEYS and leaf not in {"sha256", "content_hash"}:
             result[key] = value
@@ -177,7 +191,7 @@ def _match_score(query: str, record: dict[str, Any]) -> tuple[int, tuple[str, ..
     substring_strong: list[str] = []
     substring_other: list[str] = []
 
-    for dotted_key, raw_value in _scalar_items(record):
+    for dotted_key, raw_value in _match_scalar_items(record):
         normalized = _normalize(raw_value)
         if not normalized:
             continue
@@ -216,7 +230,6 @@ def default_registry_paths(repo_root: Path, case_id: str) -> list[Path]:
     ):
         candidates.extend(sorted(case_root.glob(pattern)))
 
-    # Keep deterministic order while eliminating path duplicates.
     seen: set[Path] = set()
     result: list[Path] = []
     for path in candidates:
