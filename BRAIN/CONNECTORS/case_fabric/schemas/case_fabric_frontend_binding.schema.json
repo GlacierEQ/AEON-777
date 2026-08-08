@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/GlacierEQ/AEON-777/BRAIN/CONNECTORS/case_fabric/schemas/case_fabric_frontend_binding.schema.json",
+  "title": "Case Fabric Frontend Binding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "thread_anchor",
+    "logical_fabric_id",
+    "authority_order",
+    "object_types",
+    "truth_partitions",
+    "governance",
+    "frontends",
+    "idempotency_key",
+    "quality"
+  ],
+  "properties": {
+    "schema": {
+      "const": "casebrain.case-fabric.frontend-binding.v1"
+    },
+    "thread_anchor": {
+      "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51"
+    },
+    "logical_fabric_id": {
+      "const": "case-fabric.primary"
+    },
+    "authority_order": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "object_types": {
+      "type": "array",
+      "minItems": 13,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "truth_partitions": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "governance": {
+      "type": "object",
+      "required": [
+        "projection_is_evidence",
+        "connector_presence_proves_authentication",
+        "silent_overwrite_allowed",
+        "privileged_bytes_in_projection",
+        "protected_minor_details_in_projection",
+        "allegation_bearing_narratives_in_general_memory",
+        "mutation_requires_receipt",
+        "supersession"
+      ],
+      "additionalProperties": {
+        "type": [
+          "boolean",
+          "string"
+        ]
+      }
+    },
+    "frontends": {
+      "type": "array",
+      "minItems": 7,
+      "items": {
+        "type": "object",
+        "required": [
+          "key",
+          "role",
+          "state",
+          "mode",
+          "approved_roots",
+          "next_gate"
+        ],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "none",
+              "read",
+              "read_write"
+            ]
+          },
+          "approved_roots": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "projection_root_ref": {
+            "type": "string"
+          },
+          "next_gate": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "idempotency_key": {
+      "type": "string"
+    },
+    "quality": {
+      "type": "object",
+      "required": [
+        "connector_quality_separate_from_data_quality",
+        "unknown_scores_promoted"
+      ],
+      "properties": {
+        "connector_quality_separate_from_data_quality": {
+          "const": true
+        },
+        "unknown_scores_promoted": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

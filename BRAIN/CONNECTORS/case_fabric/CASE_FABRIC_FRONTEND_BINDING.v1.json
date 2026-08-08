@@ -1,0 +1,113 @@
+{
+  "schema": "casebrain.case-fabric.frontend-binding.v1",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "logical_fabric_id": "case-fabric.primary",
+  "authority_order": [
+    "approved_original_bytes",
+    "github_canonical_contracts",
+    "supabase_audited_runtime",
+    "casebrain_structured_graph",
+    "mem_durable_workbench",
+    "supermemory_semantic_projection",
+    "notion_human_control_plane"
+  ],
+  "object_types": [
+    "case",
+    "event",
+    "actor",
+    "source",
+    "evidence_item",
+    "claim",
+    "contradiction",
+    "authority",
+    "filing",
+    "task",
+    "decision",
+    "memory",
+    "receipt"
+  ],
+  "truth_partitions": [
+    "verified_record",
+    "hypothesis_or_discovery_target",
+    "private_work_product",
+    "filing_ready_assertion"
+  ],
+  "governance": {
+    "projection_is_evidence": false,
+    "connector_presence_proves_authentication": false,
+    "filenames_or_search_hits_are_proof": false,
+    "silent_overwrite_allowed": false,
+    "privileged_bytes_in_projection": false,
+    "protected_minor_details_in_projection": false,
+    "allegation_bearing_narratives_in_general_memory": false,
+    "mutation_requires_receipt": true,
+    "supersession": "append_successor_then_mark_prior_stale"
+  },
+  "frontends": [
+    {
+      "key": "github",
+      "role": "canonical_schema_validator_decision_store",
+      "state": "verified",
+      "mode": "read_write",
+      "approved_roots": [
+        "BRAIN/CONNECTORS/case_fabric"
+      ],
+      "next_gate": null
+    },
+    {
+      "key": "notion",
+      "role": "human_navigation_and_review_projection",
+      "state": "connected",
+      "mode": "read_write",
+      "approved_roots": [],
+      "projection_root_ref": "notion:67c709f2-2723-41cc-af2e-a127c41a320a",
+      "next_gate": "assign_owner_and_approve_exact_projection_roots"
+    },
+    {
+      "key": "mem",
+      "role": "durable_workbench_and_continuity_projection",
+      "state": "read_verified_write_unverified",
+      "mode": "read",
+      "approved_roots": [],
+      "projection_root_ref": "mem:1c5f821b-af89-5898-97fe-2789095e1163",
+      "next_gate": "refresh_existing_projection_and_verify_readback"
+    },
+    {
+      "key": "casebrain.primary",
+      "role": "structured_case_graph",
+      "state": "authenticated_methods_unavailable",
+      "mode": "none",
+      "approved_roots": [],
+      "next_gate": "restore_list_and_recall_methods_then_run_scoped_probe"
+    },
+    {
+      "key": "supermemory1.primary",
+      "role": "compact_semantic_projection",
+      "state": "authenticated_methods_unavailable",
+      "mode": "none",
+      "approved_roots": [],
+      "next_gate": "restore_list_and_recall_methods_then_run_scoped_probe"
+    },
+    {
+      "key": "smithery:notion",
+      "role": "connector_fabric_route",
+      "state": "blocked_auth_required",
+      "mode": "none",
+      "approved_roots": [],
+      "next_gate": "reauthorize_then_run_scoped_read_probe"
+    },
+    {
+      "key": "smithery:supermemory",
+      "role": "connector_fabric_route",
+      "state": "blocked_auth_required",
+      "mode": "none",
+      "approved_roots": [],
+      "next_gate": "reauthorize_then_run_scoped_read_probe"
+    }
+  ],
+  "idempotency_key": "sha256(logical_fabric_id + object_type + canonical_object_id + source_version + projection_target)",
+  "quality": {
+    "connector_quality_separate_from_data_quality": true,
+    "unknown_scores_promoted": false
+  }
+}
