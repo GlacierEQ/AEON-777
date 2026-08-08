@@ -1,0 +1,2619 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "observed_at": "2026-08-08T04:10:00Z",
+  "source": {
+    "system": "smithery",
+    "namespace": "GlacierEQ",
+    "probe": "toolbox_status",
+    "raw_setup_urls_persisted": false,
+    "credentials_persisted": false
+  },
+  "aggregate": {
+    "total": 141,
+    "connected": 82,
+    "auth_required": 36,
+    "input_required": 12,
+    "error": 11
+  },
+  "critical_states": {
+    "github": "connected",
+    "supabase": "connected",
+    "notion": "connected",
+    "smithery": "connected",
+    "cloudflare": "auth_required",
+    "cloudflare_workers_bindings": "auth_required",
+    "supermemory": "auth_required"
+  },
+  "connections": [
+    {
+      "connector_key": "smithery:a2a-llm-orchestration-agent",
+      "display_name": "LLM Orchestration Agent",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:agentsim-agentsim",
+      "display_name": "AgentSIM",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:aicommander-connect",
+      "display_name": "AI Commander",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:aldred-guard-mail",
+      "display_name": "Guard Mail",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:alexandria-shai-eden-caselaw",
+      "display_name": "Case Law Search",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:alexandria-shai-eden-cbrowser",
+      "display_name": "Cognitive Browser",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:alexis-platon1307-mcp-forge",
+      "display_name": "mcp-forge",
+      "observed_state": "input_required",
+      "lifecycle_state": "staging_only",
+      "authentication_state": "configuring",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_input_required"
+    },
+    {
+      "connector_key": "smithery:antlion-gLNH",
+      "display_name": "antlion-gLNH",
+      "observed_state": "input_required",
+      "lifecycle_state": "staging_only",
+      "authentication_state": "configuring",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_input_required"
+    },
+    {
+      "connector_key": "smithery:anysearch-ai-anysearch",
+      "display_name": "AnySearch",
+      "observed_state": "input_required",
+      "lifecycle_state": "staging_only",
+      "authentication_state": "configuring",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_input_required"
+    },
+    {
+      "connector_key": "smithery:apify",
+      "display_name": "Apify",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:artificer-lex-oracle",
+      "display_name": "lex-oracle",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:aruuhii2yo-maxion-mcp-gateway",
+      "display_name": "maxion-mcp-gateway",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:ashudps2004-agentready",
+      "display_name": "agentready",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:attio",
+      "display_name": "Attio",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:axel-belfort-ocr-extract",
+      "display_name": "OCR Text Extraction — Image to Text, Multi-Language",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:axel-belfort-sentiment-analyzer",
+      "display_name": "Sentiment Analyzer — Emotions, Confidence & Key Phrases",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:axel-belfort-slug-generator",
+      "display_name": "Slug Generator — URL-Friendly Text Conversion",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:axel-belfort-text-classifier",
+      "display_name": "Text Classifier — Topic Categories & Readability",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:axel-belfort-uuid-generator",
+      "display_name": "UUID Generator — v4, v7, ULID, Nanoid (Batch 100)",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:axel-belfort-vector-search",
+      "display_name": "Vector Search — In-Memory TF-IDF Semantic Store",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:axel-belfort-web-search",
+      "display_name": "Web Search — Structured Results for AI Agents",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:blackboxfoundry-livedatalink",
+      "display_name": "livedatalink",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:bobcat-0A6r",
+      "display_name": "bobcat-0A6r",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:brave",
+      "display_name": "Brave Search",
+      "observed_state": "input_required",
+      "lifecycle_state": "staging_only",
+      "authentication_state": "configuring",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_input_required"
+    },
+    {
+      "connector_key": "smithery:brightdata",
+      "display_name": "Bright Data",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:clay-inc-clay-mcp",
+      "display_name": "Mesh MCP",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:cloudflare",
+      "display_name": "Cloudflare",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:cloudflare-workers-bindings",
+      "display_name": "Cloudflare Workers Bindings",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:cod-gb2l-studiomeyer-crew",
+      "display_name": "StudioMeyer-Crew",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:cortex",
+      "display_name": "Cortex",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:crevio-crevio",
+      "display_name": "Crevio",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:davis43131-humanizer",
+      "display_name": "AI Humanizer",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:deepwiki",
+      "display_name": "DeepWiki",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:desktopcommander-remote",
+      "display_name": "Remote Desktop Commander ",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:dev-ko1g-rchilli",
+      "display_name": "RChilli",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:drawio-drawio",
+      "display_name": "Draw.io",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:dropbox",
+      "display_name": "Dropbox",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:edubase-mcp",
+      "display_name": "EduBase",
+      "observed_state": "input_required",
+      "lifecycle_state": "staging_only",
+      "authentication_state": "configuring",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_input_required"
+    },
+    {
+      "connector_key": "smithery:elbpr-thinking-toolkit",
+      "display_name": "thinking-toolkit",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:ericharrisonecho-omnflow",
+      "display_name": "omnflow",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:evozim-hv-cleancode-ai",
+      "display_name": "CleanCode AI",
+      "observed_state": "error",
+      "lifecycle_state": "blocked",
+      "authentication_state": "error",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_initialization_error"
+    },
+    {
+      "connector_key": "smithery:evozim-hv-repo-to-rag",
+      "display_name": "Repo-to-RAG",
+      "observed_state": "error",
+      "lifecycle_state": "blocked",
+      "authentication_state": "error",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_initialization_error"
+    },
+    {
+      "connector_key": "smithery:exa",
+      "display_name": "Exa Search",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:excalidraw",
+      "display_name": "Excalidraw",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:favcrm-favcrm",
+      "display_name": "FavCRM — Agentic CRM",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:flatlandfi-flatland",
+      "display_name": "flatland",
+      "observed_state": "input_required",
+      "lifecycle_state": "staging_only",
+      "authentication_state": "configuring",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_input_required"
+    },
+    {
+      "connector_key": "smithery:flyingfish-Pg2I",
+      "display_name": "flyingfish-Pg2I",
+      "observed_state": "input_required",
+      "lifecycle_state": "staging_only",
+      "authentication_state": "configuring",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_input_required"
+    },
+    {
+      "connector_key": "smithery:github",
+      "display_name": "GitHub",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:glaciereq-mcp-master-omni-grid",
+      "display_name": "mcp-master-omni-grid",
+      "observed_state": "error",
+      "lifecycle_state": "blocked",
+      "authentication_state": "error",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_initialization_error"
+    },
+    {
+      "connector_key": "smithery:gmail",
+      "display_name": "Gmail",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:googledocs",
+      "display_name": "Google Docs",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:googledrive",
+      "display_name": "Google Drive",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:googlephotos",
+      "display_name": "Googlephotos",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:googlesheets",
+      "display_name": "Google Sheets",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:googlesuper",
+      "display_name": "Google Super",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:hamid-vakilzadeh-mcpsemanticscholar",
+      "display_name": "AI Research Assistant",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:henry-ships-sparkforge",
+      "display_name": "SparkForge",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:hithesh0215-clawlink",
+      "display_name": "clawlink",
+      "observed_state": "input_required",
+      "lifecycle_state": "staging_only",
+      "authentication_state": "configuring",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_input_required"
+    },
+    {
+      "connector_key": "smithery:huggingface",
+      "display_name": "Hugging Face",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:icosaedro-toolsnap-mcp",
+      "display_name": "ToolSnap MCP",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:instagram",
+      "display_name": "Instagram",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:israelps-yamltools",
+      "display_name": "yamltools",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:jina",
+      "display_name": "Jina AI",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:jl-3044-agentndx",
+      "display_name": "AgentNDX",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:junglefowl-yBzC",
+      "display_name": "junglefowl-yBzC",
+      "observed_state": "input_required",
+      "lifecycle_state": "staging_only",
+      "authentication_state": "configuring",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_input_required"
+    },
+    {
+      "connector_key": "smithery:kapoost-humanmcp",
+      "display_name": "humanMCP",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:kiloiot-kilo-iot-platform",
+      "display_name": "Kilo IoT Platform",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:knportal-formfill-mcp",
+      "display_name": "formfill-mcp",
+      "observed_state": "error",
+      "lifecycle_state": "blocked",
+      "authentication_state": "error",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_initialization_error"
+    },
+    {
+      "connector_key": "smithery:kontakt-qy0g-alexandria",
+      "display_name": "alexandria",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:lanonasis-lano-enterprise-mcp",
+      "display_name": "Lano-enterprise-mcp",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:lark-m2Kk",
+      "display_name": "lark-m2Kk",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:lexq-io-lexq",
+      "display_name": "LexQ",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:linkupplatform-linkup-mcp-server",
+      "display_name": "Linkup",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:linxule-lotus-wisdom-mcp",
+      "display_name": "Lotus Wisdom",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:mackerel-axV9",
+      "display_name": "mackerel-axV9",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:mail-imi4-mu-mcp",
+      "display_name": "MU — say it, get it made",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:mcp-dir-escavador-mcp",
+      "display_name": "Legal MCP (alternativa ao Escavador)",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:microchipgnu-mcplace",
+      "display_name": "MCPlace",
+      "observed_state": "error",
+      "lifecycle_state": "blocked",
+      "authentication_state": "error",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_initialization_error"
+    },
+    {
+      "connector_key": "smithery:microsoft-learn-mcp",
+      "display_name": "Microsoft Learn MCP",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:mironovisa-datamcp",
+      "display_name": "datamcp",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:node2flow-supabase",
+      "display_name": "Supabase",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:notion",
+      "display_name": "notion",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:ojaskord-bizfile-mcp",
+      "display_name": "Bizfile MCP — Global Company Intelligence",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:ojaskord-document-integrity-validator-mcp",
+      "display_name": "Document Integrity Validator",
+      "observed_state": "error",
+      "lifecycle_state": "blocked",
+      "authentication_state": "error",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_initialization_error"
+    },
+    {
+      "connector_key": "smithery:ojaskord-local-model-suitability-mcp",
+      "display_name": "Local Model Suitability MCP",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:ojaskord-vat-validator-mcp",
+      "display_name": "VAT Validator MCP",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:omegamemory-omega-memory",
+      "display_name": "Omega",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:onchaintel-pqs",
+      "display_name": "Prompt Quality Score - PQS",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:one-drive",
+      "display_name": "One drive",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:oneprofile-dev-curatedmcp",
+      "display_name": "curatedmcp",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:outlook",
+      "display_name": "Outlook",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:parallel-search",
+      "display_name": "Parallel Web Search",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:pepys-pepys-mcp",
+      "display_name": "pepys-mcp",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:pinkpixel-dev-web-scout-mcp",
+      "display_name": "Web Scout",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:pipedrive",
+      "display_name": "Pipedrive",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:pipeworx-gateway",
+      "display_name": "pipeworx gateway",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:planetscale",
+      "display_name": "PlanetScale",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:portio",
+      "display_name": "Port IO",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:post-pulse-mcp-server",
+      "display_name": "PostPulse",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:protostatis-dev-unbrowser",
+      "display_name": "unbrowser by Unchained",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:r-space-technology-ltd-rspace",
+      "display_name": "rspace",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:r-yoshikawa-shirabe-calendar",
+      "display_name": "Shirabe Calendar API",
+      "observed_state": "input_required",
+      "lifecycle_state": "staging_only",
+      "authentication_state": "configuring",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_input_required"
+    },
+    {
+      "connector_key": "smithery:sawftware-apps-docimprint",
+      "display_name": "Verifiable Document Intelligence for A.I. agents",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:service-c09f-riskmodels",
+      "display_name": "RiskModels",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:slack",
+      "display_name": "Slack",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:smartdatabrokers-slideforge",
+      "display_name": "SlideForge",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:smartunityia-conversion",
+      "display_name": "Conversion Optimisation webp/avif",
+      "observed_state": "error",
+      "lifecycle_state": "blocked",
+      "authentication_state": "error",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_initialization_error"
+    },
+    {
+      "connector_key": "smithery:smithery",
+      "display_name": "Smithery",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:sophymarine-openregistry",
+      "display_name": "OpenRegistry",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:spacefrontiers-search",
+      "display_name": "Space Frontiers",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:stabrise-pdf-redaction",
+      "display_name": "PDF Redaction",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:supermemory",
+      "display_name": "Supermemory",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:support-9ef4-wayforth",
+      "display_name": "Wayforth",
+      "observed_state": "input_required",
+      "lifecycle_state": "staging_only",
+      "authentication_state": "configuring",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_input_required"
+    },
+    {
+      "connector_key": "smithery:support-ix87-onehaus",
+      "display_name": "OneHaus",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:tavily",
+      "display_name": "Tavily",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:tempguru-event-staffing",
+      "display_name": "TempGuru Event Staffing",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:temporary-recovery-code",
+      "display_name": "Temporary Connector Recovery Code",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:temporary-recovery-computer",
+      "display_name": "Temporary Connector Recovery Computer",
+      "observed_state": "error",
+      "lifecycle_state": "blocked",
+      "authentication_state": "error",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_initialization_error"
+    },
+    {
+      "connector_key": "smithery:temporary-recovery-d3vtools",
+      "display_name": "Temporary Connector Recovery D3vTools",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:temporary-recovery-datagen",
+      "display_name": "Temporary Connector Recovery DataGen",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:temporary-recovery-epl",
+      "display_name": "Temporary Connector Recovery EPL",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:temporary-recovery-fusional",
+      "display_name": "Temporary Connector Recovery Fusional",
+      "observed_state": "error",
+      "lifecycle_state": "blocked",
+      "authentication_state": "error",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_initialization_error"
+    },
+    {
+      "connector_key": "smithery:temporary-recovery-httpstatus",
+      "display_name": "Temporary Connector Recovery Httpstatus",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:temporary-recovery-playwright",
+      "display_name": "Temporary Connector Recovery Playwright",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:temporary-recovery-python",
+      "display_name": "Temporary Connector Recovery Python",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:temporary-recovery-sandbox",
+      "display_name": "Temporary Connector Recovery Sandbox",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:temporary-recovery-unbrowser",
+      "display_name": "Temporary Connector Recovery Unbrowser",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:temporary-recovery-unbrowser-2",
+      "display_name": "Temporary Connector Recovery Unbrowser 2",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:theagenttimes-news",
+      "display_name": "Agent News",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:thinair-data",
+      "display_name": "ThinAir Data",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:trello",
+      "display_name": "Trello",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:twitter",
+      "display_name": "X (Twitter)",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:unstructured-transform",
+      "display_name": "transform",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:urantiahub-urantia-papers",
+      "display_name": "Urantia Papers",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:useorgx-orgx-mcp",
+      "display_name": "OrgX",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:vairogs-vairogs",
+      "display_name": "Vairogs — Latvian Laws",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:vercel-grep",
+      "display_name": "Vercel Grep",
+      "observed_state": "auth_required",
+      "lifecycle_state": "blocked",
+      "authentication_state": "auth_required",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_auth_required"
+    },
+    {
+      "connector_key": "smithery:veroq-veroq",
+      "display_name": "Veroq",
+      "observed_state": "error",
+      "lifecycle_state": "blocked",
+      "authentication_state": "error",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_initialization_error"
+    },
+    {
+      "connector_key": "smithery:waldzellai-clear-thought",
+      "display_name": "Clear Thought 1.5",
+      "observed_state": "connected",
+      "lifecycle_state": "connected",
+      "authentication_state": "unknown",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": null
+    },
+    {
+      "connector_key": "smithery:www-memoryplugin-com-api-mcp-sse",
+      "display_name": "www.memoryplugin.com",
+      "observed_state": "error",
+      "lifecycle_state": "blocked",
+      "authentication_state": "error",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_initialization_error"
+    },
+    {
+      "connector_key": "smithery:zebra-3iT5",
+      "display_name": "zebra-3iT5",
+      "observed_state": "input_required",
+      "lifecycle_state": "staging_only",
+      "authentication_state": "configuring",
+      "approved_roots": [],
+      "capabilities_enabled": false,
+      "connector_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "data_quality": {
+        "score": 0,
+        "status": "unknown"
+      },
+      "error_code": "smithery_input_required"
+    }
+  ],
+  "supabase_remediation": {
+    "project_ref": "dyhprklicgewmrimecey",
+    "registry_before": 26,
+    "registry_after": 169,
+    "smithery_inventory_rows": 141,
+    "source_linked_rows": 141,
+    "isolated_acceptance_routes": 6,
+    "fixture_jobs_cancelled": 5,
+    "fixture_nonterminal_jobs": 0,
+    "enabled_open_or_half_open_routes": 0,
+    "enabled_unsafe_mutation_routes": 0,
+    "cloudflare_lifecycle": "blocked",
+    "cloudflare_authentication": "auth_required",
+    "supermemory_lifecycle": "blocked",
+    "supermemory_authentication": "auth_required",
+    "connector_quality_promotions": 0,
+    "data_quality_promotions": 0
+  },
+  "broker_evidence": {
+    "repository": "GlacierEQ/servers",
+    "commit": "d62d9e3485e573eb096b5f3088e8f9af08b54c1f",
+    "workflow_run_id": 31082893964,
+    "workflow_result": "success",
+    "artifact_id": 8960198253,
+    "artifact_digest": "sha256:754fd4c0cc49963bf2443034d0be4f8dbe513ede34fa921a88f18a5c8fa4062a",
+    "artifact_expires_at": "2026-09-05T07:57:20Z"
+  },
+  "github_watch": {
+    "superluminal_pr_70": {
+      "head": "53d3d5729fb43376c0a240650aacf0bb3f0daed9",
+      "draft": true,
+      "mergeable": true,
+      "checks": "failed_zero_step_boundary"
+    },
+    "superluminal_pr_71": {
+      "head": "8cae7b8da71ff6f8a70ca64c47355970589ad211",
+      "draft": true,
+      "mergeable": true,
+      "checks": "failed_zero_step_boundary"
+    },
+    "public_runner_pr_30": {
+      "merged": true
+    }
+  },
+  "boundaries": {
+    "connection_state_does_not_prove_authentication": true,
+    "no_route_promoted_live": true,
+    "no_quality_score_inferred": true,
+    "no_source_bytes_persisted": true,
+    "no_setup_urls_or_tokens_persisted": true
+  }
+}
