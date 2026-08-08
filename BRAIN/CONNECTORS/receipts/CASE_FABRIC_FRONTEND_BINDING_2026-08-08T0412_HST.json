@@ -1,0 +1,54 @@
+{
+  "schema": "casebrain.case-fabric.frontend-binding-receipt.v1",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "observed_at": "2026-08-08T14:12:12Z",
+  "source_probes": {
+    "github": {
+      "repository": "GlacierEQ/AEON-777",
+      "base_sha": "bc50af2f47a9cfc139eafde70333f949b89b6559"
+    },
+    "notion": {
+      "direct_read": true,
+      "target_page_read": true,
+      "smithery_route": "auth_required"
+    },
+    "mem": {
+      "collection_list": true,
+      "projection_note_read": true,
+      "projection_version": 4
+    },
+    "casebrain": {
+      "identity_probe": true,
+      "list_and_recall_methods": "unavailable"
+    },
+    "supermemory1": {
+      "identity_probe": true,
+      "list_and_recall_methods": "unavailable"
+    },
+    "smithery_toolbox": {
+      "total": 141,
+      "connected": 81,
+      "auth_required": 37,
+      "input_required": 12,
+      "error": 11
+    },
+    "supabase": {
+      "project": "dyhprklicgewmrimecey",
+      "status": "ACTIVE_HEALTHY",
+      "active_or_ambiguous_jobs": 0
+    }
+  },
+  "decisions": [
+    "one logical Case Fabric; no additional command center",
+    "GitHub remains canonical for schema, validator, and decision",
+    "Notion and memory systems are projections, never evidence authorities",
+    "blocked or method-unavailable connectors remain disabled",
+    "unknown connector and data quality scores remain unknown"
+  ],
+  "safety": {
+    "credentials_included": false,
+    "privileged_bytes_included": false,
+    "protected_minor_details_included": false,
+    "allegation_narratives_included": false
+  }
+}
