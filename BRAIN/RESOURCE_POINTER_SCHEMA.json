@@ -5,6 +5,57 @@
   "description": "Stable, provenance-aware locator for a resource whose authoritative bytes or state remain at the declared source. Pointer resolution status describes locator health, not factual truth or legal validity.",
   "type": "object",
   "additionalProperties": false,
+  "$defs": {
+    "resource_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "description": "Stable CASEBRAIN resource identity; bounded to remain index- and transport-safe."
+    },
+    "canonical_uri": {
+      "type": "string",
+      "format": "uri-reference",
+      "minLength": 1,
+      "maxLength": 4096,
+      "description": "Canonical path, URL, or URI-reference; bounded to support long source-system routes without unbounded payload growth."
+    },
+    "locator": {
+      "type": "string",
+      "maxLength": 1024,
+      "description": "Human-readable locator or route hint; descriptive only and never the source authority."
+    },
+    "sha256_digest": {
+      "type": "string",
+      "pattern": "^(sha256:)?[A-Fa-f0-9]{64}$",
+      "description": "SHA-256 digest in bare hexadecimal or sha256:-prefixed form."
+    },
+    "case_id": {
+      "type": "string",
+      "maxLength": 128,
+      "description": "Optional matter/case scope identifier."
+    },
+    "source_system": {
+      "type": "string",
+      "maxLength": 128,
+      "description": "Optional owning or originating source-system label."
+    },
+    "native_id": {
+      "type": "string",
+      "maxLength": 512,
+      "description": "Optional source-native object identifier, bounded for connector interoperability."
+    },
+    "alias": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "description": "Retrieval alias such as docket shorthand, filename, label, or legacy locator."
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 4096,
+      "description": "Provenance, limitations, blockers, or review notes; not a substitute for source evidence."
+    }
+  },
   "required": [
     "resource_id",
     "canonical_uri",
@@ -13,15 +64,10 @@
   ],
   "properties": {
     "resource_id": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 256
+      "$ref": "#/$defs/resource_id"
     },
     "canonical_uri": {
-      "type": "string",
-      "format": "uri-reference",
-      "minLength": 1,
-      "maxLength": 4096
+      "$ref": "#/$defs/canonical_uri"
     },
     "source_kind": {
       "enum": [
@@ -36,18 +82,15 @@
       ]
     },
     "locator": {
-      "type": ["string", "null"],
-      "maxLength": 1024
+      "oneOf": [
+        { "$ref": "#/$defs/locator" },
+        { "type": "null" }
+      ]
     },
     "content_hash": {
       "oneOf": [
-        {
-          "type": "string",
-          "pattern": "^(sha256:)?[A-Fa-f0-9]{64}$"
-        },
-        {
-          "type": "null"
-        }
+        { "$ref": "#/$defs/sha256_digest" },
+        { "type": "null" }
       ]
     },
     "last_checked_at": {
@@ -55,23 +98,27 @@
       "format": "date-time"
     },
     "case_id": {
-      "type": ["string", "null"],
-      "maxLength": 128
+      "oneOf": [
+        { "$ref": "#/$defs/case_id" },
+        { "type": "null" }
+      ]
     },
     "source_system": {
-      "type": ["string", "null"],
-      "maxLength": 128
+      "oneOf": [
+        { "$ref": "#/$defs/source_system" },
+        { "type": "null" }
+      ]
     },
     "native_id": {
-      "type": ["string", "null"],
-      "maxLength": 512
+      "oneOf": [
+        { "$ref": "#/$defs/native_id" },
+        { "type": "null" }
+      ]
     },
     "aliases": {
       "type": "array",
       "items": {
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 1024
+        "$ref": "#/$defs/alias"
       },
       "uniqueItems": true,
       "default": []
@@ -89,12 +136,16 @@
       ]
     },
     "replaced_by": {
-      "type": ["string", "null"],
-      "maxLength": 256
+      "oneOf": [
+        { "$ref": "#/$defs/resource_id" },
+        { "type": "null" }
+      ]
     },
     "notes": {
-      "type": ["string", "null"],
-      "maxLength": 4096
+      "oneOf": [
+        { "$ref": "#/$defs/notes" },
+        { "type": "null" }
+      ]
     }
   }
 }
