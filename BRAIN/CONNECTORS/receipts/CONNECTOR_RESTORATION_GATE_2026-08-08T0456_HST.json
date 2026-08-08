@@ -1,0 +1,101 @@
+{
+  "schema": "casebrain.connector-restoration-gate-receipt.v1",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "observed_at": "2026-08-08T14:56:28Z",
+  "activation_policy": "fail_closed_until_all_required_read_probes_and_auth_handshakes_pass",
+  "direct_memory_surfaces": {
+    "casebrain.primary": {
+      "app_permission_surface": "present",
+      "runtime_tool_namespace": "absent",
+      "read_only_probe": "blocked_before_data_access",
+      "registry_state": "staging_only",
+      "authentication_state": "authenticated",
+      "health_status": "degraded_methods_unavailable",
+      "read_enabled": false,
+      "write_enabled": false,
+      "enabled_routes": 0,
+      "production_enabled": false,
+      "next_gate": "restore runtime namespace plus list/recall methods, then run bounded identity/project/recall probes"
+    },
+    "supermemory1.primary": {
+      "app_permission_surface": "present",
+      "runtime_tool_namespace": "absent",
+      "read_only_probe": "blocked_before_data_access",
+      "registry_state": "staging_only",
+      "authentication_state": "authenticated",
+      "health_status": "degraded_methods_unavailable",
+      "read_enabled": false,
+      "write_enabled": false,
+      "enabled_routes": 0,
+      "production_enabled": false,
+      "next_gate": "restore runtime namespace plus list/recall methods, then run bounded identity/project/recall probes"
+    }
+  },
+  "smithery_routes": {
+    "smithery:notion": {
+      "registry_state": "blocked",
+      "authentication_state": "auth_required",
+      "setup_url_persisted": false,
+      "handshake_verified": false,
+      "permission_scopes_verified": false,
+      "enabled_routes": 0,
+      "production_enabled": false,
+      "blocking_reason": "no authenticated Smithery authorization action or persisted setup URL is exposed in the current execution surface"
+    },
+    "smithery:supermemory": {
+      "registry_state": "blocked",
+      "authentication_state": "auth_required",
+      "setup_url_persisted": false,
+      "handshake_verified": false,
+      "permission_scopes_verified": false,
+      "enabled_routes": 0,
+      "production_enabled": false,
+      "blocking_reason": "no authenticated Smithery authorization action or persisted setup URL is exposed in the current execution surface"
+    }
+  },
+  "direct_notion_probe": {
+    "identity_handshake": "verified",
+    "fetch_tool_access": "available",
+    "source_page_readback": "verified",
+    "smithery_equivalence_claimed": false
+  },
+  "stale_projection_replacement": {
+    "projection_key": "memory_architecture.connector_mesh_control_plane.current",
+    "prior_projection_version": 1,
+    "prior_verification_status": "stale",
+    "job_id": "2548cc73-d59a-4aa5-ac4a-506ee6f7222a",
+    "correlation_id": "db9c7c5a-cf1a-4419-8f0b-c156777b8271",
+    "claim": "passed",
+    "route_plan": "passed_read_only",
+    "reservation_id": "1ec49b06-2e52-46ad-a672-d24e294c54ef",
+    "reservation_final_state": "consumed",
+    "invocation_key": "3b17e6846217ad053c90ff957d740c424286ce91a73049645dae20239f9b12b5",
+    "source_request_hash": "22febd82ea29f59dd887b7da6a001684e9f16c1eee286e05e87910b692af479f",
+    "result_hash": "7c800d3ce6203853650cdfff5369e34c6b22b341d67cc0d0fad41700aec49f4a",
+    "ledger_id": 15,
+    "ledger_outcome": "success",
+    "raw_source_content_persisted": false,
+    "payload_projection_status": "published",
+    "fresh_projection_version": 2,
+    "fresh_verification_status": "verified",
+    "projection_hash": "7c800d3ce6203853650cdfff5369e34c6b22b341d67cc0d0fad41700aec49f4a",
+    "readback": {
+      "job_status": "succeeded",
+      "request_hash_matches_ledger": true,
+      "result_hash_matches_ledger": true,
+      "projection_source_job_matches": true,
+      "projection_source_hash_matches": true,
+      "projection_result_hash_matches": true,
+      "page_identity_matches_direct_readback": true
+    }
+  },
+  "audit": {
+    "supabase_health_rows_appended": 5,
+    "credentials_persisted": false,
+    "protected_minor_details_persisted": false,
+    "privileged_bytes_persisted": false,
+    "allegation_bearing_narratives_persisted": false
+  },
+  "release_gate": "BLOCKED_PARTIAL",
+  "release_gate_reason": "CaseBrain and Supermemory1 runtime methods remain unavailable and Smithery Notion/Supermemory remain authorization-blocked; no production activation is permitted."
+}
