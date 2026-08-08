@@ -66,11 +66,13 @@
     {
       "key": "mem",
       "role": "durable_workbench_and_continuity_projection",
-      "state": "read_verified_write_unverified",
-      "mode": "read",
-      "approved_roots": [],
+      "state": "verified",
+      "mode": "read_write",
+      "approved_roots": [
+        "mem:note:1c5f821b-af89-5898-97fe-2789095e1163"
+      ],
       "projection_root_ref": "mem:1c5f821b-af89-5898-97fe-2789095e1163",
-      "next_gate": "refresh_existing_projection_and_verify_readback"
+      "next_gate": "keep_scope_to_existing_governed_projection_note"
     },
     {
       "key": "casebrain.primary",
