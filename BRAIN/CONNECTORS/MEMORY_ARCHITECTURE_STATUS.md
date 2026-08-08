@@ -46,6 +46,8 @@ Candidate controls:
 - Unknown lookups fail closed and do not manufacture a source identity.
 - Hosted CI must pass `validate_resource_pointer_reconciliation.mjs` before this candidate can be promoted.
 
+Live canonical-ledger readback at `2026-08-08T08:53:06Z` is preserved in `receipts/MEMORY_POINTER_ORGANIZATION_AUDIT_2026-08-07.json`: 4 memory objects (2 active, 2 superseded), 5 synchronized bindings, 5 succeeded and 6 preserved blocked sync events, 0 recorded federation conflicts, and 0 federation tombstones. The older manifest runtime counts remain preserved as an explicitly historical snapshot rather than being silently rewritten.
+
 This section describes a branch candidate until its pull request and hosted validation receipt are complete; it is not a claim that the reconciliation has merged.
 
 ## Ordered gap queue
