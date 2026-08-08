@@ -1,0 +1,343 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:casebrain:schema:evidence-intake-gate:1.0.0",
+  "title": "CASEBRAIN Evidence Intake Gate",
+  "description": "Fail-closed metadata gate between discovery and canonical evidence promotion. Source bytes remain at the authoritative source.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "gate_id",
+    "thread_anchor",
+    "case_id",
+    "source",
+    "integrity",
+    "acquisition",
+    "artifact",
+    "duplicate",
+    "sensitivity",
+    "chain_of_custody",
+    "claim_class",
+    "truth_partition",
+    "projection_policy",
+    "promotion",
+    "human_review",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "gate_id": { "type": "string", "pattern": "^eig_[a-z0-9_-]{8,96}$" },
+    "thread_anchor": { "const": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51" },
+    "case_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "connector_id",
+        "approved_root_ref",
+        "resource_pointer",
+        "pointer_stability",
+        "original_filename",
+        "source_version",
+        "exact_bytes_accessible",
+        "source_bytes_preserved"
+      ],
+      "properties": {
+        "connector_id": { "type": "string", "pattern": "^[a-z0-9_]+$", "maxLength": 128 },
+        "approved_root_ref": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "resource_pointer": { "$ref": "urn:casebrain:schema:resource-pointer:1.0.0" },
+        "pointer_stability": { "enum": ["unknown", "stable_immutable", "stable_versioned", "ephemeral"] },
+        "original_filename": {
+          "oneOf": [
+            { "type": "string", "minLength": 1, "maxLength": 512 },
+            { "type": "null" }
+          ]
+        },
+        "source_version": {
+          "oneOf": [
+            { "type": "string", "minLength": 1, "maxLength": 256 },
+            { "type": "null" }
+          ]
+        },
+        "exact_bytes_accessible": { "type": "boolean" },
+        "source_bytes_preserved": { "type": "boolean" }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256_exact_bytes", "byte_count", "mime_type"],
+      "properties": {
+        "sha256_exact_bytes": {
+          "oneOf": [
+            { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            { "type": "null" }
+          ]
+        },
+        "byte_count": {
+          "oneOf": [
+            { "type": "integer", "minimum": 0 },
+            { "type": "null" }
+          ]
+        },
+        "mime_type": {
+          "oneOf": [
+            { "type": "string", "minLength": 1, "maxLength": 256 },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "acquisition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["acquired_at", "custodian", "acquisition_method"],
+      "properties": {
+        "acquired_at": {
+          "oneOf": [
+            { "type": "string", "format": "date-time" },
+            { "type": "null" }
+          ]
+        },
+        "custodian": {
+          "oneOf": [
+            { "type": "string", "minLength": 1, "maxLength": 256 },
+            { "type": "null" }
+          ]
+        },
+        "acquisition_method": {
+          "oneOf": [
+            { "type": "string", "minLength": 1, "maxLength": 256 },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["class", "derivative_of"],
+      "properties": {
+        "class": { "enum": ["unknown", "original", "derivative", "control_receipt"] },
+        "derivative_of": {
+          "oneOf": [
+            { "type": "string", "pattern": "^prv_[a-z0-9_-]{8,96}$" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "duplicate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "group_id", "is_controlling_copy", "controlling_copy_ref"],
+      "properties": {
+        "status": { "enum": ["unknown", "unique", "exact_duplicate", "version_related"] },
+        "group_id": {
+          "oneOf": [
+            { "type": "string", "minLength": 1, "maxLength": 256 },
+            { "type": "null" }
+          ]
+        },
+        "is_controlling_copy": {
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "null" }
+          ]
+        },
+        "controlling_copy_ref": {
+          "oneOf": [
+            { "type": "string", "minLength": 1, "maxLength": 512 },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "sensitivity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["class", "contains_protected_minor"],
+      "properties": {
+        "class": {
+          "enum": [
+            "unclassified",
+            "public",
+            "internal",
+            "restricted",
+            "privileged",
+            "minor_sensitive",
+            "medical",
+            "school",
+            "psychological",
+            "sealed"
+          ]
+        },
+        "contains_protected_minor": { "type": "boolean" }
+      }
+    },
+    "chain_of_custody": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "requirements"],
+      "properties": {
+        "status": { "enum": ["unknown", "not_required", "preserved", "requires_followup", "broken"] },
+        "requirements": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 512 },
+          "uniqueItems": true,
+          "maxItems": 32
+        }
+      }
+    },
+    "claim_class": {
+      "enum": [
+        "source_fact",
+        "procedural_record",
+        "court_finding",
+        "party_allegation",
+        "witness_statement",
+        "model_inference",
+        "legal_argument",
+        "not_applicable"
+      ]
+    },
+    "truth_partition": {
+      "enum": [
+        "discovery_signal",
+        "verified_record",
+        "hypothesis_or_discovery_target",
+        "private_work_product",
+        "filing_ready_assertion"
+      ]
+    },
+    "projection_policy": { "enum": ["no_projection", "pointer_only", "metadata_only", "allowed"] },
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "blockers", "provenance_receipt_required"],
+      "properties": {
+        "status": { "enum": ["discovery_only", "quarantined", "promotion_ready", "verified_evidence"] },
+        "blockers": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9_:-]{3,128}$" },
+          "uniqueItems": true,
+          "maxItems": 64
+        },
+        "provenance_receipt_required": { "type": "boolean" }
+      }
+    },
+    "human_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "reviewer", "reviewed_at"],
+      "properties": {
+        "state": { "enum": ["not_required", "required", "approved", "rejected"] },
+        "reviewer": {
+          "oneOf": [
+            { "type": "string", "minLength": 1, "maxLength": 256 },
+            { "type": "null" }
+          ]
+        },
+        "reviewed_at": {
+          "oneOf": [
+            { "type": "string", "format": "date-time" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "artifact": { "properties": { "class": { "const": "derivative" } }, "required": ["class"] } },
+        "required": ["artifact"]
+      },
+      "then": {
+        "properties": { "artifact": { "properties": { "derivative_of": { "type": "string" } } } }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "sensitivity": {
+            "properties": {
+              "class": { "enum": ["restricted", "privileged", "minor_sensitive", "medical", "school", "psychological", "sealed"] }
+            },
+            "required": ["class"]
+          }
+        },
+        "required": ["sensitivity"]
+      },
+      "then": { "properties": { "projection_policy": { "enum": ["no_projection", "pointer_only"] } } }
+    },
+    {
+      "if": {
+        "properties": { "sensitivity": { "properties": { "contains_protected_minor": { "const": true } }, "required": ["contains_protected_minor"] } },
+        "required": ["sensitivity"]
+      },
+      "then": { "properties": { "projection_policy": { "enum": ["no_projection", "pointer_only"] } } }
+    },
+    {
+      "if": {
+        "properties": { "duplicate": { "properties": { "status": { "const": "exact_duplicate" } }, "required": ["status"] } },
+        "required": ["duplicate"]
+      },
+      "then": {
+        "properties": {
+          "duplicate": {
+            "properties": { "group_id": { "type": "string", "minLength": 1 } },
+            "anyOf": [
+              { "properties": { "is_controlling_copy": { "const": true } } },
+              { "properties": { "controlling_copy_ref": { "type": "string", "minLength": 1 } } }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "promotion": { "properties": { "status": { "const": "verified_evidence" } }, "required": ["status"] } },
+        "required": ["promotion"]
+      },
+      "then": {
+        "properties": {
+          "source": {
+            "properties": {
+              "pointer_stability": { "enum": ["stable_immutable", "stable_versioned"] },
+              "original_filename": { "type": "string", "minLength": 1 },
+              "source_version": { "type": "string", "minLength": 1 }
+            }
+          },
+          "integrity": {
+            "properties": {
+              "sha256_exact_bytes": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+              "byte_count": { "type": "integer", "minimum": 0 },
+              "mime_type": { "type": "string", "minLength": 1 }
+            }
+          },
+          "acquisition": {
+            "properties": {
+              "acquired_at": { "type": "string", "format": "date-time" },
+              "custodian": { "type": "string", "minLength": 1 },
+              "acquisition_method": { "type": "string", "minLength": 1 }
+            }
+          },
+          "artifact": { "properties": { "class": { "enum": ["original", "derivative"] } } },
+          "duplicate": { "properties": { "status": { "enum": ["unique", "exact_duplicate", "version_related"] } } },
+          "sensitivity": { "properties": { "class": { "not": { "const": "unclassified" } } } },
+          "chain_of_custody": { "properties": { "status": { "enum": ["not_required", "preserved"] } } },
+          "truth_partition": { "const": "verified_record" },
+          "promotion": {
+            "properties": {
+              "blockers": { "maxItems": 0 },
+              "provenance_receipt_required": { "const": true }
+            }
+          },
+          "human_review": { "properties": { "state": { "const": "approved" } } }
+        }
+      }
+    }
+  ]
+}
