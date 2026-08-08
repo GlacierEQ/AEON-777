@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "head_id": "GLACIEREQ-LEGAL-DATA-HEAD",
+  "name": "AEON-777",
+  "repository": "GlacierEQ/AEON-777",
+  "role": "LEGAL_DATA_AND_CASE_CONTEXT_HEAD",
+  "parent": {
+    "name": "The Statue of Liberty",
+    "repository": "GlacierEQ/legal-powerhouse",
+    "role": "LEGAL_CATEGORY_HEAD"
+  },
+  "global_root": {
+    "name": "MONOLITH",
+    "repository": "GlacierEQ/monolith"
+  },
+  "bestowal_scope": "ALL_LEGAL_DATA_CASE_DETAILS_AND_CASE_SPECIFIC_CONTEXT",
+  "descendants": [
+    "GlacierEQ/SUPERLUMINAL_CASE_MATRIX",
+    "GlacierEQ/CASE-1FDV-23-0001009",
+    "GlacierEQ/DOCKETS",
+    "GlacierEQ/THE_CATACLYSM",
+    "GlacierEQ/THE-CATACLYSM",
+    "GlacierEQ/CYBERTACK-1FDV-23-0001009",
+    "GlacierEQ/case-1FDV-23-0001009-legal-documents",
+    "case-specific source systems and evidence stores"
+  ],
+  "routing_rule": "An agent initialized at AEON-777 inherits legal data and case-context routing for all descendants. Open the owning repository or provider source before asserting implementation state or factual truth.",
+  "authority_boundaries": {
+    "casebrain": "Canonical proposition/evidence contract",
+    "authenticated_originals_and_operative_official_records": "Factual authority",
+    "aeon_777": "Scoped context, memory, case-detail routing, relationship topology, and continuity",
+    "monolith": "Estate-wide cartography"
+  },
+  "case_track_rule": "Keep each case/matter as an explicit descendant subtree with its own caption, source lineage, authority state, and cross-case links. Do not flatten distinct matters into one evidence pool.",
+  "current_primary_case_tree": {
+    "1FDV-23-0001009": {
+      "canonical_machine_contract": "GlacierEQ/SUPERLUMINAL_CASE_MATRIX/CASEBRAIN_V3",
+      "case_pack": "GlacierEQ/CASE-1FDV-23-0001009",
+      "docket_workbench": "GlacierEQ/DOCKETS",
+      "email_derivative_archive": "GlacierEQ/THE_CATACLYSM",
+      "forensic_workbench": "GlacierEQ/CYBERTACK-1FDV-23-0001009"
+    }
+  }
+}
