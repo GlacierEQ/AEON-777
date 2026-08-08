@@ -44,26 +44,7 @@
     "source_pointers": {
       "type": "array",
       "minItems": 1,
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["resource_id", "canonical_uri", "source_kind", "last_checked_at"],
-        "properties": {
-          "resource_id": { "type": "string", "minLength": 1, "maxLength": 256 },
-          "canonical_uri": { "type": "string", "format": "uri-reference", "minLength": 1 },
-          "source_kind": {
-            "enum": ["court_record", "evidence", "communication", "filing", "index", "connector", "system", "other"]
-          },
-          "locator": { "type": ["string", "null"], "maxLength": 1024 },
-          "content_hash": {
-            "oneOf": [
-              { "type": "string", "pattern": "^(sha256:)?[A-Fa-f0-9]{64}$" },
-              { "type": "null" }
-            ]
-          },
-          "last_checked_at": { "type": "string", "format": "date-time" }
-        }
-      }
+      "items": { "$ref": "urn:casebrain:schema:resource-pointer:1.0.0" }
     },
     "supports_memory_ids": {
       "type": "array",

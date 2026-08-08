@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0.0",
+  "thread_anchor": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+  "observed_at": "2026-08-08T08:53:06Z",
+  "observation_mode": "read_only_supabase_metadata_readback",
+  "canonical_runtime": {
+    "system": "Supabase",
+    "project_id": "dyhprklicgewmrimecey",
+    "tables": [
+      "memory_federation_objects_v1",
+      "memory_federation_bindings_v1",
+      "memory_federation_sync_events_v1",
+      "memory_federation_conflicts_v1",
+      "memory_federation_tombstones_v1"
+    ]
+  },
+  "organization_invariant": "Externally grounded memory should retain stable memory identity and a durable route to its source identity; projections do not become source truth.",
+  "live_state": {
+    "memory_objects": 4,
+    "active_objects": 2,
+    "superseded_objects": 2,
+    "synchronized_bindings": 5,
+    "sync_events": {
+      "blocked_historical": 6,
+      "succeeded": 5
+    },
+    "recorded_conflicts": 0,
+    "federation_tombstones": 0
+  },
+  "active_identity_graph": [
+    {
+      "memory_id": "9502ce38-b91e-498e-8bc5-5718ddea06e8",
+      "namespace": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+      "memory_type": "system_control",
+      "source_system": "mem",
+      "source_object_id": "63f1d7cd-9202-577a-8d0d-211c40a07606",
+      "source_version": "3",
+      "canonical_payload_ref": "mem://63f1d7cd-9202-577a-8d0d-211c40a07606@3",
+      "content_hash": "518bea24d284bce81b010dd6101598f22795ee3b4b137006d32c57682c7dc12f",
+      "provenance_class": "operator_directive",
+      "verification_status": "verified",
+      "canonical_status": "active",
+      "supersedes": "19858cb4-33a6-4db9-9192-0b842880e407",
+      "bindings": ["mem", "memoryplugin"]
+    },
+    {
+      "memory_id": "d8230d8f-d20a-492b-a605-34a588495155",
+      "namespace": "MEMORY_ARCHITECTURE__CASEBUILDER_4000__APEX_MEMORY_NEXUS__PR_51",
+      "memory_type": "system_control",
+      "source_system": "github",
+      "source_object_id": "BRAIN/CONNECTORS/memory_federation/manifests/chatgpt_memory_manifest.v1.json",
+      "source_version": "45c2a44d3d6bfe8fb8ab2edc2e596486a6f8f79c",
+      "canonical_payload_ref": "github://GlacierEQ/AEON-777/BRAIN/CONNECTORS/memory_federation/manifests/chatgpt_memory_manifest.v1.json@45c2a44d3d6bfe8fb8ab2edc2e596486a6f8f79c",
+      "content_hash": "85586a9f7f0399d466a95534dd9d0f67aca533bc06b800a74ef0d1d31227ca48",
+      "provenance_class": "operator_directive",
+      "verification_status": "verified",
+      "canonical_status": "active",
+      "supersedes": "60d91ba9-3f10-40aa-b90e-f2cc56b4504c",
+      "bindings": ["github", "mem", "memoryplugin"]
+    }
+  ],
+  "supersession_chain": [
+    {
+      "memory_id": "19858cb4-33a6-4db9-9192-0b842880e407",
+      "canonical_status": "superseded",
+      "superseded_by": "9502ce38-b91e-498e-8bc5-5718ddea06e8"
+    },
+    {
+      "memory_id": "60d91ba9-3f10-40aa-b90e-f2cc56b4504c",
+      "canonical_status": "superseded",
+      "superseded_by": "d8230d8f-d20a-492b-a605-34a588495155"
+    }
+  ],
+  "binding_summary": [
+    {
+      "memory_id": "9502ce38-b91e-498e-8bc5-5718ddea06e8",
+      "backends": ["mem", "memoryplugin"],
+      "all_observed_projection_statuses": "synced"
+    },
+    {
+      "memory_id": "d8230d8f-d20a-492b-a605-34a588495155",
+      "backends": ["github", "mem", "memoryplugin"],
+      "all_observed_projection_statuses": "synced"
+    }
+  ],
+  "historical_snapshot_reconciliation": {
+    "manifest_path": "BRAIN/CONNECTORS/memory_federation/manifests/chatgpt_memory_manifest.v1.json",
+    "manifest_runtime_snapshot_declares_historical": true,
+    "manifest_snapshot_objects": 3,
+    "manifest_snapshot_active_objects": 2,
+    "manifest_snapshot_superseded_objects": 1,
+    "manifest_snapshot_succeeded_events": 3,
+    "live_objects": 4,
+    "live_active_objects": 2,
+    "live_superseded_objects": 2,
+    "live_succeeded_events": 5,
+    "interpretation": "The counts differ because the embedded manifest runtime snapshot is explicitly historical. Preserve it as history; do not silently rewrite the prior observation."
+  },
+  "pointer_reconciliation_state": {
+    "resource_pointer_contract_branch_candidate": "BRAIN/RESOURCE_POINTER_SCHEMA.json",
+    "resolver_branch_candidate": "BRAIN/resource_pointer_resolver.py",
+    "federation_object_source_fields_already_available": [
+      "source_system",
+      "source_object_id",
+      "source_version",
+      "canonical_payload_ref",
+      "content_hash"
+    ],
+    "automatic_identity_rewrite_allowed": false,
+    "new_shadow_memory_index_allowed": false,
+    "source_bytes_copied": false
+  },
+  "unresolved": [
+    "The federation object schema predates the reusable ResourcePointer contract; do not mutate durable rows until the pointer contract is promoted and a migration is separately reviewed.",
+    "The historical manifest should receive a successor rather than an in-place semantic rewrite when its next canonical runtime snapshot is published.",
+    "Legacy case-memory aliases and locator paths still require reconciliation against stable resource IDs."
+  ],
+  "next_gates": [
+    "Pass PR-hosted pointer reconciliation validation and preserve the receipt.",
+    "Audit pointerless/stale/conflicting legacy memory projections without deleting or silently rewriting them.",
+    "Reconcile DOCKETS, Monolith, Aspen, and case-specific aliases to stable resource identities.",
+    "Run the November 17 / Dkt. 213-214 natural-language resolution acceptance test."
+  ]
+}
