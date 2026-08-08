@@ -24,10 +24,11 @@ IDENTITY_KEYS = (
     "pointer_id",
 )
 
+HASH_KEYS = {"sha256", "content_hash"}
+
 STRONG_EXACT_KEYS = {
     *IDENTITY_KEYS,
-    "sha256",
-    "content_hash",
+    *HASH_KEYS,
     "gmail_message_id",
     "gmail_thread_id",
     "rfc_message_id",
@@ -75,6 +76,17 @@ KIND_KEYS = (
 
 DEFAULT_CASE_ID = "1FDV-23-0001009"
 
+SCORE_NO_MATCH = 0
+SCORE_SUBSTRING_OTHER = 55
+SCORE_SUBSTRING_STRONG = 70
+SCORE_EXACT_OTHER = 85
+SCORE_EXACT_STRONG = 100
+
+EXIT_SUCCESS = 0
+EXIT_NO_MATCH = 1
+EXIT_READ_ERROR = 2
+EXIT_AMBIGUOUS = 3
+
 
 @dataclass(frozen=True)
 class ResolutionMatch:
@@ -83,15 +95,25 @@ class ResolutionMatch:
     json_path: str
     resource_id: str | None
     source_kind: str | None
-    status: str | None
+    source_status: str | None
     canonical_uri: str
     content_hash: str | None
+    aliases: tuple[str, ...]
     native_ids: dict[str, str]
     matched_values: tuple[str, ...]
 
 
 def _normalize(value: Any) -> str:
     return str(value).strip().casefold()
+
+
+def _normalize_hash_token(value: Any) -> str:
+    """Normalize the schema-supported optional ``sha256:`` prefix."""
+    normalized = _normalize(value)
+    prefix = "sha256:"
+    if normalized.startswith(prefix) and len(normalized) > len(prefix):
+        return normalized[len(prefix):]
+    return normalized
 
 
 def _match_scalar_items(record: dict[str, Any]) -> Iterator[tuple[str, str]]:
@@ -134,6 +156,19 @@ def _identity(record: dict[str, Any]) -> str | None:
     return _direct_scalar(record, IDENTITY_KEYS)
 
 
+def _aliases(record: dict[str, Any]) -> tuple[str, ...]:
+    value = record.get("aliases")
+    if not isinstance(value, list):
+        return ()
+    return tuple(
+        dict.fromkeys(
+            str(alias).strip()
+            for alias in value
+            if isinstance(alias, str) and alias.strip()
+        )
+    )
+
+
 def _content_hash(record: dict[str, Any]) -> str | None:
     return _direct_scalar(record, ("sha256", "content_hash", "sha1"))
 
@@ -157,7 +192,7 @@ def _native_ids(record: dict[str, Any]) -> dict[str, str]:
     result: dict[str, str] = {}
     for key, value in _match_scalar_items(record):
         leaf = key.rsplit(".", 1)[-1]
-        if leaf in STRONG_EXACT_KEYS and leaf not in {"sha256", "content_hash"}:
+        if leaf in STRONG_EXACT_KEYS and leaf not in HASH_KEYS:
             result[key] = value
     return dict(sorted(result.items()))
 
@@ -184,7 +219,7 @@ def _walk(value: Any, path: str = "$") -> Iterator[tuple[str, dict[str, Any]]]:
 def _match_score(query: str, record: dict[str, Any]) -> tuple[int, tuple[str, ...]]:
     q = _normalize(query)
     if not q:
-        return 0, ()
+        return SCORE_NO_MATCH, ()
 
     exact_strong: list[str] = []
     exact_other: list[str] = []
@@ -195,22 +230,26 @@ def _match_score(query: str, record: dict[str, Any]) -> tuple[int, tuple[str, ..
         normalized = _normalize(raw_value)
         if not normalized:
             continue
+
         leaf = dotted_key.rsplit(".", 1)[-1]
         strong = leaf in STRONG_EXACT_KEYS
-        if normalized == q:
+        comparable_query = _normalize_hash_token(q) if leaf in HASH_KEYS else q
+        comparable_value = _normalize_hash_token(normalized) if leaf in HASH_KEYS else normalized
+
+        if comparable_value == comparable_query:
             (exact_strong if strong else exact_other).append(raw_value)
-        elif q in normalized:
+        elif comparable_query and comparable_query in comparable_value:
             (substring_strong if strong else substring_other).append(raw_value)
 
     if exact_strong:
-        return 100, tuple(dict.fromkeys(exact_strong))
+        return SCORE_EXACT_STRONG, tuple(dict.fromkeys(exact_strong))
     if exact_other:
-        return 85, tuple(dict.fromkeys(exact_other))
+        return SCORE_EXACT_OTHER, tuple(dict.fromkeys(exact_other))
     if substring_strong:
-        return 70, tuple(dict.fromkeys(substring_strong))
+        return SCORE_SUBSTRING_STRONG, tuple(dict.fromkeys(substring_strong))
     if substring_other:
-        return 55, tuple(dict.fromkeys(substring_other))
-    return 0, ()
+        return SCORE_SUBSTRING_OTHER, tuple(dict.fromkeys(substring_other))
+    return SCORE_NO_MATCH, ()
 
 
 def default_registry_paths(repo_root: Path, case_id: str) -> list[Path]:
@@ -266,7 +305,7 @@ def resolve(
 
         for json_path, record in _walk(payload):
             score, matched_values = _match_score(query, record)
-            if score <= 0:
+            if score <= SCORE_NO_MATCH:
                 continue
             matches.append(
                 ResolutionMatch(
@@ -275,9 +314,10 @@ def resolve(
                     json_path=json_path,
                     resource_id=_identity(record),
                     source_kind=_direct_scalar(record, KIND_KEYS),
-                    status=_direct_scalar(record, STATUS_KEYS),
+                    source_status=_direct_scalar(record, STATUS_KEYS),
                     canonical_uri=_canonical_uri(record, display_path, json_path),
                     content_hash=_content_hash(record),
+                    aliases=_aliases(record),
                     native_ids=_native_ids(record),
                     matched_values=matched_values,
                 )
@@ -311,7 +351,7 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--require-unique",
         action="store_true",
-        help="return exit code 3 unless exactly one top-score match exists",
+        help=f"return exit code {EXIT_AMBIGUOUS} unless exactly one top-score match exists",
     )
     return parser
 
@@ -323,13 +363,13 @@ def main(argv: list[str] | None = None) -> int:
 
     if not registries:
         print("no registry paths found", file=sys.stderr)
-        return 2
+        return EXIT_READ_ERROR
 
     try:
         matches = resolve(args.query, registries, repo_root=repo_root)
     except ValueError as exc:
         print(str(exc), file=sys.stderr)
-        return 2
+        return EXIT_READ_ERROR
 
     if args.require_unique and matches:
         top_score = matches[0].score
@@ -338,18 +378,18 @@ def main(argv: list[str] | None = None) -> int:
                 print(json.dumps([asdict(match) for match in matches], indent=2, sort_keys=True))
             else:
                 print(f"ambiguous top-score matches for {args.query!r}", file=sys.stderr)
-            return 3
+            return EXIT_AMBIGUOUS
 
     if not matches:
         if args.json:
             print("[]")
         else:
             print(f"no existing registry match for {args.query!r}")
-        return 1
+        return EXIT_NO_MATCH
 
     if args.json:
         print(json.dumps([asdict(match) for match in matches], indent=2, sort_keys=True))
-        return 0
+        return EXIT_SUCCESS
 
     for match in matches:
         identity = match.resource_id or "(registry projection)"
@@ -357,13 +397,15 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  registry: {match.registry_path}{match.json_path}")
         if match.source_kind:
             print(f"  kind: {match.source_kind}")
-        if match.status:
-            print(f"  status: {match.status}")
+        if match.source_status:
+            print(f"  source status: {match.source_status}")
         if match.content_hash:
             print(f"  hash: {match.content_hash}")
+        if match.aliases:
+            print(f"  aliases: {', '.join(match.aliases)}")
         if match.matched_values:
             print(f"  matched: {', '.join(match.matched_values[:3])}")
-    return 0
+    return EXIT_SUCCESS
 
 
 if __name__ == "__main__":
